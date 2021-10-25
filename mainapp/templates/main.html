@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <style type="text/css">
+        a:link { color: red; text-decoration: none;}
+        a:visited { color: black; text-decoration: none;}
+        a:hover { color: blue; text-decoration: underline;}
+        input[id*="answer"] {
+            display:none;
+        }
+        input[id*="answer"] + label + div {
+            max-height:0;
+            transition: all .35s;
+            overflow:hidden;
+            background:#ebf8ff;
+            font-size:20px;
+        }
+        input[id*="answer"]:checked + label + div {
+            max-height:1000px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PICK ME</h1>
+    <div class="Main_Account">
+        <a href="{% url 'mainapp:main' %}">로그인</a>
+        <a href="{% url 'mainapp:main' %}">회원가입</a>
+    </div>
+    <div class="Main_ContentBox">
+        <h1>
+            <input type="checkbox" id="answer1">
+            <label for="answer1">인재찾기 TOP100 컨텐츠3 컨텐츠4 마이페이지</label> &nbsp;
+            <div>
+                <a href="{% url 'mainapp:main' %}">맞춤형검색</a>
+                <a href="{% url 'mainapp:main' %}">TOP100검색</a>
+                <a href="{% url 'mainapp:main' %}">콘텐츠3</a>
+                <a href="{% url 'mainapp:main' %}">콘텐츠4</a>
+                <a href="{% url 'mainapp:main' %}">콘텐츠5</a>
+                <p></p>
+                <a href="{% url 'mainapp:main' %}">아이디/닉네임검색</a>
+                <a href="{% url 'mainapp:main' %}">우수이력서보기</a>
+                <a href="{% url 'mainapp:main' %}">콘텐츠8</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">콘텐츠9</a>
+            </div>
+        </h1>
+    </div>
+    <p></p>
+</body>
+</html>

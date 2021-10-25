@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{% url 'profileapp:update_profile' pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profile_form }}
+        <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+    </form>
+</body>
+</html>
