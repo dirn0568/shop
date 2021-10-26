@@ -45,8 +45,31 @@
                 <a href="{% url 'mainapp:main' %}">우수이력서보기</a>
                 <a href="{% url 'mainapp:main' %}">콘텐츠8</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">콘텐츠9</a>
+                <p></p>
+                <a href="{% url 'mainapp:main' %}">콘텐츠10</a>
+                <a href="{% url 'mainapp:main' %}">콘텐츠11</a>
+                <a href="{% url 'mainapp:main' %}">콘텐츠12</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">콘텐츠13</a>
             </div>
         </h1>
+    </div>
+    <div>
+        {% for list in html2_img %}
+            <p></p>
+            이미지는 나오냐
+            <img src="{{ list }}">
+        {% endfor %}
+        {% for list in html2_text %}
+            <p></p>
+            텍스트
+            {{ list }}
+        {% endfor %}
+        {% for list in html2_href %}
+            <p></p>
+            하이퍼링크
+            <a href="{{ list }}">되나</a>
+        {% endfor %}
+        <h1>dafdf</h1>
     </div>
     <p></p>
 </body>
