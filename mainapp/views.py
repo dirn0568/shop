@@ -14,7 +14,7 @@ def main(request):
     html2_img = []
     html2_href = []
     html2 = []
-    html = urlopen("https://news.naver.com/")
+    html = urlopen("https://www.work.go.kr/empSpt/empNews/retrieveEmpNewsList.do")
     bsObject = BeautifulSoup(html, "html.parser")
     # for link in bsObject.find_all('img'):
     #     # if link.text.strip().count('기사') >= 1:
@@ -30,8 +30,10 @@ def main(request):
     #             html2_img.append(link.get('src'))
     #             html2_text.append(link2.get('href'))
         # print(link.text.strip(), link.get('href'))
-    for link in bsObject.select('기사'):
-        html2_href.append(link.get('href'))
+    for link in bsObject.select('a'):
+        if link.text.strip().count('press') >= 1:
+            html2_text.append(link.text.strip())
+            html2_href.append(link.get('href'))
     context = {}
     print(html2_text, '####################################')
     print(html2_img, '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
@@ -39,4 +41,5 @@ def main(request):
     context['html2_text'] = html2_text
     context['html2_img'] = html2_img
     context['html2_href'] = html2_href
+    # context['test'] = //*[@id="today_main_news"]/div[2]/div/div[1]/a[2]
     return render(request, 'main.html', context)
