@@ -16,11 +16,56 @@
             max-height:0;
             transition: all .35s;
             overflow:hidden;
-            background:#ebf8ff;
+            background-color:rgb(255, 208, 0);
             font-size:20px;
         }
         input[id*="answer"]:checked + label + div {
             max-height:1000px;
+        }
+
+        input[type="radio"] {
+            display:none;
+        }
+        .conbox {
+            position: absolute;
+            right: 50%;
+            top: 179px;
+            margin-right: -480px;
+            text-align:center;
+            width: 500px;
+            height: 375px;
+            background:#ebf8ff;
+            display:none;
+        }
+        .btn {
+            padding:10px;
+            text-align:center;
+        }
+        label[for*="tab"] {
+            display:inline-block;
+            padding:10px;
+            background:black;
+            cursor:pointer;
+            margin:5px;
+            border-radius:100%;
+        }
+        input[id="tab1"]:checked ~ .con1 {
+            display:block;
+        }
+        input[id="tab2"]:checked ~ .con2 {
+            display:block;
+        }
+        input[id="tab3"]:checked ~ .con3 {
+            display:block;
+        }
+        input[id="tab1"]:checked ~ .btn > label[for="tab1"] {
+            background:red;
+        }
+        input[id="tab2"]:checked ~ .btn > label[for="tab2"] {
+            background:red;
+        }
+        input[id="tab3"]:checked ~ .btn > label[for="tab3"] {
+            background:red;
         }
     </style>
 </head>
@@ -53,25 +98,60 @@
             </div>
         </h1>
     </div>
-    <div>
-        {% for list in html2_img %}
-            <p></p>
-            이미지는 나오냐
-            <img src="{{ list }}">
-        {% endfor %}
-        {% for list in html2_text %}
-            <p></p>
-            텍스트
-            {{ list }}
-        {% endfor %}
-        {% for list in html2_href %}
-            <p></p>
-            하이퍼링크
-            <a href="{{ list }}">되나</a>
-        {% endfor %}
-        <h1>dafdf</h1>
-        //*[@id="today_main_news"]/div[2]/div/div[1]/a[2]
+    <div class="news_main">
+        <div class="news_main_content">
+            {% for list in html %}
+                <p></p>
+                <a href="https://www.jobkorea.co.kr/{{ list.0 }}">
+                    <img src="{{ list.1 }}" width="100" height="100">
+                    {{ list.2 }}
+                </a>
+            {% endfor %}
+        </div>
     </div>
-    <p></p>
+    <div class="tab_content">
+        <input type="radio" name="tabmenu" id="tab1" checked>
+        <input type="radio" name="tabmenu" id="tab2">
+        <input type="radio" name="tabmenu" id="tab3">
+
+        <div class="conbox con1">
+            {% for list2 in html2 %}
+                <p></p>
+                <a href="https://www.jobkorea.co.kr/{{ list2.0 }}">
+                    {{ list2.1 }}
+                </a>
+            {% endfor %}
+        </div>
+        <div class="conbox con2">
+            {% for list3 in html3 %}
+                <p></p>
+                <a href="https://www.jobkorea.co.kr/{{ list3.0 }}">
+                    {{ list3.1 }}
+                </a>
+            {% endfor %}
+        </div>
+        <div class="conbox con3">
+            {% for list4 in html4 %}
+                <p></p>
+                <a href="https://www.jobkorea.co.kr/{{ list4.0 }}">
+                    {{ list4.1 }}
+                </a>
+            {% endfor %}
+        </div>
+
+        <div class="btn">
+            <label for="tab1"></label>
+            <label for="tab2"></label>
+            <label for="tab3"></label>
+        </div>
+    </div>
+
+    <div class="side_caption">
+        <ul>
+            <li><a href="#">등급별혜택</a></li>
+            <li><a href="#">1:1문의</a></li>
+            <li><a href="#">후기</a></li>
+        </ul>
+    </div>
 </body>
 </html>
