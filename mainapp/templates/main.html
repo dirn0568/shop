@@ -6,28 +6,11 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <style type="text/css">
-        a:link { color: red; text-decoration: none;}
-        a:visited { color: black; text-decoration: none;}
-        a:hover { color: blue; text-decoration: underline;}
-        input[id*="answer"] {
-            display:none;
-        }
-        input[id*="answer"] + label + div {
-            max-height:0;
-            transition: all .35s;
-            overflow:hidden;
-            background-color:rgb(255, 208, 0);
-            font-size:20px;
-        }
-        input[id*="answer"]:checked + label + div {
-            max-height:1000px;
-        }
-
         input[type="radio"] {
             display:none;
         }
         .conbox {
-            position: absolute;
+            position: fixed;
             right: 50%;
             top: 179px;
             margin-right: -480px;
@@ -66,6 +49,27 @@
         }
         input[id="tab3"]:checked ~ .btn > label[for="tab3"] {
             background:red;
+        }
+
+        a:link { color: red; text-decoration: none;}
+        a:visited { color: black; text-decoration: none;}
+        a:hover { color: blue; text-decoration: underline;}
+        input[id*="answer"] {
+            display:none;
+        }
+        input[id*="answer"] + label + div {
+            position: absolute;
+            max-height:0;
+            width:2000px;
+            transition: all .35s;
+            overflow:hidden;
+            background-color:rgb(255, 208, 0) !important;
+            font-size:20px;
+            z-index:1;
+        }
+        input[id*="answer"]:checked + label + div {
+            background-color:rgb(255, 208, 0);
+            max-height:200px;
         }
     </style>
 </head>
