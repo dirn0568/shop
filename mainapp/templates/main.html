@@ -5,6 +5,12 @@
     <title>Title</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- Google Font - Fast One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+
     <style type="text/css">
         input[type="radio"] {
             display:none;
@@ -74,31 +80,33 @@
     </style>
 </head>
 <body>
-    <h1>PICK ME</h1>
+    <div style="font-family: 'Faster One', cursive; font-size: 800%;">PICK ME</div>
     <div class="Main_Account">
-        <a href="{% url 'mainapp:main' %}">로그인</a>
-        <a href="{% url 'mainapp:main' %}">회원가입</a>
+        <a href="{% url 'accountapp:login' %}">로그인</a>
+        <a href="{% url 'accountapp:create_user' %}">회원가입</a>
     </div>
     <div class="Main_ContentBox">
         <h1>
             <input type="checkbox" id="answer1">
-            <label for="answer1">인재찾기 TOP100 컨텐츠3 컨텐츠4 마이페이지</label> &nbsp;
+            <label for="answer1">인재찾기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TOP100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 취업뉴스 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 커뮤니티 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 마이페이지</label> &nbsp;
             <div>
-                <a href="{% url 'mainapp:main' %}">맞춤형검색</a>
-                <a href="{% url 'mainapp:main' %}">TOP100검색</a>
-                <a href="{% url 'mainapp:main' %}">콘텐츠3</a>
-                <a href="{% url 'mainapp:main' %}">콘텐츠4</a>
-                <a href="{% url 'mainapp:main' %}">콘텐츠5</a>
+                <a href="{% url 'mainapp:main' %}">맞춤형검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">TOP100검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">뉴스모음</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">자유게시판</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">이력서관리</a>
                 <p></p>
-                <a href="{% url 'mainapp:main' %}">아이디/닉네임검색</a>
-                <a href="{% url 'mainapp:main' %}">우수이력서보기</a>
-                <a href="{% url 'mainapp:main' %}">콘텐츠8</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">콘텐츠9</a>
+                <a href="{% url 'mainapp:main' %}">아이디/닉네임검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">우수이력서보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">기업들에게 묻는다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">면접후기</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">메세지함</a>
                 <p></p>
-                <a href="{% url 'mainapp:main' %}">콘텐츠10</a>
-                <a href="{% url 'mainapp:main' %}">콘텐츠11</a>
-                <a href="{% url 'mainapp:main' %}">콘텐츠12</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">콘텐츠13</a>
+                <a href="{% url 'mainapp:main' %}">콘텐츠10</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">콘텐츠11</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">콘텐츠12</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">콘텐츠13</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'mainapp:main' %}">친구관리</a>
             </div>
         </h1>
     </div>
@@ -152,9 +160,9 @@
 
     <div class="side_caption">
         <ul>
-            <li><a href="#">등급별혜택</a></li>
-            <li><a href="#">1:1문의</a></li>
-            <li><a href="#">후기</a></li>
+            <li><a href="#">공지사항</a></li>
+            <li><a href="#">Q&A</a></li>
+            <li><a href="#">건의사항</a></li>
         </ul>
     </div>
 </body>
