@@ -5,6 +5,7 @@
     <title>Title</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_news.css' %}">
 
     <!-- Google Font - Fast One -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,75 +13,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
 
     <style type="text/css">
-        input[type="radio"] {
-            display:none;
-        }
-        .conbox {
-            position: fixed;
-            right: 50%;
-            top: 179px;
-            margin-right: -480px;
-            text-align:center;
-            width: 500px;
-            height: 375px;
-            background:#ebf8ff;
-            display:none;
-        }
-        .btn {
-            padding:10px;
-            text-align:center;
-        }
-        label[for*="tab"] {
-            display:inline-block;
-            padding:10px;
-            background:black;
-            cursor:pointer;
-            margin:5px;
-            border-radius:100%;
-        }
-        input[id="tab1"]:checked ~ .con1 {
-            display:block;
-        }
-        input[id="tab2"]:checked ~ .con2 {
-            display:block;
-        }
-        input[id="tab3"]:checked ~ .con3 {
-            display:block;
-        }
-        input[id="tab1"]:checked ~ .btn > label[for="tab1"] {
-            background:red;
-        }
-        input[id="tab2"]:checked ~ .btn > label[for="tab2"] {
-            background:red;
-        }
-        input[id="tab3"]:checked ~ .btn > label[for="tab3"] {
-            background:red;
-        }
-
         a:link { color: red; text-decoration: none;}
         a:visited { color: black; text-decoration: none;}
         a:hover { color: blue; text-decoration: underline;}
-        input[id*="answer"] {
-            display:none;
-        }
-        input[id*="answer"] + label + div {
-            position: absolute;
-            max-height:0;
-            width:2000px;
-            transition: all .35s;
-            overflow:hidden;
-            background-color:rgb(255, 208, 0) !important;
-            font-size:20px;
-            z-index:1;
-        }
-        input[id*="answer"]:checked + label + div {
-            background-color:rgb(255, 208, 0);
-            max-height:200px;
-        }
     </style>
 </head>
 <body>
-    <div style="font-family: 'Faster One', cursive; font-size: 800%;">PICK ME</div>
+    <div style="font-family: 'Faster One', cursive; font-size: 800%; text-align: center;">PICK ME</div>
     <div class="Main_Account">
         <a href="{% url 'accountapp:login' %}">로그인</a>
         <a href="{% url 'accountapp:create_user' %}">회원가입</a>
@@ -163,6 +102,8 @@
             <li><a href="#">공지사항</a></li>
             <li><a href="#">Q&A</a></li>
             <li><a href="#">건의사항</a></li>
+            <ol></ol>
+            <ol></ol>
         </ul>
     </div>
 </body>
