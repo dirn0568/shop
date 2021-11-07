@@ -12,42 +12,50 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
 
+    <!-- Google Font - Anton -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
     <style type="text/css">
         a:link { color: red; text-decoration: none;}
-        a:visited { color: black; text-decoration: none;}
+        a:visited { color: red; text-decoration: none;}
         a:hover { color: blue; text-decoration: underline;}
     </style>
 </head>
 <body>
-    <div style="font-family: 'Faster One', cursive; font-size: 800%; text-align: center;">PICK ME</div>
+    <img src="{% static 'main/PICKME.jpg' %}" width="1500" height="250">
     <div class="Main_Account">
-        <a href="{% url 'accountapp:login' %}">로그인</a>
-        <a href="{% url 'accountapp:create_user' %}">회원가입</a>
+        <h2>
+            <a href="{% url 'accountapp:login' %}"><span style="font-family: 'Anton', sans-serif;">로그인</span></a>
+            <a href="{% url 'accountapp:create_user' %}"><span style="font-family: 'Anton', sans-serif;">회원가입</span></a>
+        </h2>
     </div>
-    <div class="Main_ContentBox">
-        <h1>
+    <h1>
+        <div class="Main_ContentBox">
             <input type="checkbox" id="answer1">
-            <label for="answer1">인재찾기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TOP100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 취업뉴스 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 커뮤니티 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 마이페이지</label> &nbsp;
+            <label for="answer1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인재찾기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TOP100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 취업뉴스 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 커뮤니티 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 마이페이지</label> &nbsp;
             <div>
-                <a href="{% url 'mainapp:main' %}">맞춤형검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'mainapp:main' %}">맞춤형검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">TOP100검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">뉴스모음</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">자유게시판</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">이력서관리</a>
+                <a href="{% url 'accountapp:detail_user' pk=request.user.pk %}">프로필관리</a>
                 <p></p>
-                <a href="{% url 'mainapp:main' %}">아이디/닉네임검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'mainapp:main' %}">아이디/닉네임검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">우수이력서보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">기업들에게 묻는다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">면접후기</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">메세지함</a>
                 <p></p>
-                <a href="{% url 'mainapp:main' %}">콘텐츠10</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'mainapp:main' %}">콘텐츠10</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">콘텐츠11</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">콘텐츠12</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">콘텐츠13</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="{% url 'mainapp:main' %}">친구관리</a>
             </div>
-        </h1>
+        </div>
+    </h1>
     </div>
     <div class="news_main">
         <div class="news_main_content">

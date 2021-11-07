@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <style type="text/css">
+        a:link { color: red; text-decoration: none;}
+        a:visited { color: red; text-decoration: none;}
+        a:hover { color: blue; text-decoration: underline;}
+    </style>
 </head>
 <body>
-    {{ target_user.username }}
+    <img src="{% static 'main/PICKME.jpg' %}" width="1500" height="150">
+    {% if target_user.profile.profile_img %}
+        <img src="{{ profile.profile_img.url }}" alt="" width="300" height="300" style="border-radius: 20px;">
+    {% else %}
+        <img src="{% static 'profile/noimg.jpg' %}" alt="" width="300" height="300" style="border-radius: 20px;">
+    {% endif %}
+    <div class="self_box">
+        {{ profile.profile_text }}
+        {{ target_user.username }} / {{ target_user.nickname }} &nbsp;
+        나의 이력서
+    </div>
     <p></p>
-    {{ target_user.nickname }}
-    <p></p>
+    이력서 만들기
     {% if request.user == target_user %}
         <a href="{% url 'accountapp:update_user' pk=target_user.pk %}">정보 변경</a>
-        <a href="{% url 'accountapp:delete_user' pk=target_user.pk %}">삭제</a>
+        <a href="{% url 'accountapp:delete_user' pk=target_user.pk %}">아이디 삭제</a>
         <p></p>
-        <a href="{% url 'profileapp:create_profile' pk=target_user.pk %}">프로필생성</a>
-        <a href="{% url 'profileapp:update_profile' pk=target_user.pk %}">프로필변경</a>
-        <a href="{% url 'profileapp:delete_profile' pk=target_user.pk %}">프로필삭제</a>
+        {% if target_user.profile %}
+            <a href="{% url 'profileapp:update_profile' pk=target_user.pk %}">프로필변경</a>
+            <a href="{% url 'profileapp:delete_profile' pk=target_user.pk %}">프로필삭제</a>
+        {% else %}
+            <a href="{% url 'profileapp:create_profile' pk=target_user.pk %}">프로필생성</a>
+        {% endif %}
         <p></p>
-    {% endif %}
-    {% if profile %}
-        {{ profile.profile_text }}
-        <p></p>
-        <img src="{{ profile.profile_img.url }}" alt="" width="300" height="300" style="border-radius: 20px;">
     {% endif %}
 </body>
 </html>
