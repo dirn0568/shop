@@ -29,7 +29,7 @@ def create_profile(request, pk):
     context = {}
     context['profile_form'] = ProfileForm
     context['pk'] = pk
-    return render(request, 'create_profile.html', context)
+    return render(request, 'create_resume.html', context)
 
 def update_profile(request, pk):
     temp_user = MyUser.objects.filter(pk=pk)

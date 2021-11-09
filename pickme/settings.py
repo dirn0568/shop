@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'messageapp',
     'friendapp',
     'chatapp',
+    'resumeapp',
 ]
 
 MIDDLEWARE = [

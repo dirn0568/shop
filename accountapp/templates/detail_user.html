@@ -52,12 +52,17 @@
         <span class="self_apeal">
             나의 이력서
         </span>
+        <span class="self_apeal_num">
+            <a href="{% url 'resumeapp:list_resume' pk=target_user.pk %}">
+                {{ resume_num }}
+            </a>
+        </span>
         <span class="self_message">
             메세지함
         </span>
         <p></p>
         <span class="self_apeal_create" style="border-radius: 10px">
-            이력서 만들기
+            <a href="{% url 'resumeapp:create_resume' pk=target_user.pk %}">이력서 만들기</a>
         </span>
     </span>
 </body>
