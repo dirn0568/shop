@@ -48,15 +48,8 @@ def main(request):
                 html3[idx].append(image_text)
             elif i == 3:
                 html4[idx].append(image_text)
-            # html2.append([image_href, image_url, image_text])
-            # html2.append(image_text)
-    # print(html2, "###########################")
-    # print(html3, "$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-    # print(html4, "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     context["html"] = html
     context["html2"] = html2
     context["html3"] = html3
     context["html4"] = html4
-    # context["html2_text"] = html2_text
-    # context["html2_img"] = html2_img
     return render(request, 'main.html', context)

@@ -47,16 +47,6 @@ class Detail_User(DetailView):
         context['profile'] = profile
         context['resume_num'] = resume_num
         return context
-        # profile_list = []
-        # temp_user = User.objects.filter(pk=self.request.user.pk)
-        # for temp in temp_user:
-        #     temp_profile = User_Profile.objects.filter(profile=temp)
-        # print(temp_profile)
-        # for list in temp_profile:
-        #     profile_list.append(list)
-        # print(profile_list, '33333333333333333333333')
-        # print(self.object, '444444444444444444444444444444')
-        # return super().get_context_data(object_list=profile_list, **kwargs)
 
 
 class Update_User(UpdateView):
