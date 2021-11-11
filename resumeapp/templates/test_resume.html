@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        label[for="chkbox"]{
+            display:none;
+        }
+        input[id="chkbox"]:checked + label{
+            display:inline;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        {% for list in test_list %}
+            <form action="{% url 'resumeapp:test_resume' test=test_resume pk=pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ test_resume }}
+                <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+            </form>
+        {% endfor %}
+    </div>
+</body>
+</html>

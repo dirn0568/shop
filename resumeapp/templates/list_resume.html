@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for list in resume %}
+        <a href="{% url 'resumeapp:detail_resume' pk1=request.user.pk pk2=list.pk %}">
+            {{ list }}
+        </a>
+    {% endfor %}
+</body>
+</html>
