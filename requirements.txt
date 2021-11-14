@@ -16,7 +16,6 @@ mccabe==0.6.1
 numpy==1.19.1
 Pillow==8.4.0
 pip==20.1.1
-pygame==1.9.6
 pylint==2.5.3
 PyngPong==1.0
 pytetris==1.0.0
