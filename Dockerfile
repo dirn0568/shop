@@ -21,4 +21,4 @@ EXPOSE 8000
 
 # noinput은 원래 collectstaticd을 할때 우리에게 묻는 창이 나오는데 그거를 스킵해주기 위해서 넣었음
 
-CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=pragmatic.settings.deploy && python manage.py migrate --settings=pragmatic.settings.deploy && gunicorn pragmatic.wsgi --env DJANGO_SETTINGS_MODULE=pragmatic.settings.deploy --bind 0.0.0.0:8000"]
+CMD ["bash", "-c", "python manage.py collectstatic --noinput --settings=pickme.settings && python manage.py migrate --settings=pickme.settings && gunicorn pickme.wsgi --env DJANGO_SETTINGS_MODULE=pickme.settings --bind 0.0.0.0:8000"]
