@@ -19,7 +19,6 @@ services:
       - media-volume:/home/shop/media
     secrets:
       - MYSQL_PASSWORD
-      - DJANGO_SECRET_KEY
   mariadb2:
     image: mariadb:10.5
     networks:
