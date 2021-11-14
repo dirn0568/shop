@@ -6,7 +6,7 @@ RUN echo "testing1234567"
 
 RUN git clone https://github.com/dirn0568/shop.git
 
-WORKDIR /home/pragmatic/
+WORKDIR /home/shop/
 
 RUN pip install -r requirements.txt
 
