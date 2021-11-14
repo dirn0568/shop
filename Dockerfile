@@ -2,7 +2,7 @@ FROM python:3.9.0
 
 WORKDIR /home/
 # 데이터들이 바겼을때 의미없는 말을 추가해야할때가 있다고 말함 (강사가)
-RUN echo "testing1234567"
+RUN echo "testing123456715151351"
 
 RUN git clone https://github.com/dirn0568/shop.git
 
