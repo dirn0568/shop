@@ -5,21 +5,21 @@ services:
     networks:
       - network
     volumes:
-      - /home/django_course2/nginx.conf:/etc/nginx/nginx.conf
+      - /home/django_course/nginx.conf:/etc/nginx/nginx.conf
       - static-volume:/data/static
       - media-volume:/data/media
     ports:
       - 80:80
   django_container_gunicorn:
-    image: testimage14:latest
+    image: django_test_image:5
     networks:
       - network
     volumes:
-      - static-volume:/home/zerotwo/staticfiles
-      - media-volume:/home/zerotwo/media
+      - static-volume:/home/shop/staticfiles
+      - media-volume:/home/shop/media
     secrets:
       - MYSQL_PASSWORD
-      - SECRET_KEY
+      - DJANGO_SECRET_KEY
   mariadb2:
     image: mariadb:10.5
     networks:
@@ -30,8 +30,8 @@ services:
       - MYSQL_PASSWORD
       - MYSQL_ROOT_PASSWORD
     environment:
-      MYSQL_DATABASE: django2
-      MYSQL_USER: django2
+      MYSQL_DATABASE: django
+      MYSQL_USER: django
       MYSQL_PASSWORD_FILE: /run/secrets/MYSQL_PASSWORD
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/MYSQL_ROOT_PASSWORD
 

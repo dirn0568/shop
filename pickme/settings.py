@@ -17,6 +17,13 @@ from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+def read_secret(secret_name):
+    file = open('/run/secrets/' + secret_name)
+    secret = file.read()
+    secret = secret.rstrip().lstrip()
+    file.close()
+    return secret
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -86,9 +93,9 @@ WSGI_APPLICATION = 'pickme.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django2',
-        'USER': 'django2',
-        'PASSWORD': SECRET_KEY,
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': read_secret('MYSQL_PASSWORD'),
         'HOST': 'mariadb2',
         'PORT': '3306',
     }
