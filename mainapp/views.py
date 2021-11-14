@@ -1,6 +1,6 @@
-# import requests
+
 from bs4 import BeautifulSoup
-# from django.contrib.sites import requests
+
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
