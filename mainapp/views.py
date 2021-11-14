@@ -1,4 +1,4 @@
-# import requests
+
 from bs4 import BeautifulSoup
 from django.contrib.sites import requests
 
