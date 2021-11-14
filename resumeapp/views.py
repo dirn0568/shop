@@ -98,13 +98,19 @@ def detail_resume(request, pk1, pk2):
     return render(request, 'detail_resume.html', context)
 
 def test_resume(request, test ,pk):
-    test_list = [0]
+    test_list = [[0]]
     if request.method == "GET":
-        test = 0
+        test = 1
     if request.method == "POST":
         test += 1
-        for i in range(test):
-            test_list.append([0])
+        for i in range(1, test):
+            test_list.append([i])
+        for i in range(0, test):
+            a = 'school' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
+            print(a)
+            print(type(a))
+            print(request.POST)
+            # print(request.POST.get['school{0}'.format(i)])
 
     context={}
     context['pk'] = pk

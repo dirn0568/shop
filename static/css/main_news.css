@@ -1,0 +1,46 @@
+input[type="radio"] {
+    display:none;
+}
+.conbox {
+    position: absolute;
+    right: 50%;
+    top: 308px;
+    margin-right: -480px;
+    text-align:center;
+    width: 500px;
+    height: 375px;
+    background:#ebf8ff;
+    display:none;
+}
+.btn {
+    position: absolute;
+    right: 50%;
+    top: 680px;
+    padding:10px;
+}
+label[for*="tab"] {
+    display:inline-block;
+    padding:10px;
+    background:black;
+    cursor:pointer;
+    margin:5px;
+    border-radius:100%;
+}
+input[id="tab1"]:checked ~ .con1 {
+    display:block;
+}
+input[id="tab2"]:checked ~ .con2 {
+    display:block;
+}
+input[id="tab3"]:checked ~ .con3 {
+    display:block;
+}
+input[id="tab1"]:checked ~ .btn > label[for="tab1"] {
+    background:red;
+}
+input[id="tab2"]:checked ~ .btn > label[for="tab2"] {
+    background:red;
+}
+input[id="tab3"]:checked ~ .btn > label[for="tab3"] {
+    background:red;
+}

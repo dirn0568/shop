@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>메세지함</h1>
+    <hr>
+    {% for message_list in friend_request_message %}
+        {{ message_list.A_User }} 님이 친구요청을 보냈습니다.
+        <a href="{% url 'accountapp:createfriend' friend1=message_list.B_User friend2=message_list.A_User pk=message_list.pk %}">
+            수락
+        </a>
+        <a href="{% url 'messageapp:delete_message' pk=message_list.pk %}">
+            거절
+        </a>
+        <hr>
+    {% endfor %}
+</body>
+</html>

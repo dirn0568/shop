@@ -17,7 +17,7 @@
         {% for list in test_list %}
             <form action="{% url 'resumeapp:test_resume' test=test_resume pk=pk %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ test_resume }}
+                <input type="text" name="school{{list.0}}">
                 <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
             </form>
         {% endfor %}

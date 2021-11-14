@@ -1,0 +1,68 @@
+
+.이거필요함?(Main_NewsBox) {
+    height:500px;
+    background-color:rgb(200, 100, 200);
+}
+.news_main {
+    position: absolute;
+    margin-left: 100px;
+    width: 700px;
+    height: 375px;
+    top: 308px;
+    background:#ebf8ff;
+}
+.이거필요함?(news_text) {
+    position: absolute;
+    right: 50%;
+    top: 180px;
+    margin-right: -730px;
+    text-align:center;
+    width: 1200px;
+}
+
+.news_main_content{
+    padding:5px;
+    margin-left: 25px;
+}
+
+.side_caption {
+    position: absolute;
+    right: 50%;
+    top: 308px;
+    margin-right: -740px;
+    text-align:center;
+    width: 180px;
+    background-color:rgb(146, 255, 255)
+}
+
+.Main_Account{
+    position: absolute;
+    right: 2%;
+    top: 200px;
+    background-color:rgb(137, 248, 255)
+}
+.Main_ContentBox {
+    position: absolute;
+    width:1500px;
+    height:50px;
+    top: 258px;
+    background-color:rgb(177, 226, 43)
+}
+
+input[id*="answer"] {
+    display:none;
+}
+input[id*="answer"] + label + div {
+    position: absolute;
+    max-height:0;
+    width:1500px;
+    transition: all .35s;
+    overflow:hidden;
+    background-color:rgb(255, 208, 0) !important;
+    font-size:20px;
+    z-index:1;
+}
+input[id*="answer"]:checked + label + div {
+    background-color:rgb(255, 208, 0);
+    max-height:200px;
+}

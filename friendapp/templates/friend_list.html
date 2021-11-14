@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <script src="{% static 'js/friend_chat.js' %}"></script>
+    <script language="javascript">
+        function delete_check(url){
+            var answer;
+            answer = confirm("데이터를 삭제하시겠습니까?");
+            if(answer == true){
+                location = url;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>친구 목록</h1>
+    <hr>
+    {% for list in friend_list %}
+        {{ list.friend_relation }}
+        <a href="#" onclick="friend_chat_js({{ list.friend_relation }}{{ list.pk }})">대화하기</a>
+        <input hidden id="{{ list.friend_relation }}{{ list.pk }}" value="{% url 'chatapp:chat' pk=list.friend_relation.pk %}">
+        <a href="javascript:delete_check('{% url 'friendapp:delete_friend' user=list.friend user_friend=list.friend_relation %}')">
+            친구 삭제
+        </a>
+        <hr>
+    {% endfor %}
+</body>
+</html>
