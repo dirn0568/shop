@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-8%%z#6d#$0beu+-xtpdugjm+q%-=%k964m5eblz=ro33l=o@_6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL='accountapp.MyUser'
 # Application definition
@@ -92,15 +92,10 @@ WSGI_APPLICATION = 'pickme.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': read_secret('MYSQL_PASSWORD'),
-        'HOST': 'mariadb2',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
