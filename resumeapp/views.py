@@ -97,24 +97,46 @@ def detail_resume(request, pk1, pk2):
         context['resume'] = user_resume
     return render(request, 'detail_resume.html', context)
 
-def test_resume(request, test ,pk):
-    test_list = [[0]]
+def test_resume(request, test1, test2, pk):
+    test_list1 = [[0]]
+    test_list2 = [[0]]
     if request.method == "GET":
-        test = 1
+        test1 = 1
+        test2 = 1
     if request.method == "POST":
-        test += 1
-        for i in range(1, test):
-            test_list.append([i])
-        for i in range(0, test):
-            a = 'school' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
-            print(a)
-            print(type(a))
-            print(request.POST)
-            # print(request.POST.get['school{0}'.format(i)])
+        # print(request.POST)
+        # print(request.POST.items('button_test1'))
+        if request.POST.get('button_test1'):  # 11-17일 새벽 여기서 오류: 분단별 알맞은 값으로 확인 가능하게 만들기
+            test1 += 1
+            for i in range(1, test1):
+                test_list1.append([i])
+            for i in range(1, test2):
+                test_list2.append([i])
+            for i in range(0, test1):
+                a = 'school1' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
+                # print(a)
+                # print(type(a))
+                # print(request.POST)
+                # print(request.POST.get['school{0}'.format(i)])
+        if request.POST.get('button_test2'):
+            test2 += 1
+            for i in range(1, test1):
+                test_list1.append([i])
+            for i in range(1, test2):
+                test_list2.append([i])
+            for i in range(0, test2):
+                a = 'school2' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
+                # print(a)
+                # print(type(a))
+                # print(request.POST)
+                # print(request.POST.get['school{0}'.format(i)])
 
     context={}
     context['pk'] = pk
-    print(test_list)
-    context['test_list'] = test_list
-    context['test_resume'] = test
+    print(test_list1)
+    print(test_list2)
+    context['test_list1'] = test_list1
+    context['test_list2'] = test_list2
+    context['test1'] = test1
+    context['test2'] = test2
     return render(request, 'test_resume.html', context)

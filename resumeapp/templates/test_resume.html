@@ -14,13 +14,22 @@
 </head>
 <body>
     <div>
-        {% for list in test_list %}
-            <form action="{% url 'resumeapp:test_resume' test=test_resume pk=pk %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <input type="text" name="school{{list.0}}">
-                <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
-            </form>
+        {% for list1 in test_list1 %}
+            <input type="text" name="school1{{list1.0}}">
+            <p></p>
         {% endfor %}
+        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="button_test1" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+        {% for list2 in test_list2 %}
+            <input type="text" name="school2{{list2.0}}">
+            <p></p>
+        {% endfor %}
+        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="button_test2" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
     </div>
 </body>
 </html>
