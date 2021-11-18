@@ -3,33 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style type="text/css">
-        label[for="chkbox"]{
-            display:none;
-        }
-        input[id="chkbox"]:checked + label{
-            display:inline;
-        }
-    </style>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/resume.css' %}">
 </head>
 <body>
-    <div>
-        {% for list1 in test_list1 %}
-            <input type="text" name="school1{{list1.0}}">
-            <p></p>
-        {% endfor %}
+    <div class="resume_content">
         <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="button_test1" class="btn btn-dark rounded-pill col-6 mt-3">
+                <input type="text" name="school0" style="width:600px;height:50px;font-size:30px;">
+                <p></p>
+            {% for list1 in test_list1 %}
+                <input type="text" name="school1{{list1.0}}" style="width:600px;height:50px;font-size:30px;">
+                <p></p>
+            {% endfor %}
+            {% for list2 in test_list2 %}
+                <input type="text" name="school2{{list2.0}}" style="width:600px;height:50px;font-size:30px;">
+                <p></p>
+            {% endfor %}
+            <input type="text" name="school4" style="width:600px;height:400px;font-size:30px;">
+            <input type="submit" name="button_test3" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
-        {% for list2 in test_list2 %}
-            <input type="text" name="school2{{list2.0}}">
-            <p></p>
-        {% endfor %}
+    </div>
+    <div class="resume_button">
         <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="button_test2" class="btn btn-dark rounded-pill col-6 mt-3">
+            <input type="submit" name="button_test1" value="+" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
+        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="button_test2" value="+" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+    </div>
+    <div class="resume_name">
+        <h1>
+            제목 :
+            <p></p>
+            학력 :
+            <p></p>
+            경력 :
+            <p></p>
+            자격증 :
+            <p></p>
+            자기소개 :
+        </h1>
     </div>
 </body>
 </html>

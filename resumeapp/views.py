@@ -100,6 +100,11 @@ def detail_resume(request, pk1, pk2):
 def test_resume(request, test1, test2, pk):
     test_list1 = [[0]]
     test_list2 = [[0]]
+    text0 = []
+    text1 = []
+    text2 = []
+    text3 = []
+    text4 = []
     if request.method == "GET":
         test1 = 1
         test2 = 1
@@ -112,29 +117,40 @@ def test_resume(request, test1, test2, pk):
                 test_list1.append([i])
             for i in range(1, test2):
                 test_list2.append([i])
-            for i in range(0, test1):
-                a = 'school1' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
-                # print(a)
-                # print(type(a))
-                # print(request.POST)
-                # print(request.POST.get['school{0}'.format(i)])
+            # for i in range(0, test1):
+            #     a = 'school1' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
+            #     print(a, '##################################')
+            #     # print(type(a))
+            #     # print(request.POST)
+            #     print(request.POST.get[a])
         if request.POST.get('button_test2'):
             test2 += 1
             for i in range(1, test1):
                 test_list1.append([i])
             for i in range(1, test2):
                 test_list2.append([i])
-            for i in range(0, test2):
-                a = 'school2' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
+            # for i in range(0, test2):
+            #     a = 'school2' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
                 # print(a)
                 # print(type(a))
                 # print(request.POST)
                 # print(request.POST.get['school{0}'.format(i)])
+        if request.POST.get('button_test3'):
+
+
+            form = ResumeForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                for temp in temp_user:
+                    temp_form.resume = temp
+                temp_form.save()
+                return redirect('accountapp:detail_user', pk)
+        print(request.POST)
 
     context={}
     context['pk'] = pk
-    print(test_list1)
-    print(test_list2)
+    # print(test_list1)
+    # print(test_list2)
     context['test_list1'] = test_list1
     context['test_list2'] = test_list2
     context['test1'] = test1
