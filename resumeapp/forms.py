@@ -1,7 +1,14 @@
-from django.forms import ModelForm
+
+from django.forms import ModelForm, DateField
 from django import forms
 
-from resumeapp.models import User_Resume
+from pickme import settings
+from resumeapp.models import User_Resume, Resume_ElementarySchool
+
+
+###################################################################################################
+
+# 테스트 버전 0
 
 class ResumeForm(ModelForm):
     resume_title = forms.CharField(label='이력서 제목',
@@ -32,3 +39,15 @@ class ResumeForm(ModelForm):
 class Update_ResumeForm(ResumeForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+#############################################################################################################
+
+# 테스트 버전 2
+
+class ResumeElementaryForm(ModelForm):
+    # elementary_start_time = DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    class Meta:
+        model = Resume_ElementarySchool
+        fields = '__all__'
+
+

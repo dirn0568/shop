@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="resume_content">
-        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 test3=test3 pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
                 <input type="text" name="school0" style="width:600px;height:50px;font-size:30px;">
                 <p></p>
@@ -20,18 +20,25 @@
                 <input type="text" name="school2{{list2.0}}" style="width:600px;height:50px;font-size:30px;">
                 <p></p>
             {% endfor %}
+            {% for list3 in test_list3 %}
+                <input type="file" name="school3{{list3.0}}">
+            {% endfor %}
             <input type="text" name="school4" style="width:600px;height:400px;font-size:30px;">
-            <input type="submit" name="button_test3" class="btn btn-dark rounded-pill col-6 mt-3">
+            <input type="submit" name="button_test4" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     </div>
     <div class="resume_button">
-        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 test3=test3 pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="submit" name="button_test1" value="+" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
-        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 pk=pk %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 test3=test3 pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="submit" name="button_test2" value="+" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+        <form action="{% url 'resumeapp:test_resume' test1=test1 test2=test2 test3=test3 pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="button_test3" value="+" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     </div>
     <div class="resume_name">

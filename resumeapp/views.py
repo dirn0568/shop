@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accountapp.models import MyUser
-from resumeapp.forms import ResumeForm, Update_ResumeForm
-from resumeapp.models import User_Resume
+from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm
+from resumeapp.models import User_Resume, User_Resume_Certificate
 
 
 def create_resume(request, pk):
@@ -97,26 +97,27 @@ def detail_resume(request, pk1, pk2):
         context['resume'] = user_resume
     return render(request, 'detail_resume.html', context)
 
-def test_resume(request, test1, test2, pk):
+def test_resume(request, test1, test2, test3, pk):
+    # 테스트 버전 1
     test_list1 = [[0]]
     test_list2 = [[0]]
-    text0 = []
-    text1 = []
-    text2 = []
-    text3 = []
-    text4 = []
+    test_list3 = [[0]]
+    temp_user = MyUser.objects.filter(pk=pk)
+    resume_school_text = ''
+    resume_career_text = ''
     if request.method == "GET":
         test1 = 1
         test2 = 1
+        test3 = 1
     if request.method == "POST":
-        # print(request.POST)
-        # print(request.POST.items('button_test1'))
-        if request.POST.get('button_test1'):  # 11-17일 새벽 여기서 오류: 분단별 알맞은 값으로 확인 가능하게 만들기
+        if request.POST.get('button_test1'):
             test1 += 1
             for i in range(1, test1):
                 test_list1.append([i])
             for i in range(1, test2):
                 test_list2.append([i])
+            for i in range(1, test3):
+                test_list3.append([i])
             # for i in range(0, test1):
             #     a = 'school1' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
             #     print(a, '##################################')
@@ -129,23 +130,43 @@ def test_resume(request, test1, test2, pk):
                 test_list1.append([i])
             for i in range(1, test2):
                 test_list2.append([i])
-            # for i in range(0, test2):
-            #     a = 'school2' + str(i) # i의 번호가 틀려서 자꾸 오류뜸 11-12
-                # print(a)
-                # print(type(a))
-                # print(request.POST)
-                # print(request.POST.get['school{0}'.format(i)])
+            for i in range(1, test3):
+                test_list3.append([i])
         if request.POST.get('button_test3'):
-
-
-            form = ResumeForm(request.POST, request.FILES)
-            if form.is_valid():
-                temp_form = form.save(commit=False)
-                for temp in temp_user:
-                    temp_form.resume = temp
-                temp_form.save()
-                return redirect('accountapp:detail_user', pk)
-        print(request.POST)
+            test3 += 1
+            for i in range(1, test1):
+                test_list1.append([i])
+            for i in range(1, test2):
+                test_list2.append([i])
+            for i in range(1, test3):
+                test_list3.append([i])
+        if request.POST.get('button_test4'):
+            temp_user = MyUser.objects.filter(pk=pk)
+            print(request.POST)
+            for i in range(0, test1):
+                # print(request.POST.get('school1{0}'.format(i)))
+                if request.POST.get('school1{0}'.format(i)) == None:
+                    pass
+                else:
+                    resume_school_text += request.POST.get('school1{0}'.format(i))
+            for i in range(0, test2):
+                # print(request.POST.get('school2{0}'.format(i)))
+                if request.POST.get('school2{0}'.format(i)) == None:
+                    pass
+                else:
+                    resume_career_text += request.POST.get('school2{0}'.format(i))
+            # for i in range(0, test3):
+            #     # print(request.POST.get('school3{0}'.format(i)))
+            #     if request.POST.get('school3{0}'.format(i)) == None:
+            #         pass
+            #     else:
+            #         resume_certificate_test += request.POST.get('school3{0}'.format(i))
+            # print(request.FILES)
+            for temp in temp_user:
+                User_Resume(resume=temp, resume_title=request.POST.get('school0'), resume_school=resume_school_text,
+                            resume_career=resume_career_text, resume_text=request.POST.get('school4')).save()
+            for i in range(0, test3):
+                User_Resume_Certificate(certificate=User_Resume.objects.last(), resume_certificate=request.FILES.get('school3{0}'.format(i))).save()
 
     context={}
     context['pk'] = pk
@@ -153,6 +174,26 @@ def test_resume(request, test1, test2, pk):
     # print(test_list2)
     context['test_list1'] = test_list1
     context['test_list2'] = test_list2
+    context['test_list3'] = test_list3
     context['test1'] = test1
     context['test2'] = test2
+    context['test3'] = test3
     return render(request, 'test_resume.html', context)
+
+def test_resume2(request, pk):
+    # 테스트 버전2
+    context={}
+    context['test_form'] = ResumeElementaryForm
+    context['pk'] = pk
+
+    return render(request, 'test_resume2.html', context)
+
+def test_calender(request):
+    context={}
+    return render(request, 'test_calender.html', context)
+
+def test_test(request):
+    context={}
+    return render(request, 'test_test.html', context)
+
+
