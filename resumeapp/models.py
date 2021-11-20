@@ -34,5 +34,38 @@ class Resume_ElementarySchool(models.Model):
 
     elementary_school_name = models.CharField(max_length=50)
     # elementary_field_name = models.Choices('서울', '경기')
-    elementary_start_time = models.DateField()
-    elementary_end_time = models.DateField()
+    elementary_start_time = models.CharField(max_length=200)
+    elementary_end_time = models.CharField(max_length=200)
+
+class Resume_MiddleSchool(models.Model):
+    resume_middle = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_middle')
+
+    middle_school_name = models.CharField(max_length=50)
+    # elementary_field_name = models.Choices('서울', '경기')
+    middle_start_time = models.CharField(max_length=200)
+    middle_end_time = models.CharField(max_length=200)
+
+class Resume_HighSchool(models.Model):
+    resume_high = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_high')
+
+    high_school_name = models.CharField(max_length=50)
+    # elementary_field_name = models.Choices('서울', '경기')
+    high_start_time = models.CharField(max_length=200)
+    high_end_time = models.CharField(max_length=200)
+
+class Resume_UniversitySchool(models.Model):
+    resume_university = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_university')
+
+    # university_study_year =
+    university_school_name = models.CharField(max_length=50)
+    # university_field_name = models.Choices('서울', '경기')
+    university_start_time = models.CharField(max_length=200)
+    university_end_time = models.CharField(max_length=200)
+    # university_study_time =
+    # university_study_level =
+    # university_finaltest = models.CharField(max_length=2000)
+
+class Resume_UniversitySchool_Major(models.Model):
+    resume_university_major = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_university_major')
+
+    # university_major =

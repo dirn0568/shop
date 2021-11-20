@@ -1,21 +1,16 @@
+
 .resume_content {
     position: absolute;
     margin-left: 100px;
-    width: 700px;
-    height: 375px;
     top: 50px;
 }
 .resume_button {
     position: absolute;
     margin-left: 720px;
-    width: 700px;
-    height: 375px;
     top: 50px;
 }
 .resume_name {
     position: absolute;
     margin-left: 0px;
-    width: 700px;
-    height: 375px;
     top: 25px;
 }

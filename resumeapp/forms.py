@@ -3,7 +3,8 @@ from django.forms import ModelForm, DateField
 from django import forms
 
 from pickme import settings
-from resumeapp.models import User_Resume, Resume_ElementarySchool
+from resumeapp.models import User_Resume, Resume_ElementarySchool, Resume_MiddleSchool, Resume_HighSchool, \
+    Resume_UniversitySchool
 
 
 ###################################################################################################
@@ -48,6 +49,24 @@ class ResumeElementaryForm(ModelForm):
     # elementary_start_time = DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
         model = Resume_ElementarySchool
-        fields = '__all__'
+        fields = []
+
+class ResumeMiddleForm(ModelForm):
+    # elementary_start_time = DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    class Meta:
+        model = Resume_MiddleSchool
+        fields = []
+
+class ResumeHighForm(ModelForm):
+    # elementary_start_time = DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    class Meta:
+        model = Resume_HighSchool
+        fields = []
+
+class ResumeUniversityForm(ModelForm):
+    # elementary_start_time = DateField(input_formats=settings.DATE_INPUT_FORMATS)
+    class Meta:
+        model = Resume_UniversitySchool
+        fields = []
 
 

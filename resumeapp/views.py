@@ -3,8 +3,9 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accountapp.models import MyUser
-from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm
-from resumeapp.models import User_Resume, User_Resume_Certificate
+from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
+    ResumeUniversityForm
+from resumeapp.models import User_Resume, User_Resume_Certificate, Resume_Title
 
 
 def create_resume(request, pk):
@@ -180,11 +181,57 @@ def test_resume(request, test1, test2, test3, pk):
     context['test3'] = test3
     return render(request, 'test_resume.html', context)
 
-def test_resume2(request, pk):
+def test_resume2(request, school, pk):
     # 테스트 버전2
-    context={}
-    context['test_form'] = ResumeElementaryForm
+    context = {}
+    context['school'] = school
     context['pk'] = pk
+    if school == 1:
+        context['test_form'] = ResumeElementaryForm
+    elif school == 2:
+        context['test_form'] = ResumeMiddleForm
+    elif school == 3:
+        context['test_form'] = ResumeHighForm
+    elif school == 4:
+        context['test_form'] = ResumeUniversityForm
+
+    if request.method == 'POST' and school == 1:
+        form = ResumeElementaryForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            temp_form.resume_elementary = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
+            temp_form.elementary_school_name = request.POST['testing0']
+            temp_form.elementary_start_time = request.POST['testing1']
+            temp_form.elementary_end_time = request.POST['testing2']
+            temp_form.save()
+    elif request.method == 'POST' and school == 2:
+        form = ResumeMiddleForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            temp_form.resume_middle = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
+            temp_form.middle_school_name = request.POST['testing0']
+            temp_form.middle_start_time = request.POST['testing1']
+            temp_form.middle_end_time = request.POST['testing2']
+            temp_form.save()
+    elif request.method == 'POST' and school == 3:
+        form = ResumeHighForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            temp_form.resume_high = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
+            temp_form.high_school_name = request.POST['testing0']
+            temp_form.high_start_time = request.POST['testing1']
+            temp_form.high_end_time = request.POST['testing2']
+            temp_form.save()
+    elif request.method == 'POST' and school == 4:
+        form = ResumeUniversityForm(request.POST, request.FILES)
+        print('##################################', request.POST, '#######################################################')
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            temp_form.resume_university = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
+            temp_form.university_school_name = request.POST['testing0']
+            temp_form.university_start_time = request.POST['testing1']
+            temp_form.university_end_time = request.POST['testing2']
+            temp_form.save()
 
     return render(request, 'test_resume2.html', context)
 
@@ -193,7 +240,13 @@ def test_calender(request):
     return render(request, 'test_calender.html', context)
 
 def test_test(request):
+    if request.method == "POST":
+        print(request.POST)
     context={}
     return render(request, 'test_test.html', context)
+
+def button_test(request):
+    context = {}
+    return render(request, 'button_test.html', context)
 
 
