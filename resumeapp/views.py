@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from accountapp.models import MyUser
 from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
-    ResumeUniversityForm
+    ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm
 from resumeapp.models import User_Resume, User_Resume_Certificate, Resume_Title
 
 
@@ -181,72 +181,91 @@ def test_resume(request, test1, test2, test3, pk):
     context['test3'] = test3
     return render(request, 'test_resume.html', context)
 
-def test_resume2(request, school, pk):
+def resume_1(request, school, pk):
     # 테스트 버전2
     context = {}
     context['school'] = school
     context['pk'] = pk
-    if school == 1:
-        context['test_form'] = ResumeElementaryForm
-    elif school == 2:
-        context['test_form'] = ResumeMiddleForm
-    elif school == 3:
-        context['test_form'] = ResumeHighForm
-    elif school == 4:
-        context['test_form'] = ResumeUniversityForm
 
-    if request.method == 'POST' and school == 1:
-        form = ResumeElementaryForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        temp_user = MyUser.objects.filter(pk=pk)
+        form = ResumeTitleForm(request.POST, request.FILES)
         if form.is_valid():
             temp_form = form.save(commit=False)
-            temp_form.resume_elementary = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
-            temp_form.elementary_school_name = request.POST['testing0']
-            temp_form.elementary_start_time = request.POST['testing1']
-            temp_form.elementary_end_time = request.POST['testing2']
+            for temp in temp_user:
+                temp_form.resume_title = temp
+            temp_form.resume_title_detail = request.POST['resume_title']
             temp_form.save()
-    elif request.method == 'POST' and school == 2:
-        form = ResumeMiddleForm(request.POST, request.FILES)
-        if form.is_valid():
-            temp_form = form.save(commit=False)
-            temp_form.resume_middle = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
-            temp_form.middle_school_name = request.POST['testing0']
-            temp_form.middle_start_time = request.POST['testing1']
-            temp_form.middle_end_time = request.POST['testing2']
-            temp_form.save()
-    elif request.method == 'POST' and school == 3:
-        form = ResumeHighForm(request.POST, request.FILES)
-        if form.is_valid():
-            temp_form = form.save(commit=False)
-            temp_form.resume_high = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
-            temp_form.high_school_name = request.POST['testing0']
-            temp_form.high_start_time = request.POST['testing1']
-            temp_form.high_end_time = request.POST['testing2']
-            temp_form.save()
-    elif request.method == 'POST' and school == 4:
-        form = ResumeUniversityForm(request.POST, request.FILES)
-        print('##################################', request.POST, '#######################################################')
-        if form.is_valid():
-            temp_form = form.save(commit=False)
-            temp_form.resume_university = Resume_Title.objects.last() # 11-20 이력서 타이틀 마지막으로 고저오디어있음 바꾸는것 부터 시작
-            temp_form.university_school_name = request.POST['testing0']
-            temp_form.university_start_time = request.POST['testing1']
-            temp_form.university_end_time = request.POST['testing2']
-            temp_form.save()
+        if request.method == 'POST' and school == 1:
+            form = ResumeElementaryForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    temp_form.resume_elementary = temp
+                temp_form.elementary_school_name = request.POST['elementary_school_name']
+                temp_form.elementary_field_name = request.POST['study_field1']
+                temp_form.elementary_start_time = request.POST['study_start1']
+                temp_form.elementary_end_time = request.POST['study_end1']
+                temp_form.save()
+        elif request.method == 'POST' and school == 2:
+            form = ResumeMiddleForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    temp_form.resume_middle = temp
+                temp_form.middle_school_name = request.POST['middle_school_name']
+                temp_form.middle_field_name = request.POST['study_field2']
+                temp_form.middle_start_time = request.POST['study_start2']
+                temp_form.middle_end_time = request.POST['study_end2']
+                temp_form.save()
+        elif request.method == 'POST' and school == 3:
+            form = ResumeHighForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    temp_form.resume_high = temp
+                temp_form.high_school_name = request.POST['high_school_name']
+                temp_form.high_field_name = request.POST['study_field3']
+                temp_form.high_start_time = request.POST['study_start3']
+                temp_form.high_end_time = request.POST['study_end3']
+                temp_form.high_major = request.POST['study_major3']
+                temp_form.save()
+        elif request.method == 'POST' and school == 4:
+            form = ResumeUniversityForm(request.POST, request.FILES)
+            print('##################################', request.POST, '#######################################################')
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    temp_form.resume_university = temp
+                temp_form.university_study_year = request.POST['study_year4']
+                temp_form.university_school_name = request.POST['university_school_name']
+                temp_form.university_field_name = request.POST['study_field4']
+                temp_form.university_start_time = request.POST['study_start4']
+                temp_form.university_end_time = request.POST['study_end4']
+                temp_form.university_study_time = request.POST['study_time4']
+                temp_form.university_study_level = request.POST['study_level4']
+                temp_form.university_finaltest = request.POST['study_finaltest4']
+                temp_form.save()
+            form = ResumeUniversitySchoolMajor_Form(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_form.resume_university_major = Resume_Title.objects.last()
+                temp_form.resume_university_major_list = request.POST['study_major_list4']
+                temp_form.resume_university_major_detail = request.POST['study_major_detail4']
+                temp_form.save()
+            # study_major_list4
+            # study_major_detail4
 
-    return render(request, 'test_resume2.html', context)
-
-def test_calender(request):
-    context={}
-    return render(request, 'test_calender.html', context)
+    return render(request, 'resume_1.html', context)
 
 def test_test(request):
     if request.method == "POST":
         print(request.POST)
     context={}
     return render(request, 'test_test.html', context)
-
-def button_test(request):
-    context = {}
-    return render(request, 'button_test.html', context)
 
 

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/resume_1.css' %}">
+</head>
+<body>
+    <div class="wrap">
+  		<a href="{% url 'resumeapp:resume_1' school=1 pk=pk %}" class="button">초등학교 졸업</a>
+        <a href="{% url 'resumeapp:resume_1' school=2 pk=pk %}" class="button">중학교 졸업</a>
+        <a href="{% url 'resumeapp:resume_1' school=3 pk=pk %}" class="button">고등학교 졸업</a>
+        <a href="{% url 'resumeapp:resume_1' school=4 pk=pk %}" class="button">대학*대학원 이상 졸업</a>
+	</div>
+    <p></p>
+    <div>
+        {% if school == 1 %}
+            <form action="{% url 'resumeapp:resume_1' school=school pk=pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 class="resume_title">
+                    이력서 제목 :
+                    <input type="text" name="resume_title" style="width:300px;height:50px;font-size:30px;">
+                </h1>
+                <span class="school">
+                    <h1>
+                        학교명 :
+                        <input type="text" name="elementary_school_name" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <h1>
+                        지역 :
+                        <select name='study_field1' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='서울'>서울</option>
+                            <option value='경기'>경기</option>
+                            <option value='광주'>광주</option>
+                            <option value='대구'>대구</option>
+                            <option value='대전'>대전</option>
+                            <option value='부산'>부산</option>
+                            <option value='울산'>울산</option>
+                            <option value='인천'>인천</option>
+                            <option value='강원'>강원</option>
+                            <option value='경남'>경남</option>
+                            <option value='경북'>경북</option>
+                            <option value='전남'>전남</option>
+                            <option value='전북'>전북</option>
+                            <option value='충북'>충북</option>
+                            <option value='충남'>충남</option>
+                            <option value='제주'>제주</option>
+                            <option value='전국'>전국</option>
+                            <option value='세종'>세종</option>
+                            <option value='아시아,중동'>아시아,중동</option>
+                            <option value='북,중미'>북,중미</option>
+                            <option value='남미'>남미</option>
+                            <option value='유럽'>유럽</option>
+                            <option value='오세아니아'>오세아니아</option>
+                            <option value='아프리카'>아프리카</option>
+                            <option value='남극대륙'>남극대륙</option>
+                        </select>
+                    </h1>
+                    <h1>
+                        재학기간 :
+                        <input type="month" name="study_start1" style="width:300px;height:50px;font-size:30px;">
+                        ~
+                        <input type="month" name="study_end1" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <input type="submit" style="width:300px;height:50px;font-size:30px;">
+                    <p></p>
+                </span>
+            </form>
+        {% endif %}
+        {% if school == 2 %}
+            <form action="{% url 'resumeapp:resume_1' school=school pk=pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 class="resume_title">
+                    이력서 제목 :
+                    <input type="text" name="resume_title" style="width:300px;height:50px;font-size:30px;">
+                </h1>
+                <span class="school">
+                    <h1>
+                        학교명 :
+                        <input type="text" name="middle_school_name" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <h1>
+                        지역 :
+                        <select name='study_field2' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='서울'>서울</option>
+                            <option value='경기'>경기</option>
+                            <option value='광주'>광주</option>
+                            <option value='대구'>대구</option>
+                            <option value='대전'>대전</option>
+                            <option value='부산'>부산</option>
+                            <option value='울산'>울산</option>
+                            <option value='인천'>인천</option>
+                            <option value='강원'>강원</option>
+                            <option value='경남'>경남</option>
+                            <option value='경북'>경북</option>
+                            <option value='전남'>전남</option>
+                            <option value='전북'>전북</option>
+                            <option value='충북'>충북</option>
+                            <option value='충남'>충남</option>
+                            <option value='제주'>제주</option>
+                            <option value='전국'>전국</option>
+                            <option value='세종'>세종</option>
+                            <option value='아시아,중동'>아시아,중동</option>
+                            <option value='북,중미'>북,중미</option>
+                            <option value='남미'>남미</option>
+                            <option value='유럽'>유럽</option>
+                            <option value='오세아니아'>오세아니아</option>
+                            <option value='아프리카'>아프리카</option>
+                            <option value='남극대륙'>남극대륙</option>
+                        </select>
+                    </h1>
+                    <h1>
+                        재학기간 :
+                        <input type="month" name="study_start2" style="width:300px;height:50px;font-size:30px;">
+                        ~
+                        <input type="month" name="study_end2" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <input type="submit" style="width:300px;height:50px;font-size:30px;">
+                </span>
+                <p></p>
+            </form>
+        {% endif %}
+        {% if school == 3 %}
+            <form action="{% url 'resumeapp:resume_1' school=school pk=pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 class="resume_title">
+                    이력서 제목 :
+                    <input type="text" name="resume_title" style="width:300px;height:50px;font-size:30px;">
+                </h1>
+                <span class="school">
+                    <h1>
+                        학교명 :
+                        <input type="text" name="high_school_name" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <h1>
+                        지역 :
+                        <select name='study_field3' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='서울'>서울</option>
+                            <option value='경기'>경기</option>
+                            <option value='광주'>광주</option>
+                            <option value='대구'>대구</option>
+                            <option value='대전'>대전</option>
+                            <option value='부산'>부산</option>
+                            <option value='울산'>울산</option>
+                            <option value='인천'>인천</option>
+                            <option value='강원'>강원</option>
+                            <option value='경남'>경남</option>
+                            <option value='경북'>경북</option>
+                            <option value='전남'>전남</option>
+                            <option value='전북'>전북</option>
+                            <option value='충북'>충북</option>
+                            <option value='충남'>충남</option>
+                            <option value='제주'>제주</option>
+                            <option value='전국'>전국</option>
+                            <option value='세종'>세종</option>
+                            <option value='아시아,중동'>아시아,중동</option>
+                            <option value='북,중미'>북,중미</option>
+                            <option value='남미'>남미</option>
+                            <option value='유럽'>유럽</option>
+                            <option value='오세아니아'>오세아니아</option>
+                            <option value='아프리카'>아프리카</option>
+                            <option value='남극대륙'>남극대륙</option>
+                        </select>
+                    </h1>
+                    <h1>
+                        재학기간 :
+                        <input type="month" name="study_start3" style="width:300px;height:50px;font-size:30px;">
+                        ~
+                        <input type="month" name="study_end3" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <h1>
+                        전공 계열 :
+                        <select name='study_major3' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='문과계열'>문과계열</option>
+                            <option value='이과계열'>이과계열</option>
+                            <option value='전문(실업)계'>전문(실업)계</option>
+                            <option value='예체능계'>예체능계</option>
+                            <option value='특성화/마이스터고'>특성화/마이스터고</option>
+                            <option value='특수목적고'>특수목적고</option>
+                        </select>
+                    </h1>
+                    <input type="submit" style="width:300px;height:50px;font-size:30px;">
+                </span>
+                <p></p>
+            </form>
+        {% endif %}
+        {% if school == 4 %}
+            <form action="{% url 'resumeapp:resume_1' school=school pk=pk %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h1 class="resume_title">
+                    이력서 제목 :
+                    <input type="text" name="resume_title" style="width:300px;height:50px;font-size:30px;">
+                </h1>
+                <span class="school">
+                    <h1>
+                        대학 :
+                        <select name='study_year4' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='대학(2,3년)'>대학(2,3년)</option>
+                            <option value='대학교(4년)'>대학교(4년)</option>
+                            <option value='대학원(석사)'>대학원(석사)</option>
+                            <option value='대학원(박사)'>대학원(박사)</option>
+                        </select>
+                    </h1>
+                    <h1>
+                        학교명 :
+                        <input type="text" name="university_school_name" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <h1>
+                        지역 :
+                        <select name='study_field4' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='서울'>서울</option>
+                            <option value='경기'>경기</option>
+                            <option value='광주'>광주</option>
+                            <option value='대구'>대구</option>
+                            <option value='대전'>대전</option>
+                            <option value='부산'>부산</option>
+                            <option value='울산'>울산</option>
+                            <option value='인천'>인천</option>
+                            <option value='강원'>강원</option>
+                            <option value='경남'>경남</option>
+                            <option value='경북'>경북</option>
+                            <option value='전남'>전남</option>
+                            <option value='전북'>전북</option>
+                            <option value='충북'>충북</option>
+                            <option value='충남'>충남</option>
+                            <option value='제주'>제주</option>
+                            <option value='전국'>전국</option>
+                            <option value='세종'>세종</option>
+                            <option value='아시아,중동'>아시아,중동</option>
+                            <option value='북,중미'>북,중미</option>
+                            <option value='남미'>남미</option>
+                            <option value='유럽'>유럽</option>
+                            <option value='오세아니아'>오세아니아</option>
+                            <option value='아프리카'>아프리카</option>
+                            <option value='남극대륙'>남극대륙</option>
+                        </select>
+                    </h1>
+                    <h1>
+                        재학기간 :
+                        <input type="month" name="study_start4" style="width:300px;height:50px;font-size:30px;">
+                        ~
+                        <input type="month" name="study_end4" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <p></p>
+                    <h1>
+                        전공 :
+                        <select name='study_major_list4' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='어문학'>어문학</option>
+                            <option value='영어/영문'>영어/영문</option>
+                            <option value='중어/중문'>중어/중문</option>
+                            <option value='일어/일문'>일어/일문</option>
+                            <option value='국어/국문'>국어/국문</option>
+                            <option value='인문과학'>인문과학</option>
+                            <option value='사회과학'>사회과학</option>
+                            <option value='상경계열'>상경계열</option>
+                            <option value='경제/경영'>경제/경영</option>
+                            <option value='회계학'>회계학</option>
+                            <option value='법학계열'>법학계열</option>
+                            <option value='사범계열'>사범계열</option>
+                            <option value='종교학'>종교학</option>
+                            <option value='생활과학'>생활과학</option>
+                            <option value='예/체능'>예/체능</option>
+                            <option value='자연과학계열'>자연과학계열</option>
+                            <option value='농수산/해양/축산'>농수산/해양/축산</option>
+                            <option value='수학/통계학'>수학/통계학</option>
+                            <option value='물리/천문/기상학'>물리/천문/기상학</option>
+                            <option value='화학/생물'>화학/생물</option>
+                            <option value='공학계열'>공학계열</option>
+                            <option value='전기/전자/정보통신공학'>전기/전자/정보통신공학</option>
+                            <option value='컴퓨터/시스템공학'>컴퓨터/시스템공학</option>
+                            <option value='금속/비금속공학'>금속/비금속공학</option>
+                            <option value='생명/화학/환경/바이오'>생명/화학/환경/바이오</option>
+                            <option value='도시/토목/건축공학'>도시/토목/건축공학</option>
+                            <option value='에너지/원자력공학'>에너지/원자력공학</option>
+                            <option value='산업/자동차/우주공학'>산업/자동차/우주공학</option>
+                            <option value='기계/조선/항공공학'>기계/조선/항공공학</option>
+                            <option value='신소재/재료/섬유공학'>신소재/재료/섬유공학</option>
+                            <option value='식품/유전/안전공학'>식품/유전/안전공학</option>
+                            <option value='의학계열'>의학계열</option>
+                            <option value='직접입력'>직접입력</option>
+                        </select>
+                        <p></p>
+                        전공학과 입력 :
+                        <input type="text" name="study_major_detail4" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <h1>
+                        주/야간 :
+                        <select name='study_time4' style="width:300px;height:50px;font-size:30px;">
+                            <option value='' selected>-- 선택 --</option>
+                            <option value='주간'>주간</option>
+                            <option value='야간'>야간</option>
+                        </select>
+                    </h1>
+                    <h1>
+                        학점 :
+                        <input type="text" name="study_level4" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <h1>
+                        논문 & 졸업작품 :
+                        <input type="text" name="study_finaltest4" style="width:300px;height:50px;font-size:30px;">
+                    </h1>
+                    <input type="submit" style="width:300px;height:50px;font-size:30px;">
+                </span>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

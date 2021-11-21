@@ -4,7 +4,7 @@ from django import forms
 
 from pickme import settings
 from resumeapp.models import User_Resume, Resume_ElementarySchool, Resume_MiddleSchool, Resume_HighSchool, \
-    Resume_UniversitySchool
+    Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Title
 
 
 ###################################################################################################
@@ -45,6 +45,11 @@ class Update_ResumeForm(ResumeForm):
 
 # 테스트 버전 2
 
+class ResumeTitleForm(ModelForm):
+    class Meta:
+        model = Resume_Title
+        fields = []
+
 class ResumeElementaryForm(ModelForm):
     # elementary_start_time = DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
@@ -67,6 +72,11 @@ class ResumeUniversityForm(ModelForm):
     # elementary_start_time = DateField(input_formats=settings.DATE_INPUT_FORMATS)
     class Meta:
         model = Resume_UniversitySchool
+        fields = []
+
+class ResumeUniversitySchoolMajor_Form(ModelForm):
+    class Meta:
+        model = Resume_UniversitySchool_Major
         fields = []
 
 

@@ -14,11 +14,8 @@ urlpatterns = [
 
     path('test_resume/<int:test1>/<int:test2>/<int:test3>/<int:pk>/', views.test_resume, name='test_resume'),
 
-    path('test_resume2/<int:school>/<int:pk>/', views.test_resume2, name='test_resume2'),
-
-    path('test_calender', views.test_calender, name='test_calender'),
+    path('resume_1/<int:school>/<int:pk>/', views.resume_1, name='resume_1'),
 
     path('test_test', views.test_test, name='test_test'),
 
-    path('button_test', views.button_test, name='button_test'),
 ]
