@@ -181,13 +181,24 @@ def test_resume(request, test1, test2, test3, pk):
     context['test3'] = test3
     return render(request, 'test_resume.html', context)
 
-def resume_1(request, school, pk):
+def resume_1(request, school, school_major4, career, pk):
     # 테스트 버전2
+    temp_school_major4 = [[0]]
     context = {}
     context['school'] = school
+    context['school_major4'] = school_major4
+    context['career'] = career
+    context['temp_school_major4'] = temp_school_major4
     context['pk'] = pk
+    if request.method == 'POST' and request.POST.get('major_button_plus'):
+        school_major4 += 1
+        context['school_major4'] = school_major4
+        for i in range(1, school_major4):
+            temp_school_major4.append([i])
+        context['temp_school_major4'] = temp_school_major4
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST.get('resume_submit1'):
+        print('*******************************',request.POST,'&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         temp_user = MyUser.objects.filter(pk=pk)
         form = ResumeTitleForm(request.POST, request.FILES)
         if form.is_valid():
@@ -235,7 +246,6 @@ def resume_1(request, school, pk):
                 temp_form.save()
         elif request.method == 'POST' and school == 4:
             form = ResumeUniversityForm(request.POST, request.FILES)
-            print('##################################', request.POST, '#######################################################')
             if form.is_valid():
                 temp_form = form.save(commit=False)
                 temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
@@ -250,16 +260,19 @@ def resume_1(request, school, pk):
                 temp_form.university_study_level = request.POST['study_level4']
                 temp_form.university_finaltest = request.POST['study_finaltest4']
                 temp_form.save()
-            form = ResumeUniversitySchoolMajor_Form(request.POST, request.FILES)
             if form.is_valid():
-                temp_form = form.save(commit=False)
-                temp_form.resume_university_major = Resume_Title.objects.last()
-                temp_form.resume_university_major_list = request.POST['study_major_list4']
-                temp_form.resume_university_major_detail = request.POST['study_major_detail4']
-                temp_form.save()
+                for i in range(0, school_major4):
+                    form = ResumeUniversitySchoolMajor_Form(request.POST, request.FILES)
+                    temp_form = form.save(commit=False)
+                    temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                    for temp in temp_title:
+                        temp_form.resume_university_major = temp
+                    # temp_form.resume_university_major = Resume_Title.objects.last()
+                    temp_form.resume_university_major_list = request.POST.get('study_major_list4{0}'.format(i))
+                    temp_form.resume_university_major_detail = request.POST.get('study_major_detail4{0}'.format(i))
+                    temp_form.save() # 11-22 학과가 제대로 저장안됨 이력서 제목이 여러개 저장되는건지 확인해야함
             # study_major_list4
             # study_major_detail4
-
     return render(request, 'resume_1.html', context)
 
 def test_test(request):
