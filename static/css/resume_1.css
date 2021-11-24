@@ -1,4 +1,16 @@
+.resume_title{
+    position: absolute;
+    top: 50px;
+}
 .school {
     position: absolute;
-    top: 150px;
+    top: 200px;
+}
+.career_test {
+    position: absolute;
+    top: 800px;
+}
+.company_want {
+    position: absolute;
+    top: 1600px;
 }
