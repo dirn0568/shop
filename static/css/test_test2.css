@@ -1,0 +1,22 @@
+input[id*="answer"] {
+    display:none;
+}
+input[id*="answer"] + label {
+    display:block;
+    width:200px;
+    height:150px;
+    padding:20px;
+    border:1px solid #232188;
+    color:#fff;
+    background:#3634a5;
+    cursor:pointer;
+    position:relative;
+}
+input[id*="answer"] + label + div {
+    max-height:0;
+    width:200px;
+    overflow:hidden;
+    background:#ebf8ff;
+    font-size:11px;
+}
+input[id*="answer"]:checked + label + div {max-height:1000px;}
