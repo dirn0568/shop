@@ -1,22 +1,33 @@
-input[id*="answer"] {
-    display:none;
-}
-input[id*="answer"] + label {
+
+.test {
     display:block;
-    width:200px;
-    height:150px;
     padding:20px;
     border:1px solid #232188;
-    color:#fff;
+    color:#000000;
     background:#3634a5;
     cursor:pointer;
     position:relative;
 }
-input[id*="answer"] + label + div {
+.testing {
+    position: absolute;
+    top: 300px;
+    left: 15%;
     max-height:0;
-    width:200px;
     overflow:hidden;
-    background:#ebf8ff;
+    color:#FF0000;
+    background:#5CD1E5;
     font-size:11px;
 }
+
+.title_position_detail {
+    position: static;
+    top: 500px;
+    left: 15%;
+}
+.title_position_detail2 {
+    position: static;
+    top: 600px;
+    left: 15%;
+}
+
 input[id*="answer"]:checked + label + div {max-height:1000px;}
