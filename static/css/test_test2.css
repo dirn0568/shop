@@ -1,12 +1,10 @@
 
 .test {
-    display:block;
-    padding:20px;
-    border:1px solid #232188;
+    opacity:0;
+}
+.test2 {
     color:#000000;
-    background:#3634a5;
     cursor:pointer;
-    position:relative;
 }
 .testing {
     position: absolute;
@@ -15,7 +13,7 @@
     max-height:0;
     overflow:hidden;
     color:#FF0000;
-    background:#5CD1E5;
+    background:#FFFFFF;
     font-size:11px;
 }
 
@@ -31,3 +29,8 @@
 }
 
 input[id*="answer"]:checked + label + div {max-height:1000px;}
+
+table {
+    margin: auto;
+    text-align: center;
+}
