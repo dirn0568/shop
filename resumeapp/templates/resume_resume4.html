@@ -1,0 +1,185 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if career == 2 %}
+        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            프로젝트 수행이력 :
+            <input type="submit" name="company_work_plus" value="프로젝트수행이력추가" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+    {% endif %}
+    {% if career == 2 %}
+        <form action="% url 'resumeapp:resume_resume4' title=title career=2 pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="company_ability_plus" value="ability+" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+    {% endif %}
+    <form action="{% url 'resumeapp:resume_resume4' title=title career=2 pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if career == 2 %}
+            <h1 class="career_test">
+                회사명 :
+                <input type="text" name="company_name" style="width:300px;height:50px;font-size:30px;">
+                <p></p>
+                재직기간 :
+                <input type="month" name="company_start" style="width:300px;height:50px;font-size:30px;">
+                ~
+                <input type="month" name="company_end" style="width:300px;height:50px;font-size:30px;">
+                <p></p>
+                퇴사사유 :
+                <select name='company_out' style="width:300px;height:50px;font-size:30px;">
+                    <option value='' selected>-- 선택 --</option>
+                    <option value='업직종 전환'>업직종 전환</option>
+                    <option value='근무조건'>근무조건</option>
+                    <option value='경영악화'>경영악화</option>
+                    <option value='계약만료'>계약만료</option>
+                    <option value='출산/육아'>출산/육아</option>
+                    <option value='학업'>학업</option>
+                    <option value='유학'>유학</option>
+                    <option value='개인사정'>개인사정</option>
+                    <option value='직접입력'>직접입력</option>
+                </select>
+                <p></p>
+                직급/직책 :
+                <div class="accordion">
+                    <input type="radio" name="accordion" id="answer04" class="test">
+                    <label for="answer04" class="test2">직급/직책 선택하기</label>
+                    <div class="testing">
+                        <h1>
+                            직급(직책) 선택
+                        </h1>
+                        <table border="1" width="600" height="300">
+                            <tr>
+                                <th rowspan="6" width="150" bgcolor="#D5D5D5">직급</th>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_001" value="인턴/수습">
+                                    <label for="answer04_001">인턴/수습</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_002" value="사원">
+                                    <label for="answer04_002">사원</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_003" value="주임">
+                                    <label for="answer04_003">주임</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_004" value="계장">
+                                    <label for="answer04_004">계장</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_005" value="대리">
+                                    <label for="answer04_005">대리</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_006" value="과장">
+                                    <label for="answer04_006">과장</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_008" value="차장">
+                                    <label for="answer04_008">차장</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_009" value="부장">
+                                    <label for="answer04_009">부장</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0010" value="감사">
+                                    <label for="answer04_0010">감사</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0011" value="이사">
+                                    <label for="answer04_0011">이사</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0012" value="상무">
+                                    <label for="answer04_0012">상무</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0013" value="전무">
+                                    <label for="answer04_0013">전무</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0014" value="부사장">
+                                    <label for="answer04_0014">부사장</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0015" value="사장">
+                                    <label for="answer04_0015">사장</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0016" value="임원">
+                                    <label for="answer04_0016">임원</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0017" value="연구원">
+                                    <label for="answer04_0017">연구원</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0018" value="주임연구원">
+                                    <label for="answer04_0018">주임연구원</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0019" value="선임연구원">
+                                    <label for="answer04_0019">선임연구원</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0020" value="책임연구원">
+                                    <label for="answer04_0020">책임연구원</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0021" value="수석연구원">
+                                    <label for="answer04_0021">수석연구원</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0022" value="연구소장">
+                                    <label for="answer04_0022">연구소장</label>
+                                </td>
+                                <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                    <input type="radio" name="accordion1" id="answer04_0023" value="임시직/프리랜서">
+                                    <label for="answer04_0023">임시직/프리랜서</label>
+                                </td>
+                            </tr>
+                        </table>
+                        <input type="radio" name="accordion" id="answer04_0023_2" class="answer04_0023_2">
+                        <label for="answer04_0023_2" class="answer04_0023_2_label">입력완료</label>
+                    </div>
+                </div>
+
+
+                <p></p>
+                근무부서 :
+                <input type="text" name="company_work" style="width:300px;height:50px;font-size:30px;">
+                <p></p>
+                연봉 :
+                <input type="text" name="company_money" style="width:300px;height:50px;font-size:30px;">
+                <select name='company_money2' style="width:300px;height:50px;font-size:30px;">
+                    <option value='' selected>-- 선택 --</option>
+                    <option value='만원'>만원</option>
+                    <option value='달러'>달러</option>
+                    <option value='엔'>엔</option>
+                </select>
+                <p></p>
+                담당업무 :
+                <input type="text" name="company_work_detail" style="width:300px;height:50px;font-size:30px;">
+                <p></p>
+                핵심역량 :
+                <input type="text" name="company_work_ability0" style="width:300px;height:50px;font-size:30px;">
+                <input type="text" name="company_work_ability1" style="width:300px;height:50px;font-size:30px;">
+                <input type="text" name="company_work_ability2" style="width:300px;height:50px;font-size:30px;">
+            </h1>
+        {% endif %}
+        <input type="submit" value="다음페이지" name="resume_submit1">
+    </form>
+
+{% endblock %}

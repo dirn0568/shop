@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+  		<a href="{% url 'resumeapp:resume_resume5' title=title career=1 pk=pk %}" class="button">신입</a>
+        <a href="{% url 'resumeapp:resume_resume4' title=title career=2 pk=pk %}" class="button">경력</a>
+	</div>
+{% endblock %}
