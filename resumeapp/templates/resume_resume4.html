@@ -2,19 +2,18 @@
 
 {% block content %}
     {% if career == 2 %}
-        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 pk=pk %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            프로젝트 수행이력 :
             <input type="submit" name="company_work_plus" value="프로젝트수행이력추가" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     {% endif %}
     {% if career == 2 %}
-        <form action="% url 'resumeapp:resume_resume4' title=title career=2 pk=pk %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="company_ability_plus" value="ability+" class="btn btn-dark rounded-pill col-6 mt-3">
+            <input type="submit" name="company_ability_plus" value="ability_plus" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     {% endif %}
-    <form action="{% url 'resumeapp:resume_resume4' title=title career=2 pk=pk %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability pk=pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% if career == 2 %}
             <h1 class="career_test">
@@ -174,9 +173,9 @@
                 <input type="text" name="company_work_detail" style="width:300px;height:50px;font-size:30px;">
                 <p></p>
                 핵심역량 :
-                <input type="text" name="company_work_ability0" style="width:300px;height:50px;font-size:30px;">
-                <input type="text" name="company_work_ability1" style="width:300px;height:50px;font-size:30px;">
-                <input type="text" name="company_work_ability2" style="width:300px;height:50px;font-size:30px;">
+                {% for list in company_ability_list %}
+                    <input type="text" name="company_work_ability{{list.0}}" style="width:300px;height:50px;font-size:30px;">
+                {% endfor %}
             </h1>
         {% endif %}
         <input type="submit" value="다음페이지" name="resume_submit1">
