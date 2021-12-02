@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script>
+    function test() {
+        setInterval("alert('good')", 1000)
+    }
+    test();
+
+    startalert = function() {
+        playalert = setinterval(function() {
+            var gender = document.getElementsByName('gender');
+            var genderChoice; // 여기에 선택된 radio 버튼의 값이 담기게 된다.
+            for(var i=0; i<gender.length; i++) {
+                if(gender[i].checked) {
+                    genderChoice = gender[i].value;
+                    console.log("실행중")
+                }
+            }
+        }, 3000);
+    };
+    startalert();
+  </script>
+</head>
+<body>
+  남<input type="radio" name="gender" value="남">
+  여<input type="radio" name="gender" value="여">
+</body>
+</html>
