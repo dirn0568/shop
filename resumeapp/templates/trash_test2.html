@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/trash_test2.css' %}">
+</head>
+<body>
+    <div class="accordion">
+        <form action="{% url 'resumeapp:trash_test2' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="radio" name="accordion" id="answer04" class="test">
+            <label for="answer04" class="test2">직급/직책 선택하기</label>
+            <div class="testing">
+                <span class="radio_testing1">
+                    직급(직책) 선택
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test1">
+                    <label for="radio_test1">서울</label>
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test2">
+                    <label for="radio_test2">경기</label>
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test3">
+                    <label for="radio_test3">광주</label>
+                    <div class="radio_testing2">
+                        <button type="button">광주전체</button>
+                        <button type="button">남구</button>
+                        <button type="button">동구</button>
+                        <button type="button">북구</button>
+                        <button type="button">서구</button>
+                    </div>
+                </span>
+                <input type="radio" name="accordion" id="answer04_0023_2" class="answer04_0023_2">
+                <label for="answer04_0023_2" class="answer04_0023_2_label">입력완료</label>
+            <p></p>
+            </div>
+            <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+    </div>
