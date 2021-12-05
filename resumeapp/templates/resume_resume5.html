@@ -1,10 +1,243 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/trash_test2.css' %}">
+
+    <form action="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="checkbox" name="job" value="정규직">정규직
+        <input type="checkbox" name="job" value="교육생">교육생
+        <input type="checkbox" name="job" value="별정직">별정직
+        <input type="checkbox" name="job" value="파트">파트
+        <input type="checkbox" name="job" value="전임">전임
+        <p></p>
+        <input type="month" name="calender_start3">
+        ~
+        <input type="month" name="calender_end3">
+        <p></p>
+        <select name='company_select_money' style="width:300px;height:35px;font-size:30px;">
+            <option value='' selected>-- 선택 --</option>
+            <option value='1400 만원 이하'>1400 만원 이하</option>
+            <option value='회사내규에따름'>회사내규에 따름</option>
+            <option value='1억원 이상'>1억원 이상</option>
+        </select>
+        <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+    </form>
+    <div class="accordion">
+        <form action="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="radio" name="accordion" id="answer04" class="btn">
+            <label for="answer04">근무지역 선택하기</label>
+            <div class="testing">
+                <div>
+                    근무지역 선택
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test1" class="btn">
+                    <label for="radio_test1">서울</label>
+                    <div class="radio_testing1">
+                        <input type="radio" name="radio_test1" id="radio_test1_1" class="btn">
+                        <label for="radio_test1_1">서울전체</label>
+                        <input type="radio" name="radio_test1" id="radio_test1_2" class="btn">
+                        <label for="radio_test1_2">강남군</label>
+                        <input type="radio" name="radio_test1" id="radio_test1_3" class="btn">
+                        <label for="radio_test1_3">강동구</label>
+                        <p></p>
+                        <input type="radio" name="radio_test1" id="radio_test1_4" class="btn">
+                        <label for="radio_test1_4">강북구</label>
+                        <input type="radio" name="radio_test1" id="radio_test1_5" class="btn">
+                        <label for="radio_test1_5">강서구</label>
+                        <input type="radio" name="radio_test1" id="radio_test1_6" class="btn">
+                        <label for="radio_test1_6">관악구</label>
+                    </div>
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test2" class="btn">
+                    <label for="radio_test2">경기</label>
+                    <div class="radio_testing2">
+                        <input type="radio" name="radio_test1" id="radio_test2_1" class="btn">
+                        <label for="radio_test2_1">경기전체</label>
+                        <input type="radio" name="radio_test1" id="radio_test2_2" class="btn">
+                        <label for="radio_test2_2">가평군</label>
+                        <input type="radio" name="radio_test1" id="radio_test2_3" class="btn">
+                        <label for="radio_test2_3">고양시</label>
+                        <p></p>
+                        <input type="radio" name="radio_test1" id="radio_test2_4" class="btn">
+                        <label for="radio_test2_4">고양시 덕양구</label>
+                        <input type="radio" name="radio_test1" id="radio_test2_5" class="btn">
+                        <label for="radio_test2_5">고양시 일산동구</label>
+                        <input type="radio" name="radio_test1" id="radio_test2_6" class="btn">
+                        <label for="radio_test2_6">고양시 일산서구</label>
+                    </div>
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test3" class="btn">
+                    <label for="radio_test3">광주</label>
+                    <div class="radio_testing2">
+                        <input type="radio" name="radio_test1" id="radio_test3_1" class="btn">
+                        <label for="radio_test3_1">광주전체</label>
+                        <p></p>
+                        <input type="radio" name="radio_test1" id="radio_test3_2" class="btn">
+                        <label for="radio_test3_2">남구</label>
+                        <p></p>
+                        <input type="radio" name="radio_test1" id="radio_test3_3" class="btn">
+                        <label for="radio_test3_3">북구</label>
+                        <div class="radio_testing3">
+                            <button>연제동</button>
+                            <button>신용동</button>
+                            <button>용봉동</button>
+                            <button>국제동</button>
+                        </div>
+                        <p></p>
+                        <input type="radio" name="radio_test1" id="radio_test3_4" class="btn">
+                        <label for="radio_test3_4">서구</label>
+                        <p></p>
+                        <input type="radio" name="radio_test1" id="radio_test3_5" class="btn">
+                        <label for="radio_test3_5">동구</label>
+                    </div>
+                </div>
+                <input type="radio" name="accordion" id="answer04_0023_2" class="btn">
+                <label for="answer04_0023_2">입력완료</label>
+            <p></p>
+            </div>
+
+            <p></p>
+            <input type="radio" name="accordion2" id="answer05" class="btn">
+            <label for="answer05">직급/직책 선택하기</label>
+            <div class="testing2">
+                <div>
+                    직업 선택
+                    <p></p>
+                    <input type="radio" name="job_choice" id="job_choice1" class="btn">
+                    <label for="job_choice1">서비스업</label>
+                    <div class="job_choicing1">
+                        <input type="radio" name="job_choice1" id="job_choice1_1" class="btn">
+                        <label for="job_choice1_1">호텔,여행,항공</label>
+                        <div class="job_choicing1_1">
+                            <input type="radio" name="job_choice2" id="job_choice1_1_1" class="btn">
+                            <label for="job_choice1_1_1">호텔</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_2" class="btn">
+                            <label for="job_choice1_1_2">콘도</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_3" class="btn">
+                            <label for="job_choice1_1_3">카지노</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_4" class="btn">
+                            <label for="job_choice1_1_4">여행사</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_5" class="btn">
+                            <label for="job_choice1_1_5">항공사</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_6" class="btn">
+                            <label for="job_choice1_1_6">관광</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_7" class="btn">
+                            <label for="job_choice1_1_7">관광통역</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_8" class="btn">
+                            <label for="job_choice1_1_8">면세점</label>
+                            <input type="radio" name="job_choice2" id="job_choice1_1_9" class="btn">
+                            <label for="job_choice1_1_9">유학,이민</label>
+                        </div>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_2" class="btn">
+                        <label for="job_choice1_2">외식업,식음료</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_3" class="btn">
+                        <label for="job_choice1_3">시설관리,경비,용역</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_4" class="btn">
+                        <label for="job_choice1_4">레저,스포츠,여가</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_5" class="btn">
+                        <label for="job_choice1_5">AS,카센터,주유</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_6" class="btn">
+                        <label for="job_choice1_6">렌탈,임대</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_7" class="btn">
+                        <label for="job_choice1_7">웨딩,장례,이벤트</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_8" class="btn">
+                        <label for="job_choice1_8">기타서비스업</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice1_9" class="btn">
+                        <label for="job_choice1_9">뷰티,미용</label>
+                    </div>
+                    <p></p>
+                    <input type="radio" name="job_choice" id="job_choice2" class="btn">
+                    <label for="job_choice2">제조,화학</label>
+                    <div class="job_choicing2">
+                        <input type="radio" name="job_choice1" id="job_choice2_1" class="btn">
+                        <label for="job_choice2_1">전기,전자,제어</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_2" class="btn">
+                        <label for="job_choice2_2">기계,설비,자동차</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_3" class="btn">
+                        <label for="job_choice2_3">석유,화학,에너지</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_4" class="btn">
+                        <label for="job_choice2_4">섬유,의류,패션</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_5" class="btn">
+                        <label for="job_choice2_5">화장품,뷰티</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_6" class="btn">
+                        <label for="job_choice2_6">생활용품,소비재,사무</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_7" class="btn">
+                        <label for="job_choice2_7">가구,목재,제지</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_8" class="btn">
+                        <label for="job_choice2_8">농업,어업,광업,임업</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_9" class="btn">
+                        <label for="job_choice2_9">금속,재료,철강,요업</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_10" class="btn">
+                        <label for="job_choice2_10">조선,항공,우주</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_11" class="btn">
+                        <label for="job_choice2_11">기타제조업</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_12" class="btn">
+                        <label for="job_choice2_12">식품가공,개발</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_13" class="btn">
+                        <label for="job_choice2_13">반도체,광학,LCD</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice2_14" class="btn">
+                        <label for="job_choice2_14">환경</label>
+                    </div>
+                    <p></p>
+                    <input type="radio" name="job_choice" id="job_choice3" class="btn">
+                    <label for="job_choice3">IT,웹,통신</label>
+                    <div class="job_choicing3">
+                        <input type="radio" name="job_choice1" id="job_choice3_1" class="btn">
+                        <label for="job_choice3_1">솔루션,SIERP,CRM</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_2" class="btn">
+                        <label for="job_choice3_2">웹에이전시</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_3" class="btn">
+                        <label for="job_choice3_3">쇼핑몰,오픈마켓</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_4" class="btn">
+                        <label for="job_choice3_4">포털,인터넷,컨텐츠</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_5" class="btn">
+                        <label for="job_choice3_5">네트워크,통신,모바일</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_6" class="btn">
+                        <label for="job_choice3_6">하드웨어,장비</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_7" class="btn">
+                        <label for="job_choice3_7">정보보안,백신</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_8" class="btn">
+                        <label for="job_choice3_8">IT컨설팅</label>
+                        <p></p>
+                        <input type="radio" name="job_choice1" id="job_choice3_9" class="btn">
+                        <label for="job_choice3_9">게임</label>
+                    </div>
+                </div>
+                <input type="radio" name="accordion2" id="answer04_0023_3" class="btn">
+                <label for="answer04_0023_3">입력완료</label>
+            </div>
+            <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+    </div>
+{% endblock %}

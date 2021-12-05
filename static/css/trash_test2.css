@@ -1,0 +1,130 @@
+.btn {
+    opacity:0;
+}
+
+
+/* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* */
+
+
+
+.testing {
+    position: absolute;
+    top: 300px;
+    left: 15%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+.radio_testing1 {
+    position: fixed;
+    top: 325px;
+    left: 35%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+.radio_testing2 {
+    position: fixed;
+    top: 325px;
+    left: 35%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+.radio_testing3 {
+    position: fixed;
+    top: 325px;
+    left: 55%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+input[id="answer04"]:checked + label + div {max-height:1000px;}
+
+input[id="answer04"]:checked + label + div input[id="radio_test1"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="radio_test2"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="radio_test3"]:checked + label + div {max-height:1000px;}
+
+input[id="answer04"]:checked + label + div input[id="radio_test3"]:checked + label + div input[id="radio_test3_3"]:checked + label + div {max-height:1000px;}
+
+
+
+/* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* *//* */
+
+
+
+.testing2 {
+    position: absolute;
+    top: 450px;
+    left: 15%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+.job_choicing1 {
+    position: fixed;
+    top: 450px;
+    left: 25%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+.job_choicing2 {
+    position: fixed;
+    top: 450px;
+    left: 25%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+.job_choicing3 {
+    position: fixed;
+    top: 450px;
+    left: 25%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+.job_choicing1_1 {
+    position: fixed;
+    top: 450px;
+    left: 35%;
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+
+input[id="answer05"]:checked + label + div {max-height:1000px;}
+
+input[id="answer05"]:checked + label + div input[id="job_choice1"]:checked + label + div {max-height:1000px;}
+input[id="answer05"]:checked + label + div input[id="job_choice2"]:checked + label + div {max-height:1000px;}
+input[id="answer05"]:checked + label + div input[id="job_choice3"]:checked + label + div {max-height:1000px;}
+
+input[id="answer05"]:checked + label + div input[id="job_choice1"]:checked + label + div input[id="job_choice1_1"]:checked + label + div {max-height:1000px;}
