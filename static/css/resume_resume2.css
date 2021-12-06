@@ -1,0 +1,89 @@
+.wrap {
+	position: absolute;
+	top: 130px;
+}
+
+.wrap a {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	margin: 20px auto;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 20px 30px;
+}
+
+.wrap a.button {
+	color: rgba(30, 22, 54, 0.6);
+	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+
+.wrap a.button:hover {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+}
+
+.resume_title {
+    position: absolute;
+    top: 200px;
+}
+
+.title_css {
+    position: fixed;
+    left: 20%;
+}
+
+.school_name {
+    position: absolute;
+    top: 260px;
+}
+
+.school_css {
+    position: fixed;
+    left: 20%;
+}
+
+.field_name {
+    position: absolute;
+    top: 320px;
+}
+
+.field_css {
+    position: fixed;
+    left: 20%;
+}
+
+.time_data {
+    position: absolute;
+    top: 380px;
+}
+
+.time1_css {
+    position: fixed;
+    left: 20%;
+}
+
+.time2_css {
+    position: fixed;
+    left: 40%;
+}
+
+.time3_css {
+    position: fixed;
+    left: 42%;
+}
+
+
+
+.submit_button {
+    position: absolute;
+    top: 450px;
+    left: 40%;
+}
+
+.content {
+    color:#FF0000;
+    background:#FFFFFF;
+}
