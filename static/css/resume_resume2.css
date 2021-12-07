@@ -31,8 +31,8 @@
 }
 
 .title_css {
-    position: fixed;
-    left: 20%;
+    position: relative;
+    left: 2.5%;
 }
 
 .school_name {
@@ -41,8 +41,8 @@
 }
 
 .school_css {
-    position: fixed;
-    left: 20%;
+    position: relative;
+    left: 12.5%;
 }
 
 .field_name {
@@ -51,8 +51,8 @@
 }
 
 .field_css {
-    position: fixed;
-    left: 20%;
+    position: relative;
+    left: 40%;
 }
 
 .time_data {
@@ -61,29 +61,127 @@
 }
 
 .time1_css {
+    position: relative;
+    left: 9.5%;
+}
+
+.time2_css {
+    position: relative;
+    left: 10%;
+}
+
+.time3_css {
+    position: relative;
+    left: 10.5%;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+.high_major {
+    position: absolute;
+    top: 440px;
+}
+
+.high_major_css {
     position: fixed;
     left: 20%;
 }
 
-.time2_css {
-    position: fixed;
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+.university_resume_title {
+    position: absolute;
+    top: 200px;
+}
+
+.university_school_year {
+    position: absolute;
+    top: 260px;
+}
+
+.university_school_name {
+    position: absolute;
+    top: 320px;
+}
+
+.university_field_name {
+    position: absolute;
+    top: 380px;
+}
+
+.university_time_data {
+    position: absolute;
+    top: 460px;
+}
+
+.university_major_data {
+    position: absolute;
+    top: 520px;
+}
+
+.university_major_data_detail {
+    position: absolute;
+    top: 580px;
+}
+
+.university_week {
+    position: absolute;
+    top: 640px;
+}
+
+.university_score {
+    position: absolute;
+    top: 700px;
+}
+
+.university_final_test {
+    position: absolute;
+    top: 760px;
+}
+
+.university_year_css {
+    position: relative;
     left: 40%;
 }
 
-.time3_css {
-    position: fixed;
-    left: 42%;
+.university_major_css {
+    position: relative;
+    left: 40%;
 }
 
+.university_major_detail_css {
+    position: relative;
+    left: 8%;
+}
 
+.university_week_css {
+    position: relative;
+    left: 22.5%;
+}
+
+.university_score_css {
+    position: relative;
+    left: 17.5%;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 .submit_button {
     position: absolute;
-    top: 450px;
+    top: 880px;
     left: 40%;
 }
 
 .content {
     color:#FF0000;
     background:#FFFFFF;
+    background-color: rgb(245, 130, 130);
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+.major_button_plus {
+    position: absolute;
+    top: 820px;
+    left: 40%;
 }

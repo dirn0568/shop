@@ -15,28 +15,28 @@
         {% if school == 4 %}
             <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career pk=pk %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
-                <input type="submit" name="major_button_plus" value="+" class="btn btn-dark rounded-pill col-6 mt-3">
+                <input type="submit" name="major_button_plus" value="+" class="major_button_plus">
             </form>
         {% endif %}
     </div>
 
-    <div class="content">
-        <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career pk=pk %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
+    <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <span class="content">
             {% if school == 1 %}
                 <h1 class="resume_title">
                     이력서 제목
-                    <input type="text" name="resume_title" style="width:800px;height:50px;font-size:30px;" class="title_css">
+                    <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
                 </h1>
                 <span class="school">
                     <h1 class="school_name">
                         학교명
-                        <input type="text" name="elementary_school_name" style="width:800px;height:50px;font-size:30px;" class="school_css">
+                        <input type="text" name="elementary_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;" class="school_css">
                     </h1>
                     <h1 class="field_name">
                         지역
                         <select name='study_field1' style="width:300px;height:50px;font-size:30px;" class="field_css">
-                            <option value='' selected>-- 선택 --</option>
+                            <option value='' selected>-- 지역 --</option>
                             <option value='서울'>서울</option>
                             <option value='경기'>경기</option>
                             <option value='광주'>광주</option>
@@ -78,17 +78,17 @@
             {% if school == 2 %}
                 <h1 class="resume_title">
                     이력서 제목
-                    <input type="text" name="resume_title" style="width:300px;height:50px;font-size:30px;">
+                    <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
                 </h1>
                 <span class="school">
-                    <h1>
+                    <h1 class="school_name">
                         학교명
-                        <input type="text" name="middle_school_name" style="width:300px;height:50px;font-size:30px;">
+                        <input type="text" name="middle_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;"  class="school_css">
                     </h1>
-                    <h1>
+                    <h1 class="field_name">
                         지역
-                        <select name='study_field2' style="width:300px;height:50px;font-size:30px;">
-                            <option value='' selected>-- 선택 --</option>
+                        <select name='study_field2' style="width:300px;height:50px;font-size:30px;" class="field_css">
+                            <option value='' selected>-- 지역 --</option>
                             <option value='서울'>서울</option>
                             <option value='경기'>경기</option>
                             <option value='광주'>광주</option>
@@ -116,11 +116,13 @@
                             <option value='남극대륙'>남극대륙</option>
                         </select>
                     </h1>
-                    <h1>
+                    <h1 class="time_data">
                         재학기간
-                        <input type="month" name="study_start2" style="width:300px;height:50px;font-size:30px;">
-                        ~
-                        <input type="month" name="study_end2" style="width:300px;height:50px;font-size:30px;">
+                        <input type="month" name="study_start2" style="width:300px;height:50px;font-size:30px;" class="time1_css">
+                        <span class="time2_css">
+                            ~
+                        </span>
+                        <input type="month" name="study_end2" style="width:300px;height:50px;font-size:30px;" class="time3_css">
                     </h1>
                 </span>
                 <p></p>
@@ -128,17 +130,17 @@
             {% if school == 3 %}
                 <h1 class="resume_title">
                     이력서 제목
-                    <input type="text" name="resume_title" style="width:300px;height:50px;font-size:30px;">
+                    <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
                 </h1>
                 <span class="school">
-                    <h1>
+                    <h1 class="school_name">
                         학교명
-                        <input type="text" name="high_school_name" style="width:300px;height:50px;font-size:30px;">
+                        <input type="text" name="high_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;" class="school_css">
                     </h1>
-                    <h1>
+                    <h1 class="field_name">
                         지역
-                        <select name='study_field3' style="width:300px;height:50px;font-size:30px;">
-                            <option value='' selected>-- 선택 --</option>
+                        <select name='study_field3' style="width:300px;height:50px;font-size:30px;" class="field_css">
+                            <option value='' selected>-- 지역 --</option>
                             <option value='서울'>서울</option>
                             <option value='경기'>경기</option>
                             <option value='광주'>광주</option>
@@ -166,16 +168,18 @@
                             <option value='남극대륙'>남극대륙</option>
                         </select>
                     </h1>
-                    <h1>
+                    <h1 class="time_data">
                         재학기간
-                        <input type="month" name="study_start3" style="width:300px;height:50px;font-size:30px;">
-                        ~
-                        <input type="month" name="study_end3" style="width:300px;height:50px;font-size:30px;">
+                        <input type="month" name="study_start3" style="width:300px;height:50px;font-size:30px;" class="time1_css">
+                        <span class="time2_css">
+                            ~
+                        </span>
+                        <input type="month" name="study_end3" style="width:300px;height:50px;font-size:30px;" class="time3_css">
                     </h1>
-                    <h1>
+                    <h1 class="high_major">
                         전공 계열
-                        <select name='study_major3' style="width:300px;height:50px;font-size:30px;">
-                            <option value='' selected>-- 선택 --</option>
+                        <select name='study_major3' style="width:300px;height:50px;font-size:30px;" class="high_major_css">
+                            <option value='' selected>-- 전공 계열 --</option>
                             <option value='문과계열'>문과계열</option>
                             <option value='이과계열'>이과계열</option>
                             <option value='전문(실업)계'>전문(실업)계</option>
@@ -188,14 +192,14 @@
                 <p></p>
             {% endif %}
             {% if school == 4 %}
-                <h1 class="resume_title">
+                <h1 class="university_resume_title">
                     이력서 제목
-                    <input type="text" name="resume_title" style="width:300px;height:50px;font-size:30px;">
+                    <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
                 </h1>
                 <span class="school">
-                    <h1>
+                    <h1 class="university_school_year">
                         대학
-                        <select name='study_year4' style="width:300px;height:50px;font-size:30px;">
+                        <select name='study_year4' style="width:300px;height:50px;font-size:30px;" class="university_year_css">
                             <option value='' selected>-- 선택 --</option>
                             <option value='대학(2,3년)'>대학(2,3년)</option>
                             <option value='대학교(4년)'>대학교(4년)</option>
@@ -203,14 +207,14 @@
                             <option value='대학원(박사)'>대학원(박사)</option>
                         </select>
                     </h1>
-                    <h1>
+                    <h1 class="university_school_name">
                         학교명
-                        <input type="text" name="university_school_name" style="width:300px;height:50px;font-size:30px;">
+                        <input type="text" name="university_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;" class="school_css">
                     </h1>
-                    <h1>
+                    <h1 class="university_field_name">
                         지역
-                        <select name='study_field4' style="width:300px;height:50px;font-size:30px;">
-                            <option value='' selected>-- 선택 --</option>
+                        <select name='study_field4' style="width:300px;height:50px;font-size:30px;" class="field_css">
+                            <option value='' selected>-- 지역 --</option>
                             <option value='서울'>서울</option>
                             <option value='경기'>경기</option>
                             <option value='광주'>광주</option>
@@ -238,76 +242,82 @@
                             <option value='남극대륙'>남극대륙</option>
                         </select>
                     </h1>
-                    <h1>
+                    <h1 class="university_time_data">
                         재학기간
-                        <input type="month" name="study_start4" style="width:300px;height:50px;font-size:30px;">
-                        ~
-                        <input type="month" name="study_end4" style="width:300px;height:50px;font-size:30px;">
+                        <input type="month" name="study_start4" style="width:300px;height:50px;font-size:30px;" class="time1_css">
+                        <span class="time2_css">
+                            ~
+                        </span>
+                        <input type="month" name="study_end4" style="width:300px;height:50px;font-size:30px;" class="time3_css">
                     </h1>
                     <p></p>
                     {% for list4 in temp_school_major4 %}
                     <h1>
-                        전공
-                        <select name='study_major_list4{{list4.0}}' style="width:300px;height:50px;font-size:30px;">
-                            <option value='' selected>-- 선택 --</option>
-                            <option value='어문학'>어문학</option>
-                            <option value='영어/영문'>영어/영문</option>
-                            <option value='중어/중문'>중어/중문</option>
-                            <option value='일어/일문'>일어/일문</option>
-                            <option value='국어/국문'>국어/국문</option>
-                            <option value='인문과학'>인문과학</option>
-                            <option value='사회과학'>사회과학</option>
-                            <option value='상경계열'>상경계열</option>
-                            <option value='경제/경영'>경제/경영</option>
-                            <option value='회계학'>회계학</option>
-                            <option value='법학계열'>법학계열</option>
-                            <option value='사범계열'>사범계열</option>
-                            <option value='종교학'>종교학</option>
-                            <option value='생활과학'>생활과학</option>
-                            <option value='예/체능'>예/체능</option>
-                            <option value='자연과학계열'>자연과학계열</option>
-                            <option value='농수산/해양/축산'>농수산/해양/축산</option>
-                            <option value='수학/통계학'>수학/통계학</option>
-                            <option value='물리/천문/기상학'>물리/천문/기상학</option>
-                            <option value='화학/생물'>화학/생물</option>
-                            <option value='공학계열'>공학계열</option>
-                            <option value='전기/전자/정보통신공학'>전기/전자/정보통신공학</option>
-                            <option value='컴퓨터/시스템공학'>컴퓨터/시스템공학</option>
-                            <option value='금속/비금속공학'>금속/비금속공학</option>
-                            <option value='생명/화학/환경/바이오'>생명/화학/환경/바이오</option>
-                            <option value='도시/토목/건축공학'>도시/토목/건축공학</option>
-                            <option value='에너지/원자력공학'>에너지/원자력공학</option>
-                            <option value='산업/자동차/우주공학'>산업/자동차/우주공학</option>
-                            <option value='기계/조선/항공공학'>기계/조선/항공공학</option>
-                            <option value='신소재/재료/섬유공학'>신소재/재료/섬유공학</option>
-                            <option value='식품/유전/안전공학'>식품/유전/안전공학</option>
-                            <option value='의학계열'>의학계열</option>
-                            <option value='직접입력'>직접입력</option>
-                        </select>
+                        <h1 class="university_major_data">
+                            전공
+                            <select name='study_major_list4{{list4.0}}' style="width:300px;height:50px;font-size:30px;" class="university_major_css">
+                                <option value='' selected>-- 전공 --</option>
+                                <option value='어문학'>어문학</option>
+                                <option value='영어/영문'>영어/영문</option>
+                                <option value='중어/중문'>중어/중문</option>
+                                <option value='일어/일문'>일어/일문</option>
+                                <option value='국어/국문'>국어/국문</option>
+                                <option value='인문과학'>인문과학</option>
+                                <option value='사회과학'>사회과학</option>
+                                <option value='상경계열'>상경계열</option>
+                                <option value='경제/경영'>경제/경영</option>
+                                <option value='회계학'>회계학</option>
+                                <option value='법학계열'>법학계열</option>
+                                <option value='사범계열'>사범계열</option>
+                                <option value='종교학'>종교학</option>
+                                <option value='생활과학'>생활과학</option>
+                                <option value='예/체능'>예/체능</option>
+                                <option value='자연과학계열'>자연과학계열</option>
+                                <option value='농수산/해양/축산'>농수산/해양/축산</option>
+                                <option value='수학/통계학'>수학/통계학</option>
+                                <option value='물리/천문/기상학'>물리/천문/기상학</option>
+                                <option value='화학/생물'>화학/생물</option>
+                                <option value='공학계열'>공학계열</option>
+                                <option value='전기/전자/정보통신공학'>전기/전자/정보통신공학</option>
+                                <option value='컴퓨터/시스템공학'>컴퓨터/시스템공학</option>
+                                <option value='금속/비금속공학'>금속/비금속공학</option>
+                                <option value='생명/화학/환경/바이오'>생명/화학/환경/바이오</option>
+                                <option value='도시/토목/건축공학'>도시/토목/건축공학</option>
+                                <option value='에너지/원자력공학'>에너지/원자력공학</option>
+                                <option value='산업/자동차/우주공학'>산업/자동차/우주공학</option>
+                                <option value='기계/조선/항공공학'>기계/조선/항공공학</option>
+                                <option value='신소재/재료/섬유공학'>신소재/재료/섬유공학</option>
+                                <option value='식품/유전/안전공학'>식품/유전/안전공학</option>
+                                <option value='의학계열'>의학계열</option>
+                                <option value='직접입력'>직접입력</option>
+                            </select>
+                        </h1>
                         <p></p>
-                        전공학과 입력
-                        <input type="text" name="study_major_detail4{{list4.0}}" style="width:300px;height:50px;font-size:30px;">
+                        <h1 class="university_major_data_detail">
+                            전공학과
+                            <input type="text" name="study_major_detail4{{list4.0}}" placeholder="전공 학과를 입력하세요" style="width:800px;height:50px;font-size:30px;" class="university_major_detail_css">
+                        </h1>
                     </h1>
                     {% endfor %}
-                    <h1>
+                    <h1 class="university_week">
                         주/야간
-                        <select name='study_time4' style="width:300px;height:50px;font-size:30px;">
-                            <option value='' selected>-- 선택 --</option>
+                        <select name='study_time4' style="width:300px;height:50px;font-size:30px;" class="university_week_css">
+                            <option value='' selected>-- 주/야간 선택 --</option>
                             <option value='주간'>주간</option>
                             <option value='야간'>야간</option>
                         </select>
                     </h1>
-                    <h1>
+                    <h1 class="university_score">
                         학점
-                        <input type="text" name="study_level4" style="width:300px;height:50px;font-size:30px;">
+                        <input type="text" name="study_level4" placeholder="학점을 입력하세요" style="width:800px;height:50px;font-size:30px;" class="university_score_css">
                     </h1>
-                    <h1>
-                        논문 & 졸업작품
-                        <input type="text" name="study_finaltest4" style="width:300px;height:50px;font-size:30px;">
+                    <h1 class="university_final_test">
+                        논문/졸업작품
+                        <input type="text" name="study_finaltest4" placeholder="논문 또는 졸업작품" style="width:800px;height:50px;font-size:30px;">
                     </h1>
                 </span>
             {% endif %}
             <input type="submit" value="다음페이지" name="resume_submit1" class="submit_button">
-        </form>
-    </div>
+        </span>
+    </form>
 {% endblock %}
