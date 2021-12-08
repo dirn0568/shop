@@ -2,7 +2,8 @@
 
 {% block content %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/resume_resume2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/trash_test3.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/resume_resume2.css' %}">-->
 
     <div class="wrap">
   		<a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=school_major4 career=career pk=pk %}" class="button">초등학교 졸업</a>
@@ -317,7 +318,9 @@
                     </h1>
                 </span>
             {% endif %}
-            <input type="submit" value="다음페이지" name="resume_submit1" class="submit_button">
+            <div class="submit_button">
+                <input type="submit" value="다음페이지" name="resume_submit1">
+            </div>
         </span>
     </form>
 {% endblock %}

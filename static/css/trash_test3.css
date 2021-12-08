@@ -1,0 +1,75 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+.wrap {
+	background:#ebf8ff;
+	line-height: 66px;
+}
+
+.wrap a {
+	-webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	-o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+	margin: 20px auto;
+	text-decoration: none;
+	border-radius: 4px;
+	padding: 20px 30px;
+}
+
+.wrap a.button {
+	color: rgba(30, 22, 54, 0.6);
+	box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+}
+
+.wrap a.button:hover {
+	color: rgba(255, 255, 255, 0.85);
+	box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 전체적인 클래스 css */
+
+.title_css {
+    margin-left: 30px;
+}
+
+.school_css {
+    margin-left: 115px;
+}
+
+.field_css {
+    margin-left: 152px;
+}
+
+.time1_css {
+    margin-left: 78px;
+}
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 대학 클래스 css */
+
+.university_year_css {
+    margin-left: 152px;
+}
+
+.university_major_css {
+    margin-left: 151px;
+}
+
+.university_major_detail_css {
+    margin-left: 76px;
+}
+
+.university_week_css {
+    margin-left: 97px;
+}
+
+.university_score_css {
+    margin-left: 149px;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
