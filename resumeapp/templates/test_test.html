@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{% static 'js/test.js' %}"></script>
 </head>
 <body>
     <form action="{% url 'resumeapp:test_test' %}" method="post" enctype="multipart/form-data">
@@ -21,5 +23,16 @@
       <option value='banana'>바나나</option>
       <option value='lemon'>레몬</option>
     </select>
+    <p></p>
+    <form action="{% url 'resumeapp:test_test' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="radio" id="male" name="gender" value="male" checked>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label>
+        <input type="radio" id="other" name="gender" value="other">
+        <label for="other">Other</label>
+    </form>
+
 </body>
 </html>

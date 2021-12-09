@@ -6,6 +6,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/button.css' %}">
     <link rel="stylesheet" href="{% static 'css/resume_1.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'css/test_test2.css' %}">
 </head>
 <body>
     <div class="wrap">
@@ -40,7 +43,7 @@
         </form>
     {% endif %}
     <p></p>
-    <div>
+    <div class="resume_form">
         <form action="{% url 'resumeapp:resume_1' school=school school_major4=school_major4 career=career pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% if school == 1 %}
@@ -353,7 +356,126 @@
                         <option value='직접입력'>직접입력</option>
                     </select>
                     <p></p>
-                    직급/직책 : 이거 만들어야함
+                    직급/직책 :
+
+
+                    <div class="accordion">
+                        <input type="radio" name="accordion" id="answer04" class="test">
+                        <label for="answer04" class="test2">직급/직책 선택하기</label>
+                        <div class="testing">
+                            <h1>
+                                직급(직책) 선택
+                            </h1>
+                            <table border="1" width="600" height="300">
+                                <tr>
+                                    <th rowspan="6" width="150" bgcolor="#D5D5D5">직급</th>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_001" value="인턴/수습">
+                                        <label for="answer04_001">인턴/수습</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_002" value="사원">
+                                        <label for="answer04_002">사원</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_003" value="주임">
+                                        <label for="answer04_003">주임</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_004" value="계장">
+                                        <label for="answer04_004">계장</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_005" value="대리">
+                                        <label for="answer04_005">대리</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_006" value="과장">
+                                        <label for="answer04_006">과장</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_008" value="차장">
+                                        <label for="answer04_008">차장</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_009" value="부장">
+                                        <label for="answer04_009">부장</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0010" value="감사">
+                                        <label for="answer04_0010">감사</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0011" value="이사">
+                                        <label for="answer04_0011">이사</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0012" value="상무">
+                                        <label for="answer04_0012">상무</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0013" value="전무">
+                                        <label for="answer04_0013">전무</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0014" value="부사장">
+                                        <label for="answer04_0014">부사장</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0015" value="사장">
+                                        <label for="answer04_0015">사장</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0016" value="임원">
+                                        <label for="answer04_0016">임원</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0017" value="연구원">
+                                        <label for="answer04_0017">연구원</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0018" value="주임연구원">
+                                        <label for="answer04_0018">주임연구원</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0019" value="선임연구원">
+                                        <label for="answer04_0019">선임연구원</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0020" value="책임연구원">
+                                        <label for="answer04_0020">책임연구원</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0021" value="수석연구원">
+                                        <label for="answer04_0021">수석연구원</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0022" value="연구소장">
+                                        <label for="answer04_0022">연구소장</label>
+                                    </td>
+                                    <td style="border-right: none; border-left:none; border-top:none; border-bottom:none;">
+                                        <input type="radio" name="accordion1" id="answer04_0023" value="임시직/프리랜서">
+                                        <label for="answer04_0023">임시직/프리랜서</label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <input type="radio" name="accordion" id="answer04_0023_2" class="answer04_0023_2">
+                            <label for="answer04_0023_2" class="answer04_0023_2_label">입력완료</label>
+                        </div>
+                    </div>
+
+
+
                     <p></p>
                     근무부서 :
                     <input type="text" name="company_work" style="width:300px;height:50px;font-size:30px;">

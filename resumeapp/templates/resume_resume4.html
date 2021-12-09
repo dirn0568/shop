@@ -2,18 +2,18 @@
 
 {% block content %}
     {% if career == 2 %}
-        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability pk=pk %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability company_project=company_project pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="company_work_plus" value="프로젝트수행이력추가" class="btn btn-dark rounded-pill col-6 mt-3">
+            <input type="submit" name="company_project_plus" value="프로젝트수행이력추가" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     {% endif %}
     {% if career == 2 %}
-        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability pk=pk %}" method="post" enctype="multipart/form-data">
+        <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability company_project=company_project pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <input type="submit" name="company_ability_plus" value="ability_plus" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>
     {% endif %}
-    <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability pk=pk %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=company_ability company_project=company_project pk=pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {% if career == 2 %}
             <h1 class="career_test">
@@ -175,6 +175,19 @@
                 핵심역량 :
                 {% for list in company_ability_list %}
                     <input type="text" name="company_work_ability{{list.0}}" style="width:300px;height:50px;font-size:30px;">
+                {% endfor %}
+                {% for list in company_project_list %}
+                    <p></p>
+                    프로젝트명:
+                    <input type="text" name="company_project{{list.0}}" style="width:300px;height:50px;font-size:30px;">
+                    <p></p>
+                    수행기간 :
+                    <input type="month" name="company_project_start{{list.0}}" style="width:300px;height:50px;font-size:30px;">
+                    ~
+                    <input type="month" name="company_project_end{{list.0}}" style="width:300px;height:50px;font-size:30px;">
+                    <p></p>
+                    세부사항:
+                    <input type="text" name="company_project_detail{{list.0}}" style="width:300px;height:50px;font-size:30px;">
                 {% endfor %}
             </h1>
         {% endif %}

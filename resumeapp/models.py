@@ -73,3 +73,33 @@ class Resume_UniversitySchool_Major(models.Model):
 
     resume_university_major_list = models.CharField(max_length=200)
     resume_university_major_detail = models.CharField(max_length=200)
+
+##########################################################################################################
+
+# 경력
+
+class Resume_Career(models.Model):
+    resume_career = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_career')
+
+    resume_company_name = models.CharField(max_length=50)
+    resume_career_start_time = models.CharField(max_length=200)
+    resume_career_end_time = models.CharField(max_length=200)
+    resume_career_out = models.CharField(max_length=200)
+    resume_career_position = models.CharField(max_length=200)
+    resume_career_position_detail = models.CharField(max_length=200)
+    resume_career_money = models.CharField(max_length=20000)
+    resume_career_money_detail = models.CharField(max_length=200)
+    resume_career_position_detail2 = models.CharField(max_length=200)
+
+class Resume_Career_Ability(models.Model):
+    resume_career_ability = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_career_ability')
+
+    resume_career_ability_text = models.CharField(max_length=2000)
+
+class Resume_Career_Project(models.Model):
+    resume_career_project = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_career_project')
+
+    resume_career_project_text = models.CharField(max_length=2000)
+    resume_career_project_start_time = models.CharField(max_length=200)
+    resume_career_project_end_time = models.CharField(max_length=200)
+    resume_career_project_text_detail = models.CharField(max_length=2000)

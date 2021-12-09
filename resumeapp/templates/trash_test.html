@@ -5,23 +5,17 @@
     <title>Title</title>
   <script>
     function test() {
-        setInterval("alert('good')", 1000)
-    }
-    test();
-
-    startalert = function() {
-        playalert = setinterval(function() {
+            console.log("실행중31341")
             var gender = document.getElementsByName('gender');
-            var genderChoice; // 여기에 선택된 radio 버튼의 값이 담기게 된다.
-            for(var i=0; i<gender.length; i++) {
+            var genderChoice;
+            for (var i=0; i<gender.length; i++) {
                 if(gender[i].checked) {
                     genderChoice = gender[i].value;
                     console.log("실행중")
                 }
             }
-        }, 3000);
-    };
-    startalert();
+    }
+    setInterval(test, 1000);
   </script>
 </head>
 <body>

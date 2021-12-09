@@ -3,16 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/test_test3.css' %}">
 </head>
 <body>
     <form action="{% url 'resumeapp:test_test3' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="radio" name="radio1">radio1
+        <input type="checkbox" name="job" value="정규직">정규직
+        <input type="checkbox" name="job" value="교육생">교육생
+        <input type="checkbox" name="job" value="별정직">별정직
+        <input type="checkbox" name="job" value="파트">파트
+        <input type="checkbox" name="job" value="전임">전임
         <p></p>
-        <input type="radio" name="radio1">radio2
+        <input type="month" name="calender_start3">
+        ~
+        <input type="month" name="calender_end3">
         <p></p>
-        <input type="radio" name="radio1">radio3
+        <select name='company_select_money' style="width:300px;height:35px;font-size:30px;">
+            <option value='' selected>-- 선택 --</option>
+            <option value='1400 만원 이하'>1400 만원 이하</option>
+            <option value='회사내규에따름'>회사내규에 따름</option>
+            <option value='1억원 이상'>1억원 이상</option>
+        </select>
         <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
     </form>
+    <div class="accordion">
+        <form action="{% url 'resumeapp:test_test3' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="radio" name="accordion" id="answer04" class="test">
+            <label for="answer04" class="test2">직급/직책 선택하기</label>
+            <div class="testing">
+                <span class="radio_testing1">
+                    직급(직책) 선택
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test1">
+                    <label for="radio_test1">서울</label>
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test2">
+                    <label for="radio_test2">경기</label>
+                    <p></p>
+                    <input type="radio" name="radio_test" id="radio_test3">
+                    <label for="radio_test3">광주</label>
+                    <span class="radio_testing2">
+                        <input type="radio" name="radio_test" id="radio_test3_1">
+                        <label for="radio_test3_1">광주전체</label>
+                        <input type="radio" name="radio_test" id="radio_test3_2">
+                        <label for="radio_test3_2">남구</label>
+                        <input type="radio" name="radio_test" id="radio_test3_3">
+                        <label for="radio_test3_3">동구</label>
+                        <input type="radio" name="radio_test" id="radio_test3_4">
+                        <label for="radio_test3_4">북구</label>
+                        <input type="radio" name="radio_test" id="radio_test3_5">
+                        <label for="radio_test3_5">서구</label>
+                    </span>
+                </span>
+                <input type="radio" name="accordion" id="answer04_0023_2" class="answer04_0023_2">
+                <label for="answer04_0023_2" class="answer04_0023_2_label">입력완료</label>
+            <p></p>
+            </div>
+            <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+        <input type="radio" name="cs_channel" id="cs_channel_etc" value="" class="radio" /><span class="ml_10">기타</span>&nbsp;
+        <div id="etc_view" style="display:none;">
+            <input type="text" id="cs_channel_etc_view" name="cs_channel"  class="form-control" style="width:200px" placeholder="기타 선택 시 입력해주세요." />
+        </div>
+    </div>
 </body>
 </html>

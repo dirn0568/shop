@@ -4,7 +4,8 @@ from django.shortcuts import render, redirect
 # Create your views here.
 from accountapp.models import MyUser
 from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
-    ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm
+    ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm, ResumeCareerForm, ResumeCareerAbilityForm, \
+    ResumeCareerProjectForm
 from resumeapp.models import User_Resume, User_Resume_Certificate, Resume_Title
 
 
@@ -181,6 +182,11 @@ def test_resume(request, test1, test2, test3, pk):
     context['test3'] = test3
     return render(request, 'test_resume.html', context)
 
+
+
+#######################################################################################################
+
+
 def resume_1(request, school, school_major4, career, pk):
     # 테스트 버전2
     temp_school_major4 = [[0]]
@@ -199,6 +205,7 @@ def resume_1(request, school, school_major4, career, pk):
 
     if request.method == 'POST' and request.POST.get('resume_submit1'):
         print('*******************************',request.POST,'&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        print(request.POST['accordion1'], '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
         temp_user = MyUser.objects.filter(pk=pk)
         form = ResumeTitleForm(request.POST, request.FILES)
         if form.is_valid():
@@ -281,4 +288,244 @@ def test_test(request):
     context={}
     return render(request, 'test_test.html', context)
 
+def test_test2(request):
+    if request.method == 'POST':
+        print('############test_test2##########', request.POST)
+    context={}
+    return render(request, 'test_test2.html', context)
 
+def test_test3(request):
+    context = {}
+    # if test == 3:
+    #     test3=[]
+    #     test3.append(['광주전체'])
+    #     test3.append(['광산구'])
+    #     test3.append(['남구'])
+    #     test3.append(['동구'])
+    #     test3.append(['북구'])
+    #     test3.append(['서구'])
+    #     context['test3'] = test3
+
+    return render(request, 'test_test3.html', context)
+
+
+
+
+
+##########################################################################################################
+
+
+
+
+def resume_resume1(request, pk):
+    if request.method == 'POST':
+        print(request.POST)
+    context={}
+    context['pk'] = pk
+    return render(request, 'resume_resume1.html', context)
+
+def resume_resume2(request, school, school_major4, career, pk):
+    temp_school_major4 = [[0]]
+    context = {}
+    context['school'] = school
+    context['school_major4'] = school_major4
+    context['career'] = career
+    context['temp_school_major4'] = temp_school_major4
+    context['pk'] = pk
+    if request.method == 'POST' and request.POST.get('major_button_plus'):
+        school_major4 += 1
+        context['school_major4'] = school_major4
+        for i in range(1, school_major4):
+            temp_school_major4.append([i])
+        context['temp_school_major4'] = temp_school_major4
+
+    if request.method == 'POST' and request.POST.get('resume_submit1'):
+        print('*******************************', request.POST, '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+        temp_user = MyUser.objects.filter(pk=pk)
+        form = ResumeTitleForm(request.POST, request.FILES)
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            for temp in temp_user:
+                temp_form.resume_title = temp
+            temp_form.resume_title_detail = request.POST['resume_title']
+            temp_form.save()
+        if request.method == 'POST' and school == 1:
+            form = ResumeElementaryForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    title = temp.pk
+                    temp_form.resume_elementary = temp
+                temp_form.elementary_school_name = request.POST['elementary_school_name']
+                temp_form.elementary_field_name = request.POST['study_field1']
+                temp_form.elementary_start_time = request.POST['study_start1']
+                temp_form.elementary_end_time = request.POST['study_end1']
+                temp_form.save()
+        elif request.method == 'POST' and school == 2:
+            form = ResumeMiddleForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    title = temp.pk
+                    temp_form.resume_middle = temp
+                temp_form.middle_school_name = request.POST['middle_school_name']
+                temp_form.middle_field_name = request.POST['study_field2']
+                temp_form.middle_start_time = request.POST['study_start2']
+                temp_form.middle_end_time = request.POST['study_end2']
+                temp_form.save()
+        elif request.method == 'POST' and school == 3:
+            form = ResumeHighForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    title = temp.pk
+                    temp_form.resume_high = temp
+                temp_form.high_school_name = request.POST['high_school_name']
+                temp_form.high_field_name = request.POST['study_field3']
+                temp_form.high_start_time = request.POST['study_start3']
+                temp_form.high_end_time = request.POST['study_end3']
+                temp_form.high_major = request.POST['study_major3']
+                temp_form.save()
+        elif request.method == 'POST' and school == 4:
+            form = ResumeUniversityForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+                temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                for temp in temp_title:
+                    title = temp.pk
+                    temp_form.resume_university = temp
+                temp_form.university_study_year = request.POST['study_year4']
+                temp_form.university_school_name = request.POST['university_school_name']
+                temp_form.university_field_name = request.POST['study_field4']
+                temp_form.university_start_time = request.POST['study_start4']
+                temp_form.university_end_time = request.POST['study_end4']
+                temp_form.university_study_time = request.POST['study_time4']
+                temp_form.university_study_level = request.POST['study_level4']
+                temp_form.university_finaltest = request.POST['study_finaltest4']
+                temp_form.save()
+            if form.is_valid():
+                for i in range(0, school_major4):
+                    form = ResumeUniversitySchoolMajor_Form(request.POST, request.FILES)
+                    temp_form = form.save(commit=False)
+                    temp_title = Resume_Title.objects.filter(resume_title_detail=request.POST['resume_title'])
+                    for temp in temp_title:
+                        temp_form.resume_university_major = temp
+                    # temp_form.resume_university_major = Resume_Title.objects.last()
+                    temp_form.resume_university_major_list = request.POST.get('study_major_list4{0}'.format(i))
+                    temp_form.resume_university_major_detail = request.POST.get('study_major_detail4{0}'.format(i))
+                    temp_form.save()  # 11-22 학과가 제대로 저장안됨 이력서 제목이 여러개 저장되는건지 확인해야함
+        return redirect('resumeapp:resume_resume3', title=title, pk=pk)
+        # return render(request, 'resume_resume3.html', context)
+        # study_major_list4
+        # study_major_detail4
+
+    return render(request, 'resume_resume2.html', context)
+
+def resume_resume3(request, title, pk):
+    context={}
+    context['pk'] = pk
+    context['title'] = title
+    return render(request, 'resume_resume3.html', context)
+
+def resume_resume4(request, title, career, company_ability, company_project, pk):
+    company_ability_list = [[0],[1],[2]]
+    company_project_list = []
+    # print(company_ability,'111111111111111111111111111111111')
+    context = {}
+    context['pk'] = pk
+    context['title'] = title
+    context['career'] = career
+    context['company_ability'] = company_ability
+    context['company_ability_list'] = company_ability_list
+    context['company_project'] = company_project
+    context['company_project_list'] = company_project_list
+
+    if request.method == 'POST' and request.POST.get('company_ability_plus'):
+        company_ability += 1
+        context['company_ability'] = company_ability
+        for i in range(3, company_ability):
+            company_ability_list.append([i])
+        context['company_ability_list'] = company_ability_list
+        #######################################################
+        context['company_project'] = company_project
+        for i in range(0, company_project):
+            company_project_list.append([i])
+        context['company_project_list'] = company_project_list
+        #############################################################
+
+    if request.method == 'POST' and request.POST.get('company_project_plus'):
+        company_project += 1
+        #####################################################
+        context['company_ability'] = company_ability
+        for i in range(3, company_ability):
+            company_ability_list.append([i])
+        context['company_ability_list'] = company_ability_list
+        ######################################################
+        context['company_project'] = company_project
+        for i in range(0, company_project):
+            company_project_list.append([i])
+        context['company_project_list'] = company_project_list
+
+    if request.method == 'POST' and request.POST.get('resume_submit1'):
+        form = ResumeCareerForm(request.POST, request.FILES)
+        resume_title = Resume_Title.objects.filter(pk=title)
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            for temp in resume_title:
+                temp_form.resume_career = temp
+            temp_form.resume_company_name = request.POST.get('company_name')
+            temp_form.resume_career_start_time = request.POST.get('company_start')
+            temp_form.resume_career_end_time = request.POST.get('company_end')
+            temp_form.resume_career_out = request.POST.get('company_out')
+            temp_form.resume_career_position = request.POST.get('accordion1')
+            temp_form.resume_career_position_detail = request.POST.get('company_work')
+            temp_form.resume_career_money = request.POST.get('company_money')
+            temp_form.resume_career_money_detail = request.POST.get('company_money2')
+            temp_form.resume_career_position_detail2 = request.POST.get('company_work_detail')
+            # print('22222222222222222', request.POST.get('accordion1'), '33333333333333333333333333')
+            temp_form.save()
+        if form.is_valid():
+            for i in range(0, company_ability):
+                # print(request.POST.get('company_work_ability{0}'.format(i)))
+                form = ResumeCareerAbilityForm(request.POST, request.FILES)
+                temp_form = form.save(commit=False)
+                for temp in resume_title:
+                    temp_form.resume_career_ability = temp
+                temp_form.resume_career_ability_text = request.POST.get('company_work_ability{0}'.format(i))
+                temp_form.save()
+        if form.is_valid():
+            for i in range(0, company_project):
+                # print(request.POST.get('company_work_ability{0}'.format(i)))
+                form = ResumeCareerProjectForm(request.POST, request.FILES)
+                temp_form = form.save(commit=False)
+                for temp in resume_title:
+                    temp_form.resume_career_project = temp
+                temp_form.resume_career_project_text = request.POST.get('company_project{0}'.format(i))
+                temp_form.resume_career_project_start_time = request.POST.get('company_project_start{0}'.format(i))
+                temp_form.resume_career_project_end_time = request.POST.get('company_project_end{0}'.format(i))
+                temp_form.resume_career_project_text_detail = request.POST.get('company_project_detail{0}'.format(i))
+                temp_form.save()
+        return redirect('resumeapp:resume_resume5', title=title, pk=pk)
+
+    return render(request, 'resume_resume4.html', context)
+
+def resume_resume5(request, title, pk):
+    if request.method == 'POST':
+        print(request.POST)
+    context={}
+    context['pk'] = pk
+    context['title'] = title
+    return render(request, 'resume_resume5.html', context)
+
+##########################################################################
+
+def trash_test(request):
+    context={}
+    return render(request, 'trash_test.html', context)
+
+def trash_test2(request):
+    context={}
+    return render(request, 'trash_test2.html', context)

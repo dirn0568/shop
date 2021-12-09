@@ -6,16 +6,19 @@
 
     <form action="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        근무형태 :
         <input type="checkbox" name="job" value="정규직">정규직
         <input type="checkbox" name="job" value="교육생">교육생
         <input type="checkbox" name="job" value="별정직">별정직
         <input type="checkbox" name="job" value="파트">파트
         <input type="checkbox" name="job" value="전임">전임
         <p></p>
+        근무가능날짜:
         <input type="month" name="calender_start3">
         ~
         <input type="month" name="calender_end3">
         <p></p>
+        연봉 :
         <select name='company_select_money' style="width:300px;height:35px;font-size:30px;">
             <option value='' selected>-- 선택 --</option>
             <option value='1400 만원 이하'>1400 만원 이하</option>

@@ -18,4 +18,21 @@ urlpatterns = [
 
     path('test_test', views.test_test, name='test_test'),
 
+    path('test_test2', views.test_test2, name='test_test2'),
+
+    path('test_test3', views.test_test3, name='test_test3'),
+
+    path('resume_resume1/<int:pk>', views.resume_resume1, name='resume_resume1'),
+
+    path('resume_resume2/<int:school>/<int:school_major4>/<int:career>/<int:pk>', views.resume_resume2, name='resume_resume2'),
+
+    path('resume_resume3/<int:title>/<int:pk>', views.resume_resume3, name='resume_resume3'),
+
+    path('resume_resume4/<int:title>/<int:career>/<int:company_ability>/<int:company_project>/<int:pk>', views.resume_resume4, name='resume_resume4'),
+
+    path('resume_resume5/<int:title>/<int:pk>', views.resume_resume5, name='resume_resume5'),
+
+    path('trash_test', views.trash_test, name='trash_test'),
+
+    path('trash_test2', views.trash_test2, name='trash_test2'),
 ]
