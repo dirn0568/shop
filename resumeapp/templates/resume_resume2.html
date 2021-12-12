@@ -6,15 +6,15 @@
     <!--<link rel="stylesheet" href="{% static 'css/resume_resume2.css' %}">-->
 
     <div class="wrap">
-  		<a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=school_major4 career=career pk=pk %}" class="button">초등학교 졸업</a>
-        <a href="{% url 'resumeapp:resume_resume2' school=2 school_major4=school_major4 career=career pk=pk %}" class="button">중학교 졸업</a>
-        <a href="{% url 'resumeapp:resume_resume2' school=3 school_major4=school_major4 career=career pk=pk %}" class="button">고등학교 졸업</a>
-        <a href="{% url 'resumeapp:resume_resume2' school=4 school_major4=school_major4 career=career pk=pk %}" class="button">대학*대학원 이상 졸업</a>
+  		<a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" class="button">초등학교 졸업</a>
+        <a href="{% url 'resumeapp:resume_resume2' school=2 school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" class="button">중학교 졸업</a>
+        <a href="{% url 'resumeapp:resume_resume2' school=3 school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" class="button">고등학교 졸업</a>
+        <a href="{% url 'resumeapp:resume_resume2' school=4 school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" class="button">대학*대학원 이상 졸업</a>
 	</div>
 
     <div class="major_plus_button">
         {% if school == 4 %}
-            <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career pk=pk %}" method="post" enctype="multipart/form-data">
+            <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="submit" name="major_button_plus" value="전공 추가" class="major_button_plus">
             </form>
@@ -25,17 +25,31 @@
         이력서 추가사항
         <hr>
         대외활동
+        <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="out_play_button" value="추가" class="major_button_plus">
+        </form>
         <p></p>
         자격증/어학/수상내역
-        <p></p>
-        취업 우대사항
+        <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="prize_play_button" value="추가" class="major_button_plus">
+        </form>
         <p></p>
         포트폴리오 및 기타문서
+        <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="port_polio_button" value="추가" class="major_button_plus">
+        </form>
         <p></p>
         자기소개서
+        <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="self_introduce_button" value="추가" class="major_button_plus">
+        </form>
     </div>
 
-    <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career pk=pk %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="content">
             {% if school == 1 %}
@@ -230,10 +244,12 @@
                             <option value='대학원(박사)'>대학원(박사)</option>
                         </select>
                     </div>
+                    <p></p>
                     <div class="school_name">
                         학교명
                         <input type="text" name="university_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;" class="school_css">
                     </div>
+                    <p></p>
                     <div class="field_name">
                         지역
                         <select name='study_field4' style="width:300px;height:50px;" class="field_css">
@@ -265,6 +281,7 @@
                             <option value='남극대륙'>남극대륙</option>
                         </select>
                     </div>
+                    <p></p>
                     <div class="time_data">
                         재학기간
                         <input type="month" name="study_start4" style="width:300px;height:50px;" class="time1_css">
@@ -275,6 +292,7 @@
                     </div>
 
                     {% for list4 in temp_school_major4 %}
+                        <p></p>
                         <div class="university_major_data">
                             전공
                             <select name='study_major_list4{{list4.0}}' style="width:300px;height:50px;" class="university_major_css">
@@ -321,9 +339,10 @@
                         </div>
                     {% endfor %}
                     <div class="university_week">
+                        <p></p>
                         주/야간
                         <select name='study_time4' style="width:300px;height:50px;" class="university_week_css">
-                            <option value='' selected>-- 주/야간 선택 --</option>
+                            <option value='' selected style="font-weight:bold;">-- 주/야간 선택 --</option>
                             <option value='주간'>주간</option>
                             <option value='야간'>야간</option>
                         </select>
@@ -337,15 +356,105 @@
                         학점
                         <input type="text" name="study_level4" placeholder="학점을 입력하세요" style="width:800px;height:50px;" class="university_score_css">
                     </div>
+                    <p></p>
                     <div class="university_final_test">
                         논문/졸업작품
-                        <input type="text" name="study_finaltest4" placeholder="논문 또는 졸업작품" style="width:800px;height:50px;">
+                        <input type="text" name="study_finaltest4" placeholder="논문 또는 졸업작품" style="width:800px;height:50px;" class="university_final_test_css">
                     </div>
+
+                    <!--  전공은 왜 바로 나오고 이거는 늦게 나오는지 알아보기 -->
+                    {% for list4 in temp_out_play %}
+                        <hr>
+                        <div>
+                            대외활동
+                            <p></p>
+                            활동구분
+                            <select name='out_play1{{list4.0}}' style="width:300px;height:50px;">
+                                <option value='' selected style="font-weight:bold;">-- 활동구분 선택 --</option>
+                                <option value='교내활동'>교내활동</option>
+                                <option value='인턴'>인턴</option>
+                                <option value='자원봉사'>자원봉사</option>
+                                <option value='동아리'>동아리</option>
+                                <option value='아르바이트'>아르바이트</option>
+                                <option value='사회활동'>사회활동</option>
+                                <option value='수행과제'>수행과제</option>
+                                <option value='해외연수'>해외연수</option>
+                                <option value='교육이수내역'>교육이수내역</option>
+                            </select>
+                            <p></p>
+                            기관/장소
+                            <input type="text" name="out_play2{{list4.0}}" placeholder="기관/장소 입력" style="width:800px;height:50px;">
+                            <p></p>
+                            활동기간
+                            <input type="month" name="out_play3{{list4.0}}" style="width:300px;height:50px;">
+                            <span>
+                                ~
+                            </span>
+                            <input type="month" name="out_play4{{list4.0}}" style="width:300px;height:50px;">
+                            <p></p>
+                            활동내용
+                            <input type="text" name="out_play5{{list4.0}}" placeholder="활동내용 입력" style="width:800px;height:50px;">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_prize_play %}
+                        <hr>
+                        <div>
+                            자격증 내역
+                            <p></p>
+                            자격증명
+                            <input type="text" name="prize_play1{{list4.0}}" placeholder="자격증명 입력" style="width:800px;height:50px;">
+                            <p></p>
+                            발행처/기관
+                            <input type="text" name="prize_play2{{list4.0}}" placeholder="발행처/기관 입력" style="width:800px;height:50px;">
+                            <p></p>
+                            합격구분
+                            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;">
+                                <option value='' selected style="font-weight:bold;">-- 합격구분 선택 --</option>
+                                <option value='1차합격'>1차합격</option>
+                                <option value='2차합격'>2차합격</option>
+                                <option value='필기합격'>필기합격</option>
+                                <option value='실기합격'>실기합격</option>
+                                <option value='최종합격'>최종합격</option>
+                            </select>
+                            <p></p>
+                            취득일
+                            <input type="month" name="prize_play4{{list4.0}}" style="width:300px;height:50px;">
+                        </div>
+                    {% endfor %}
+
+
+                    {% for list4 in temp_port_polio %}
+                        <hr>
+                        <div>
+                            포트폴리오 및 기타문서
+                            <p></p>
+                            활동구분
+                            <input type="file" name="port_polio1{{list4.0}}" style="width:800px;height:50px;">
+                            <p></p>
+                            포트폴리오추가
+                            <input type="button" name="port_polio_add" value="추가" style="width:800px;height:50px;">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_self_introduce %}
+                        <hr>
+                        <div>
+                            자기소개서
+                            <p></p>
+                            제목
+                            <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;">
+                            <p></p>
+                            내용
+                            <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;">
+                        </div>
+                    {% endfor %}
                 </span>
             {% endif %}
-            <div class="submit_button">
-                <input type="submit" value="다음페이지" name="resume_submit1">
-            </div>
+            <p></p>
+        </div>
+        <div class="submit_button">
+            <input type="submit" value="다음페이지" class="major_button_plus" name="resume_submit1">
         </div>
     </form>
 {% endblock %}
