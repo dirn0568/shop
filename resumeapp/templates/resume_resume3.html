@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/resume3.css' %}">
+
+    <div class="wrap">
   		<a href="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" class="button">신입</a>
         <a href="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=3 company_project=0 pk=pk %}" class="button">경력</a>
 	</div>
+
+    <div class="resume3_junior">
+        신입 이력서 작성하기
+        아직 직장 경력이 없으신분, 사회초년생, 대학을 막 졸업하신분, 다른 직종에 도전하시려는분, 
+    </div>
+
+    <div class="resume3_adult">
+        경력직 이력서 작성하기
+    </div>
 {% endblock %}

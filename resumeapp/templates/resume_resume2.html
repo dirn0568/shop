@@ -2,7 +2,7 @@
 
 {% block content %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/trash_test3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/resume2.css' %}">
     <!--<link rel="stylesheet" href="{% static 'css/resume_resume2.css' %}">-->
 
     <div class="wrap">
@@ -22,30 +22,32 @@
     </div>
 
     <div class="resume_add">
-        이력서 추가사항
+        <div class="resume_add_title">
+            이력서 추가사항
+        </div>
         <hr>
-        대외활동
         <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="out_play_button" value="추가" class="major_button_plus">
+            대외활동
+            <input type="submit" name="out_play_button" value="추가" class="resume_add_button_plus1">
         </form>
         <p></p>
-        자격증/어학/수상내역
         <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="prize_play_button" value="추가" class="major_button_plus">
+            자격증
+            <input type="submit" name="prize_play_button" value="추가" class="resume_add_button_plus2">
         </form>
         <p></p>
-        포트폴리오 및 기타문서
         <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="port_polio_button" value="추가" class="major_button_plus">
+            포트폴리오 및 기타문서
+            <input type="submit" name="port_polio_button" value="추가" class="resume_add_button_plus3">
         </form>
         <p></p>
-        자기소개서
         <form action="{% url 'resumeapp:resume_resume2' school=school school_major4=school_major4 career=career out_play=out_play prize_play=prize_play port_polio=port_polio self_introduce=self_introduce pk=pk %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="self_introduce_button" value="추가" class="major_button_plus">
+            자기소개서
+            <input type="submit" name="self_introduce_button" value="추가" class="resume_add_button_plus4">
         </form>
     </div>
 
@@ -53,17 +55,23 @@
         {% csrf_token %}
         <div class="content">
             {% if school == 1 %}
-                <h1 class="resume_title">
+                <div class="self_margin"></div>
+                <div class="resume_title">
                     이력서 제목
                     <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
-                </h1>
+                </div>
+
+                <div class="resume_line_css">
+                    <hr>
+                </div>
+
                 <span class="school">
-                    학력사항
-                    <h1 class="school_name">
+                    <div class="school_name">
                         학교명
                         <input type="text" name="elementary_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;" class="school_css">
-                    </h1>
-                    <h1 class="field_name">
+                    </div>
+                    <p></p>
+                    <div class="field_name">
                         지역
                         <select name='study_field1' style="width:300px;height:50px;font-size:30px;" class="field_css">
                             <option value='' selected>-- 지역 --</option>
@@ -93,30 +101,122 @@
                             <option value='아프리카'>아프리카</option>
                             <option value='남극대륙'>남극대륙</option>
                         </select>
-                    </h1>
-                    <h1 class="time_data">
+                    </div>
+                    <p></p>
+                    <div class="time_data">
                         재학기간
                         <input type="month" name="study_start1" style="width:300px;height:50px;font-size:30px;" class="time1_css">
                         <span class="time2_css">
                             ~
                         </span>
                         <input type="month" name="study_end1" style="width:300px;height:50px;font-size:30px;" class="time3_css">
-                    </h1>
-                    <p></p>
+                    </div>
+
+                    {% for list4 in temp_out_play %}
+                        <hr>
+                        <div>
+                            대외활동
+                            <p></p>
+                            활동구분
+                            <select name='out_play1{{list4.0}}' style="width:300px;height:50px;" class="out_play_css1">
+                                <option value='' selected style="font-weight:bold;">-- 활동구분 선택 --</option>
+                                <option value='교내활동'>교내활동</option>
+                                <option value='인턴'>인턴</option>
+                                <option value='자원봉사'>자원봉사</option>
+                                <option value='동아리'>동아리</option>
+                                <option value='아르바이트'>아르바이트</option>
+                                <option value='사회활동'>사회활동</option>
+                                <option value='수행과제'>수행과제</option>
+                                <option value='해외연수'>해외연수</option>
+                                <option value='교육이수내역'>교육이수내역</option>
+                            </select>
+                            <p></p>
+                            기관/장소
+                            <input type="text" name="out_play2{{list4.0}}" placeholder="기관/장소 입력" style="width:800px;height:50px;" class="out_play_css2">
+                            <p></p>
+                            활동기간
+                            <input type="month" name="out_play3{{list4.0}}" style="width:300px;height:50px;" class="out_play_css3">
+                            <span>
+                                ~
+                            </span>
+                            <input type="month" name="out_play4{{list4.0}}" style="width:300px;height:50px;">
+                            <p></p>
+                            활동내용
+                            <input type="text" name="out_play5{{list4.0}}" placeholder="활동내용 입력" style="width:800px;height:50px;" class="out_play_css4">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_prize_play %}
+                        <hr>
+                        <div>
+                            자격증 내역
+                            <p></p>
+                            자격증명
+                            <input type="text" name="prize_play1{{list4.0}}" placeholder="자격증명 입력" style="width:800px;height:50px;" class="prize_play_css1">
+                            <p></p>
+                            발행처/기관
+                            <input type="text" name="prize_play2{{list4.0}}" placeholder="발행처/기관 입력" style="width:800px;height:50px;" class="prize_play_css2">
+                            <p></p>
+                            합격구분
+                            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;" class="prize_play_css3">
+                                <option value='' selected style="font-weight:bold;">-- 합격구분 선택 --</option>
+                                <option value='1차합격'>1차합격</option>
+                                <option value='2차합격'>2차합격</option>
+                                <option value='필기합격'>필기합격</option>
+                                <option value='실기합격'>실기합격</option>
+                                <option value='최종합격'>최종합격</option>
+                            </select>
+                            <p></p>
+                            취득일
+                            <input type="month" name="prize_play4{{list4.0}}" style="width:300px;height:50px;" class="prize_play_css4">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_port_polio %}
+                        <hr>
+                        <div>
+                            포트폴리오 및 기타문서
+                            <p></p>
+                            활동구분
+                            <input type="file" name="port_polio1{{list4.0}}" style="width:800px;height:50px;" class="port_polio_css1">
+                            <p></p>
+                            포트폴리오추가
+                            <input type="button" name="port_polio_add" value="추가" style="width:800px;height:50px;">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_self_introduce %}
+                        <hr>
+                        <div>
+                            자기소개서
+                            <p></p>
+                            제목
+                            <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;" class="self_introduce_css1">
+                            <p></p>
+                            내용
+                            <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;" class="self_introduce_css2">
+                        </div>
+                    {% endfor %}
                 </span>
             {% endif %}
             {% if school == 2 %}
-                <h1 class="resume_title">
+                <div class="self_margin"></div>
+                <div class="resume_title">
                     이력서 제목
                     <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
-                </h1>
+                </div>
+
+                <div class="resume_line_css">
+                    <hr>
+                </div>
+
                 <span class="school">
-                    학력사항
-                    <h1 class="school_name">
+                    <div class="school_name">
                         학교명
                         <input type="text" name="middle_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;"  class="school_css">
-                    </h1>
-                    <h1 class="field_name">
+                    </div>
+                    <p></p>
+                    <div class="field_name">
                         지역
                         <select name='study_field2' style="width:300px;height:50px;font-size:30px;" class="field_css">
                             <option value='' selected>-- 지역 --</option>
@@ -146,30 +246,122 @@
                             <option value='아프리카'>아프리카</option>
                             <option value='남극대륙'>남극대륙</option>
                         </select>
-                    </h1>
-                    <h1 class="time_data">
+                    </div>
+                    <p></p>
+                    <div class="time_data">
                         재학기간
                         <input type="month" name="study_start2" style="width:300px;height:50px;font-size:30px;" class="time1_css">
                         <span class="time2_css">
                             ~
                         </span>
                         <input type="month" name="study_end2" style="width:300px;height:50px;font-size:30px;" class="time3_css">
-                    </h1>
+                    </div>
+                    {% for list4 in temp_out_play %}
+                        <hr>
+                        <div>
+                            대외활동
+                            <p></p>
+                            활동구분
+                            <select name='out_play1{{list4.0}}' style="width:300px;height:50px;" class="out_play_css1">
+                                <option value='' selected style="font-weight:bold;">-- 활동구분 선택 --</option>
+                                <option value='교내활동'>교내활동</option>
+                                <option value='인턴'>인턴</option>
+                                <option value='자원봉사'>자원봉사</option>
+                                <option value='동아리'>동아리</option>
+                                <option value='아르바이트'>아르바이트</option>
+                                <option value='사회활동'>사회활동</option>
+                                <option value='수행과제'>수행과제</option>
+                                <option value='해외연수'>해외연수</option>
+                                <option value='교육이수내역'>교육이수내역</option>
+                            </select>
+                            <p></p>
+                            기관/장소
+                            <input type="text" name="out_play2{{list4.0}}" placeholder="기관/장소 입력" style="width:800px;height:50px;" class="out_play_css2">
+                            <p></p>
+                            활동기간
+                            <input type="month" name="out_play3{{list4.0}}" style="width:300px;height:50px;" class="out_play_css3">
+                            <span>
+                                ~
+                            </span>
+                            <input type="month" name="out_play4{{list4.0}}" style="width:300px;height:50px;">
+                            <p></p>
+                            활동내용
+                            <input type="text" name="out_play5{{list4.0}}" placeholder="활동내용 입력" style="width:800px;height:50px;" class="out_play_css4">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_prize_play %}
+                        <hr>
+                        <div>
+                            자격증 내역
+                            <p></p>
+                            자격증명
+                            <input type="text" name="prize_play1{{list4.0}}" placeholder="자격증명 입력" style="width:800px;height:50px;" class="prize_play_css1">
+                            <p></p>
+                            발행처/기관
+                            <input type="text" name="prize_play2{{list4.0}}" placeholder="발행처/기관 입력" style="width:800px;height:50px;" class="prize_play_css2">
+                            <p></p>
+                            합격구분
+                            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;" class="prize_play_css3">
+                                <option value='' selected style="font-weight:bold;">-- 합격구분 선택 --</option>
+                                <option value='1차합격'>1차합격</option>
+                                <option value='2차합격'>2차합격</option>
+                                <option value='필기합격'>필기합격</option>
+                                <option value='실기합격'>실기합격</option>
+                                <option value='최종합격'>최종합격</option>
+                            </select>
+                            <p></p>
+                            취득일
+                            <input type="month" name="prize_play4{{list4.0}}" style="width:300px;height:50px;" class="prize_play_css4">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_port_polio %}
+                        <hr>
+                        <div>
+                            포트폴리오 및 기타문서
+                            <p></p>
+                            활동구분
+                            <input type="file" name="port_polio1{{list4.0}}" style="width:800px;height:50px;" class="port_polio_css1">
+                            <p></p>
+                            포트폴리오추가
+                            <input type="button" name="port_polio_add" value="추가" style="width:800px;height:50px;">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_self_introduce %}
+                        <hr>
+                        <div>
+                            자기소개서
+                            <p></p>
+                            제목
+                            <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;" class="self_introduce_css1">
+                            <p></p>
+                            내용
+                            <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;" class="self_introduce_css2">
+                        </div>
+                    {% endfor %}
                 </span>
                 <p></p>
             {% endif %}
             {% if school == 3 %}
-                <h1 class="resume_title">
+                <div class="self_margin"></div>
+                <div class="resume_title">
                     이력서 제목
                     <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
-                </h1>
+                </div>
+
+                <div class="resume_line_css">
+                    <hr>
+                </div>
+
                 <span class="school">
-                    학력사항
-                    <h1 class="school_name">
+                    <div class="school_name">
                         학교명
                         <input type="text" name="high_school_name" placeholder="학교명을 입력하세요" style="width:800px;height:50px;font-size:30px;" class="school_css">
-                    </h1>
-                    <h1 class="field_name">
+                    </div>
+                    <p></p>
+                    <div class="field_name">
                         지역
                         <select name='study_field3' style="width:300px;height:50px;font-size:30px;" class="field_css">
                             <option value='' selected>-- 지역 --</option>
@@ -199,16 +391,18 @@
                             <option value='아프리카'>아프리카</option>
                             <option value='남극대륙'>남극대륙</option>
                         </select>
-                    </h1>
-                    <h1 class="time_data">
+                    </div>
+                    <p></p>
+                    <div class="time_data">
                         재학기간
                         <input type="month" name="study_start3" style="width:300px;height:50px;font-size:30px;" class="time1_css">
                         <span class="time2_css">
                             ~
                         </span>
                         <input type="month" name="study_end3" style="width:300px;height:50px;font-size:30px;" class="time3_css">
-                    </h1>
-                    <h1 class="high_major">
+                    </div>
+                    <p></p>
+                    <div class="high_major">
                         전공 계열
                         <select name='study_major3' style="width:300px;height:50px;font-size:30px;" class="high_major_css">
                             <option value='' selected>-- 전공 계열 --</option>
@@ -219,9 +413,93 @@
                             <option value='특성화/마이스터고'>특성화/마이스터고</option>
                             <option value='특수목적고'>특수목적고</option>
                         </select>
-                    </h1>
+                    </div>
+                    {% for list4 in temp_out_play %}
+                        <hr>
+                        <div>
+                            대외활동
+                            <p></p>
+                            활동구분
+                            <select name='out_play1{{list4.0}}' style="width:300px;height:50px;" class="out_play_css1">
+                                <option value='' selected style="font-weight:bold;">-- 활동구분 선택 --</option>
+                                <option value='교내활동'>교내활동</option>
+                                <option value='인턴'>인턴</option>
+                                <option value='자원봉사'>자원봉사</option>
+                                <option value='동아리'>동아리</option>
+                                <option value='아르바이트'>아르바이트</option>
+                                <option value='사회활동'>사회활동</option>
+                                <option value='수행과제'>수행과제</option>
+                                <option value='해외연수'>해외연수</option>
+                                <option value='교육이수내역'>교육이수내역</option>
+                            </select>
+                            <p></p>
+                            기관/장소
+                            <input type="text" name="out_play2{{list4.0}}" placeholder="기관/장소 입력" style="width:800px;height:50px;" class="out_play_css2">
+                            <p></p>
+                            활동기간
+                            <input type="month" name="out_play3{{list4.0}}" style="width:300px;height:50px;" class="out_play_css3">
+                            <span>
+                                ~
+                            </span>
+                            <input type="month" name="out_play4{{list4.0}}" style="width:300px;height:50px;">
+                            <p></p>
+                            활동내용
+                            <input type="text" name="out_play5{{list4.0}}" placeholder="활동내용 입력" style="width:800px;height:50px;" class="out_play_css4">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_prize_play %}
+                        <hr>
+                        <div>
+                            자격증 내역
+                            <p></p>
+                            자격증명
+                            <input type="text" name="prize_play1{{list4.0}}" placeholder="자격증명 입력" style="width:800px;height:50px;" class="prize_play_css1">
+                            <p></p>
+                            발행처/기관
+                            <input type="text" name="prize_play2{{list4.0}}" placeholder="발행처/기관 입력" style="width:800px;height:50px;" class="prize_play_css2">
+                            <p></p>
+                            합격구분
+                            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;" class="prize_play_css3">
+                                <option value='' selected style="font-weight:bold;">-- 합격구분 선택 --</option>
+                                <option value='1차합격'>1차합격</option>
+                                <option value='2차합격'>2차합격</option>
+                                <option value='필기합격'>필기합격</option>
+                                <option value='실기합격'>실기합격</option>
+                                <option value='최종합격'>최종합격</option>
+                            </select>
+                            <p></p>
+                            취득일
+                            <input type="month" name="prize_play4{{list4.0}}" style="width:300px;height:50px;" class="prize_play_css4">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_port_polio %}
+                        <hr>
+                        <div>
+                            포트폴리오 및 기타문서
+                            <p></p>
+                            활동구분
+                            <input type="file" name="port_polio1{{list4.0}}" style="width:800px;height:50px;" class="port_polio_css1">
+                            <p></p>
+                            포트폴리오추가
+                            <input type="button" name="port_polio_add" value="추가" style="width:800px;height:50px;">
+                        </div>
+                    {% endfor %}
+
+                    {% for list4 in temp_self_introduce %}
+                        <hr>
+                        <div>
+                            자기소개서
+                            <p></p>
+                            제목
+                            <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;" class="self_introduce_css1">
+                            <p></p>
+                            내용
+                            <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;" class="self_introduce_css2">
+                        </div>
+                    {% endfor %}
                 </span>
-                <p></p>
             {% endif %}
             {% if school == 4 %}
                 <div class="resume_title">
@@ -369,7 +647,7 @@
                             대외활동
                             <p></p>
                             활동구분
-                            <select name='out_play1{{list4.0}}' style="width:300px;height:50px;">
+                            <select name='out_play1{{list4.0}}' style="width:300px;height:50px;" class="out_play_css1">
                                 <option value='' selected style="font-weight:bold;">-- 활동구분 선택 --</option>
                                 <option value='교내활동'>교내활동</option>
                                 <option value='인턴'>인턴</option>
@@ -383,17 +661,17 @@
                             </select>
                             <p></p>
                             기관/장소
-                            <input type="text" name="out_play2{{list4.0}}" placeholder="기관/장소 입력" style="width:800px;height:50px;">
+                            <input type="text" name="out_play2{{list4.0}}" placeholder="기관/장소 입력" style="width:800px;height:50px;" class="out_play_css2">
                             <p></p>
                             활동기간
-                            <input type="month" name="out_play3{{list4.0}}" style="width:300px;height:50px;">
+                            <input type="month" name="out_play3{{list4.0}}" style="width:300px;height:50px;" class="out_play_css3">
                             <span>
                                 ~
                             </span>
                             <input type="month" name="out_play4{{list4.0}}" style="width:300px;height:50px;">
                             <p></p>
                             활동내용
-                            <input type="text" name="out_play5{{list4.0}}" placeholder="활동내용 입력" style="width:800px;height:50px;">
+                            <input type="text" name="out_play5{{list4.0}}" placeholder="활동내용 입력" style="width:800px;height:50px;" class="out_play_css4">
                         </div>
                     {% endfor %}
 
@@ -403,13 +681,13 @@
                             자격증 내역
                             <p></p>
                             자격증명
-                            <input type="text" name="prize_play1{{list4.0}}" placeholder="자격증명 입력" style="width:800px;height:50px;">
+                            <input type="text" name="prize_play1{{list4.0}}" placeholder="자격증명 입력" style="width:800px;height:50px;" class="prize_play_css1">
                             <p></p>
                             발행처/기관
-                            <input type="text" name="prize_play2{{list4.0}}" placeholder="발행처/기관 입력" style="width:800px;height:50px;">
+                            <input type="text" name="prize_play2{{list4.0}}" placeholder="발행처/기관 입력" style="width:800px;height:50px;" class="prize_play_css2">
                             <p></p>
                             합격구분
-                            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;">
+                            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;" class="prize_play_css3">
                                 <option value='' selected style="font-weight:bold;">-- 합격구분 선택 --</option>
                                 <option value='1차합격'>1차합격</option>
                                 <option value='2차합격'>2차합격</option>
@@ -419,7 +697,7 @@
                             </select>
                             <p></p>
                             취득일
-                            <input type="month" name="prize_play4{{list4.0}}" style="width:300px;height:50px;">
+                            <input type="month" name="prize_play4{{list4.0}}" style="width:300px;height:50px;" class="prize_play_css4">
                         </div>
                     {% endfor %}
 
@@ -430,7 +708,7 @@
                             포트폴리오 및 기타문서
                             <p></p>
                             활동구분
-                            <input type="file" name="port_polio1{{list4.0}}" style="width:800px;height:50px;">
+                            <input type="file" name="port_polio1{{list4.0}}" style="width:800px;height:50px;" class="port_polio_css1">
                             <p></p>
                             포트폴리오추가
                             <input type="button" name="port_polio_add" value="추가" style="width:800px;height:50px;">
@@ -443,16 +721,16 @@
                             자기소개서
                             <p></p>
                             제목
-                            <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;">
+                            <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;" class="self_introduce_css1">
                             <p></p>
                             내용
-                            <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;">
+                            <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;" class="self_introduce_css2">
                         </div>
                     {% endfor %}
                 </span>
             {% endif %}
-            <p></p>
         </div>
+        <p></p>
         <div class="submit_button">
             <input type="submit" value="다음페이지" class="major_button_plus" name="resume_submit1">
         </div>

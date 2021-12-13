@@ -116,7 +116,7 @@
     margin-left: 8px;
 }
 
-/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 .submit_button {
     text-align:center;
@@ -134,11 +134,107 @@
     top: 200px;
     margin-left: 1345px;
     width:300px;
-    height:400px;
-    background:#ebf8ff;
+    height:350px;
+    font-size:20px;
+    font-weight:bold;
+    background:#D5D5D5;
     border-radius: 10px;
+}
+
+.resume_add_title {
+    margin-top: 1rem;
+}
+
+.resume_add_button_plus1 {
+    border:none;
+    font-weight:bold;
+    background:#A6A6A6;
+    padding: 10px 1rem;
+    border-radius: 10px;
+    margin-left: 8rem;
+}
+
+.resume_add_button_plus2 {
+    border:none;
+    font-weight:bold;
+    background:#A6A6A6;
+    padding: 10px 1rem;
+    border-radius: 10px;
+    margin-left: 9.2rem;
+}
+
+.resume_add_button_plus3 {
+    border:none;
+    font-weight:bold;
+    background:#A6A6A6;
+    padding: 10px 1rem;
+    border-radius: 10px;
+    margin-left: 0.4rem;
+}
+
+.resume_add_button_plus4 {
+    border:none;
+    font-weight:bold;
+    background:#A6A6A6;
+    padding: 10px 1rem;
+    border-radius: 10px;
+    margin-left: 6.8rem;
 }
 
 .resume_line_css {
     width: 85rem;
 }
+
+.self_margin {
+    height: 2rem;
+    background:#ffffff;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 이력서 부가요소들 */
+
+.out_play_css1 {
+    margin-left: 4.8rem;
+}
+
+.out_play_css2 {
+    margin-left: 4rem;
+}
+
+.out_play_css3 {
+    margin-left: 4.8rem;
+}
+
+.out_play_css4 {
+    margin-left: 4.8rem;
+}
+
+.prize_play_css1 {
+    margin-left: 4.8rem;
+}
+
+.prize_play_css2 {
+    margin-left: 2.3rem;
+}
+
+.prize_play_css3 {
+    margin-left: 4.7rem;
+}
+
+.prize_play_css4 {
+    margin-left: 6.4rem;
+}
+
+.port_polio_css1 {
+    margin-left: 4.8rem;
+}
+
+.self_introduce_css1 {
+    margin-left: 8rem;
+}
+
+.self_introduce_css2 {
+    margin-left: 8rem;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
