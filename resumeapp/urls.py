@@ -24,7 +24,7 @@ urlpatterns = [
 
     path('resume_resume1/<int:pk>', views.resume_resume1, name='resume_resume1'),
 
-    path('resume_resume2/<int:school>/<int:school_major4>/<int:career>/<int:pk>', views.resume_resume2, name='resume_resume2'),
+    path('resume_resume2/<int:school>/<int:school_major4>/<int:career>/<int:out_play>/<int:prize_play>/<int:port_polio>/<int:self_introduce>/<int:pk>', views.resume_resume2, name='resume_resume2'),
 
     path('resume_resume3/<int:title>/<int:pk>', views.resume_resume3, name='resume_resume3'),
 
@@ -35,4 +35,6 @@ urlpatterns = [
     path('trash_test', views.trash_test, name='trash_test'),
 
     path('trash_test2', views.trash_test2, name='trash_test2'),
+
+    path('resume_write/<int:school>/<int:school_major4>/<int:career>/<int:out_play>/<int:prize_play>/<int:port_polio>/<int:self_introduce>/<int:company_ability>/<int:company_project>/<int:pk>', views.resume_write, name='resume_write'),
 ]

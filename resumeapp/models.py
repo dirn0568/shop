@@ -74,6 +74,33 @@ class Resume_UniversitySchool_Major(models.Model):
     resume_university_major_list = models.CharField(max_length=200)
     resume_university_major_detail = models.CharField(max_length=200)
 
+class Resume_Out_Play(models.Model):
+    resume_out_play = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_out_play')
+
+    resume_out_activity = models.CharField(max_length=500)
+    resume_out_place = models.CharField(max_length=500)
+    resume_out_start_play = models.CharField(max_length=500)
+    resume_out_end_play = models.CharField(max_length=500)
+    resume_out_play_text = models.CharField(max_length=500)
+class Resume_Prize_Play(models.Model):
+    resume_prize_play = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_prize_play')
+
+    resume_prize_certificate = models.CharField(max_length=500)
+    resume_prize_place = models.CharField(max_length=500)
+    resume_prize_title = models.CharField(max_length=500)
+    resume_prize_date = models.CharField(max_length=500)
+
+class Resume_Port_Polio(models.Model):
+    resume_port_polio = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_port_polio')
+
+    resume_port_polio_detail = models.FileField()
+class Resume_Self_Introduce(models.Model):
+    resume_self_introduce = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_self_introduce')
+
+    resume_self_introduce_title = models.CharField(max_length=500)
+    resume_self_introduce_text = models.CharField(max_length=3000)
+
+
 ##########################################################################################################
 
 # 경력
