@@ -2,245 +2,807 @@
 
 {% block content %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/trash_test2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/resume5.css' %}">
 
     <form action="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        근무형태 :
-        <input type="checkbox" name="job" value="정규직">정규직
-        <input type="checkbox" name="job" value="교육생">교육생
-        <input type="checkbox" name="job" value="별정직">별정직
-        <input type="checkbox" name="job" value="파트">파트
-        <input type="checkbox" name="job" value="전임">전임
-        <p></p>
-        근무가능날짜:
-        <input type="month" name="calender_start3">
-        ~
-        <input type="month" name="calender_end3">
-        <p></p>
-        연봉 :
-        <select name='company_select_money' style="width:300px;height:35px;font-size:30px;">
-            <option value='' selected>-- 선택 --</option>
-            <option value='1400 만원 이하'>1400 만원 이하</option>
-            <option value='회사내규에따름'>회사내규에 따름</option>
-            <option value='1억원 이상'>1억원 이상</option>
-        </select>
-        <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
-    </form>
-    <div class="accordion">
-        <form action="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="radio" name="accordion" id="answer04" class="btn">
-            <label for="answer04">근무지역 선택하기</label>
-            <div class="testing">
-                <div>
-                    근무지역 선택
-                    <p></p>
-                    <input type="radio" name="radio_test" id="radio_test1" class="btn">
-                    <label for="radio_test1">서울</label>
-                    <div class="radio_testing1">
-                        <input type="radio" name="radio_test1" id="radio_test1_1" class="btn">
-                        <label for="radio_test1_1">서울전체</label>
-                        <input type="radio" name="radio_test1" id="radio_test1_2" class="btn">
-                        <label for="radio_test1_2">강남군</label>
-                        <input type="radio" name="radio_test1" id="radio_test1_3" class="btn">
-                        <label for="radio_test1_3">강동구</label>
-                        <p></p>
-                        <input type="radio" name="radio_test1" id="radio_test1_4" class="btn">
-                        <label for="radio_test1_4">강북구</label>
-                        <input type="radio" name="radio_test1" id="radio_test1_5" class="btn">
-                        <label for="radio_test1_5">강서구</label>
-                        <input type="radio" name="radio_test1" id="radio_test1_6" class="btn">
-                        <label for="radio_test1_6">관악구</label>
-                    </div>
-                    <p></p>
-                    <input type="radio" name="radio_test" id="radio_test2" class="btn">
-                    <label for="radio_test2">경기</label>
-                    <div class="radio_testing2">
-                        <input type="radio" name="radio_test1" id="radio_test2_1" class="btn">
-                        <label for="radio_test2_1">경기전체</label>
-                        <input type="radio" name="radio_test1" id="radio_test2_2" class="btn">
-                        <label for="radio_test2_2">가평군</label>
-                        <input type="radio" name="radio_test1" id="radio_test2_3" class="btn">
-                        <label for="radio_test2_3">고양시</label>
-                        <p></p>
-                        <input type="radio" name="radio_test1" id="radio_test2_4" class="btn">
-                        <label for="radio_test2_4">고양시 덕양구</label>
-                        <input type="radio" name="radio_test1" id="radio_test2_5" class="btn">
-                        <label for="radio_test2_5">고양시 일산동구</label>
-                        <input type="radio" name="radio_test1" id="radio_test2_6" class="btn">
-                        <label for="radio_test2_6">고양시 일산서구</label>
-                    </div>
-                    <p></p>
-                    <input type="radio" name="radio_test" id="radio_test3" class="btn">
-                    <label for="radio_test3">광주</label>
-                    <div class="radio_testing2">
-                        <input type="radio" name="radio_test1" id="radio_test3_1" class="btn">
-                        <label for="radio_test3_1">광주전체</label>
-                        <p></p>
-                        <input type="radio" name="radio_test1" id="radio_test3_2" class="btn">
-                        <label for="radio_test3_2">남구</label>
-                        <p></p>
-                        <input type="radio" name="radio_test1" id="radio_test3_3" class="btn">
-                        <label for="radio_test3_3">북구</label>
-                        <div class="radio_testing3">
-                            <button>연제동</button>
-                            <button>신용동</button>
-                            <button>용봉동</button>
-                            <button>국제동</button>
-                        </div>
-                        <p></p>
-                        <input type="radio" name="radio_test1" id="radio_test3_4" class="btn">
-                        <label for="radio_test3_4">서구</label>
-                        <p></p>
-                        <input type="radio" name="radio_test1" id="radio_test3_5" class="btn">
-                        <label for="radio_test3_5">동구</label>
-                    </div>
-                </div>
-                <input type="radio" name="accordion" id="answer04_0023_2" class="btn">
-                <label for="answer04_0023_2">입력완료</label>
+        <div class="content">
+            근무형태 :
+            <input type="checkbox" name="job" value="정규직">정규직
+            <input type="checkbox" name="job" value="교육생">교육생
+            <input type="checkbox" name="job" value="별정직">별정직
+            <input type="checkbox" name="job" value="파트">파트
+            <input type="checkbox" name="job" value="전임">전임
             <p></p>
+            근무가능날짜 :
+            <input type="month" name="calender_start3">
+            ~
+            <input type="month" name="calender_end3">
+            <p></p>
+            연봉 :
+            <select name='company_select_money' style="width:300px;height:50px;font-size:30px;">
+                <option value='' selected>-- 선택 --</option>
+                <option value='1400 만원 이하'>1,400 만원 이하</option>
+                <option value='1,400~1,600만원'>1,400~1,600만원</option>
+                <option value='1,600~1,800만원'>1,600~1,800만원</option>
+                <option value='1,800~2,000만원'>1,800~2,000만원</option>
+                <option value='2,000~2,200만원'>2,000~2,200만원</option>
+                <option value='2,200~2,400만원'>2,200~2,400만원</option>
+                <option value='2,400~2,600만원'>2,400~2,600만원</option>
+                <option value='2,600~2,800만원'>2,600~2,800만원</option>
+                <option value='2,800~3,000만원'>2,800~3,000만원</option>
+                <option value='3,000~3,200만원'>3,000~3,200만원</option>
+                <option value='3,200~3,400만원'>3,200~3,400만원</option>
+                <option value='3,600~3,800만원'>3,600~3,800만원</option>
+                <option value='3,800~4,000만원'>3,800~4,000만원</option>
+                <option value='4,000~5,000만원'>4,000~5,000만원</option>
+                <option value='5,000~6,000만원'>5,000~6,000만원</option>
+                <option value='6,000~7,000만원'>6,000~7,000만원</option>
+                <option value='7,000~8,000만원'>7,000~8,000만원</option>
+                <option value='8,000~9,000만원'>8,000~9,000만원</option>
+                <option value='9,000~1억원'>9,000~1억원</option>
+                <option value='회사내규에따름'>회사내규에 따름</option>
+                <option value='1억원 이상'>1억원 이상</option>
+            </select>
+            <p></p>
+
+            근무지역 :
+            <input type="radio" name="accordion" id="answer04" class="field_btn1">
+            <label for="answer04" class="field_btn2"><span class="self_border_img">지역<span class="border_text">선택하기</span></span></label>
+            <div class="work_field1">
+                <input type="radio" name="accordion1" id="answer04_01">
+                <label for="answer04_01">서울</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_01_1">
+                    <label for="answer04_01_1">서울전체</label>
+                    <input type="radio" name="accordion2" id="answer04_01_2">
+                    <label for="answer04_01_2">강남구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_3">
+                    <label for="answer04_01_3">강동구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_4">
+                    <label for="answer04_01_4">강북구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_5">
+                    <label for="answer04_01_5">강서구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_6">
+                    <label for="answer04_01_6">관악구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_7">
+                    <label for="answer04_01_7">광진구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_8">
+                    <label for="answer04_01_8">구로구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_9">
+                    <label for="answer04_01_9">금천구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_10">
+                    <label for="answer04_01_10">노원구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_11">
+                    <label for="answer04_01_11">도봉구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_12">
+                    <label for="answer04_01_12">동대문구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_13">
+                    <label for="answer04_01_13">동작구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_14">
+                    <label for="answer04_01_14">마포구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_15">
+                    <label for="answer04_01_15">서대문구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_16">
+                    <label for="answer04_01_16">서초구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_17">
+                    <label for="answer04_01_17">성동구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_18">
+                    <label for="answer04_01_18">성북구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_19">
+                    <label for="answer04_01_19">송파구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_20">
+                    <label for="answer04_01_20">양천구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_21">
+                    <label for="answer04_01_21">영등포구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_22">
+                    <label for="answer04_01_22">용산구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_23">
+                    <label for="answer04_01_23">은평구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_24">
+                    <label for="answer04_01_24">종로구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_01_25">
+                    <label for="answer04_01_25">중구</label>
+                    <input type="radio" name="accordion2" id="answer04_01_26">
+                    <label for="answer04_01_26">중랑구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_02">
+                <label for="answer04_02">경기</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_02_1">
+                    <label for="answer04_02_1">경기전체</label>
+                    <input type="radio" name="accordion2" id="answer04_02_2">
+                    <label for="answer04_02_2">가평군</label>
+                    <input type="radio" name="accordion2" id="answer04_02_3">
+                    <label for="answer04_02_3">고양시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_4">
+                    <label for="answer04_02_4">고양시 덕양구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_5">
+                    <label for="answer04_02_5">고양시 일산동구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_6">
+                    <label for="answer04_02_6">고양시 일사서구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_7">
+                    <label for="answer04_02_7">과천시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_8">
+                    <label for="answer04_02_8">광명시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_9">
+                    <label for="answer04_02_9">광주시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_10">
+                    <label for="answer04_02_10">구리시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_11">
+                    <label for="answer04_02_11">군포시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_12">
+                    <label for="answer04_02_12">김포시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_13">
+                    <label for="answer04_02_13">남양주시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_14">
+                    <label for="answer04_02_14">동두천시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_15">
+                    <label for="answer04_02_15">부천시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_16">
+                    <label for="answer04_02_16">부천시 소사구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_17">
+                    <label for="answer04_02_17">부천시 오정구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_18">
+                    <label for="answer04_02_18">부천시 원미구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_19">
+                    <label for="answer04_02_19">성남시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_20">
+                    <label for="answer04_02_20">성남시 분당구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_21">
+                    <label for="answer04_02_21">성남시 수정구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_22">
+                    <label for="answer04_02_22">성남시 중원구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_23">
+                    <label for="answer04_02_23">수원시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_24">
+                    <label for="answer04_02_24">수원시 권선구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_25">
+                    <label for="answer04_02_25">수원시 영통구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_26">
+                    <label for="answer04_02_26">수원시 장안구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_27">
+                    <label for="answer04_02_27">수원시 팔달구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_28">
+                    <label for="answer04_02_28">시흥시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_29">
+                    <label for="answer04_02_29">안산시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_30">
+                    <label for="answer04_02_30">안산시 단원구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_31">
+                    <label for="answer04_02_31">안산시 상록구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_32">
+                    <label for="answer04_02_32">안성시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_33">
+                    <label for="answer04_02_33">안양시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_34">
+                    <label for="answer04_02_34">안양시 동안구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_35">
+                    <label for="answer04_02_35">안양시 만안구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_36">
+                    <label for="answer04_02_36">양주시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_37">
+                    <label for="answer04_02_37">양평군</label>
+                    <input type="radio" name="accordion2" id="answer04_02_38">
+                    <label for="answer04_02_38">여주시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_39">
+                    <label for="answer04_02_39">연천군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_40">
+                    <label for="answer04_02_40">오산시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_41">
+                    <label for="answer04_02_41">용인시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_42">
+                    <label for="answer04_02_42">용인시 기흥구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_43">
+                    <label for="answer04_02_43">용인시 수지구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_44">
+                    <label for="answer04_02_44">용인시 처인구</label>
+                    <input type="radio" name="accordion2" id="answer04_02_45">
+                    <label for="answer04_02_45">의왕시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_46">
+                    <label for="answer04_02_46">의정부시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_47">
+                    <label for="answer04_02_47">이천시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_48">
+                    <label for="answer04_02_48">파주시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_49">
+                    <label for="answer04_02_49">평택시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_50">
+                    <label for="answer04_02_50">포천시</label>
+                    <input type="radio" name="accordion2" id="answer04_02_51">
+                    <label for="answer04_02_51">하남시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_02_52">
+                    <label for="answer04_01_1">화성시</label>
+                </div>
+
+                <p></p>  <!-- p태그 떄문에 안나올수도 css hide 부분이 안나올수도 있음 -->
+                <input type="radio" name="accordion1" id="answer04_03">
+                <label for="answer04_03">광주</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_03_1">
+                    <label for="answer04_03_1">광주전체</label>
+                    <input type="radio" name="accordion2" id="answer04_03_2">
+                    <label for="answer04_03_2">광산구</label>
+                    <input type="radio" name="accordion2" id="answer04_03_3">
+                    <label for="answer04_03_3">남구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_03_4">
+                    <label for="answer04_03_4">동구</label>
+                    <input type="radio" name="accordion2" id="answer04_03_5">
+                    <label for="answer04_03_5">북구</label>
+                    <input type="radio" name="accordion2" id="answer04_03_6">
+                    <label for="answer04_03_6">서구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_04">
+                <label for="answer04_04">대구</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_04_1">
+                    <label for="answer04_04_1">대구전체</label>
+                    <input type="radio" name="accordion2" id="answer04_04_2">
+                    <label for="answer04_04_2">남구</label>
+                    <input type="radio" name="accordion2" id="answer04_04_3">
+                    <label for="answer04_04_3">달서구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_04_4">
+                    <label for="answer04_04_4">달성군</label>
+                    <input type="radio" name="accordion2" id="answer04_04_5">
+                    <label for="answer04_04_5">동구</label>
+                    <input type="radio" name="accordion2" id="answer04_04_6">
+                    <label for="answer04_04_6">북구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_04_7">
+                    <label for="answer04_04_7">서구</label>
+                    <input type="radio" name="accordion2" id="answer04_04_8">
+                    <label for="answer04_04_8">수성구</label>
+                    <input type="radio" name="accordion2" id="answer04_04_9">
+                    <label for="answer04_04_9">중구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_05">
+                <label for="answer04_05">대전</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_05_1">
+                    <label for="answer04_05_1">대전전체</label>
+                    <input type="radio" name="accordion2" id="answer04_05_2">
+                    <label for="answer04_05_2">대덕구</label>
+                    <input type="radio" name="accordion2" id="answer04_05_3">
+                    <label for="answer04_05_3">동구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_05_4">
+                    <label for="answer04_05_4">서구</label>
+                    <input type="radio" name="accordion2" id="answer04_05_5">
+                    <label for="answer04_05_5">유성구</label>
+                    <input type="radio" name="accordion2" id="answer04_05_6">
+                    <label for="answer04_05_6">중구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_06">
+                <label for="answer04_06">부산</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_06_1">
+                    <label for="answer04_06_1">부산전체</label>
+                    <input type="radio" name="accordion2" id="answer04_06_2">
+                    <label for="answer04_06_2">강서구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_3">
+                    <label for="answer04_06_3">금정구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_06_4">
+                    <label for="answer04_06_4">기장군</label>
+                    <input type="radio" name="accordion2" id="answer04_06_5">
+                    <label for="answer04_06_5">남구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_6">
+                    <label for="answer04_06_6">동구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_06_7">
+                    <label for="answer04_06_7">동래구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_8">
+                    <label for="answer04_06_8">부산진구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_9">
+                    <label for="answer04_06_9">북구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_06_10">
+                    <label for="answer04_06_10">사상구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_11">
+                    <label for="answer04_06_11">사하구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_12">
+                    <label for="answer04_06_12">서구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_06_13">
+                    <label for="answer04_06_13">수영구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_14">
+                    <label for="answer04_06_14">연제구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_15">
+                    <label for="answer04_06_15">영도구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_06_16">
+                    <label for="answer04_06_16">중구</label>
+                    <input type="radio" name="accordion2" id="answer04_06_17">
+                    <label for="answer04_06_17">해운대구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_07">
+                <label for="answer04_07">울산</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_07_1">
+                    <label for="answer04_07_1">울산전체</label>
+                    <input type="radio" name="accordion2" id="answer04_07_2">
+                    <label for="answer04_07_2">남구</label>
+                    <input type="radio" name="accordion2" id="answer04_07_3">
+                    <label for="answer04_07_3">동구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_07_4">
+                    <label for="answer04_07_4">북구</label>
+                    <input type="radio" name="accordion2" id="answer04_07_5">
+                    <label for="answer04_07_5">울주군</label>
+                    <input type="radio" name="accordion2" id="answer04_07_6">
+                    <label for="answer04_07_6">중구</label>
+                </div>
+
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_08">
+                <label for="answer04_08">인천</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_08_1">
+                    <label for="answer04_08_1">인천전체</label>
+                    <input type="radio" name="accordion2" id="answer04_08_2">
+                    <label for="answer04_08_2">강화군</label>
+                    <input type="radio" name="accordion2" id="answer04_08_3">
+                    <label for="answer04_08_3">계양구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_08_4">
+                    <label for="answer04_08_4">미추홀구</label>
+                    <input type="radio" name="accordion2" id="answer04_08_5">
+                    <label for="answer04_08_5">남동구</label>
+                    <input type="radio" name="accordion2" id="answer04_08_6">
+                    <label for="answer04_08_6">동구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_08_7">
+                    <label for="answer04_08_7">부평구</label>
+                    <input type="radio" name="accordion2" id="answer04_08_8">
+                    <label for="answer04_08_8">서구</label>
+                    <input type="radio" name="accordion2" id="answer04_08_9">
+                    <label for="answer04_08_9">연수구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_08_10">
+                    <label for="answer04_08_10">웅진군</label>
+                    <input type="radio" name="accordion2" id="answer04_08_11">
+                    <label for="answer04_08_11">중구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_09">
+                <label for="answer04_09">강원</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_09_1">
+                    <label for="answer04_09_1">강원전체</label>
+                    <input type="radio" name="accordion2" id="answer04_09_2">
+                    <label for="answer04_09_2">강릉시</label>
+                    <input type="radio" name="accordion2" id="answer04_09_3">
+                    <label for="answer04_09_3">고성군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_09_4">
+                    <label for="answer04_09_4">동해시</label>
+                    <input type="radio" name="accordion2" id="answer04_09_5">
+                    <label for="answer04_09_5">삼척시</label>
+                    <input type="radio" name="accordion2" id="answer04_09_6">
+                    <label for="answer04_09_6">속초시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_09_7">
+                    <label for="answer04_09_7">양구군</label>
+                    <input type="radio" name="accordion2" id="answer04_09_8">
+                    <label for="answer04_09_8">양양군</label>
+                    <input type="radio" name="accordion2" id="answer04_09_9">
+                    <label for="answer04_09_9">영월군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_09_10">
+                    <label for="answer04_09_10">원주시</label>
+                    <input type="radio" name="accordion2" id="answer04_09_11">
+                    <label for="answer04_09_11">인제군</label>
+                    <input type="radio" name="accordion2" id="answer04_09_12">
+                    <label for="answer04_09_12">정선군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_09_13">
+                    <label for="answer04_09_13">철원군</label>
+                    <input type="radio" name="accordion2" id="answer04_09_14">
+                    <label for="answer04_09_14">춘천시</label>
+                    <input type="radio" name="accordion2" id="answer04_09_15">
+                    <label for="answer04_09_15">태백시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_09_16">
+                    <label for="answer04_09_16">평창군</label>
+                    <input type="radio" name="accordion2" id="answer04_09_17">
+                    <label for="answer04_09_17">홍천군</label>
+                    <input type="radio" name="accordion2" id="answer04_09_18">
+                    <label for="answer04_09_18">화천군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_09_19">
+                    <label for="answer04_09_19">횡성군</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_10">
+                <label for="answer04_10">경남</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_10_1">
+                    <label for="answer04_10_1">경남전체</label>
+                    <input type="radio" name="accordion2" id="answer04_10_2">
+                    <label for="answer04_10_2">거제시</label>
+                    <input type="radio" name="accordion2" id="answer04_10_3">
+                    <label for="answer04_10_3">거창군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_10_4">
+                    <label for="answer04_10_4">고성군</label>
+                    <input type="radio" name="accordion2" id="answer04_10_5">
+                    <label for="answer04_10_5">김해시</label>
+                    <input type="radio" name="accordion2" id="answer04_10_6">
+                    <label for="answer04_10_6">남해군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_10_7">
+                    <label for="answer04_10_7">창원시 마산회원구</label>
+                    <input type="radio" name="accordion2" id="answer04_10_8">
+                    <label for="answer04_10_8">창원시 마산합포구</label>
+                    <input type="radio" name="accordion2" id="answer04_10_9">
+                    <label for="answer04_10_9">창원시 성산구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_10_10">
+                    <label for="answer04_10_10">창원시 의창구</label>
+                    <input type="radio" name="accordion2" id="answer04_10_11">
+                    <label for="answer04_10_11">밀양시</label>
+                    <input type="radio" name="accordion2" id="answer04_10_12">
+                    <label for="answer04_10_12">사천시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_10_13">
+                    <label for="answer04_10_13">산청군</label>
+                    <input type="radio" name="accordion2" id="answer04_10_14">
+                    <label for="answer04_10_14">양산시</label>
+                    <input type="radio" name="accordion2" id="answer04_10_15">
+                    <label for="answer04_10_15">의령군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_10_16">
+                    <label for="answer04_10_16">진주시</label>
+                    <input type="radio" name="accordion2" id="answer04_10_17">
+                    <label for="answer04_10_17">창원시 진해구</label>
+                    <input type="radio" name="accordion2" id="answer04_10_18">
+                    <label for="answer04_10_18">창녕군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_10_19">
+                    <label for="answer04_10_19">창원시</label>
+                    <input type="radio" name="accordion2" id="answer04_10_20">
+                    <label for="answer04_10_20">통영시</label>
+                    <input type="radio" name="accordion2" id="answer04_10_21">
+                    <label for="answer04_10_21">하동군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_10_22">
+                    <label for="answer04_10_22">함안군</label>
+                    <input type="radio" name="accordion2" id="answer04_10_23">
+                    <label for="answer04_10_23">함양군</label>
+                    <input type="radio" name="accordion2" id="answer04_10_24">
+                    <label for="answer04_10_24">합천군</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_11">
+                <label for="answer04_11">경북</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_11_1">
+                    <label for="answer04_11_1">경북전체</label>
+                    <input type="radio" name="accordion2" id="answer04_11_2">
+                    <label for="answer04_11_2">경산시</label>
+                    <input type="radio" name="accordion2" id="answer04_11_3">
+                    <label for="answer04_11_3">경주시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_4">
+                    <label for="answer04_11_4">고령군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_5">
+                    <label for="answer04_11_5">구미시</label>
+                    <input type="radio" name="accordion2" id="answer04_11_6">
+                    <label for="answer04_11_6">군위군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_7">
+                    <label for="answer04_11_7">김천시</label>
+                    <input type="radio" name="accordion2" id="answer04_11_8">
+                    <label for="answer04_11_8">문경시</label>
+                    <input type="radio" name="accordion2" id="answer04_11_9">
+                    <label for="answer04_11_9">봉화군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_10">
+                    <label for="answer04_11_10">상주시</label>
+                    <input type="radio" name="accordion2" id="answer04_11_11">
+                    <label for="answer04_11_11">성주군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_12">
+                    <label for="answer04_11_12">안동시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_13">
+                    <label for="answer04_11_13">영덕군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_14">
+                    <label for="answer04_11_14">영양군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_15">
+                    <label for="answer04_11_15">영주시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_16">
+                    <label for="answer04_11_16">영천시</label>
+                    <input type="radio" name="accordion2" id="answer04_11_17">
+                    <label for="answer04_11_17">예천군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_18">
+                    <label for="answer04_11_18">울릉군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_19">
+                    <label for="answer04_11_19">울진군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_20">
+                    <label for="answer04_11_20">의성군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_21">
+                    <label for="answer04_11_21">청도군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_22">
+                    <label for="answer04_11_22">청송군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_23">
+                    <label for="answer04_11_23">칠곡군</label>
+                    <input type="radio" name="accordion2" id="answer04_11_24">
+                    <label for="answer04_11_24">포항시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_11_25">
+                    <label for="answer04_11_25">포항시 남구</label>
+                    <input type="radio" name="accordion2" id="answer04_11_26">
+                    <label for="answer04_11_26">포항시 북구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_12">
+                <label for="answer04_12">전남</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_12_1">
+                    <label for="answer04_12_1">전남전체</label>
+                    <input type="radio" name="accordion2" id="answer04_12_2">
+                    <label for="answer04_12_2">강진군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_3">
+                    <label for="answer04_12_3">고흥군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_12_4">
+                    <label for="answer04_12_4">곡성군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_5">
+                    <label for="answer04_12_5">광양시</label>
+                    <input type="radio" name="accordion2" id="answer04_12_6">
+                    <label for="answer04_12_6">구례군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_12_7">
+                    <label for="answer04_12_7">나주시</label>
+                    <input type="radio" name="accordion2" id="answer04_12_8">
+                    <label for="answer04_12_8">담양군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_9">
+                    <label for="answer04_12_9">목포시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_12_10">
+                    <label for="answer04_12_10">무안군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_11">
+                    <label for="answer04_12_11">보성군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_12">
+                    <label for="answer04_12_12">순천시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_12_13">
+                    <label for="answer04_12_13">신안군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_14">
+                    <label for="answer04_12_14">여수시</label>
+                    <input type="radio" name="accordion2" id="answer04_12_15">
+                    <label for="answer04_12_15">영광군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_12_16">
+                    <label for="answer04_12_16">영암군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_17">
+                    <label for="answer04_12_17">완도군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_18">
+                    <label for="answer04_12_18">장성군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_12_19">
+                    <label for="answer04_12_19">장흥군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_20">
+                    <label for="answer04_12_20">진도군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_21">
+                    <label for="answer04_12_21">함평군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_12_22">
+                    <label for="answer04_12_22">해남군</label>
+                    <input type="radio" name="accordion2" id="answer04_12_23">
+                    <label for="answer04_12_23">화순군</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_13">
+                <label for="answer04_13">전북</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_13_1">
+                    <label for="answer04_13_1">전북전체</label>
+                    <input type="radio" name="accordion2" id="answer04_13_2">
+                    <label for="answer04_13_2">고창군</label>
+                    <input type="radio" name="accordion2" id="answer04_13_3">
+                    <label for="answer04_13_3">군산시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_13_4">
+                    <label for="answer04_13_4">김제시</label>
+                    <input type="radio" name="accordion2" id="answer04_13_5">
+                    <label for="answer04_13_5">남원시</label>
+                    <input type="radio" name="accordion2" id="answer04_13_6">
+                    <label for="answer04_13_6">무주군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_13_7">
+                    <label for="answer04_13_7">부안군</label>
+                    <input type="radio" name="accordion2" id="answer04_13_8">
+                    <label for="answer04_13_8">순창군</label>
+                    <input type="radio" name="accordion2" id="answer04_13_9">
+                    <label for="answer04_13_9">완주군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_13_10">
+                    <label for="answer04_13_10">익산시</label>
+                    <input type="radio" name="accordion2" id="answer04_13_11">
+                    <label for="answer04_13_11">임실군</label>
+                    <input type="radio" name="accordion2" id="answer04_13_12">
+                    <label for="answer04_13_12">장수군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_13_13">
+                    <label for="answer04_13_13">전주시</label>
+                    <input type="radio" name="accordion2" id="answer04_13_14">
+                    <label for="answer04_13_14">전주시 덕진구</label>
+                    <input type="radio" name="accordion2" id="answer04_13_15">
+                    <label for="answer04_13_15">전주시 완산구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_13_16">
+                    <label for="answer04_13_16">정읍시</label>
+                    <input type="radio" name="accordion2" id="answer04_13_17">
+                    <label for="answer04_13_17">진안군</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_14">
+                <label for="answer04_14">충북</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_14_1">
+                    <label for="answer04_14_1">충북전체</label>
+                    <input type="radio" name="accordion2" id="answer04_14_2">
+                    <label for="answer04_14_2">괴산군</label>
+                    <input type="radio" name="accordion2" id="answer04_14_3">
+                    <label for="answer04_14_3">단양군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_14_4">
+                    <label for="answer04_14_4">보은군</label>
+                    <input type="radio" name="accordion2" id="answer04_14_5">
+                    <label for="answer04_14_5">영동군</label>
+                    <input type="radio" name="accordion2" id="answer04_14_6">
+                    <label for="answer04_14_6">옥천군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_14_7">
+                    <label for="answer04_14_7">음성군</label>
+                    <input type="radio" name="accordion2" id="answer04_14_8">
+                    <label for="answer04_14_8">제천시</label>
+                    <input type="radio" name="accordion2" id="answer04_14_9">
+                    <label for="answer04_14_9">증평군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_14_10">
+                    <label for="answer04_14_10">진천군</label>
+                    <input type="radio" name="accordion2" id="answer04_14_11">
+                    <label for="answer04_14_11">청주시</label>
+                    <input type="radio" name="accordion2" id="answer04_14_12">
+                    <label for="answer04_14_12">청주시 상당구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_14_13">
+                    <label for="answer04_14_13">청주시 흥덕구</label>
+                    <input type="radio" name="accordion2" id="answer04_14_14">
+                    <label for="answer04_14_14">충주시</label>
+                    <input type="radio" name="accordion2" id="answer04_14_15">
+                    <label for="answer04_14_15">청주시 청원구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_14_16">
+                    <label for="answer04_14_16">청주시 서원구</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_15">
+                <label for="answer04_15">충남</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_15_1">
+                    <label for="answer04_15_1">충남전체</label>
+                    <input type="radio" name="accordion2" id="answer04_15_2">
+                    <label for="answer04_15_2">계룡시</label>
+                    <input type="radio" name="accordion2" id="answer04_15_3">
+                    <label for="answer04_15_3">공주시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_15_4">
+                    <label for="answer04_15_4">금산군</label>
+                    <input type="radio" name="accordion2" id="answer04_15_5">
+                    <label for="answer04_15_5">논산시</label>
+                    <input type="radio" name="accordion2" id="answer04_15_6">
+                    <label for="answer04_15_6">당진시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_15_7">
+                    <label for="answer04_15_7">보령시</label>
+                    <input type="radio" name="accordion2" id="answer04_15_8">
+                    <label for="answer04_15_8">부여군</label>
+                    <input type="radio" name="accordion2" id="answer04_15_9">
+                    <label for="answer04_15_9">서산시</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_15_10">
+                    <label for="answer04_15_10">서천군</label>
+                    <input type="radio" name="accordion2" id="answer04_15_11">
+                    <label for="answer04_15_11">아산시</label>
+                    <input type="radio" name="accordion2" id="answer04_15_12">
+                    <label for="answer04_15_12">예산군</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_15_13">
+                    <label for="answer04_15_13">천안시</label>
+                    <input type="radio" name="accordion2" id="answer04_15_14">
+                    <label for="answer04_15_14">천안시 동남구</label>
+                    <input type="radio" name="accordion2" id="answer04_15_15">
+                    <label for="answer04_15_15">천안시 서북구</label>
+                    <p></p>
+                    <input type="radio" name="accordion2" id="answer04_15_16">
+                    <label for="answer04_15_16">청양군</label>
+                    <input type="radio" name="accordion2" id="answer04_15_17">
+                    <label for="answer04_15_17">태안군</label>
+                    <input type="radio" name="accordion2" id="answer04_15_18">
+                    <label for="answer04_15_18">홍성군</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_16">
+                <label for="answer04_16">제주</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_16_1">
+                    <label for="answer04_16_1">제주전체</label>
+                    <input type="radio" name="accordion2" id="answer04_16_2">
+                    <label for="answer04_16_2">서귀포시</label>
+                    <input type="radio" name="accordion2" id="answer04_16_3">
+                    <label for="answer04_16_3">제주시</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_17">
+                <label for="answer04_17">전국</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_17_1">
+                    <label for="answer04_17_1">전국</label>
+                </div>
+
+                <p></p>
+                <input type="radio" name="accordion1" id="answer04_18">
+                <label for="answer04_18">세종</label>
+                <div class="work_field2">
+                    <input type="radio" name="accordion2" id="answer04_18_1">
+                    <label for="answer04_18_1">세종특별자치시</label>
+                </div>
             </div>
 
-            <p></p>
-            <input type="radio" name="accordion2" id="answer05" class="btn">
-            <label for="answer05">직급/직책 선택하기</label>
-            <div class="testing2">
-                <div>
-                    직업 선택
-                    <p></p>
-                    <input type="radio" name="job_choice" id="job_choice1" class="btn">
-                    <label for="job_choice1">서비스업</label>
-                    <div class="job_choicing1">
-                        <input type="radio" name="job_choice1" id="job_choice1_1" class="btn">
-                        <label for="job_choice1_1">호텔,여행,항공</label>
-                        <div class="job_choicing1_1">
-                            <input type="radio" name="job_choice2" id="job_choice1_1_1" class="btn">
-                            <label for="job_choice1_1_1">호텔</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_2" class="btn">
-                            <label for="job_choice1_1_2">콘도</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_3" class="btn">
-                            <label for="job_choice1_1_3">카지노</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_4" class="btn">
-                            <label for="job_choice1_1_4">여행사</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_5" class="btn">
-                            <label for="job_choice1_1_5">항공사</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_6" class="btn">
-                            <label for="job_choice1_1_6">관광</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_7" class="btn">
-                            <label for="job_choice1_1_7">관광통역</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_8" class="btn">
-                            <label for="job_choice1_1_8">면세점</label>
-                            <input type="radio" name="job_choice2" id="job_choice1_1_9" class="btn">
-                            <label for="job_choice1_1_9">유학,이민</label>
-                        </div>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_2" class="btn">
-                        <label for="job_choice1_2">외식업,식음료</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_3" class="btn">
-                        <label for="job_choice1_3">시설관리,경비,용역</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_4" class="btn">
-                        <label for="job_choice1_4">레저,스포츠,여가</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_5" class="btn">
-                        <label for="job_choice1_5">AS,카센터,주유</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_6" class="btn">
-                        <label for="job_choice1_6">렌탈,임대</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_7" class="btn">
-                        <label for="job_choice1_7">웨딩,장례,이벤트</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_8" class="btn">
-                        <label for="job_choice1_8">기타서비스업</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice1_9" class="btn">
-                        <label for="job_choice1_9">뷰티,미용</label>
-                    </div>
-                    <p></p>
-                    <input type="radio" name="job_choice" id="job_choice2" class="btn">
-                    <label for="job_choice2">제조,화학</label>
-                    <div class="job_choicing2">
-                        <input type="radio" name="job_choice1" id="job_choice2_1" class="btn">
-                        <label for="job_choice2_1">전기,전자,제어</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_2" class="btn">
-                        <label for="job_choice2_2">기계,설비,자동차</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_3" class="btn">
-                        <label for="job_choice2_3">석유,화학,에너지</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_4" class="btn">
-                        <label for="job_choice2_4">섬유,의류,패션</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_5" class="btn">
-                        <label for="job_choice2_5">화장품,뷰티</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_6" class="btn">
-                        <label for="job_choice2_6">생활용품,소비재,사무</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_7" class="btn">
-                        <label for="job_choice2_7">가구,목재,제지</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_8" class="btn">
-                        <label for="job_choice2_8">농업,어업,광업,임업</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_9" class="btn">
-                        <label for="job_choice2_9">금속,재료,철강,요업</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_10" class="btn">
-                        <label for="job_choice2_10">조선,항공,우주</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_11" class="btn">
-                        <label for="job_choice2_11">기타제조업</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_12" class="btn">
-                        <label for="job_choice2_12">식품가공,개발</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_13" class="btn">
-                        <label for="job_choice2_13">반도체,광학,LCD</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice2_14" class="btn">
-                        <label for="job_choice2_14">환경</label>
-                    </div>
-                    <p></p>
-                    <input type="radio" name="job_choice" id="job_choice3" class="btn">
-                    <label for="job_choice3">IT,웹,통신</label>
-                    <div class="job_choicing3">
-                        <input type="radio" name="job_choice1" id="job_choice3_1" class="btn">
-                        <label for="job_choice3_1">솔루션,SIERP,CRM</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_2" class="btn">
-                        <label for="job_choice3_2">웹에이전시</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_3" class="btn">
-                        <label for="job_choice3_3">쇼핑몰,오픈마켓</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_4" class="btn">
-                        <label for="job_choice3_4">포털,인터넷,컨텐츠</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_5" class="btn">
-                        <label for="job_choice3_5">네트워크,통신,모바일</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_6" class="btn">
-                        <label for="job_choice3_6">하드웨어,장비</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_7" class="btn">
-                        <label for="job_choice3_7">정보보안,백신</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_8" class="btn">
-                        <label for="job_choice3_8">IT컨설팅</label>
-                        <p></p>
-                        <input type="radio" name="job_choice1" id="job_choice3_9" class="btn">
-                        <label for="job_choice3_9">게임</label>
-                    </div>
-                </div>
-                <input type="radio" name="accordion2" id="answer04_0023_3" class="btn">
-                <label for="answer04_0023_3">입력완료</label>
-            </div>
-            <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
-        </form>
-    </div>
+        </div>
+        <input type="submit" value="제출">
+    </form>
 {% endblock %}

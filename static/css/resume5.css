@@ -1,0 +1,96 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.content {
+    width: 85rem;
+    margin-left: 6.5rem;
+    font-size:30px;
+    font-weight:bold;
+    background:#F6F6F6;
+}
+
+.content input {
+    border-color:#F6F6F6;
+    background:#FFFFFF;
+    border-radius:5px;
+}
+
+.content select {
+    border-color:#A2A2A2;
+    background:#FFFFFF;
+    border-radius:5px;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/*지역 선택 css*/
+
+.field_btn1 {
+    opacity:0;
+    margin-left:1.15rem;
+}
+
+.field_btn2 {
+    cursor:pointer;
+}
+
+.self_border_img {
+    border-style:solid;
+    border-width:0.1px;
+    padding:0rem 40rem 0rem 0rem;
+    color:Gray;
+    background:#ffffff;
+    border-color:#4C4C4C;
+    border-radius:5px;
+}
+
+.border_text {
+    color:#ff0000;
+    margin-left:1rem;
+}
+
+.work_field1 {
+    max-height:0;
+    width:200px;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+input[id="answer04"]:checked + label + div {
+    max-height:300px;
+    overflow:scroll;
+}
+
+.work_field2 {
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:11px;
+}
+
+input[id="answer04"]:checked + label + div input[id="answer04_01"]:checked + label + div {
+    position:absolute;
+    left:20%;
+    max-height:1000px;
+    width:1000px;
+}
+input[id="answer04"]:checked + label + div input[id="answer04_02"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_03"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_04"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_05"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_06"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_07"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_08"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_09"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_10"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_11"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_12"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_13"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_14"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_15"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_16"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_17"]:checked + label + div {max-height:1000px;}
+input[id="answer04"]:checked + label + div input[id="answer04_18"]:checked + label + div {max-height:1000px;}
