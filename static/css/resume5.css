@@ -92,10 +92,8 @@ input[id="answer04"]:checked + label + div {
     background:#FFFFFF;
 }
 
-input[id="answer04"]:checked + label + div input[id*="answer04_0"]:checked + label + div {}
-
 input[id="answer04"]:checked + label + div input[id="answer04_01"]:checked + label + div {
-    position:absolute;
+    position:static;
     top:22rem;
     margin-left:12.5rem;
     max-height:300px;
@@ -277,29 +275,67 @@ input[id="answer04"]:checked + label + div input[id="answer04_18"]:checked + lab
     font-size:20px;
 }
 
-.position_class1 {
-    max-height:0;
-    overflow:hidden;
-    color:#000000;
-    font-size:11px;
-    background:#ffffff;
-}
-input[id="answer04_01_1"]:checked + label + div {max-height:1000px;}
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 직업 선택 css */
 
-.position_class2 {
+.work_field3 {
     max-height:0;
+    width:200px;
     overflow:hidden;
-    color:#000000;
-    font-size:11px;
-    background:#ffffff;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:20px;
 }
-input[id="answer04_01_2"]:checked + label + div {max-height:1000px;}
 
-.position_class3 {
+input[id="answer05"]:checked + label + div {
+    max-height:300px;
+    overflow:scroll;
+}
+
+.work_field4 {
     max-height:0;
     overflow:hidden;
-    color:#000000;
-    font-size:11px;
-    background:#ffffff;
+    color:#FF0000;
+    background:#FFFFFF;
 }
-input[id="answer04_01_3"]:checked + label + div {max-height:1000px;}
+
+input[id="answer05"]:checked + label + div input[id="answer05_01"]:checked + label + div {
+    position:relative;
+    top:25rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div input[id="answer05_02"]:checked + label + div {
+    position:absolute;
+    top:25rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div input[id="answer05_03"]:checked + label + div {
+    position:absolute;
+    top:25rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div input[id="answer05_04"]:checked + label + div {
+    position:absolute;
+    top:25rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}

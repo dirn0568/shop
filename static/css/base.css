@@ -2,6 +2,11 @@
     font-family: 'Monoton', cursive;
 }
 
+.base_line_css {
+    width: 85rem;
+    margin-left: 6.5rem;
+}
+
 .pragmatic_footer {
     text-align:center;
 }
