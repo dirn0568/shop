@@ -5,7 +5,8 @@ from django.shortcuts import render, redirect
 from accountapp.models import MyUser
 from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
     ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm, ResumeCareerForm, ResumeCareerAbilityForm, \
-    ResumeCareerProjectForm, ResumeOutPlay, ResumePrizePlay, ResumePortPolio, ResumeSelfIntroduce
+    ResumeCareerProjectForm, ResumeOutPlay, ResumePrizePlay, ResumePortPolio, ResumeSelfIntroduce, ResumeHopeWorkForm, \
+    ResumeHopeWorkFieldForm, ResumeHopeWorkWorkForm
 from resumeapp.models import User_Resume, User_Resume_Certificate, Resume_Title
 
 
@@ -732,14 +733,45 @@ def resume_resume4(request, title, career, company_ability, company_project, pk)
     return render(request, 'resume_resume4.html', context)
 
 def resume_resume5(request, title, pk):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.POST.get('resume_submit1'):
+        form = ResumeHopeWorkForm(request.POST, request.FILES)
+        resume_title = Resume_Title.objects.filter(pk=title)
         print(request.POST)
+        field_list = request.POST.getlist('accordion2')
+        field_num = len(request.POST.getlist('accordion2'))
+        work_list = request.POST.getlist('work2')
+        work_num = len(request.POST.getlist('work2'))
+        if form.is_valid():
+            temp_form = form.save(commit=False)
+            for temp in resume_title:
+                temp_form.resume_hope_work = temp
+            temp_form.resume_hope_work_start_time = request.POST.get('calender_start3')
+            temp_form.resume_hope_work_end_time = request.POST.get('calender_end3')
+            temp_form.resume_hope_work_money = request.POST.get('company_select_money')
+            temp_form.save()
+        if form.is_valid():
+            for i in range(0, field_num):
+                form = ResumeHopeWorkFieldForm(request.POST, request.FILES)
+                temp_form = form.save(commit=False)
+                for temp in resume_title:
+                    temp_form.resume_hope_work_field = temp
+                temp_form.resume_hope_work_field1 = field_list[i]
+                temp_form.save()
+        if form.is_valid():
+            for i in range(0, work_num):
+                form = ResumeHopeWorkWorkForm(request.POST, request.FILES)
+                temp_form = form.save(commit=False)
+                for temp in resume_title:
+                    temp_form.resume_hope_work_work = temp
+                temp_form.resume_hope_work_work1 = work_list[i]
+                temp_form.save()
+        return redirect('mainapp:main')
     context={}
     context['pk'] = pk
     context['title'] = title
     return render(request, 'resume_resume5.html', context)
 
-##########################################################################
+########################################################################################################################################################
 
 def trash_test(request):
     context={}

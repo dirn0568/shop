@@ -130,3 +130,24 @@ class Resume_Career_Project(models.Model):
     resume_career_project_start_time = models.CharField(max_length=200)
     resume_career_project_end_time = models.CharField(max_length=200)
     resume_career_project_text_detail = models.CharField(max_length=2000)
+
+###################################################################################################################################
+# resume5
+
+class Resume_Hope_Work(models.Model):
+    resume_hope_work = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_hope_work')
+
+    resume_hope_work_start_time = models.CharField(max_length=200)
+    resume_hope_work_end_time = models.CharField(max_length=200)
+    resume_hope_work_money = models.CharField(max_length=200)
+
+class Resume_Hope_Work_Field(models.Model):
+    resume_hope_work_field = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_hope_work_field')
+
+    resume_hope_work_field1 = models.CharField(max_length=200)
+
+
+class Resume_Hope_Work_Work(models.Model):
+    resume_hope_work_work = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_hope_work_work')
+
+    resume_hope_work_work1 = models.CharField(max_length=200)

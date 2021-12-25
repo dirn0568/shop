@@ -5,7 +5,8 @@ from django import forms
 from pickme import settings
 from resumeapp.models import User_Resume, Resume_ElementarySchool, Resume_MiddleSchool, Resume_HighSchool, \
     Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Title, Resume_Career, Resume_Career_Ability, \
-    Resume_Career_Project, Resume_Out_Play, Resume_Prize_Play, Resume_Port_Polio, Resume_Self_Introduce
+    Resume_Career_Project, Resume_Out_Play, Resume_Prize_Play, Resume_Port_Polio, Resume_Self_Introduce, \
+    Resume_Hope_Work, Resume_Hope_Work_Field, Resume_Hope_Work_Work
 
 
 ###################################################################################################
@@ -115,5 +116,24 @@ class ResumeCareerAbilityForm(ModelForm):
 class ResumeCareerProjectForm(ModelForm):
     class Meta:
         model = Resume_Career_Project
+        fields = []
+
+
+###############################################################################################################################
+# resume5
+
+class ResumeHopeWorkForm(ModelForm):
+    class Meta:
+        model = Resume_Hope_Work
+        fields = []
+
+class ResumeHopeWorkFieldForm(ModelForm):
+    class Meta:
+        model = Resume_Hope_Work_Field
+        fields = []
+
+class ResumeHopeWorkWorkForm(ModelForm):
+    class Meta:
+        model = Resume_Hope_Work_Work
         fields = []
 
