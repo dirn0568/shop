@@ -10,7 +10,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from accountapp.forms import Update_User_Form, Create_User_Form
 from friendapp.models import FriendRequestModel
 from profileapp.models import User_Profile
-from resumeapp.models import User_Resume
+from resumeapp.models import User_Resume, Resume_Title
 
 
 class Create_User(CreateView):
@@ -37,7 +37,7 @@ class Detail_User(DetailView):
                 profile = temp
         else:
             profile = None
-        temp_resume = User_Resume.objects.filter(resume=user)
+        temp_resume = Resume_Title.objects.filter(resume_title=user)
         resume_num = 0
         if temp_resume.count() != 0:
             for temp in temp_resume:
