@@ -10,7 +10,7 @@ urlpatterns = [
     path('update_resume/<int:pk>/', views.update_resume, name='update_resume'),
     path('delete_resume/<int:pk>/', views.delete_resume, name='delete_resume'),
     path('list_resume/<int:pk>/', views.list_resume, name='list_resume'),
-    path('detail_resume/<int:pk1>/<int:pk2>', views.detail_resume, name='detail_resume'),
+    path('detail_resume/<int:title>/<int:pk>', views.detail_resume, name='detail_resume'),
 
     path('resume_resume2/<int:school>/<int:school_major4>/<int:career>/<int:out_play>/<int:prize_play>/<int:port_polio>/<int:self_introduce>/<int:pk>', views.resume_resume2, name='resume_resume2'),
 

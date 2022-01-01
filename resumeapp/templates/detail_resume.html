@@ -1,12 +1,160 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {{ resume.resume_school }}
-    {{ resume.resume_career }}
-    {{ resume.resume_certificate }}
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ resume.resume_title }}
+    <p></p>
+    {{ resume.resume_title_detail }}
+
+    {% for school in school1 %}
+        <p></p>
+        {{ school.elementary_school_name }}
+        <p></p>
+        {{ school.elementary_field_name }}
+        <p></p>
+        {{ school.elementary_start_time }}
+        <p></p>
+        {{ school.elementary_end_time }}
+    {% endfor %}
+
+    {% for school in school2 %}
+        <p></p>
+        {{ school.middle_school_name }}
+        <p></p>
+        {{ school.middle_field_name }}
+        <p></p>
+        {{ school.middle_start_time }}
+        <p></p>
+        {{ school.middle_end_time }}
+    {% endfor %}
+
+    {% for school in school3 %}
+        <p></p>
+        {{ school.high_school_name }}
+        <p></p>
+        {{ school.high_field_name }}
+        <p></p>
+        {{ school.high_start_time }}
+        <p></p>
+        {{ school.high_end_time }}
+        <p></p>
+        {{ school.high_major }}
+    {% endfor %}
+
+    {% for school in school4 %}
+        <p></p>
+        {{ school.university_study_year }}
+        <p></p>
+        {{ school.university_school_name }}
+        <p></p>
+        {{ school.university_field_name }}
+        <p></p>
+        {{ school.university_start_time }}
+        <p></p>
+        {{ school.university_end_time }}
+        <p></p>
+        {{ school.university_study_time }}
+        <p></p>
+        {{ school.university_study_level }}
+        <p></p>
+        {{ school.university_finaltest }}
+    {% endfor %}
+
+    {% for major_list in major %}
+        <p></p>
+        {{ major_list.resume_university_major_list }}
+        <p></p>
+        {{ major_list.resume_university_major_detail }}
+    {% endfor %}
+
+    {% for out_play_list in out_play %}
+        <p></p>
+        {{ out_play_list.resume_out_activity }}
+        <p></p>
+        {{ out_play_list.resume_out_place }}
+        <p></p>
+        {{ out_play_list.resume_out_start_play }}
+        <p></p>
+        {{ out_play_list.resume_out_end_play }}
+        <p></p>
+        {{ out_play_list.resume_out_play_text }}
+    {% endfor %}
+
+    {% for prize_play_list in prize_play %}
+        <p></p>
+        {{ prize_play_list.resume_prize_certificate }}
+        <p></p>
+        {{ prize_play_list.resume_prize_place }}
+        <p></p>
+        {{ prize_play_list.resume_prize_title }}
+        <p></p>
+        {{ prize_play_list.resume_prize_date }}
+    {% endfor %}
+
+    {% for port_polio_list in port_polio %}
+        <p></p>
+        {{ port_polio_list.resume_port_polio_detail }}
+    {% endfor %}
+
+    {% for self_introduce_list in self_introduce %}
+        <p></p>
+        {{ self_introduce_list.resume_self_introduce_title }}
+        <p></p>
+        {{ self_introduce_list.resume_self_introduce_text }}
+    {% endfor %}
+
+    {% for resume_career_list in resume_career %}
+        <p></p>
+        {{ resume_career_list.resume_company_name }}
+        <p></p>
+        {{ resume_career_list.resume_career_start_time }}
+        <p></p>
+        {{ resume_career_list.resume_career_end_time }}
+        <p></p>
+        {{ resume_career_list.resume_career_out }}
+        <p></p>
+        {{ resume_career_list.resume_career_position }}
+        <p></p>
+        {{ resume_career_list.resume_career_position_detail }}
+        <p></p>
+        {{ resume_career_list.resume_career_money }}
+        <p></p>
+        {{ resume_career_list.resume_career_money_detail }}
+        <p></p>
+        {{ resume_career_list.resume_career_position_detail2 }}
+    {% endfor %}
+
+    {% for resume_career_ability_list in resume_career_ability %}
+        <p></p>
+        {{ resume_career_ability_list.resume_career_ability_text }}
+    {% endfor %}
+
+    {% for resume_career_project_list in resume_career_project %}
+        <p></p>
+        {{ resume_career_project_list.resume_career_project_text }}
+        <p></p>
+        {{ resume_career_project_list.resume_career_project_start_time }}
+        <p></p>
+        {{ resume_career_project_list.resume_career_project_end_time }}
+        <p></p>
+        {{ resume_career_project_list.resume_career_project_text_detail }}
+    {% endfor %}
+
+    {% for resume_hope_work_list in resume_hope_work %}
+        <p></p>
+        {{ resume_hope_work_list.resume_hope_work_start_time }}
+        <p></p>
+        {{ resume_hope_work_list.resume_hope_work_end_time }}
+        <p></p>
+        {{ resume_hope_work_list.resume_hope_work_money }}
+    {% endfor %}
+
+    {% for resume_hope_work_field_list in resume_hope_work_field %}
+        <p></p>
+        {{ resume_hope_work_field_list.resume_hope_work_field1 }}
+    {% endfor %}
+
+    {% for resume_hope_work_work_list in resume_hope_work_work %}
+        <p></p>
+        {{ resume_hope_work_work_list.resume_hope_work_work1 }}
+    {% endfor %}
+{% endblock %}

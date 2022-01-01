@@ -7,7 +7,10 @@ from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm,
     ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm, ResumeCareerForm, ResumeCareerAbilityForm, \
     ResumeCareerProjectForm, ResumeOutPlay, ResumePrizePlay, ResumePortPolio, ResumeSelfIntroduce, ResumeHopeWorkForm, \
     ResumeHopeWorkFieldForm, ResumeHopeWorkWorkForm
-from resumeapp.models import User_Resume, User_Resume_Certificate, Resume_Title
+from resumeapp.models import User_Resume, User_Resume_Certificate, Resume_Title, Resume_ElementarySchool, \
+    Resume_MiddleSchool, Resume_HighSchool, Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Out_Play, \
+    Resume_Prize_Play, Resume_Port_Polio, Resume_Self_Introduce, Resume_Career, Resume_Career_Ability, \
+    Resume_Career_Project, Resume_Hope_Work, Resume_Hope_Work_Field, Resume_Hope_Work_Work
 
 
 def create_resume(request, pk):
@@ -81,23 +84,59 @@ def list_resume(request, pk):
         else:
             raise Http404("잘못된 접근입니다")
         for temp in temp_user:
-            temp_resume = User_Resume.objects.filter(resume=temp)
+            temp_resume = Resume_Title.objects.filter(resume_title=temp)
         context = {}
         context['pk'] = pk
         context['resume'] = temp_resume
     return render(request, 'list_resume.html', context)
 
-def detail_resume(request, pk1, pk2):
-    temp_resume = User_Resume.objects.filter(pk=pk2)
+def detail_resume(request, title, pk):
+    temp_resume = Resume_Title.objects.filter(pk=title)
     for user_resume in temp_resume:
-        if request.user.pk == pk1:
-            pass
-        else:
-            raise Http404("잘못된 접근입니다")
+        school1 = Resume_ElementarySchool.objects.filter(resume_elementary=user_resume)
+        school2 = Resume_MiddleSchool.objects.filter(resume_middle=user_resume)
+        school3 = Resume_HighSchool.objects.filter(resume_high=user_resume)
+        school4 = Resume_UniversitySchool.objects.filter(resume_university=user_resume)
+
+        major = Resume_UniversitySchool_Major.objects.filter(resume_university_major=user_resume)
+
+        out_play = Resume_Out_Play.objects.filter(resume_out_play=user_resume)
+        prize_play = Resume_Prize_Play.objects.filter(resume_prize_play=user_resume)
+        port_polio = Resume_Port_Polio.objects.filter(resume_port_polio=user_resume)
+        self_introduce = Resume_Self_Introduce.objects.filter(resume_self_introduce=user_resume)
+
+        resume_career = Resume_Career.objects.filter(resume_career=user_resume)
+        resume_career_ability = Resume_Career_Ability.objects.filter(resume_career_ability=user_resume)
+        resume_career_project = Resume_Career_Project.objects.filter(resume_career_project=user_resume)
+
+        resume_hope_work = Resume_Hope_Work.objects.filter(resume_hope_work=user_resume)
+        resume_hope_work_field = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=user_resume)
+        resume_hope_work_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=user_resume)
+
         context = {}
-        context['pk1'] = pk1
-        context['pk2'] = pk2
+        context['pk'] = pk
+        context['school1'] = school1
+        context['school2'] = school2
+        context['school3'] = school3
+        context['school4'] = school4
+
+        context['major'] = major
+
+        context['out_play'] = out_play
+        context['prize_play'] = prize_play
+        context['port_polio'] = port_polio
+        context['self_introduce'] = self_introduce
+
+        context['resume_career'] = resume_career
+        context['resume_career_ability'] = resume_career_ability
+        context['resume_career_project'] = resume_career_project
+
+        context['resume_hope_work'] = resume_hope_work
+        context['resume_hope_work_field'] = resume_hope_work_field
+        context['resume_hope_work_work'] = resume_hope_work_work
+
         context['resume'] = user_resume
+
     return render(request, 'detail_resume.html', context)
 
 def test_resume(request, test1, test2, test3, pk):
