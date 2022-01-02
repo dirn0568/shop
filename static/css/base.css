@@ -4,9 +4,15 @@
 
 .base_line_css {
     width: 85rem;
-    margin-left: 6.5rem;
+    margin:auto;
 }
 
 .pragmatic_footer {
     text-align:center;
+}
+
+.base2_main_background_css {
+    width:100%;
+    height:100%;
+    background:#EAEAEA;
 }

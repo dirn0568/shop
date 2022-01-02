@@ -21,6 +21,8 @@ urlpatterns = [
     path('resume_resume5/<int:title>/<int:pk>', views.resume_resume5, name='resume_resume5'),
 
     #############################################################################################################################################
+    path('resume_resume2_update/')
+    #############################################################################################################################################
 
     path('resume_write/<int:school>/<int:school_major4>/<int:career>/<int:out_play>/<int:prize_play>/<int:port_polio>/<int:self_introduce>/<int:company_ability>/<int:company_project>/<int:pk>', views.resume_write, name='resume_write'),
 ]
