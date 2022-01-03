@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/resume2.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/resume_resume2.css' %}">-->
+
+    <div class="resume_add">
+        <div class="resume_add_title">
+            이력서 추가사항
+        </div>
+        <hr>
+        <form action="{% url 'resumeapp:resume_prize_play_update' prize_play=prize_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            대외활동
+            <input type="submit" name="out_play_button" value="추가" class="resume_add_button_plus1">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_prize_play_update' prize_play=prize_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            자격증
+            <input type="submit" name="prize_play_button" value="추가" class="resume_add_button_plus2">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_prize_play_update' prize_play=prize_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            포트폴리오 및 기타문서
+            <input type="submit" name="port_polio_button" value="추가" class="resume_add_button_plus3">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_prize_play_update' prize_play=prize_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            자기소개서
+            <input type="submit" name="self_introduce_button" value="추가" class="resume_add_button_plus4">
+        </form>
+    </div>
+
+    <form action="{% url 'resumeapp:resume_prize_play_update' prize_play=prize_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content">
+            {% for list4 in temp_prize_play %}
+              <hr>
+              <div>
+                자격증 내역
+                <p></p>
+                자격증명
+                <input type="text" name="prize_play1{{list4.0}}" placeholder="자격증명 입력" style="width:800px;height:50px;" class="prize_play_css1">
+                <p></p>
+                발행처/기관
+                <input type="text" name="prize_play2{{list4.0}}" placeholder="발행처/기관 입력" style="width:800px;height:50px;" class="prize_play_css2">
+                <p></p>
+                합격구분
+                <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;" class="prize_play_css3">
+                  <option value='' selected style="font-weight:bold;">-- 합격구분 선택 --</option>
+                  <option value='1차합격'>1차합격</option>
+                  <option value='2차합격'>2차합격</option>
+                  <option value='필기합격'>필기합격</option>
+                  <option value='실기합격'>실기합격</option>
+                  <option value='최종합격'>최종합격</option>
+                </select>
+                <p></p>
+                취득일
+                <input type="month" name="prize_play4{{list4.0}}" style="width:300px;height:50px;" class="prize_play_css4">
+              </div>
+            {% endfor %}
+        </div>
+        <p></p>
+        <div class="submit_button">
+            <input type="submit" value="수정완료" class="major_button_plus" name="resume_submit1">
+        </div>
+    </form>
+{% endblock %}

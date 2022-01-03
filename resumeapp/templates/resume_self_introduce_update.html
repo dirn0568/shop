@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/resume2.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/resume_resume2.css' %}">-->
+
+    <div class="resume_add">
+        <div class="resume_add_title">
+            이력서 추가사항
+        </div>
+        <hr>
+        <form action="{% url 'resumeapp:resume_self_introduce_update' self_introduce=self_introduce title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            대외활동
+            <input type="submit" name="out_play_button" value="추가" class="resume_add_button_plus1">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_self_introduce_update' self_introduce=self_introduce title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            자격증
+            <input type="submit" name="prize_play_button" value="추가" class="resume_add_button_plus2">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_self_introduce_update' self_introduce=self_introduce title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            포트폴리오 및 기타문서
+            <input type="submit" name="port_polio_button" value="추가" class="resume_add_button_plus3">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_self_introduce_update' self_introduce=self_introduce title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            자기소개서
+            <input type="submit" name="self_introduce_button" value="추가" class="resume_add_button_plus4">
+        </form>
+    </div>
+
+    <form action="{% url 'resumeapp:resume_self_introduce_update' self_introduce=self_introduce title=title pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content">
+            {% for list4 in temp_self_introduce %}
+                <hr>
+                <div>
+                    자기소개서
+                    <p></p>
+                    제목
+                    <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;" class="self_introduce_css1">
+                    <p></p>
+                    내용
+                    <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;" class="self_introduce_css2">
+                </div>
+            {% endfor %}
+        </div>
+        <p></p>
+        <div class="submit_button">
+            <input type="submit" value="수정완료" class="major_button_plus" name="resume_submit1">
+        </div>
+    </form>
+{% endblock %}

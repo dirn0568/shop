@@ -72,7 +72,7 @@
 
         {% for school in school4 %}
             <p></p>
-            &nbsp;&nbsp;{{ school.university_school_name }}<span class="field_css">({{ school.university_field_name }})</span> <span class="date_css">{{ school.university_start_time }} ~ {{ school.university_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_year }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_time }}</span> <a href="{% url 'resumeapp:logot' %}">수정하기+</a>
+            &nbsp;&nbsp;{{ school.university_school_name }}<span class="field_css">({{ school.university_field_name }})</span> <span class="date_css">{{ school.university_start_time }} ~ {{ school.university_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_year }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_time }}</span> <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}">수정하기+</a>
             <p></p>
             <div class="mini_div">
                 {% for major_list in major %}
@@ -96,7 +96,7 @@
         <p></p>
         {% for resume_career_list in resume_career %}
             <p></p>
-            &nbsp;&nbsp;{{ resume_career_list.resume_company_name }} <span class="date_css">{{ resume_career_list.resume_career_start_time }} ~ {{ resume_career_list.resume_career_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position_detail }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position }}</span>
+            &nbsp;&nbsp;{{ resume_career_list.resume_company_name }} <span class="date_css">{{ resume_career_list.resume_career_start_time }} ~ {{ resume_career_list.resume_career_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position_detail }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position }}</span> <a href="{% url 'resumeapp:resume_resume4_update' company_ability=1 company_project=0 title=title pk=pk %}">수정하기+</a>
             <p></p>
             <div class="mini_div">
                 &nbsp;&nbsp;담당업무 : {{ resume_career_list.resume_career_position_detail2 }}
@@ -122,12 +122,61 @@
         <p></p>
     </div>
     <div class="content_title">
+        대외활동
+    </div>
+    <div class="content">
+        {% for out_play_list in out_play %}
+            <p></p>
+            &nbsp;&nbsp;{{ out_play_list.resume_out_place }}<span class="field_css">({{ out_play_list.resume_out_activity }})</span> <span class="date_css">{{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}</span> <a href="{% url 'resumeapp:resume_out_play_update' out_play=1 title=title pk=pk %}">수정하기+</a>
+            <p></p>
+            <div class="mini_div">&nbsp;&nbsp;{{ out_play_list.resume_out_play_text }}</div>
+        {% endfor %}
+    </div>
+    <div class="content_title">
+        자격증
+    </div>
+    <div class="content">
+        {% for prize_play_list in prize_play %}
+            <p></p>
+            {{ prize_play_list.resume_prize_certificate }}<span class="field_css">({{ prize_play_list.resume_prize_title }})</span> <a href="{% url 'resumeapp:resume_prize_play_update' prize_play=1 title=title pk=pk %}">수정하기+</a>
+            <p></p>
+            <div class="mini_div">
+                {{ prize_play_list.resume_prize_place }}
+                <p></p>
+                {{ prize_play_list.resume_prize_date }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="content_title">
+        포트폴리오
+    </div>
+    <div class="content">
+        {% for port_polio_list in port_polio %}
+            <p></p>
+            활동구분 : <a href="/media/{{ port_polio_list.resume_port_polio_detail }}" download>{{ port_polio_list.resume_port_polio_detail }}</a> <a href="{% url 'resumeapp:resume_port_polio_update' port_polio=1 title=title pk=pk %}">수정하기+</a>
+        {% endfor %}
+    </div>
+    <div class="content_title">
+        자기소개서
+    </div>
+    <div class="content">
+        {% for self_introduce_list in self_introduce %}
+            <p></p>
+            자기소개서 제목 : {{ self_introduce_list.resume_self_introduce_title }} <a href="{% url 'resumeapp:resume_self_introduce_update' self_introduce=1 title=title pk=pk %}">수정하기+</a>
+            <p></p>
+            자기소개서 내용 : {{ self_introduce_list.resume_self_introduce_text }}
+        {% endfor %}
+    </div>
+    <div class="base_line_css">
+        <hr>
+    </div>
+    <div class="content_title">
         희망 조건
     </div>
     <div class="content">
         <p></p>
         <div class="mini_div">
-            &nbsp;&nbsp;즉시 근무 가능
+            &nbsp;&nbsp;즉시 근무 가능 <a href="{% url 'resumeapp:resume_resume5_update' title=title pk=pk %}">수정하기+</a>
             <p></p>
             &nbsp;&nbsp;희망 연봉 : 100만원 ~ 200만원
             <p></p>
@@ -143,55 +192,4 @@
         </div>
         <p></p>
     </div>
-<!--    <div class="content">-->
-<!--        <h1 style="text-align:center;">-->
-<!--            대외활동-->
-<!--        </h1>-->
-
-<!--        {% for out_play_list in out_play %}-->
-<!--            <p></p>-->
-<!--            기관/장소 : {{ out_play_list.resume_out_place }}<span class="field_css">({{ out_play_list.resume_out_activity }})</span> <span class="date_css">{{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}</span>-->
-<!--            <p></p>-->
-<!--            {{ out_play_list.resume_out_play_text }}-->
-<!--        {% endfor %}-->
-
-<!--        <hr>-->
-<!--        <h1 style="text-align:center;">-->
-<!--            자격증-->
-<!--        </h1>-->
-
-<!--        {% for prize_play_list in prize_play %}-->
-<!--            <p></p>-->
-<!--            자격증 내역 : {{ prize_play_list.resume_prize_certificate }}<span class="field_css">({{ prize_play_list.resume_prize_title }})</span>-->
-<!--            <p></p>-->
-<!--            발행처/기관 : {{ prize_play_list.resume_prize_place }}-->
-<!--            <p></p>-->
-<!--            취득일 : {{ prize_play_list.resume_prize_date }}-->
-<!--        {% endfor %}-->
-
-<!--        <hr>-->
-<!--        <h1 style="text-align:center;">-->
-<!--            포트폴리오-->
-<!--        </h1>-->
-
-<!--        {% for port_polio_list in port_polio %}-->
-<!--            <p></p>-->
-<!--            활동구분 : {{ port_polio_list.resume_port_polio_detail }}-->
-<!--        {% endfor %}-->
-
-<!--        <hr>-->
-<!--        <h1 style="text-align:center;">-->
-<!--            자기소개서-->
-<!--        </h1>-->
-
-<!--        {% for self_introduce_list in self_introduce %}-->
-<!--            <p></p>-->
-<!--            자기소개서 제목 : {{ self_introduce_list.resume_self_introduce_title }}-->
-<!--            <p></p>-->
-<!--            자기소개서 내용 : {{ self_introduce_list.resume_self_introduce_text }}-->
-<!--        {% endfor %}-->
-<!--    </div>-->
-<!--    <div class="base_line_css">-->
-<!--        <hr>-->
-<!--    </div>-->
 {% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/resume2.css' %}">
+    <!--<link rel="stylesheet" href="{% static 'css/resume_resume2.css' %}">-->
+
+    <div class="resume_add">
+        <div class="resume_add_title">
+            이력서 추가사항
+        </div>
+        <hr>
+        <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            대외활동
+            <input type="submit" name="out_play_button" value="추가" class="resume_add_button_plus1">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            자격증
+            <input type="submit" name="prize_play_button" value="추가" class="resume_add_button_plus2">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            포트폴리오 및 기타문서
+            <input type="submit" name="port_polio_button" value="추가" class="resume_add_button_plus3">
+        </form>
+        <p></p>
+        <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            자기소개서
+            <input type="submit" name="self_introduce_button" value="추가" class="resume_add_button_plus4">
+        </form>
+    </div>
+
+    <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="content">
+            <!--  전공은 왜 바로 나오고 이거는 늦게 나오는지 알아보기 -->
+            {% for list4 in temp_out_play %}
+                <hr>
+                <div>
+                    대외활동
+                    <p></p>
+                    활동구분
+                    <select name='out_play1{{list4.0}}' style="width:300px;height:50px;" class="out_play_css1">
+                        <option value='' selected style="font-weight:bold;">-- 활동구분 선택 --</option>
+                        <option value='교내활동'>교내활동</option>
+                        <option value='인턴'>인턴</option>
+                        <option value='자원봉사'>자원봉사</option>
+                        <option value='동아리'>동아리</option>
+                        <option value='아르바이트'>아르바이트</option>
+                        <option value='사회활동'>사회활동</option>
+                        <option value='수행과제'>수행과제</option>
+                        <option value='해외연수'>해외연수</option>
+                        <option value='교육이수내역'>교육이수내역</option>
+                    </select>
+                    <p></p>
+                    기관/장소
+                    <input type="text" name="out_play2{{list4.0}}" placeholder="기관/장소 입력" style="width:800px;height:50px;" class="out_play_css2">
+                    <p></p>
+                    활동기간
+                    <input type="month" name="out_play3{{list4.0}}" style="width:300px;height:50px;" class="out_play_css3">
+                    <span>
+                        ~
+                    </span>
+                    <input type="month" name="out_play4{{list4.0}}" style="width:300px;height:50px;">
+                    <p></p>
+                    활동내용
+                    <input type="text" name="out_play5{{list4.0}}" placeholder="활동내용 입력" style="width:800px;height:50px;" class="out_play_css4">
+                </div>
+            {% endfor %}
+        </div>
+        <p></p>
+        <div class="submit_button">
+            <input type="submit" value="수정완료" class="major_button_plus" name="resume_submit1">
+        </div>
+    </form>
+{% endblock %}
