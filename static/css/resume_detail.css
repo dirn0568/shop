@@ -43,6 +43,16 @@
 .amount > li:not(:last-child) > div{
     border-right:1px solid gray;
 }
+
+.update_btn {
+	margin-left:auto;
+}
+
+.btn_color {
+    color: rgba(30, 22, 54, 0.6);
+    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 5px 1px inset;
+    border-radius: 10px;
+}
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 .amount_title_css {
     color:#A6A6A6;
@@ -77,8 +87,21 @@
 }
 
 .content_title {
+    display:flex;
     width: 85rem;
     margin:auto;
     font-weight:bold;
     font-size:30px
+}
+
+.main_name {
+    font-weight:bold;
+}
+
+.resume_detail_button_css {
+    border:none;
+    color: rgba(255, 0, 0, 0.6);
+    box-shadow: rgba(255, 0, 0, 0.4) 0 0px 5px 1px inset;
+    padding:0.005rem 0.5rem;
+    border-radius: 10px;
 }

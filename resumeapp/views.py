@@ -91,6 +91,74 @@ def list_resume(request, pk):
     return render(request, 'list_resume.html', context)
 
 def detail_resume(request, title, pk):
+    if request.method == 'POST' and request.POST.get('resume_school_del'):
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        for user_resume in temp_resume:
+            find_resume = Resume_ElementarySchool.objects.filter(resume_elementary=user_resume)
+            find_resume.delete()
+            find_resume = Resume_MiddleSchool.objects.filter(resume_middle=user_resume)
+            find_resume.delete()
+            find_resume = Resume_HighSchool.objects.filter(resume_high=user_resume)
+            find_resume.delete()
+            find_resume = Resume_UniversitySchool.objects.filter(resume_university=user_resume)
+            find_resume.delete()
+            find_resume = Resume_UniversitySchool_Major.objects.filter(resume_university_major=user_resume)
+            find_resume.delete()
+        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+
+    if request.method == 'POST' and request.POST.get('resume_career_del'):
+        print('이거실행중????????????????????')
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        for user_resume in temp_resume:
+            find_resume = Resume_Career.objects.filter(resume_career=user_resume)
+            find_resume.delete()
+            find_resume = Resume_Career_Ability.objects.filter(resume_career_ability=user_resume)
+            find_resume.delete()
+            find_resume = Resume_Career_Project.objects.filter(resume_career_project=user_resume)
+            find_resume.delete()
+        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+
+    if request.method == 'POST' and request.POST.get('resume_hope_work_del'):
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        for user_resume in temp_resume:
+            find_resume = Resume_Hope_Work.objects.filter(resume_hope_work=user_resume)
+            find_resume.delete()
+            find_resume = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=user_resume)
+            find_resume.delete()
+            find_resume = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=user_resume)
+            find_resume.delete()
+        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+
+    if request.method == 'POST' and request.POST.get('resume_out_play_del'):
+        print('이거실행중??????')
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        for user_resume in temp_resume:
+            find_resume = Resume_Out_Play.objects.filter(resume_out_play=user_resume)
+            find_resume.delete()
+        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+
+    if request.method == 'POST' and request.POST.get('resume_prize_play_del'):
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        for user_resume in temp_resume:
+            find_resume = Resume_Prize_Play.objects.filter(resume_prize_play=user_resume)
+            find_resume.delete()
+        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+
+    if request.method == 'POST' and request.POST.get('resume_port_polio_del'):
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        for user_resume in temp_resume:
+            find_resume = Resume_Port_Polio.objects.filter(resume_port_polio=user_resume)
+            find_resume.delete()
+        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+
+    if request.method == 'POST' and request.POST.get('resume_self_introduce_del'):
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        for user_resume in temp_resume:
+            find_resume = Resume_Self_Introduce.objects.filter(resume_self_introduce=user_resume)
+            find_resume.delete()
+        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+
+
     temp_resume = Resume_Title.objects.filter(pk=title)
     for user_resume in temp_resume:
         school1 = Resume_ElementarySchool.objects.filter(resume_elementary=user_resume)
@@ -100,42 +168,76 @@ def detail_resume(request, title, pk):
 
         major = Resume_UniversitySchool_Major.objects.filter(resume_university_major=user_resume)
 
+        print(len(school1), 'school1')
+        print(len(school2), 'school2')
+        print(len(school3), 'school3')
+        print(len(school4), 'school4')
         out_play = Resume_Out_Play.objects.filter(resume_out_play=user_resume)
         prize_play = Resume_Prize_Play.objects.filter(resume_prize_play=user_resume)
         port_polio = Resume_Port_Polio.objects.filter(resume_port_polio=user_resume)
         self_introduce = Resume_Self_Introduce.objects.filter(resume_self_introduce=user_resume)
 
+        print(len(out_play), 'out_play')
+        print(len(prize_play), 'prize_play')
+        print(len(port_polio), 'port_polio')
+        print(len(self_introduce), 'self_introduce')
         resume_career = Resume_Career.objects.filter(resume_career=user_resume)
         resume_career_ability = Resume_Career_Ability.objects.filter(resume_career_ability=user_resume)
         resume_career_project = Resume_Career_Project.objects.filter(resume_career_project=user_resume)
+        print(len(resume_career), 'resume_career')
+        print(len(resume_career_ability), 'resume_career_ability')
+        print(len(resume_career_project), 'resume_career_project')
 
         resume_hope_work = Resume_Hope_Work.objects.filter(resume_hope_work=user_resume)
         resume_hope_work_field = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=user_resume)
         resume_hope_work_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=user_resume)
-
+        print(len(resume_hope_work), 'resume_hope_work')
+        print(len(resume_hope_work_field), 'resume_hope_work_field')
+        print(len(resume_hope_work_work), 'resume_hope_work_work')
         context = {}
         context['pk'] = pk
         context['title'] = title
 
-        context['school1'] = school1
-        context['school2'] = school2
-        context['school3'] = school3
-        context['school4'] = school4
+        if len(school1) == 0 and len(school2) == 0 and len(school3) == 0 and len(school4) == 0:
+            context['school'] = 1
+        else:
+            context['school1'] = school1
+            context['school2'] = school2
+            context['school3'] = school3
+            context['school4'] = school4
 
         context['major'] = major
 
-        context['out_play'] = out_play
-        context['prize_play'] = prize_play
-        context['port_polio'] = port_polio
-        context['self_introduce'] = self_introduce
+        if len(out_play) == 0:
+            context['none_out_play'] = 1
+        else:
+            context['out_play'] = out_play
+        if len(prize_play) == 0:
+            context['none_prize_play'] = 1
+        else:
+            context['prize_play'] = prize_play
+        if len(port_polio) == 0:
+            context['none_port_polio'] = 1
+        else:
+            context['port_polio'] = port_polio
+        if len(self_introduce) == 0:
+            context['none_self_introduce'] = 1
+        else:
+            context['self_introduce'] = self_introduce
 
-        context['resume_career'] = resume_career
-        context['resume_career_ability'] = resume_career_ability
-        context['resume_career_project'] = resume_career_project
+        if len(resume_career) == 0:
+            context['none_resume_career'] = 1
+        else:
+            context['resume_career'] = resume_career
+            context['resume_career_ability'] = resume_career_ability
+            context['resume_career_project'] = resume_career_project
 
-        context['resume_hope_work'] = resume_hope_work
-        context['resume_hope_work_field'] = resume_hope_work_field
-        context['resume_hope_work_work'] = resume_hope_work_work
+        if len(resume_hope_work) == 0:
+            context['none_resume_hope_work'] = 1
+        else:
+            context['resume_hope_work'] = resume_hope_work
+            context['resume_hope_work_field'] = resume_hope_work_field
+            context['resume_hope_work_work'] = resume_hope_work_work
 
         context['resume'] = user_resume
 

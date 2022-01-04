@@ -15,24 +15,6 @@
             대외활동
             <input type="submit" name="out_play_button" value="추가" class="resume_add_button_plus1">
         </form>
-        <p></p>
-        <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            자격증
-            <input type="submit" name="prize_play_button" value="추가" class="resume_add_button_plus2">
-        </form>
-        <p></p>
-        <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            포트폴리오 및 기타문서
-            <input type="submit" name="port_polio_button" value="추가" class="resume_add_button_plus3">
-        </form>
-        <p></p>
-        <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            자기소개서
-            <input type="submit" name="self_introduce_button" value="추가" class="resume_add_button_plus4">
-        </form>
     </div>
 
     <form action="{% url 'resumeapp:resume_out_play_update' out_play=out_play title=title pk=pk %}" method="post" enctype="multipart/form-data">

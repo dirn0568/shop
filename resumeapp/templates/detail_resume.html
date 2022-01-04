@@ -25,54 +25,181 @@
     <ul class="amount">
         <li>
             <div>
-                <div class="amount_title_css">학력</div>
-                <div>전남대학교(여수)</div>
-                <div>대학교(4년)</div>
-                <div>3.0 / 4.5</div>
+                <div class="amount_title_css">
+                    학력
+                </div>
+                <div>
+                    {% if school1 %}
+                        {% for school in school1 %}
+                            {{ school.elementary_school_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school2 %}
+                        {% for school in school2 %}
+                            {{ school.middle_school_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school3 %}
+                        {% for school in school3 %}
+                            {{ school.high_school_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school4 %}
+                        {% for school in school4 %}
+                            {{ school.university_school_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school %}
+                        -
+                    {% endif %}
+                </div>
+                <div>
+                    {% if school1 %}
+                        {% for school in school1 %}
+                            {{ school.elementary_field_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school2 %}
+                        {% for school in school2 %}
+                            {{ school.middle_field_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school3 %}
+                        {% for school in school3 %}
+                            {{ school.high_field_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school4 %}
+                        {% for school in school4 %}
+                            {{ school.university_field_name }}
+                        {% endfor %}
+                    {% endif %}
+                    {% if school %}
+                        -
+                    {% endif %}
+                </div>
+                <div>
+                    {% if school1 %}
+                        -
+                    {% endif %}
+                    {% if school2 %}
+                        -
+                    {% endif %}
+                    {% if school3 %}
+                        -
+                    {% endif %}
+                    {% if school4 %}
+                        {% for school in school4 %}
+                            {{ school.university_study_level }} / 4.5
+                        {% endfor %}
+                    {% endif %}
+                    {% if school %}
+                        -
+                    {% endif %}
+                </div>
             </div>
         </li>
         <li>
             <div>
                 <div class="amount_title_css">경력</div>
-                <div>전남대학교여수캠퍼스발전기금</div>
-                <div>인턴</div>
-                <div></div>
+                <div>
+                    {% if none_resume_career %}
+                        -
+                    {% else %}
+                        {% for resume_career_list in resume_career %}
+                            {{ resume_career_list.resume_company_name }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    {% if none_resume_career %}
+                        -
+                    {% else %}
+                        {% for resume_career_list in resume_career %}
+                            {{ resume_career_list.resume_career_position_detail }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    -
+                </div>
             </div>
         </li>
         <li>
             <div>
                 <div class="amount_title_css">희망 근무 조건</div>
-                <div>즉시 근무 가능</div>
-                <div>희망연봉 2000만원 ~ 3000만원</div>
-                <div></div>
+                <div>
+                    {% if none_resume_hope_work %}
+                        -
+                    {% else %}
+                        {% for resume_hope_work_list in resume_hope_work %}
+                            {{ resume_hope_work_list.resume_hope_work_start_time }}
+                            {{ resume_hope_work_list.resume_hope_end_time }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    {% if none_resume_hope_work %}
+                        -
+                    {% else %}
+                        {% for resume_hope_work_list in resume_hope_work %}
+                            {{ resume_hope_work_list.resume_hope_work_money }}
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div>
+                    -
+                </div>
             </div>
         </li>
     </ul>
-    <div class="content_title">
-        학력
-    </div>
-    <div class="content">
-        <p></p>
-        {% for school in school1 %}
+    <p></p>
+    {% if school1 %}
+        <div class="content_title">
+            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+        </div>
+        <div class="content">
             <p></p>
-            &nbsp;&nbsp;학교명 : {{ school.elementary_school_name }}<span class="field_css">({{ school.elementary_field_name }})</span> <span class="date_css">{{ school.elementary_start_time }} ~ {{ school.elementary_end_time }}</span>
-        {% endfor %}
-
-        {% for school in school2 %}
+            {% for school in school1 %}
+                <p></p>
+                &nbsp;&nbsp;{{ school.elementary_school_name }}<span class="field_css">({{ school.elementary_field_name }})</span> <span class="date_css">{{ school.elementary_start_time }} ~ {{ school.elementary_end_time }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if school2 %}
+        <div class="content_title">
+            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+        </div>
+        <div class="content">
+            {% for school in school2 %}
+                <p></p>
+                &nbsp;&nbsp;{{ school.middle_school_name }}<span class="field_css">({{ school.middle_field_name }})</span> <span class="date_css">{{ school.middle_start_time }} ~ {{ school.middle_end_time }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if school3 %}
+        <div class="content_title">
+            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+        </div>
+        <div class="content">
+            {% for school in school3 %}
+                <p></p>
+                &nbsp;&nbsp;{{ school.high_school_name }}<span class="field_css">({{ school.high_field_name }})</span> <span class="date_css">{{ school.high_start_time }} ~ {{ school.high_end_time }}</span>
+                <p></p>
+                <div class="mini_div">
+                &nbsp;&nbsp;전공 계열 : {{ school.high_major }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if school4 %}
+        <div class="content_title">
+            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+        </div>
+        <div class="content">
+            {% for school in school4 %}
             <p></p>
-            &nbsp;&nbsp;학교명 : {{ school.middle_school_name }}<span class="field_css">({{ school.middle_field_name }})</span> <span class="date_css">{{ school.middle_start_time }} ~ {{ school.middle_end_time }}</span>
-        {% endfor %}
-
-        {% for school in school3 %}
-            <p></p>
-            &nbsp;&nbsp;학교명 : {{ school.high_school_name }}<span class="field_css">({{ school.high_field_name }})</span> <span class="date_css">{{ school.high_start_time }} ~ {{ school.high_end_time }}</span>
-            <p></p>
-            &nbsp;&nbsp;전공 계열 : {{ school.high_major }}
-        {% endfor %}
-
-        {% for school in school4 %}
-            <p></p>
-            &nbsp;&nbsp;{{ school.university_school_name }}<span class="field_css">({{ school.university_field_name }})</span> <span class="date_css">{{ school.university_start_time }} ~ {{ school.university_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_year }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_time }}</span> <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}">수정하기+</a>
+            &nbsp;&nbsp;{{ school.university_school_name }}<span class="field_css">({{ school.university_field_name }})</span> <span class="date_css">{{ school.university_start_time }} ~ {{ school.university_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_year }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_time }}</span>
             <p></p>
             <div class="mini_div">
                 {% for major_list in major %}
@@ -88,108 +215,128 @@
             </div>
         {% endfor %}
         <p></p>
-    </div>
-    <div class="content_title">
-        경력
-    </div>
-    <div class="content">
+        </div>
+    {% endif %}
+    {% if resume_career %}
         <p></p>
-        {% for resume_career_list in resume_career %}
+        <div class="content_title">
+            경력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume4_update' company_ability=1 company_project=0 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_career_del"></span></form>
+        </div>
+        <div class="content">
             <p></p>
-            &nbsp;&nbsp;{{ resume_career_list.resume_company_name }} <span class="date_css">{{ resume_career_list.resume_career_start_time }} ~ {{ resume_career_list.resume_career_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position_detail }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position }}</span> <a href="{% url 'resumeapp:resume_resume4_update' company_ability=1 company_project=0 title=title pk=pk %}">수정하기+</a>
-            <p></p>
-            <div class="mini_div">
-                &nbsp;&nbsp;담당업무 : {{ resume_career_list.resume_career_position_detail2 }}
+            {% for resume_career_list in resume_career %}
                 <p></p>
-                &nbsp;&nbsp;연봉 : {{ resume_career_list.resume_career_money }}{{ resume_career_list.resume_career_money_detail }}
+                &nbsp;&nbsp;{{ resume_career_list.resume_company_name }} <span class="date_css">{{ resume_career_list.resume_career_start_time }} ~ {{ resume_career_list.resume_career_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position_detail }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position }}</span>
                 <p></p>
-                &nbsp;&nbsp;핵심역량
-                <div class="career_active_position_css">
-                    <ul>
-                    {% for resume_career_ability_list in resume_career_ability %}
-                        <li> {{ resume_career_ability_list.resume_career_ability_text }}</li>
+                <div class="mini_div">
+                    &nbsp;&nbsp;담당업무 : {{ resume_career_list.resume_career_position_detail2 }}
+                    <p></p>
+                    &nbsp;&nbsp;연봉 : {{ resume_career_list.resume_career_money }}{{ resume_career_list.resume_career_money_detail }}
+                    <p></p>
+                    &nbsp;&nbsp;핵심역량
+                    <div class="career_active_position_css">
+                        <ul>
+                        {% for resume_career_ability_list in resume_career_ability %}
+                            <li> {{ resume_career_ability_list.resume_career_ability_text }}</li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    {% for resume_career_project_list in resume_career_project %}
+                        <p></p>
+                        &nbsp;&nbsp;프로젝트 : {{ resume_career_project_list.resume_career_project_text }} <span class="date_css">{{ resume_career_project_list.resume_career_project_start_time }} ~ {{ resume_career_project_list.resume_career_project_end_time }}</span>
+                        <p></p>
+                        &nbsp;&nbsp;세부사항 : {{ resume_career_project_list.resume_career_project_text_detail }}
                     {% endfor %}
-                    </ul>
                 </div>
-                {% for resume_career_project_list in resume_career_project %}
-                    <p></p>
-                    &nbsp;&nbsp;프로젝트 : {{ resume_career_project_list.resume_career_project_text }} <span class="date_css">{{ resume_career_project_list.resume_career_project_start_time }} ~ {{ resume_career_project_list.resume_career_project_end_time }}</span>
-                    <p></p>
-                    &nbsp;&nbsp;세부사항 : {{ resume_career_project_list.resume_career_project_text_detail }}
-                {% endfor %}
-            </div>
-        {% endfor %}
-        <p></p>
-    </div>
-    <div class="content_title">
-        대외활동
-    </div>
-    <div class="content">
-        {% for out_play_list in out_play %}
-            <p></p>
-            &nbsp;&nbsp;{{ out_play_list.resume_out_place }}<span class="field_css">({{ out_play_list.resume_out_activity }})</span> <span class="date_css">{{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}</span> <a href="{% url 'resumeapp:resume_out_play_update' out_play=1 title=title pk=pk %}">수정하기+</a>
-            <p></p>
-            <div class="mini_div">&nbsp;&nbsp;{{ out_play_list.resume_out_play_text }}</div>
-        {% endfor %}
-    </div>
-    <div class="content_title">
-        자격증
-    </div>
-    <div class="content">
-        {% for prize_play_list in prize_play %}
-            <p></p>
-            {{ prize_play_list.resume_prize_certificate }}<span class="field_css">({{ prize_play_list.resume_prize_title }})</span> <a href="{% url 'resumeapp:resume_prize_play_update' prize_play=1 title=title pk=pk %}">수정하기+</a>
-            <p></p>
-            <div class="mini_div">
-                {{ prize_play_list.resume_prize_place }}
-                <p></p>
-                {{ prize_play_list.resume_prize_date }}
-            </div>
-        {% endfor %}
-    </div>
-    <div class="content_title">
-        포트폴리오
-    </div>
-    <div class="content">
-        {% for port_polio_list in port_polio %}
-            <p></p>
-            활동구분 : <a href="/media/{{ port_polio_list.resume_port_polio_detail }}" download>{{ port_polio_list.resume_port_polio_detail }}</a> <a href="{% url 'resumeapp:resume_port_polio_update' port_polio=1 title=title pk=pk %}">수정하기+</a>
-        {% endfor %}
-    </div>
-    <div class="content_title">
-        자기소개서
-    </div>
-    <div class="content">
-        {% for self_introduce_list in self_introduce %}
-            <p></p>
-            자기소개서 제목 : {{ self_introduce_list.resume_self_introduce_title }} <a href="{% url 'resumeapp:resume_self_introduce_update' self_introduce=1 title=title pk=pk %}">수정하기+</a>
-            <p></p>
-            자기소개서 내용 : {{ self_introduce_list.resume_self_introduce_text }}
-        {% endfor %}
-    </div>
-    <div class="base_line_css">
-        <hr>
-    </div>
-    <div class="content_title">
-        희망 조건
-    </div>
-    <div class="content">
-        <p></p>
-        <div class="mini_div">
-            &nbsp;&nbsp;즉시 근무 가능 <a href="{% url 'resumeapp:resume_resume5_update' title=title pk=pk %}">수정하기+</a>
-            <p></p>
-            &nbsp;&nbsp;희망 연봉 : 100만원 ~ 200만원
-            <p></p>
-            &nbsp;&nbsp;희망 지역 :
-            {% for resume_hope_work_field_list in resume_hope_work_field %}
-                &nbsp;&nbsp;# {{ resume_hope_work_field_list.resume_hope_work_field1 }}
             {% endfor %}
             <p></p>
-            &nbsp;&nbsp;희망 직업 :
-            {% for resume_hope_work_work_list in resume_hope_work_work %}
-                &nbsp;&nbsp;# {{ resume_hope_work_work_list.resume_hope_work_work1 }}
+        </div>
+    {% endif %}
+    {% if out_play %}
+        <p></p>
+        <div class="content_title">
+            대외활동 <span class="update_btn"><a href="{% url 'resumeapp:resume_out_play_update' out_play=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_out_play_del"></span></form>
+        </div>
+        <div class="content">
+            {% for out_play_list in out_play %}
+                <p></p>
+                &nbsp;&nbsp;{{ out_play_list.resume_out_place }}<span class="field_css">({{ out_play_list.resume_out_activity }})</span> <span class="date_css">{{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}</span>
+                <p></p>
+                <div class="mini_div">&nbsp;&nbsp;{{ out_play_list.resume_out_play_text }}</div>
             {% endfor %}
         </div>
+    {% endif %}
+    {% if prize_play %}
         <p></p>
-    </div>
+        <div class="content_title">
+            자격증 <span class="update_btn"><a href="{% url 'resumeapp:resume_prize_play_update' prize_play=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_prize_play_del"></span></form>
+        </div>
+        <div class="content">
+            {% for prize_play_list in prize_play %}
+                <p></p>
+                {{ prize_play_list.resume_prize_certificate }}<span class="field_css">({{ prize_play_list.resume_prize_title }})</span>
+                <p></p>
+                <div class="mini_div">
+                    {{ prize_play_list.resume_prize_place }}
+                    <p></p>
+                    {{ prize_play_list.resume_prize_date }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if port_polio %}
+        <p></p>
+        <div class="content_title">
+            포트폴리오 <span class="update_btn"><a href="{% url 'resumeapp:resume_port_polio_update' port_polio=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_port_polio_del"></span></form>
+        </div>
+        <div class="content">
+            {% for port_polio_list in port_polio %}
+                <p></p>
+                활동구분 : <a href="/media/{{ port_polio_list.resume_port_polio_detail }}" download>{{ port_polio_list.resume_port_polio_detail }}</a>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if self_introduce %}
+        <p></p>
+        <div class="content_title">
+            자기소개서 <span class="update_btn"><a href="{% url 'resumeapp:resume_self_introduce_update' self_introduce=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_self_introduce_del"></span></form>
+        </div>
+        <div class="content">
+            {% for self_introduce_list in self_introduce %}
+                <p></p>
+                &nbsp;&nbsp;<span class="main_name">자기소개서 제목 : {{ self_introduce_list.resume_self_introduce_title }}</span>
+                <p></p>
+                <div class="mini_div">
+                    자기소개서 내용 : {{ self_introduce_list.resume_self_introduce_text }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if resume_hope_work %}
+        <div class="base_line_css">
+            <hr>
+        </div>
+        <div class="content_title">
+            희망 조건 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume5_update' title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_hope_work_del"></span></form>
+        </div>
+        <div class="content">
+            <p></p>
+            <div class="mini_div">
+                &nbsp;&nbsp;즉시 근무 가능
+                <p></p>
+                &nbsp;&nbsp;희망 연봉 : 100만원 ~ 200만원
+                <p></p>
+                &nbsp;&nbsp;희망 지역 :
+                {% for resume_hope_work_field_list in resume_hope_work_field %}
+                    &nbsp;&nbsp;# {{ resume_hope_work_field_list.resume_hope_work_field1 }}
+                {% endfor %}
+                <p></p>
+                &nbsp;&nbsp;희망 직업 :
+                {% for resume_hope_work_work_list in resume_hope_work_work %}
+                    &nbsp;&nbsp;# {{ resume_hope_work_work_list.resume_hope_work_work1 }}
+                {% endfor %}
+            </div>
+            <p></p>
+        </div>
+    {% endif %}
 {% endblock %}
