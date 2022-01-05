@@ -32,6 +32,7 @@
                 <a href="{% url 'accountapp:create_user' %}"><span style="font-family: 'Anton', sans-serif;">회원가입</span></a>
             {% else %}
                 <a href="{% url 'accountapp:login' %}"><span style="font-family: 'Anton', sans-serif;">로그인</span></a>
+                <a href="{% url 'accountapp:create_company_user' %}"><span style="font-family: 'Anton', sans-serif;">기업_회원가입</span></a>
                 <a href="{% url 'accountapp:create_user' %}"><span style="font-family: 'Anton', sans-serif;">회원가입</span></a>
             {% endif %}
         </h2>

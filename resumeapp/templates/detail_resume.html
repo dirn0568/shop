@@ -260,9 +260,9 @@
         <div class="content">
             {% for out_play_list in out_play %}
                 <p></p>
-                &nbsp;&nbsp;{{ out_play_list.resume_out_place }}<span class="field_css">({{ out_play_list.resume_out_activity }})</span> <span class="date_css">{{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}</span>
+                &nbsp;&nbsp;{{ out_play_list.resume_out_place }} <span class="date_css">{{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}</span> <span class="information_css">&nbsp;{{ out_play_list.resume_out_activity }}&nbsp;</span>
                 <p></p>
-                <div class="mini_div">&nbsp;&nbsp;{{ out_play_list.resume_out_play_text }}</div>
+                <div class="mini_div"><ul><li>{{ out_play_list.resume_out_play_text }}</li></ul></div>
             {% endfor %}
         </div>
     {% endif %}
@@ -274,13 +274,7 @@
         <div class="content">
             {% for prize_play_list in prize_play %}
                 <p></p>
-                {{ prize_play_list.resume_prize_certificate }}<span class="field_css">({{ prize_play_list.resume_prize_title }})</span>
-                <p></p>
-                <div class="mini_div">
-                    {{ prize_play_list.resume_prize_place }}
-                    <p></p>
-                    {{ prize_play_list.resume_prize_date }}
-                </div>
+                &nbsp;&nbsp;{{ prize_play_list.resume_prize_certificate }}<span class="field_css">({{ prize_play_list.resume_prize_title }})</span> <span class="date_css">{{ prize_play_list.resume_prize_date }}</span> <span class="information_css">&nbsp;{{ prize_play_list.resume_prize_place }}&nbsp;</span>
             {% endfor %}
         </div>
     {% endif %}
@@ -292,7 +286,7 @@
         <div class="content">
             {% for port_polio_list in port_polio %}
                 <p></p>
-                활동구분 : <a href="/media/{{ port_polio_list.resume_port_polio_detail }}" download>{{ port_polio_list.resume_port_polio_detail }}</a>
+                <span class="mini_div">&nbsp;활동구분 <span class="bar">|</span> <a href="/media/{{ port_polio_list.resume_port_polio_detail }}" download>{{ port_polio_list.resume_port_polio_detail }}</a></span>
             {% endfor %}
         </div>
     {% endif %}
@@ -304,10 +298,10 @@
         <div class="content">
             {% for self_introduce_list in self_introduce %}
                 <p></p>
-                &nbsp;&nbsp;<span class="main_name">자기소개서 제목 : {{ self_introduce_list.resume_self_introduce_title }}</span>
+                &nbsp;&nbsp;<span class="main_name">{{ self_introduce_list.resume_self_introduce_title }}</span>
                 <p></p>
                 <div class="mini_div">
-                    자기소개서 내용 : {{ self_introduce_list.resume_self_introduce_text }}
+                    <ul><li>{{ self_introduce_list.resume_self_introduce_text }}</li></ul>
                 </div>
             {% endfor %}
         </div>

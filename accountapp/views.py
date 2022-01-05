@@ -1,4 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.views import LoginView
+
 from accountapp.models import MyUser, Friend_List
 from django.http import request
 from django.shortcuts import render, redirect
@@ -7,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
-from accountapp.forms import Update_User_Form, Create_User_Form
+from accountapp.forms import Update_User_Form, Create_User_Form, Create_Company_User_Form
 from friendapp.models import FriendRequestModel
 from profileapp.models import User_Profile
 from resumeapp.models import User_Resume, Resume_Title
@@ -64,6 +66,18 @@ class Delete_User(DeleteView):
     context_object_name = 'target_user'
     template_name = 'delete_user.html'
     success_url = reverse_lazy('mainapp:main')
+
+class Create_Company_User(CreateView):
+    model = MyUser
+    form_class = Create_Company_User_Form
+    template_name = 'create_company_user.html'
+
+    def get_success_url(self):
+        return reverse('accountapp:login')
+
+# class Company_Login_View(LoginView):
+#     model = MyUser
+#     form_class =
 
 def createfriend(request, friend1, friend2, pk):
     friend_data1 = MyUser.objects.filter(username=friend1)

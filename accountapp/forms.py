@@ -16,3 +16,8 @@ class Update_User_Form(Create_User_Form):
         super().__init__(*args, **kwargs)
 
         self.fields['username'].disabled = True
+
+class Create_Company_User_Form(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = MyUser
+        fields = UserCreationForm.Meta.fields + ('nickname',)

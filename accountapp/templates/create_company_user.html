@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load bootstrap4 %}
+    {% load static %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+
+    <title>Title</title>
+</head>
+<body>
+    <div style="text-align:center; max-width:500px; margin:4rem auto;">
+        <h3>
+            SIGN UP (Company)
+        </h3>
+        <form action="{% url 'accountapp:create_company_user' %}" method="post">
+            {% csrf_token %}
+            기업정보
+            <p></p>
+            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;" class="prize_play_css3">
+                <option value='' selected style="font-weight:bold;">-- 기업형태 --</option>
+                <option value='대기업'>대기업</option>
+                <option value='대기업 계열사·자회사'>대기업 계열사·자회사</option>
+                <option value='중소기업(300명이하)'>중소기업(300명이하)</option>
+                <option value='중견기업(300명이상)'>중견기업(300명이상)</option>
+                <option value='벤처기업'>벤처기업</option>
+            </select>
+            <input type="text" name="prize_play2{{list4.0}}" placeholder="회사명" style="width:800px;height:50px;" class="prize_play_css2">
+            <input type="text" name="prize_play2{{list4.0}}" placeholder="대표자명" style="width:800px;height:50px;" class="prize_play_css2">
+            <p></p>
+
+            {% bootstrap_form form %}
+            <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
+        </form>
+    </div>
+
+    <div style="text-align:center;">
+        <div class="footer_label">
+            공지사항 ㅣ 제휴문의 ㅣ 서비스 소개
+        </div>
+        <div class="footer_logo" style="margin-top: 1rem;">
+            <img src="{% static 'main/PICKME.jpg' %}" width="300" height="100">
+        </div>
+    </div>
+</body>
+</html>
