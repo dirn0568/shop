@@ -54,3 +54,8 @@ def main(request):
     context["html3"] = html3
     context["html4"] = html4
     return render(request, 'main.html', context)
+
+
+def main2(request):
+    context={}
+    return render(request, 'main2.html', context)

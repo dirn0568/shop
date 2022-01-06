@@ -16,3 +16,24 @@
     height:100%;
     background:#EAEAEA;
 }
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+.header_content {
+    width: 85rem;
+    margin:auto;
+    background:#EAEAEA;
+}
+
+.header_content_box {
+    display:flex;
+    text-align:center;
+}
+
+.header_content_box > a {
+    flex:1;
+    font-size:20px;
+    margin:auto;
+    background:#E1E1E1;
+}
+
+

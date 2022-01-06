@@ -1,9 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base3.html' %}
 
 {% block content %}
-    {% for list in resume %}
-        <a href="{% url 'resumeapp:detail_resume' title=list.pk pk=request.user.pk %}">
-            {{ list }}
-        </a>
-    {% endfor %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/list_resume.css' %}">
+    <p></p>
+    <div class="content">
+        {% for list in resume %}
+            <a href="{% url 'resumeapp:detail_resume' title=list.pk pk=request.user.pk %}">
+                <ul class="mini_content">
+                    <li>{{ list.resume_title_detail }}</li>
+                    <li>{{ list.resume_title }}</li>
+                    <li>♥ 5</li>
+                    <li>이력서 공개여부</li>
+                    <li><div class="date_css">
+                        {{ list.resume_date|date:"Y-m-d" }}
+                    </div></li>
+                </ul>
+                <hr>
+            </a>
+        {% endfor %}
+        <p></p>
+    </div>
 {% endblock %}

@@ -31,6 +31,9 @@ class Resume_Title(models.Model):
 
     resume_title_detail = models.CharField(max_length=2000)
 
+    resume_date = models.DateField(auto_now=True)
+    resume_Time = models.TimeField(auto_now=True)
+
 class Resume_ElementarySchool(models.Model):
     resume_elementary = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_elementary')
 

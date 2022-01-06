@@ -12,29 +12,42 @@
 
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 
+    <link rel="stylesheet" href="{% static 'css/company_create.css' %}">
     <title>Title</title>
 </head>
 <body>
     <div style="text-align:center; max-width:500px; margin:4rem auto;">
-        <h3>
+        <h3 style="font-weight:bold;">
             SIGN UP (Company)
         </h3>
         <form action="{% url 'accountapp:create_company_user' %}" method="post">
             {% csrf_token %}
-            기업정보
+            <h5 style="font-weight:bold;">
+                기업정보
+            </h5>
             <p></p>
-            <select name='prize_play3{{list4.0}}' style="width:300px;height:50px;" class="prize_play_css3">
-                <option value='' selected style="font-weight:bold;">-- 기업형태 --</option>
+            <select name='company_group' style="width:500px;height:50px;color:#8C8C8C;" required>
+                <option value='' selected>-- 기업형태 --</option>
                 <option value='대기업'>대기업</option>
                 <option value='대기업 계열사·자회사'>대기업 계열사·자회사</option>
                 <option value='중소기업(300명이하)'>중소기업(300명이하)</option>
                 <option value='중견기업(300명이상)'>중견기업(300명이상)</option>
                 <option value='벤처기업'>벤처기업</option>
             </select>
-            <input type="text" name="prize_play2{{list4.0}}" placeholder="회사명" style="width:800px;height:50px;" class="prize_play_css2">
-            <input type="text" name="prize_play2{{list4.0}}" placeholder="대표자명" style="width:800px;height:50px;" class="prize_play_css2">
             <p></p>
-
+            <input type="number" name="company_num" placeholder="회사번호" style="width:500px;height:50px;" class="company_num_css" maxlength="13" required>
+            <p></p>
+            <ul class="company_ul">
+                <li>
+                    <input type="text" name="company_name" placeholder="회사명" style="width:380px;height:50px;" required>
+                </li>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <li>
+                    <input type="text" name="company_ceo" placeholder="대표자명" style="width:100px;height:50px;" required>
+                </li>
+            </ul>
+            <p></p>
+            <hr>
             {% bootstrap_form form %}
             <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
         </form>

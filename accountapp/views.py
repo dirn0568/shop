@@ -72,6 +72,16 @@ class Create_Company_User(CreateView):
     form_class = Create_Company_User_Form
     template_name = 'create_company_user.html'
 
+    def form_valid(self, form):
+        temp_form = form.save(commit=False)
+        temp_form.company_group = self.request.POST['company_group']
+        # temp_article.article_project = ProjectCreateModel.objects.get(pk=self.request.pk)
+        temp_form.company_number = self.request.POST['company_num']
+        temp_form.company_name = self.request.POST['company_name']
+        temp_form.company_ceo = self.request.POST['company_ceo']
+        temp_form.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
         return reverse('accountapp:login')
 

@@ -1,0 +1,14 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.company_ul {
+    position:relative;
+    margin-left:-2.5rem;
+    display:flex;
+    list-style:none;
+}
+
+.required_css {
+    color:#FF0000; z:index:10;
+}

@@ -1,0 +1,22 @@
+.content {
+    width: 85rem;
+    margin:auto;
+}
+
+.content > a {
+    color:#000000;
+}
+
+.mini_content {
+    display:flex;
+}
+
+.mini_content > li{
+    flex:1;
+    list-style:none;
+}
+
+.date_css {
+    margin-left:auto;
+    width:10rem;
+}
