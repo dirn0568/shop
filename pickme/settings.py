@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'friendapp',
     'chatapp',
     'resumeapp',
+    'searchapp',
 ]
 
 MIDDLEWARE = [
