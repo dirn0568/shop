@@ -19,9 +19,33 @@
 }
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 지역 선택 */
 
 .field_btn1 {
     opacity:0;
+}
+
+.field_btn2 {
+    cursor:pointer;
+}
+
+.position_btn1 {
+    opacity:0;
+}
+
+.exit_css {
+    max-height:0;
+    overflow:hidden;
+    margin-top:-4rem;
+    margin-left:25rem;
+}
+
+.position_btn3 {
+    cursor:pointer;
+    border:none;
+    font-weight:bold;
+    font-size:25px;
+    color:#FF0000;
 }
 
 .self_border_img {
@@ -32,4 +56,386 @@
     background:#ffffff;
     border-color:#D4D4D4;
     font-size:1.6rem;
+}
+
+.work_field1 {
+    max-height:0;
+    margin-top:0.7rem;
+    width:200px;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:20px;
+}
+
+input[id="answer04"]:checked + label + div + div {
+    max-height:300px;
+    overflow:scroll;
+}
+
+input[id="answer04"]:checked + label + div {
+    max-height:100px;
+}
+
+.work_field2 {
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+}
+
+input[id="answer04"]:checked + label + div + div input[id="answer04_01"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_02"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:hidden;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_03"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_04"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_05"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_06"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_07"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_08"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_09"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_10"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_11"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_12"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_13"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_14"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_15"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_16"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_17"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:hidden;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer04"]:checked + label + div + div input[id="answer04_18"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:12.5rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 직업 선택 css */
+
+.field_btn3 {
+    opacity:0;
+    margin-left:6.5rem;
+}
+
+.button_field2 {
+    top:-8.25rem;
+    margin-left:41rem;
+}
+
+.work_field3 {
+    max-height:0;
+    margin-top:0.7rem;
+    margin-left:-28.65rem;
+    width:400px;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+    font-size:20px;
+}
+
+/* input[id="answer05"]:checked + label + div + div 같은 서열안에서의 마지막 div를 가리킴 */
+/* input[id="answer05"]:checked + label + div div 라벨 다음의 div의 자식 div를 가리킴 */
+input[id="answer05"]:checked + label + div + div {
+    max-height:300px;
+    overflow:scroll;
+}
+
+input[id="answer05"]:checked + label + div {
+    max-height:100px;
+}
+
+.work_field4 {
+    max-height:0;
+    overflow:hidden;
+    color:#FF0000;
+    background:#FFFFFF;
+}
+
+input[id="answer05"]:checked + label + div + div input[id="answer05_01"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_02"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_03"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_04"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_05"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_06"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_07"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_08"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_09"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_10"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_11"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_12"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
+}
+input[id="answer05"]:checked + label + div + div input[id="answer05_13"]:checked + label + div {
+    position:absolute;
+    top:11.5rem;
+    margin-left:25rem;
+    max-height:300px;
+    height:300px;
+    width:800px;
+    overflow:scroll;
+    font-size:20px;
 }
