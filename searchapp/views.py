@@ -5,7 +5,8 @@ from django.http import request
 from django.shortcuts import render
 
 from accountapp.models import MyUser
-from resumeapp.models import Resume_Title, Resume_Hope_Work_Field, Resume_Hope_Work_Work
+from resumeapp.models import Resume_Title, Resume_Hope_Work_Field, Resume_Hope_Work_Work, Resume_ElementarySchool, \
+    Resume_MiddleSchool, Resume_HighSchool, Resume_UniversitySchool, Resume_UniversitySchool_Major
 
 
 def search_resume(request):
@@ -32,6 +33,20 @@ def search_resume(request):
                     answer_work += 1
             if answer_field >= 1 and answer_work >= 1:
                 answer_list.append(resume_title)
+
+                #################################################################################
+
+                school1 = Resume_ElementarySchool.objects.filter(resume_elementary=resume_title)
+                school2 = Resume_MiddleSchool.objects.filter(resume_middle=resume_title)
+                school3 = Resume_HighSchool.objects.filter(resume_high=resume_title)
+                school4 = Resume_UniversitySchool.objects.filter(resume_university=resume_title)
+
+                major = Resume_UniversitySchool_Major(resume_university_major=resume_title)
+
+
+
+
+
         context['answer_list'] = answer_list
 
     return render(request, 'search_resume.html', context)

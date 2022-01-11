@@ -2189,8 +2189,18 @@
             </div>
             <div class="search_content">
                 {% for list in answer_list %}
-                    {{ list.resume_title_detail }}
-                    <hr>
+                    <a href="{% url 'resumeapp:detail_resume' title=list.pk pk=request.user.pk %}">
+                        <ul class="mini_content">
+                            <li>{{ list.resume_title_detail }}</li>
+                            <li>{{ list.resume_title }}</li>
+                            <li>♥ 5</li>
+                            <li>이력서 공개여부</li>
+                            <li><div class="date_css">
+                                {{ list.resume_date|date:"Y-m-d" }}
+                            </div></li>
+                        </ul>
+                        <hr>
+                    </a>
                 {% endfor %}
             </div>
         </div>
