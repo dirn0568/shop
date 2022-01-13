@@ -1,3 +1,7 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 .content {
     width: 85rem;
     margin:auto;
@@ -19,4 +23,39 @@
 .date_css {
     margin-left:auto;
     width:10rem;
+}
+
+.mini_ul {
+    display:flex;
+}
+
+.mini_ul > li {
+    flex:1;
+    list-style:none;
+}
+
+.open_green_box{
+    border:none;
+    font-weight:bold;
+    background:#ABF200;
+    width:3.5rem;
+    height:1.5rem;
+    border-radius:10px;
+}
+
+.open_green {
+    color:#1DDB16;
+}
+
+.open_red_box{
+    border:none;
+    font-weight:bold;
+    background:#F15F5F;
+    width:3.5rem;
+    height:1.5rem;
+    border-radius:10px;
+}
+
+.open_red {
+    color:#CC3D3D;
 }

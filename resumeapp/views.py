@@ -76,8 +76,19 @@ def delete_resume(request, pk):
     context['pk'] = pk
     return render(request, 'delete_resume.html', context)
 
-def list_resume(request, pk):
+def list_resume(request, title, pk):
     temp_user = MyUser.objects.filter(pk=pk)
+    print(request.POST)
+    if request.method == "POST" and request.POST.get('resume_submit1'):
+        temp_resume = Resume_Title.objects.filter(pk=title)
+        print('실행중??????????????????????????12414124124?')
+        for resume in temp_resume:
+            if resume.resume_open == 1:
+                resume.resume_open = 0
+            else:
+                resume.resume_open = 1
+            resume.save()
+
     for user_test in temp_user:
         if request.user == user_test:
             pass

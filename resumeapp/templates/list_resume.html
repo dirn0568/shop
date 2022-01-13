@@ -11,10 +11,43 @@
                     <li>{{ list.resume_title_detail }}</li>
                     <li>{{ list.resume_title }}</li>
                     <li>♥ 5</li>
-                    <li>이력서 공개여부</li>
-                    <li><div class="date_css">
-                        {{ list.resume_date|date:"Y-m-d" }}
-                    </div></li>
+                    <li>
+                        {% if list.resume_open == 1 %}
+                            <form action="{% url 'resumeapp:list_resume' title=list.pk pk=pk %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <ul class="mini_ul">
+                                    <li>
+                                        <input type="submit" value="이력서 공개중" id="answer04{{list.pk}}" name="resume_submit1" style="background-color:transparent; border:0px transparent solid;">
+                                    </li>
+                                    <li>
+                                        <label for="answer04{{list.pk}}" class="open_green_box">
+                                            <div class="open_green">●</div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
+                        {% endif %}
+                        {% if list.resume_open == 0 %}
+                            <form action="{% url 'resumeapp:list_resume' title=list.pk pk=pk %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <ul class="mini_ul">
+                                    <li>
+                                        <input type="submit" value="이력서 비공개중" id="answer05{{list.pk}}" name="resume_submit1" style="background-color:transparent; border:0px transparent solid;">
+                                    </li>
+                                    <li>
+                                        <label for="answer05{{list.pk}}" class="open_red_box">
+                                            <div class="open_red">●</div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
+                        {% endif %}
+                    </li>
+                    <li>
+                        <div class="date_css">
+                            {{ list.resume_date|date:"Y-m-d" }}
+                        </div>
+                    </li>
                 </ul>
                 <hr>
             </a>
