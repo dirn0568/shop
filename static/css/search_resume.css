@@ -10,11 +10,7 @@
 .content > ul {
     display:flex;
     list-style:none;
-    margin-left:-3rem;
-}
-
-.content > ul > li {
-    flex:1;
+    margin-left:-2rem;
 }
 
 .search_result_title {
@@ -32,8 +28,9 @@
 .major_button_plus {
     border:none;
     font-weight:bold;
-    background:#A6A6A6;
-    padding: 10px 3rem;
+    background:#E4E4E4;
+    padding: 0.5rem 1rem;
+    margin-left:1rem;
 }
 
 .mini_content {
@@ -48,6 +45,24 @@
 .date_css {
     margin-left:auto;
     width:10rem;
+}
+
+.content > ul > li > label:not(:last-child) {
+    border-right:1px solid gray;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 로그인 css */
+
+.login_content {
+    position:relative;
+    margin-left:28rem;
+    display:flex;
+    width:15rem;
+    height:12.5rem;
+    border-radius:5px;
+    background:#E1E1E1;
+    margin-right:auto;
 }
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
@@ -66,10 +81,11 @@
 }
 
 .exit_css {
+    position:absolute;
     max-height:0;
     overflow:hidden;
-    margin-top:-4rem;
-    margin-left:25rem;
+    margin-top:-2.6rem;
+    margin-left:19rem;
 }
 
 .position_btn3 {
@@ -83,7 +99,7 @@
 .self_border_img {
     border-style:solid;
     border-width:0.1px;
-    padding:0rem 15rem 0rem 0rem;
+    padding:0rem 10rem 0rem 0rem;
     color:Gray;
     border-color:#D4D4D4;
     font-size:1.6rem;
