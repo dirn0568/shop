@@ -2214,21 +2214,40 @@
                     </div>
                 </li>
             </ul>
-
             <div class="search_result_title">
                 검색결과
             </div>
             <div class="search_content">
                 {% for list in answer_list %}
+                    <p></p>
                     <a href="{% url 'resumeapp:detail_resume' title=list.pk pk=request.user.pk %}">
                         <ul class="mini_content">
-                            <li>{{ list.resume_title_detail }}</li>
-                            <li>{{ list.resume_title }}</li>
-                            <li>♥ 5</li>
-                            <li>이력서 공개여부</li>
-                            <li><div class="date_css">
-                                {{ list.resume_date|date:"Y-m-d" }}
-                            </div></li>
+                            <li>
+                                조OO
+                                <p></p>
+                                (남 | 1999년, 24세)
+                            </li>
+                            <div></div>
+                            <li>
+                                <div style="margin-left:5rem;">
+                                    {{ list.resume_title_detail }}
+                                    <p></p>
+                                    희망직종:제빵사
+                                    <p></p>
+                                    직무기술:광주,서울
+                                    <p></p>
+                                    학교명 :
+                                    {{ list.resume_title.resume_university.university_school_name }}
+                                    {{ list.resume_title.university_school_name }}
+                                    {{ list.resume_university.university_school_name }}
+                                    {{ list.university_school_name }}
+                                    <p></p>
+                                    희망지역:서울전지역,부산전지역,광주전지역 | 즉시근무가능 | 희망연봉: 100억
+                                    <div class="date_css">
+                                        {{ list.resume_date|date:"Y-m-d" }}
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                         <hr>
                     </a>

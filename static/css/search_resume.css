@@ -10,7 +10,7 @@
 .content > ul {
     display:flex;
     list-style:none;
-    margin-left:-2rem;
+    margin-left:-3rem;
 }
 
 .search_result_title {
@@ -25,21 +25,31 @@
     background:#E1E1E1;
 }
 
+.mini_content {
+    display:flex;
+    list-style:none;
+}
+
+.mini_content > li(:first-child) {
+    flex:0.5;
+}
+
+.mini_content > div {
+    flex:0.2;
+    border-right:1px solid gray;
+}
+
+.mini_content > li(:end-child) {
+    flex:1;
+    margin-left:5rem;
+}
+
 .major_button_plus {
     border:none;
     font-weight:bold;
     background:#E4E4E4;
     padding: 0.5rem 1rem;
     margin-left:1rem;
-}
-
-.mini_content {
-    display:flex;
-}
-
-.mini_content > li{
-    flex:1;
-    list-style:none;
 }
 
 .date_css {
@@ -65,6 +75,34 @@
     margin-right:auto;
 }
 
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 이미지 */
+
+.search_img1{
+    position:relative;
+    top:10rem;
+    margin-left:50rem;
+}
+
+.search_img2{
+    position:absolute;
+    top:10rem;
+    margin-left:57rem;
+}
+
+.search_img3{
+    position:absolute;
+    top:12.5rem;
+}
+/* 혹시나 해서 남겨둔 이미지들<div class="search_img1">
+                        <i style="font-size:1rem;" class="material-icons">flutter_dash</i>
+                    </div>
+                    <div class="search_img2">
+                        <img src="{% static 'search/workplace.png' %}" width="200" height="200">
+                    </div>
+                    <div class="search_img3">
+                        <img src="{% static 'search/mail-people.jpg' %}" width="150" height="150">
+                    </div> */
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /* 지역 선택 */
 

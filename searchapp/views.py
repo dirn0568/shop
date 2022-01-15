@@ -44,8 +44,14 @@ def search_resume(request):
 
                     major = Resume_UniversitySchool_Major(resume_university_major=resume_title)
 
-
-
+                    if school1.count() >= 1:
+                        context['school'] = school1
+                    if school2.count() >= 1:
+                        context['school'] = school2
+                    if school3.count() >= 1:
+                        context['school'] = school3
+                    if school4.count() >= 1:
+                        context['school'] = school4
 
 
         context['answer_list'] = answer_list

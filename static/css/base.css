@@ -32,6 +32,7 @@
 .header_content_box > a {
     flex:1;
     font-size:20px;
+    color:#FF0000;
     margin:auto;
     background:#E1E1E1;
 }
