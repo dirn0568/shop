@@ -2218,35 +2218,36 @@
                 검색결과
             </div>
             <div class="search_content">
+                <p></p>
                 {% for list in answer_list %}
-                    <p></p>
-                    <a href="{% url 'resumeapp:detail_resume' title=list.pk pk=request.user.pk %}">
-                        <ul class="mini_content">
+                    <a href="{% url 'resumeapp:detail_resume' title=list.0.pk pk=request.user.pk %}">
+                        <ul class="mini_content" style="color:#000000;">
                             <li>
-                                조OO
-                                <p></p>
-                                (남 | 1999년, 24세)
-                            </li>
-                            <div></div>
-                            <li>
-                                <div style="margin-left:5rem;">
-                                    {{ list.resume_title_detail }}
+                                <div>
+                                    조OO
                                     <p></p>
-                                    희망직종:제빵사
-                                    <p></p>
-                                    직무기술:광주,서울
-                                    <p></p>
-                                    학교명 :
-                                    {{ list.resume_title.resume_university.university_school_name }}
-                                    {{ list.resume_title.university_school_name }}
-                                    {{ list.resume_university.university_school_name }}
-                                    {{ list.university_school_name }}
-                                    <p></p>
-                                    희망지역:서울전지역,부산전지역,광주전지역 | 즉시근무가능 | 희망연봉: 100억
-                                    <div class="date_css">
-                                        {{ list.resume_date|date:"Y-m-d" }}
-                                    </div>
+                                    (남 | 1999년, 24세)
                                 </div>
+                            </li>
+                            <li>
+                                <div style="margin-left:3rem;">
+                                    <span style="font-size:2rem; font-weight:bold;">
+                                        {{ list.1 }}
+                                    </span>
+                                    <p></p>
+                                    직무기술 :
+                                    <p></p>
+                                    학교명 : {{ list.3 }} <span class="information_css">졸업</span>
+                                    <p></p>
+                                    <span style="font-size:15px;">
+                                        희망지역 : {{ list.5 }},{{ list.6 }},{{ list.7 }} | 즉시근무가능 | 희망연봉 : {{ list.4 }}
+                                        <p></p>
+                                        희망직종 : {{ list.8 }} | {{ list.9 }} | {{ list.10 }}
+                                    </span>
+                                </div>
+                            </li>
+                            <li style="margin-left:auto;">
+                                {{ list.2|date:"Y-m-d" }}
                             </li>
                         </ul>
                         <hr>
