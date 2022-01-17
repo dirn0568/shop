@@ -1,96 +1,12 @@
-.self_box {
-    position: absolute;
-    top: 160px;
-    right: 1.8%;
-    width:1500px;
-    height:450px;
-    background:#ebf8ff;
+.profile_box {
+    display:flex;
 }
-.self_name {
-    position: absolute;
-    margin-left: 15px;
-    top: 0px;
-}
-.self_introduce {
-    position: absolute;
-    margin-left: 310px;
-    top: 80px;
 
-    font-size: 16px;
-    min-height: 1px;
-    max-height: 135px;
-    width: 700px;
-    word-break: break-all;
-    overflow: hidden;
+.mini_profile_box > ul {
+    list-style:none;
+    display:flex;
 }
-.self_account {
-    position: absolute;
-    right: 51.2%;
-    top: 42px;
-}
-.self_profile_create {
-    position: absolute;
-    right: 63%;
-    top: 220px;
-    width:250px;
-    background-color:rgb(206, 251, 201);
-    padding: 15px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 30px;
-    margin: 4px;
-    cursor: pointer;
-}
-.self_profile_delete {
-    position: absolute;
-    right: 46%;
-    top: 220px;
-    width:250px;
-    background-color:rgb(255, 167, 167);
-    padding: 15px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 30px;
-    margin: 4px;
-    cursor: pointer;
-}
-.self_bar {
-    position: absolute;
-    right: 33%;
-    width: 1px;
-    top: 10px;
-}
-.self_apeal {
-    position: absolute;
-    right: 13%;
-    top: 5px;
-    font-size: 30px;
-}
-.self_apeal_num {
-    position: absolute;
-    margin-left: 910px;
-    top: 60px;
-    font-size: 30px;
-}
-.self_message {
-    position: absolute;
-    right: 14.5%;
-    top: 155px;
-    font-size: 30px;
-}
-.self_apeal_create {
-    position: absolute;
-    right: 35%;
-    top: 330px;
-    width:350px;
-    background-color:rgb(103, 153, 255);
-    padding: 15px 0;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 45px;
-    margin: 4px;
-    cursor: pointer;
+
+.mini_profile_box > ul > li {
+    flex:1;
 }

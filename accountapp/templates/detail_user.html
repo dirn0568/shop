@@ -1,69 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'base.html' %}
+
+{% block content %}
     {% load static %}
-
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-
-    <style type="text/css">
-        a:link { color: red; text-decoration: none;}
-        a:visited { color: red; text-decoration: none;}
-        a:hover { color: blue; text-decoration: underline;}
-    </style>
-</head>
-<body>
-    <img src="{% static 'main/PICKME.jpg' %}" width="1500" height="150">
-    <span class="self_box">
+    <div class="profile_box">
         {% if target_user.profile.profile_img %}
-            <img src="{{ profile.profile_img.url }}" alt="" width="300" height="300" style="border-radius: 20px;">
+            <img src="{{ profile.profile_img.url }}" alt="" width="150" height="200" style="border-radius: 20px;">
         {% else %}
-            <img src="{% static 'profile/noimg.jpg' %}" alt="" width="300" height="300" style="border-radius: 20px;">
+            <img src="{% static 'profile/noimg.jpg' %}" alt="" width="150" height="200" style="border-radius: 20px;">
         {% endif %}
-        <span class="self_name" style="font-size:50px;">
-            {{ target_user.username }} / {{ target_user.nickname }}
-        </span>
-        <span class="self_account" style="font-size:10px;">
-            {% if request.user == target_user %}
-                <a href="{% url 'accountapp:update_user' pk=target_user.pk %}">정보 변경</a> /
-                <a href="{% url 'accountapp:delete_user' pk=target_user.pk %}">아이디 삭제</a>
-                <p></p>
+        <div class="mini_profile_box">
+            <ul>
+                <li>
+                    이름
+                </li>
+                <li>
+                    <input type="text" name="user_name" required>
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <li>
+                    생년월일
+                </li>
+                <li>
+                    <input type="text" name="user_name" required>
+                </li>
+                <li>
+                    양력 남자 여자
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <li>
+                    연락처
+                </li>
+                <li>
+                    <input type="text" name="user_name" required>
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <li>
+                    이메일
+                </li>
+                <li>
+                    <input type="text" name="user_name" required>
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <li>
+                    주소
+                </li>
+                <li>
+                    <input type="text" name="user_name" required>
+                </li>
+            </ul>
+            <hr>
+            <ul>
+                <li>
+                    홈페이지
+                </li>
+                <li>
+                    <input type="text" name="user_name" required>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <span class="self_account" style="font-size:10px;">
+        {% if request.user == target_user %}
+            <a href="{% url 'accountapp:update_user' pk=target_user.pk %}">정보 변경</a> /
+            <a href="{% url 'accountapp:delete_user' pk=target_user.pk %}">아이디 삭제</a>
+            <p></p>
             {% endif %}
         </span>
-        <div class="self_introduce" style="font-size:20px;">
-            {{ profile.profile_text }}
-        </div>
-        {% if target_user.profile %}
-            <span class="self_profile_create" style="border-radius: 10px">
-                <a href="{% url 'profileapp:update_profile' pk=target_user.pk %}">프로필변경</a>
-            </span>
-            <span class="self_profile_delete" style="border-radius: 10px">
-                <a href="{% url 'profileapp:delete_profile' pk=target_user.pk %}">프로필삭제</a>
-            </span>
-        {% else %}
-            <span class="self_profile_create" style="border-radius: 10px">
-                <a href="{% url 'profileapp:create_profile' pk=target_user.pk %}">프로필생성</a>
-            </span>
-        {% endif %}
-        <span class="self_bar">
-            ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ
+    <div class="self_introduce" style="font-size:20px;">
+        {{ profile.profile_text }}
+    </div>
+    {% if target_user.profile %}
+        <span class="self_profile_create" style="border-radius: 10px">
+            <a href="{% url 'profileapp:update_profile' pk=target_user.pk %}">프로필변경</a>
         </span>
-        <span class="self_apeal">
-            나의 이력서
+        <span class="self_profile_delete" style="border-radius: 10px">
+            <a href="{% url 'profileapp:delete_profile' pk=target_user.pk %}">프로필삭제</a>
         </span>
-        <span class="self_apeal_num">
-            <a href="{% url 'resumeapp:list_resume' title=0 pk=target_user.pk %}">
-                {{ resume_num }}
-            </a>
+    {% else %}
+        <span class="self_profile_create" style="border-radius: 10px">
+            <a href="{% url 'profileapp:create_profile' pk=target_user.pk %}">프로필생성</a>
         </span>
-        <span class="self_message">
-            메세지함
-        </span>
-        <p></p>
-        <span class="self_apeal_create" style="border-radius: 10px">
-            <a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=1 career=0 out_play=0 prize_play=0 port_polio=0 self_introduce=0 pk=target_user.pk %}">이력서 만들기</a>
-        </span>
+    {% endif %}
+    <span class="self_bar">
+        ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ
     </span>
-</body>
-</html>
+    <span class="self_apeal">
+        나의 이력서
+    </span>
+    <span class="self_apeal_num">
+        <a href="{% url 'resumeapp:list_resume' title=0 pk=target_user.pk %}">
+            {{ resume_num }}
+        </a>
+    </span>
+    <span class="self_message">
+        메세지함
+    </span>
+    <p></p>
+    <span class="self_apeal_create" style="border-radius: 10px">
+        <a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=1 career=0 out_play=0 prize_play=0 port_polio=0 self_introduce=0 pk=target_user.pk %}">이력서 만들기</a>
+    </span>
+{% endblock %}

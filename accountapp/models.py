@@ -11,8 +11,6 @@ class MyUser(AbstractUser):
     company_name = models.CharField(max_length=200)
     company_ceo = models.CharField(max_length=100)
 
-
-
 class Friend_List(models.Model):
     friend = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='friend')
     friend_relation = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='friend_relation')
