@@ -3,66 +3,84 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-    <div class="profile_box">
+    <div class="profile_box" background="#00FF00;">
         {% if target_user.profile.profile_img %}
-            <img src="{{ profile.profile_img.url }}" alt="" width="150" height="200" style="border-radius: 20px;">
+            <img src="{{ profile.profile_img.url }}" alt="" width="150" height="200">
         {% else %}
-            <img src="{% static 'profile/noimg.jpg' %}" alt="" width="150" height="200" style="border-radius: 20px;">
+            <img src="{% static 'profile/noimg.jpg' %}" alt="" width="150" height="200">
         {% endif %}
         <div class="mini_profile_box">
+            <table border="0" width="500" height="400" class="position_select_table">
+                <tr>
+                    <td style="border-bottom:1px solid gray;">
+                        이름
+                    </td>
+                    <td style="border-bottom:1px solid gray;">
+                        <span style="color:#FF0000; font-size:1.25rem;">*</span>
+                        <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
+                        &nbsp;
+                        <input type="text" name="user_name" value="이름" required style="border:none; background:#B1B1B1;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-bottom:1px solid gray;">
+                        <span style="color:#FF0000; font-size:1.25rem;">*</span>
+                        생년월일(양력)
+                    </td>
+                    <td style="border-bottom:1px solid gray;">
+                        <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
+                        &nbsp;
+                        <input type="text" name="user_birthday" placeholder="생년월일" required style="border:none; background:#B1B1B1;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-bottom:1px solid gray;">
+                        <span style="color:#FF0000; font-size:1.25rem;">*</span>
+                        성별
+                    </td>
+                    <td style="border-bottom:1px solid gray;">
+                        <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
+                        &nbsp;
+                        <input type="radio" name="gender" value="남자">남자
+                        <input type="radio" name="gender" value="여자">여자
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-bottom:1px solid gray;">
+                        연락처
+                    </td>
+                    <td style="border-bottom:1px solid gray;">
+                        <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
+                        &nbsp;
+                        <input type="text" name="user_number" placeholder="연락처" required style="border:none; background:#B1B1B1;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-bottom:1px solid gray;">
+                        이메일
+                    </td>
+                    <td style="border-bottom:1px solid gray;">
+                        <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
+                        &nbsp;
+                        <input type="text" name="user_email" placeholder="email" required style="border:none; background:#B1B1B1;">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-bottom:1px solid gray;">
+                        홈페이지
+                    </td>
+                    <td style="border-bottom:1px solid gray;">
+                        <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
+                        &nbsp;
+                        <input type="text" name="user_page" placeholder="홈페이지" required style="border:none; background:#B1B1B1;">
+                    </td>
+                </tr>
+            </table>
             <ul>
-                <li>
+                <li style="background:#00FF00;">
                     이름
                 </li>
-                <li>
-                    <input type="text" name="user_name" required>
-                </li>
-            </ul>
-            <hr>
-            <ul>
-                <li>
-                    생년월일
-                </li>
-                <li>
-                    <input type="text" name="user_name" required>
-                </li>
-                <li>
-                    양력 남자 여자
-                </li>
-            </ul>
-            <hr>
-            <ul>
-                <li>
-                    연락처
-                </li>
-                <li>
-                    <input type="text" name="user_name" required>
-                </li>
-            </ul>
-            <hr>
-            <ul>
-                <li>
-                    이메일
-                </li>
-                <li>
-                    <input type="text" name="user_name" required>
-                </li>
-            </ul>
-            <hr>
-            <ul>
-                <li>
-                    주소
-                </li>
-                <li>
-                    <input type="text" name="user_name" required>
-                </li>
-            </ul>
-            <hr>
-            <ul>
-                <li>
-                    홈페이지
-                </li>
-                <li>
+                <li style="background:#00FFF0;">
                     <input type="text" name="user_name" required>
                 </li>
             </ul>
@@ -109,3 +127,49 @@
         <a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=1 career=0 out_play=0 prize_play=0 port_polio=0 self_introduce=0 pk=target_user.pk %}">이력서 만들기</a>
     </span>
 {% endblock %}
+
+
+<!--<ul>-->
+<!--                <li>-->
+<!--                    생년월일-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <input type="text" name="user_name" required> 양력 남자 여자-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <hr>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    연락처-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <input type="text" name="user_name" required>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <hr>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    이메일-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <input type="text" name="user_name" required>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <hr>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    주소-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <input type="text" name="user_name" required>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--            <hr>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                    홈페이지-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <input type="text" name="user_name" required>-->
+<!--                </li>-->
+<!--            </ul>-->

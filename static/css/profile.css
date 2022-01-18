@@ -1,12 +1,18 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
 .profile_box {
     display:flex;
 }
 
 .mini_profile_box > ul {
     list-style:none;
+    width:50rem;
     display:flex;
 }
 
-.mini_profile_box > ul > li {
-    flex:1;
+.mini_profile_box > ul > li:(:first-child) {
+    flex:0.5;
 }
