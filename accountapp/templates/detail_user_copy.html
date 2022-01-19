@@ -14,14 +14,16 @@
                     <label for="create1" class="position_btn2">등록</label>
                 </div>
                 <div class="profile_delete" style="border-radius: 10px">
-                    <input type="submit" value="저장" name="resume_submit2">
+                    <a href="{% url 'profileapp:delete_profile' pk=target_user.pk %}">삭제</a>
                 </div>
             {% else %}
                 <img src="{% static 'profile/noimg.jpg' %}" alt="" width="150" height="200">
                 <div class="profile_create" style="border-radius: 10px">
-                    <input type="file" name="file" accept="image/*" id="bizFile" style="display:none;">
-                    <label for="bizFile" class="btn fileBtn">파일선택</label>
-                    <span id="fileName"></span>
+                    <input type="file" name="profile_create" id="create2" style="display:none;">
+                    <label for="create2" class="position_btn2">등록</label>
+                </div>
+                <div class="profile_delete" style="border-radius: 10px">
+                    <a href="{% url 'profileapp:delete_profile' pk=target_user.pk %}">삭제</a>
                 </div>
             {% endif %}
             <div class="mini_profile_box">
@@ -45,7 +47,7 @@
                         <td style="border-bottom:1px solid gray;">
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="text" name="user_birthday" placeholder="생년월일" maxlength='8' style="border:none; background:#B1B1B1;">
+                            <input type="text" name="user_birthday" placeholder="생년월일" style="border:none; background:#B1B1B1;">
                         </td>
                     </tr>
                     <tr>
@@ -137,9 +139,6 @@
     <span class="self_apeal_create" style="border-radius: 10px">
         <a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=1 career=0 out_play=0 prize_play=0 port_polio=0 self_introduce=0 pk=target_user.pk %}">이력서 만들기</a>
     </span>
-
-    <script type="text/javascript" src="{% static 'js/detail_user.js' %}"></script>
-
 {% endblock %}
 
 

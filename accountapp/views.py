@@ -11,6 +11,7 @@ from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
 from accountapp.forms import Update_User_Form, Create_User_Form, Create_Company_User_Form
 from friendapp.models import FriendRequestModel
+from profileapp.forms import ProfileForm
 from profileapp.models import User_Profile
 from resumeapp.models import User_Resume, Resume_Title
 

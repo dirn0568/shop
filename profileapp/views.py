@@ -71,3 +71,40 @@ def delete_profile(request, pk):
     context = {}
     context['pk'] = pk
     return render(request, 'delete_profile.html', context)
+
+
+def detail_user_update(request, pk):
+    # if request.method == "POST" and request.POST.get('resume_submit2'):
+
+    if request.method == "POST" and request.POST.get('resume_submit1'):
+        user = MyUser.objects.filter(pk=pk)
+        print(request.FILES, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        for temp_user in user:
+            profile = User_Profile.objects.filter(profile=temp_user)
+            if profile:
+                profile.delete()
+                form = ProfileForm(request.POST, request.FILES)
+                if form.is_valid():
+                    temp_form = form.save(commit=False)
+                    temp_form.profile = temp_user
+                    temp_form.user_name = request.POST.get['user_name']
+                    temp_form.user_birthday = request.POST.get['user_birthday']
+                    temp_form.user_gender = request.POST.get['gender']
+                    temp_form.phone_number = request.POST.get['user_number']
+                    temp_form.user_email = request.POST.get['user_email']
+                    temp_form.user_page = request.POST.get['user_page']
+                    temp_form.save()
+            else:
+                form = ProfileForm(request.POST, request.FILES)
+                if form.is_valid():
+                    temp_form = form.save(commit=False)
+                    for temp_user in user:
+                        temp_form.profile = temp_user
+                    temp_form.user_name = request.POST.get['user_name']
+                    temp_form.user_birthday = request.POST.get['user_birthday']
+                    temp_form.user_gender = request.POST.get['gender']
+                    temp_form.phone_number = request.POST.get['user_number']
+                    temp_form.user_email = request.POST.get['user_email']
+                    temp_form.user_page = request.POST.get['user_page']
+                    temp_form.save()
+    return redirect('accountapp:detail_user', pk=pk)
