@@ -9,21 +9,17 @@
         <div class="profile_box" background="#00FF00;">
             {% if target_user.profile.profile_img %}
                 <img src="{{ profile.profile_img.url }}" alt="" width="150" height="200">
-                <div class="profile_create" style="border-radius: 10px">
-                    <input type="file" name="profile_create" id="create1" style="display:none;">
-                    <label for="create1" class="position_btn2">등록</label>
-                </div>
-                <div class="profile_delete" style="border-radius: 10px">
-                    <input type="submit" value="저장" name="resume_submit2">
-                </div>
             {% else %}
                 <img src="{% static 'profile/noimg.jpg' %}" alt="" width="150" height="200">
-                <div class="profile_create" style="border-radius: 10px">
-                    <input type="file" name="file" accept="image/*" id="bizFile" style="display:none;">
-                    <label for="bizFile" class="btn fileBtn">파일선택</label>
-                    <span id="fileName"></span>
-                </div>
             {% endif %}
+            <div class="profile_create" style="border-radius: 10px">
+                <input type="file" name="file" accept="image/*" id="bizFile" style="display:none;">
+                <label for="bizFile" class="btn fileBtn">이미지등록</label>
+                <span id="fileName" style="font-size:0.5rem;"></span>
+            </div>
+            <div class="profile_delete" style="border-radius: 10px">
+                <input type="submit" value="저장" name="resume_submit2">
+            </div>
             <div class="mini_profile_box">
                 <table border="0" width="500" height="400" class="position_select_table">
                     <tr>
@@ -34,7 +30,7 @@
                             <span style="color:#FF0000; font-size:1.25rem;">*</span>
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="text" name="user_name" value="이름" style="border:none; background:#B1B1B1;">
+                            <input type="text" name="user_name" style="border:none; background:#B1B1B1;">
                         </td>
                     </tr>
                     <tr>

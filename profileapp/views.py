@@ -74,37 +74,51 @@ def delete_profile(request, pk):
 
 
 def detail_user_update(request, pk):
-    # if request.method == "POST" and request.POST.get('resume_submit2'):
-
-    if request.method == "POST" and request.POST.get('resume_submit1'):
+    if request.method == "POST" and request.POST.get('resume_submit2'):
         user = MyUser.objects.filter(pk=pk)
-        print(request.FILES, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        print(request.FILES, '##############################')
         for temp_user in user:
             profile = User_Profile.objects.filter(profile=temp_user)
             if profile:
-                profile.delete()
-                form = ProfileForm(request.POST, request.FILES)
-                if form.is_valid():
-                    temp_form = form.save(commit=False)
-                    temp_form.profile = temp_user
-                    temp_form.user_name = request.POST.get['user_name']
-                    temp_form.user_birthday = request.POST.get['user_birthday']
-                    temp_form.user_gender = request.POST.get['gender']
-                    temp_form.phone_number = request.POST.get['user_number']
-                    temp_form.user_email = request.POST.get['user_email']
-                    temp_form.user_page = request.POST.get['user_page']
-                    temp_form.save()
+                for temp_profile in profile:
+                    temp_profile.profile_img = request.FILES.get('file')
+                    temp_profile.save()
             else:
                 form = ProfileForm(request.POST, request.FILES)
                 if form.is_valid():
                     temp_form = form.save(commit=False)
                     for temp_user in user:
                         temp_form.profile = temp_user
-                    temp_form.user_name = request.POST.get['user_name']
-                    temp_form.user_birthday = request.POST.get['user_birthday']
-                    temp_form.user_gender = request.POST.get['gender']
-                    temp_form.phone_number = request.POST.get['user_number']
-                    temp_form.user_email = request.POST.get['user_email']
-                    temp_form.user_page = request.POST.get['user_page']
+                    temp_form.profile_img = request.FILES.get('file')
+                    temp_form.save()
+
+
+    if request.method == "POST" and request.POST.get('resume_submit1'):
+        user = MyUser.objects.filter(pk=pk)
+        print(request.POST, '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        for temp_user in user:
+            profile = User_Profile.objects.filter(profile=temp_user)
+            if profile:
+                for temp_profile in profile:
+                    temp_profile.user_name = request.POST.get('user_name')
+                    temp_profile.user_birthday = request.POST.get('user_birthday')
+                    temp_profile.user_gender = request.POST.get('gender')
+                    temp_profile.phone_number = request.POST.get('user_number')
+                    temp_profile.user_email = request.POST.get('user_email')
+                    temp_profile.user_page = request.POST.get('user_page')
+                    temp_profile.save()
+            else:
+                form = ProfileForm(request.POST, request.FILES)
+                if form.is_valid():
+                    print('실행중?2222222222222222222222')
+                    temp_form = form.save(commit=False)
+                    for temp_user in user:
+                        temp_form.profile = temp_user
+                    temp_form.user_name = request.POST.get('user_name')
+                    temp_form.user_birthday = request.POST.get('user_birthday')
+                    temp_form.user_gender = request.POST.get('gender')
+                    temp_form.phone_number = request.POST.get('user_number')
+                    temp_form.user_email = request.POST.get('user_email')
+                    temp_form.user_page = request.POST.get('user_page')
                     temp_form.save()
     return redirect('accountapp:detail_user', pk=pk)
