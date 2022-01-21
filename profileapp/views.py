@@ -74,6 +74,17 @@ def delete_profile(request, pk):
 
 
 def detail_user_update(request, pk):
+    if request.method == "POST" and request.POST.get('resume_submit3'):
+        user = MyUser.objects.filter(pk=pk)
+        for temp_user in user:
+            profile = User_Profile.objects.filter(profile=temp_user)
+            if profile:
+                for temp_profile in profile:
+                    temp_profile.profile_img = None
+                    temp_profile.save()
+            else:
+                pass
+
     if request.method == "POST" and request.POST.get('resume_submit2'):
         user = MyUser.objects.filter(pk=pk)
         print(request.FILES, '##############################')
@@ -121,4 +132,5 @@ def detail_user_update(request, pk):
                     temp_form.user_email = request.POST.get('user_email')
                     temp_form.user_page = request.POST.get('user_page')
                     temp_form.save()
+
     return redirect('accountapp:detail_user', pk=pk)

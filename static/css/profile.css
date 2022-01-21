@@ -6,26 +6,69 @@
     display:flex;
 }
 
-.mini_profile_box > ul {
-    list-style:none;
-    width:50rem;
-    display:flex;
+.mini_profile_box {
+    margin-left:3rem;
 }
 
-.mini_profile_box > ul > li:(:first-child) {
-    flex:0.5;
+.profile_basic_submit {
+    position:absolute;
+    top:30.5rem;
+    margin-left:17rem;
+    font-weight:bold;
+    color:#EAEAEA;
+    background:#353535;
+    padding: 0.5rem 3rem;
+    text-align:center;
 }
-
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /* 절대위치 */
 .profile_create {
     position:absolute;
-    top:18rem;
-    margin-left:-0.8rem;
+    top:21rem;
+    background:#353535;
+    width:12.5rem;
+    height:2.25rem;
+    text-align:center;
+}
+
+.profile_read {
+    position:absolute;
+    top:23.3rem;
+    background:#353535;
+    width:6.25rem;
+    height:2.25rem;
+    text-align:center;
 }
 
 .profile_delete {
     position:absolute;
-    top:20rem;
+    top:23.3rem;
+    margin-left:6.25rem;
+    background:#353535;
+    width:6.25rem;
+    height:2.25rem;
+    text-align:center;
 }
+
+.profile_basic_submit {
+    position:absolute;
+    top:30.5rem;
+    margin-left:25rem;
+    font-weight:bold;
+    color:#EAEAEA;
+    background:#353535;
+    padding: 0.5rem 3rem;
+    text-align:center;
+}
+
+.user_detail_content {
+    position:relative;
+    top:-24.5rem;
+    margin-left:70rem;
+    border-radius:10px;
+    width:10rem;
+    height:15rem;
+    background:#E1E1E1;
+}
+
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/

@@ -8,17 +8,28 @@
         {% csrf_token %}
         <div class="profile_box" background="#00FF00;">
             {% if target_user.profile.profile_img %}
-                <img src="{{ profile.profile_img.url }}" alt="" width="150" height="200">
+                <img src="{{ profile.profile_img.url }}" alt="" width="200" height="250">
             {% else %}
-                <img src="{% static 'profile/noimg.jpg' %}" alt="" width="150" height="200">
+                <img src="{% static 'profile/no_img2.PNG' %}" alt="" width="200" height="250">
             {% endif %}
-            <div class="profile_create" style="border-radius: 10px">
+            <div class="profile_create">
                 <input type="file" name="file" accept="image/*" id="bizFile" style="display:none;">
-                <label for="bizFile" class="btn fileBtn">이미지등록</label>
-                <span id="fileName" style="font-size:0.5rem;"></span>
+                <label for="bizFile" class="btn fileBtn" style="color:#EAEAEA;">
+                    이미지 등록
+                    <span id="fileName" style="font-size:0.5rem;"></span>
+                </label>
             </div>
-            <div class="profile_delete" style="border-radius: 10px">
-                <input type="submit" value="저장" name="resume_submit2">
+            <div class="profile_read">
+                <input type="submit" name="resume_submit2" id="submit2" style="display:none;">
+                <label for="submit2" style="color:#0054FF;">
+                    저장
+                </label>
+            </div>
+            <div class="profile_delete">
+                <input type="submit" name="resume_submit3" id="submit3" style="display:none;">
+                <label for="submit3" style="color:#FF0000;">
+                    삭제
+                </label>
             </div>
             <div class="mini_profile_box">
                 <table border="0" width="500" height="400" class="position_select_table">
@@ -30,7 +41,7 @@
                             <span style="color:#FF0000; font-size:1.25rem;">*</span>
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="text" name="user_name" style="border:none; background:#B1B1B1;">
+                            <input type="text" name="user_name" value="{{ profile.user_name }}" style="border:none; background:#B1B1B1;">
                         </td>
                     </tr>
                     <tr>
@@ -41,7 +52,7 @@
                         <td style="border-bottom:1px solid gray;">
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="text" name="user_birthday" placeholder="생년월일" maxlength='8' style="border:none; background:#B1B1B1;">
+                            <input type="text" name="user_birthday" value="{{ profile.user_birthday }}" placeholder="생년월일" maxlength='8' style="border:none; background:#B1B1B1;">
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +63,9 @@
                         <td style="border-bottom:1px solid gray;">
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="radio" name="gender" value="남자">남자
+                            {{ profile.user_gender }}
+                            &nbsp;
+                            <input type="radio" name="gender" value="남자" checked>남자
                             <input type="radio" name="gender" value="여자">여자
                         </td>
                     </tr>
@@ -63,7 +76,7 @@
                         <td style="border-bottom:1px solid gray;">
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="text" name="user_number" placeholder="연락처" style="border:none; background:#B1B1B1;">
+                            <input type="text" name="user_number" value="{{ profile.phone_number }}" placeholder="연락처" style="border:none; background:#B1B1B1;">
                         </td>
                     </tr>
                     <tr>
@@ -73,7 +86,7 @@
                         <td style="border-bottom:1px solid gray;">
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="text" name="user_email" placeholder="email" style="border:none; background:#B1B1B1;">
+                            <input type="text" name="user_email" value="{{ profile.user_email }}" placeholder="email" style="border:none; background:#B1B1B1;">
                         </td>
                     </tr>
                     <tr>
@@ -83,56 +96,35 @@
                         <td style="border-bottom:1px solid gray;">
                             <i style="vertical-align:middle; font-size:1rem;" class="material-icons">border_color</i>
                             &nbsp;
-                            <input type="text" name="user_page" placeholder="홈페이지" style="border:none; background:#B1B1B1;">
+                            <input type="text" name="user_page" value="{{ profile.user_page }}" placeholder="홈페이지" style="border:none; background:#B1B1B1;">
                         </td>
                     </tr>
                 </table>
             </div>
         </div>
-        <div class="submit_button" style="text-align:center;">
-            <input type="submit" value="이력서 제출" name="resume_submit1" class="submit_btn">
+        <div class="profile_basic_submit">
+            <input type="submit" name="resume_submit1" id="basic_submit" style="display:none;">
+            <label for="basic_submit">기본정보 저장</label>
         </div>
     </form>
-    <span class="self_account" style="font-size:10px;">
-        {% if request.user == target_user %}
-            <a href="{% url 'accountapp:update_user' pk=target_user.pk %}">정보 변경</a> /
-            <a href="{% url 'accountapp:delete_user' pk=target_user.pk %}">아이디 삭제</a>
-            <p></p>
-            {% endif %}
-        </span>
-    <div class="self_introduce" style="font-size:20px;">
-        {{ profile.profile_text }}
-    </div>
-    {% if target_user.profile %}
-        <span class="self_profile_create" style="border-radius: 10px">
-            <a href="{% url 'profileapp:update_profile' pk=target_user.pk %}">프로필변경</a>
-        </span>
-        <span class="self_profile_delete" style="border-radius: 10px">
-            <a href="{% url 'profileapp:delete_profile' pk=target_user.pk %}">프로필삭제</a>
-        </span>
-    {% else %}
-        <span class="self_profile_create" style="border-radius: 10px">
-            <a href="{% url 'profileapp:create_profile' pk=target_user.pk %}">프로필생성</a>
-        </span>
-    {% endif %}
-    <span class="self_bar">
-        ㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣㅣ
-    </span>
-    <span class="self_apeal">
+
+    <div class="user_detail_content">
+        <a href="{% url 'accountapp:update_user' pk=request.user.pk %}">계정 변경</a> /
+        <a href="{% url 'accountapp:delete_user' pk=request.user.pk %}" style="color:#FF0000;">계정 삭제</a>
+        <p></p>
+        <a href="{% url 'accountapp:detail_user' pk=request.user.pk %}">프로필변경</a>
+        <p></p>
         나의 이력서
-    </span>
-    <span class="self_apeal_num">
         <a href="{% url 'resumeapp:list_resume' title=0 pk=target_user.pk %}">
             {{ resume_num }}
         </a>
-    </span>
-    <span class="self_message">
+        <p></p>
         메세지함
-    </span>
-    <p></p>
-    <span class="self_apeal_create" style="border-radius: 10px">
-        <a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=1 career=0 out_play=0 prize_play=0 port_polio=0 self_introduce=0 pk=target_user.pk %}">이력서 만들기</a>
-    </span>
+        <p></p>
+        <span class="self_apeal_create" style="border-radius: 10px">
+            <a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=1 career=0 out_play=0 prize_play=0 port_polio=0 self_introduce=0 pk=target_user.pk %}">이력서 만들기</a>
+        </span>
+    </div>
 
     <script type="text/javascript" src="{% static 'js/detail_user.js' %}"></script>
 
@@ -183,3 +175,12 @@
 <!--                    <input type="text" name="user_name" required>-->
 <!--                </li>-->
 <!--            </ul>-->
+
+
+<!-- 이 페이지의 맨 윗줄에 추가 <link rel="stylesheet" href="{% static 'detail_user' %}">-->
+<!--    <style>-->
+<!--        .user_detail_content {-->
+<!--            background-image:url("{% static 'detail_user/content_bg.PNG' %}");-->
+<!--            background-repeat:no-repeat;-->
+<!--        }-->
+<!--    </style>-->
