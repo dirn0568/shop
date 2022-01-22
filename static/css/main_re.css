@@ -1,0 +1,50 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.font_data2 {
+    position:relative;
+    top:5rem;
+    font-size:1.2rem;
+    margin-left:14rem;
+    font-family: 'Monoton', cursive;
+}
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* 로그인 */
+
+.login_display {
+    display:flex;
+}
+
+.login_content {
+    width:20rem;
+    height:12rem;
+    background:#F6F6F6;
+}
+
+.login_accept {
+    display:flex;
+    margin-left:-2rem;
+    list-style:none;
+}
+
+.login_button {
+    position:relative;
+    top:1.5rem;
+    margin:auto;
+    width:16rem;
+    height:2.5rem;
+    font-size:1.5rem;
+    text-align:center;
+    background:#747474;
+}
+
+.login_button2 {
+    position:relative;
+    top:1.5rem;
+    margin:auto;
+    width:16rem;
+    height:1.5rem;
+    text-align:center;
+    background:#D5D5D5;
+}

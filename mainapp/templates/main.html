@@ -1,128 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'base.html' %}
+
+{% block content %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main_news.css' %}">
-
-    <!-- Google Font - Fast One -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
-
-    <!-- Google Font - Anton -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-
-    <style type="text/css">
-        a:link { color: red; text-decoration: none;}
-        a:visited { color: red; text-decoration: none;}
-        a:hover { color: blue; text-decoration: underline;}
-    </style>
-</head>
-<body>
-    <img src="{% static 'main/PICKME.jpg' %}" width="1500" height="250">
-    <div class="Main_Account">
-        <h2>
+    <link rel="stylesheet" href="{% static 'css/main_re.css' %}">
+    <div class="login_display">
+        <a href="https://dream2030.co.kr/"><img src="{% static 'main/광고.png' %}" style="width:65rem; height:12rem;"></a>
+        <div class="login_content">
             {% if request.user.is_authenticated %}
-                <a href="{% url 'accountapp:logout' %}"><span style="font-family: 'Anton', sans-serif;">로그아웃</span></a>
-                <a href="{% url 'accountapp:create_user' %}"><span style="font-family: 'Anton', sans-serif;">회원가입</span></a>
+                <ul class="login_accept">
+                    {% if request.user.is_authenticated %}
+                        <li>
+                            {% if request.user.profile.profile_img %}
+                                <img src="{{ profile.profile_img.url }}" alt="" style="width:10rem; height:12rem;">
+                            {% else %}
+                                <img src="{% static 'profile/noimg.jpg' %}" alt="" style="width:10rem; height:12rem;">
+                            {% endif %}
+                        </li>
+                        <li style="font-size:12px;">
+                            <p></p>
+                            {{ request.user.username }}
+                            {% if request.user.company_number %}
+                                (기업 회원)
+                            {% endif %}
+                            <p></p>
+                            <a href="{% url 'accountapp:update_user' pk=request.user.pk %}">정보 변경</a> /
+                            <a href="{% url 'accountapp:delete_user' pk=request.user.pk %}">아이디 삭제</a>
+                            <p></p>
+                            <a href="{% url 'profileapp:update_profile' pk=request.user.pk %}">프로필변경</a>
+                            <a href="{% url 'profileapp:delete_profile' pk=request.user.pk %}">프로필삭제</a>
+                            <p></p>
+                            <a href="{% url 'accountapp:update_user' pk=request.user.pk %}">메세지함</a>
+                            <p></p>
+                            <a href="{% url 'accountapp:update_user' pk=request.user.pk %}">이력서관리</a>
+                        </li>
+                    {% endif %}
+                </ul>
             {% else %}
-                <a href="{% url 'accountapp:login' %}"><span style="font-family: 'Anton', sans-serif;">로그인</span></a>
-                <a href="{% url 'accountapp:create_company_user' %}"><span style="font-family: 'Anton', sans-serif;">기업_회원가입</span></a>
-                <a href="{% url 'accountapp:create_user' %}"><span style="font-family: 'Anton', sans-serif;">회원가입</span></a>
+                <div class="login_button">
+                    <a href="{% url 'accountapp:login' %}" style="color:#FFFFFF;">로그인</a>
+                </div>
+                <p></p>
+                <div class="login_button2">
+                    <a href="{% url 'accountapp:create_user' %}" style="color:#FFFFFF;">개인 회원가입</a>
+                    &nbsp; / &nbsp;
+                    <a href="{% url 'accountapp:create_company_user' %}" style="color:#FFFFFF;">기업 회원가입</a>
+                </div>
+                <div class="font_data2">
+                    PICKME
+                </div>
             {% endif %}
-        </h2>
-    </div>
-    <h1>
-        <div class="Main_ContentBox">
-            <input type="checkbox" id="answer1">
-            <label for="answer1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;인재찾기 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TOP100 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 취업뉴스 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 커뮤니티 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 마이페이지</label> &nbsp;
-            <div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'searchapp:search_resume' %}">맞춤형검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">TOP100검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">뉴스모음</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">자유게시판</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'accountapp:detail_user' pk=request.user.pk %}">프로필관리</a>
-                {% else %}
-                    <a href="{% url 'mainapp:main' %}">프로필관리</a>
-                {% endif %}
-                <p></p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'mainapp:main' %}">아이디/닉네임검색</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">우수이력서보기</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">기업들에게 묻는다</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">면접후기</a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">이력서만들기</a>
-                <p></p>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'mainapp:main' %}">콘텐츠10</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">콘텐츠11</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">콘텐츠12</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">콘텐츠13</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'mainapp:main' %}">친구관리</a>
-            </div>
-        </div>
-    </h1>
-    </div>
-    <div class="news_main">
-        <div class="news_main_content">
-            {% for list in html %}
-                <p></p>
-                <a href="https://www.jobkorea.co.kr/{{ list.0 }}">
-                    <img src="{{ list.1 }}" width="100" height="100">
-                    {{ list.2 }}
-                </a>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="tab_content">
-        <input type="radio" name="tabmenu" id="tab1" checked>
-        <input type="radio" name="tabmenu" id="tab2">
-        <input type="radio" name="tabmenu" id="tab3">
-
-        <div class="conbox con1">
-            {% for list2 in html2 %}
-                <p></p>
-                <a href="https://www.jobkorea.co.kr/{{ list2.0 }}">
-                    {{ list2.1 }}
-                </a>
-            {% endfor %}
-        </div>
-        <div class="conbox con2">
-            {% for list3 in html3 %}
-                <p></p>
-                <a href="https://www.jobkorea.co.kr/{{ list3.0 }}">
-                    {{ list3.1 }}
-                </a>
-            {% endfor %}
-        </div>
-        <div class="conbox con3">
-            {% for list4 in html4 %}
-                <p></p>
-                <a href="https://www.jobkorea.co.kr/{{ list4.0 }}">
-                    {{ list4.1 }}
-                </a>
-            {% endfor %}
-        </div>
-
-        <div class="btn">
-            <label for="tab1"></label>
-            <label for="tab2"></label>
-            <label for="tab3"></label>
         </div>
     </div>
 
-    <div class="side_caption">
-        <ul>
-            <li><a href="#">공지사항</a></li>
-            <li><a href="#">Q&A</a></li>
-            <li><a href="#">건의사항</a></li>
-            <ol></ol>
-            <ol></ol>
-        </ul>
+    <div class="middle_content">
+        <div class="search_content">
+            <p></p>
+            {% for list in answer_list %}
+                <a href="{% url 'resumeapp:detail_resume' title=list.0.pk pk=request.user.pk %}">
+                    <ul class="mini_content" style="color:#000000;">
+                        <li>
+                            <div>
+                                조OO
+                                <p></p>
+                                (남 | 1999년, 24세)
+                            </div>
+                        </li>
+                        <li>
+                            <div style="margin-left:3rem;">
+                                <span style="font-size:2rem; font-weight:bold;">
+                                    {{ list.1 }}
+                                </span>
+                                <p></p>
+                                직무기술 :
+                                <p></p>
+                                학교명 : {{ list.3 }} <span class="information_css">졸업</span>
+                                <p></p>
+                                <span style="font-size:15px;">
+                                    희망지역 : {{ list.5 }},{{ list.6 }},{{ list.7 }} | 즉시근무가능 | 희망연봉 : {{ list.4 }}
+                                    <p></p>
+                                    희망직종 : {{ list.8 }} | {{ list.9 }} | {{ list.10 }}
+                                </span>
+                            </div>
+                        </li>
+                        <li style="margin-left:auto;">
+                            {{ list.2|date:"Y-m-d" }}
+                        </li>
+                    </ul>
+                </a>
+            {% endfor %}
+        </div>
     </div>
-</body>
-</html>
+
+
+{% endblock %}
