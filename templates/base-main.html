@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+{% include 'head-main.html' %}
+
+<body>
+
+    {% include 'header-main.html' %}
+
+    <div style="background:#F6F6F6; width:85rem; margin:auto;">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="base_line_css">
+        <hr>
+    </div>
+
+    {% include 'footer-main.html' %}
+
+</body>
+</html>
