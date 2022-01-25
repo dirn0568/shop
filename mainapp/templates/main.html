@@ -52,37 +52,41 @@
         </div>
     </div>
 
-    <div class="middle_content">
-        {% for list in answer_list %}
-            <div>
-                <p></p>
-                아이디: admin
-                <p></p>
-                제목: 저의 성장과정 입니다.
-            </div>
-        {% endfor %}
+    <div style="font-size:1.5rem; font-weight:bold;">
+        오늘의 추천 이력서
     </div>
-    <div class="middle_content">
-        {% for list in answer_list %}
-            <div>
-                <p></p>
-                아이디: admin
-                <p></p>
-                제목: 저의 성장과정 입니다.
-            </div>
-        {% endfor %}
+    <div class="middle">
+        <div class="middle_content">
+            {% for list in answer_list %}
+                <a href="{% url 'resumeapp:detail_resume' title=list.0.pk pk=request.user.pk %}">
+                    <div>
+                        조OO (남 | 1999년, 24세)
+                    </div>
+                    <div>
+                        {{ list.1 }}
+                    </div>
+                    <div>
+                        희망직종 : {{ list.8 }} | {{ list.9 }} | {{ list.10 }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="middle_content">
+            {% for list in answer_list %}
+                <a href="{% url 'resumeapp:detail_resume' title=list.0.pk pk=request.user.pk %}">
+                    <div>
+                        조OO (남 | 1999년, 24세)
+                    </div>
+                    <div>
+                        {{ list.1 }}
+                    </div>
+                    <div>
+                        희망직종 : {{ list.8 }} | {{ list.9 }} | {{ list.10 }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
     </div>
-    <div class="middle_content">
-        {% for list in answer_list %}
-            <div>
-                <p></p>
-                아이디: admin
-                <p></p>
-                제목: 저의 성장과정 입니다.
-            </div>
-        {% endfor %}
-    </div>
-
     <div class="middle_content2" style="background:#F6F6F6;">
         <div style="font-size:1.5rem; border-bottom:5px solid black;">
             공지사항
@@ -93,13 +97,10 @@
             </a>
         </div>
         <p></p>
-        공지1
+        안내사항
         <hr>
-        공지2
+        운영방침
         <hr>
-        공지3
-        <hr>
-        공지4
     </div>
     <div class="middle_content3" style="background:#F6F6F6">
         <div style="font-size:1.5rem; border-bottom:5px solid black;">
@@ -111,13 +112,21 @@
             </a>
         </div>
         <p></p>
-        자료1
+        <a href="{% static 'main/2022 최신 이력서 기본형.hwp' %}" download>
+            2022 최신 이력서 기본형
+        </a>
         <hr>
-        자료2
+        <a href="{% static 'main/2022 최신 이력서 라인형.hwp' %}" download>
+            2022 최신 이력서 라인형
+        </a>
         <hr>
-        자료3
+        <a href="{% static 'main/2022 최신 이력서 배경형.hwp' %}" download>
+            2022 최신 이력서 배경형
+        </a>
         <hr>
-        자료4
+        <a href="{% static 'main/2022 최신 경력기술서 기본형.hwp' %}" download>
+            2022 최신 경력기술서 기본형
+        </a>
     </div>
 
 {% endblock %}

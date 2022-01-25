@@ -56,12 +56,20 @@
 .middle_content {
     display:flex;
     width:43.3rem;
-    height:6rem;
+    height:9rem;
 }
 
-.middle_content > div {
+.middle_content > a {
     flex:1;
-    border: 0.1px solid gray;
+    color:#000000;
+}
+
+.middle_content > a:not(:last-child) {
+    border-right: 0.1px solid gray;
+}
+
+.middle > div:not(:last-child) {
+    border-bottom: 0.1px solid gray;
 }
 
 .middle_content2 {

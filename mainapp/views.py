@@ -80,7 +80,7 @@ def main(request):
                 answer.append(hope.resume_hope_work_work1)
 
             answer_list.append(answer)
-
+    print(answer_list, "01-25")
     context['answer_list'] = answer_list
     context['school_list'] = school_list
 
