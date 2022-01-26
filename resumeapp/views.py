@@ -101,7 +101,7 @@ def list_resume(request, title, pk):
         context['resume'] = temp_resume
     return render(request, 'list_resume.html', context)
 
-def detail_resume(request, title, pk):
+def detail_resume(request, title):
     if request.method == 'POST' and request.POST.get('resume_school_del'):
         temp_resume = Resume_Title.objects.filter(pk=title)
         for user_resume in temp_resume:
@@ -115,7 +115,7 @@ def detail_resume(request, title, pk):
             find_resume.delete()
             find_resume = Resume_UniversitySchool_Major.objects.filter(resume_university_major=user_resume)
             find_resume.delete()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     if request.method == 'POST' and request.POST.get('resume_career_del'):
         print('이거실행중????????????????????')
@@ -127,7 +127,7 @@ def detail_resume(request, title, pk):
             find_resume.delete()
             find_resume = Resume_Career_Project.objects.filter(resume_career_project=user_resume)
             find_resume.delete()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     if request.method == 'POST' and request.POST.get('resume_hope_work_del'):
         temp_resume = Resume_Title.objects.filter(pk=title)
@@ -138,7 +138,7 @@ def detail_resume(request, title, pk):
             find_resume.delete()
             find_resume = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=user_resume)
             find_resume.delete()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     if request.method == 'POST' and request.POST.get('resume_out_play_del'):
         print('이거실행중??????')
@@ -146,28 +146,28 @@ def detail_resume(request, title, pk):
         for user_resume in temp_resume:
             find_resume = Resume_Out_Play.objects.filter(resume_out_play=user_resume)
             find_resume.delete()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     if request.method == 'POST' and request.POST.get('resume_prize_play_del'):
         temp_resume = Resume_Title.objects.filter(pk=title)
         for user_resume in temp_resume:
             find_resume = Resume_Prize_Play.objects.filter(resume_prize_play=user_resume)
             find_resume.delete()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     if request.method == 'POST' and request.POST.get('resume_port_polio_del'):
         temp_resume = Resume_Title.objects.filter(pk=title)
         for user_resume in temp_resume:
             find_resume = Resume_Port_Polio.objects.filter(resume_port_polio=user_resume)
             find_resume.delete()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     if request.method == 'POST' and request.POST.get('resume_self_introduce_del'):
         temp_resume = Resume_Title.objects.filter(pk=title)
         for user_resume in temp_resume:
             find_resume = Resume_Self_Introduce.objects.filter(resume_self_introduce=user_resume)
             find_resume.delete()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
 
     temp_resume = Resume_Title.objects.filter(pk=title)
@@ -206,7 +206,8 @@ def detail_resume(request, title, pk):
         print(len(resume_hope_work_field), 'resume_hope_work_field')
         print(len(resume_hope_work_work), 'resume_hope_work_work')
         context = {}
-        context['pk'] = pk
+        context['pk'] = user_resume.resume_title.pk
+        print(user_resume.resume_title.pk, '이것이 pk다')
         context['title'] = title
 
         if len(school1) == 0 and len(school2) == 0 and len(school3) == 0 and len(school4) == 0:
@@ -889,7 +890,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                         temp_form.resume_university_major_list = request.POST.get('study_major_list4{0}'.format(i))
                         temp_form.resume_university_major_detail = request.POST.get('study_major_detail4{0}'.format(i))
                         temp_form.save()  # 11-22 학과가 제대로 저장안됨 이력서 제목이 여러개 저장되는건지 확인해야함
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     return render(request, 'resume_resume2_update.html', context)
 
@@ -1052,7 +1053,7 @@ def resume_resume4_update(request, company_ability, company_project, title, pk):
                     temp_form.resume_career_project_end_time = request.POST.get('company_project_end{0}'.format(i))
                     temp_form.resume_career_project_text_detail = request.POST.get('company_project_detail{0}'.format(i))
                     temp_form.save()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
 
     return render(request, 'resume_resume4_update.html', context)
 
@@ -1132,7 +1133,7 @@ def resume_resume5_update(request, title, pk):
                     temp_form.resume_hope_work_work = resume
                     temp_form.resume_hope_work_work1 = work_list[i]
                     temp_form.save()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
     context={}
     context['pk'] = pk
     context['title'] = title
@@ -1174,7 +1175,7 @@ def resume_out_play_update(request, out_play, title, pk):
                     temp_form.resume_out_end_play = request.POST.get('out_play4{0}'.format(i))
                     temp_form.resume_out_play_text = request.POST.get('out_play5{0}'.format(i))
                     temp_form.save()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
     return render(request, 'resume_out_play_update.html', context)
 
 def resume_prize_play_update(request, prize_play, title, pk):
@@ -1212,7 +1213,7 @@ def resume_prize_play_update(request, prize_play, title, pk):
                     temp_form.resume_prize_title = request.POST.get('prize_play3{0}'.format(i))
                     temp_form.resume_prize_date = request.POST.get('prize_play4{0}'.format(i))
                     temp_form.save()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
     return render(request, 'resume_prize_play_update.html', context)
 
 def resume_port_polio_update(request, port_polio, title, pk):
@@ -1247,7 +1248,7 @@ def resume_port_polio_update(request, port_polio, title, pk):
                     temp_form.resume_port_polio = resume
                     temp_form.resume_port_polio_detail = request.FILES.get('port_polio1{0}'.format(i))
                     temp_form.save()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
     return render(request, 'resume_port_polio_update.html', context)
 
 def resume_self_introduce_update(request, self_introduce, title, pk):
@@ -1283,7 +1284,7 @@ def resume_self_introduce_update(request, self_introduce, title, pk):
                     temp_form.resume_self_introduce_title = request.POST.get('self_introduce1{0}'.format(i))
                     temp_form.resume_self_introduce_text = request.POST.get('self_introduce2{0}'.format(i))
                     temp_form.save()
-        return redirect('resumeapp:detail_resume', title=title, pk=pk)
+        return redirect('resumeapp:detail_resume', title=title)
     return render(request, 'resume_self_introduce_update.html', context)
 
 

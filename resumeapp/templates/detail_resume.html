@@ -156,7 +156,20 @@
     <p></p>
     {% if school1 %}
         <div class="content_title">
-            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+            학력
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             <p></p>
@@ -168,7 +181,20 @@
     {% endif %}
     {% if school2 %}
         <div class="content_title">
-            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+            학력
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% for school in school2 %}
@@ -179,7 +205,20 @@
     {% endif %}
     {% if school3 %}
         <div class="content_title">
-            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+            학력
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% for school in school3 %}
@@ -194,7 +233,20 @@
     {% endif %}
     {% if school4 %}
         <div class="content_title">
-            학력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del"></span></form>
+            학력
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% for school in school4 %}
@@ -220,7 +272,20 @@
     {% if resume_career %}
         <p></p>
         <div class="content_title">
-            경력 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume4_update' company_ability=1 company_project=0 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_career_del"></span></form>
+            경력
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_resume4_update' company_ability=1 company_project=0 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_career_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             <p></p>
@@ -255,7 +320,20 @@
     {% if out_play %}
         <p></p>
         <div class="content_title">
-            대외활동 <span class="update_btn"><a href="{% url 'resumeapp:resume_out_play_update' out_play=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_out_play_del"></span></form>
+            대외활동
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_out_play_update' out_play=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_out_play_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% for out_play_list in out_play %}
@@ -269,7 +347,20 @@
     {% if prize_play %}
         <p></p>
         <div class="content_title">
-            자격증 <span class="update_btn"><a href="{% url 'resumeapp:resume_prize_play_update' prize_play=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_prize_play_del"></span></form>
+            자격증
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_prize_play_update' prize_play=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_prize_play_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% for prize_play_list in prize_play %}
@@ -281,7 +372,20 @@
     {% if port_polio %}
         <p></p>
         <div class="content_title">
-            포트폴리오 <span class="update_btn"><a href="{% url 'resumeapp:resume_port_polio_update' port_polio=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_port_polio_del"></span></form>
+            포트폴리오
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_port_polio_update' port_polio=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_port_polio_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% for port_polio_list in port_polio %}
@@ -293,7 +397,20 @@
     {% if self_introduce %}
         <p></p>
         <div class="content_title">
-            자기소개서 <span class="update_btn"><a href="{% url 'resumeapp:resume_self_introduce_update' self_introduce=1 title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_self_introduce_del"></span></form>
+            자기소개서
+            {% if request.user.pk == pk %}
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_self_introduce_update' self_introduce=1 title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_self_introduce_del">
+                    </span>
+                </form>
+            {% endif %}
         </div>
         <div class="content">
             {% for self_introduce_list in self_introduce %}
@@ -310,9 +427,22 @@
         <div class="base_line_css">
             <hr>
         </div>
-        <div class="content_title">
-            희망 조건 <span class="update_btn"><a href="{% url 'resumeapp:resume_resume5_update' title=title pk=pk %}" class="btn_color">&nbsp;수정하기&nbsp;</a></span> &nbsp; <form action="{% url 'resumeapp:detail_resume' title=title pk=pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}<span class="update_btn"><input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_hope_work_del"></span></form>
-        </div>
+        {% if request.user.pk == pk %}
+            <div class="content_title">
+                희망 조건
+                <span class="update_btn">
+                    <a href="{% url 'resumeapp:resume_resume5_update' title=title pk=pk %}" class="btn_color">
+                        &nbsp;수정하기&nbsp;
+                    </a>
+                </span> &nbsp;
+                <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <span class="update_btn">
+                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_hope_work_del">
+                    </span>
+                </form>
+            </div>
+        {% endif %}
         <div class="content">
             <p></p>
             <div class="mini_div">

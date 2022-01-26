@@ -2220,7 +2220,7 @@
             <div class="search_content">
                 <p></p>
                 {% for list in answer_list %}
-                    <a href="{% url 'resumeapp:detail_resume' title=list.0.pk pk=request.user.pk %}">
+                    <a href="{% url 'resumeapp:detail_resume' title=list.0.pk %}">
                         <ul class="mini_content" style="color:#000000;">
                             <li>
                                 <div>

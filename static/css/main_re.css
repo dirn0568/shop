@@ -60,10 +60,10 @@
 }
 
 .middle_content > a {
-    flex:1;
+    flex:0.6;
     color:#000000;
 }
-
+/*
 .middle_content > a:not(:last-child) {
     border-right: 0.1px solid gray;
 }
@@ -71,7 +71,7 @@
 .middle > div:not(:last-child) {
     border-bottom: 0.1px solid gray;
 }
-
+*/
 .middle_content2 {
     position:absolute;
     top:17.4rem;
@@ -86,4 +86,8 @@
     margin-left:63.95rem;
     width:21rem;
     height:18rem;
+}
+
+.middle_content3 a {
+    color:#000000;
 }

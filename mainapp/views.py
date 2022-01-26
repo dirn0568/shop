@@ -1,13 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
-
+from datetime import datetime
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
 from accountapp.models import MyUser
+from profileapp.models import User_Profile
 from resumeapp.models import Resume_Title, Resume_Hope_Work, Resume_Hope_Work_Field, Resume_Hope_Work_Work, \
     Resume_UniversitySchool, Resume_HighSchool, Resume_UniversitySchool_Major, Resume_MiddleSchool, \
     Resume_ElementarySchool
@@ -27,54 +27,54 @@ def main(request):
     school_list = []
     for resume_title in temp_resume:
         if resume_title.resume_open == 1:
-            temp_field = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=resume_title)
+            temp_profile = User_Profile.objects.filter(profile=resume_title.resume_title)
+            answer = []
+            for user_profile in temp_profile:
+                if user_profile.user_name:
+                    answer.append(user_profile.user_name)
+                else:
+                    answer.append("None")
+                if user_profile.user_gender:
+                    answer.append(user_profile.user_gender[:1])
+                else:
+                    answer.append("None")
+                if user_profile.user_birthday:
+                    now = datetime.now()
+                    date = now.strftime("%Y")
+                    date2 = user_profile.user_birthday[:4]
+                    date3 = int(date) - int(date2)
+
+                    date4 = now.strftime("%m")
+                    date5 = now.strftime("%d")
+                    date6 = user_profile.user_birthday[4:6]
+                    date7 = user_profile.user_birthday[6:9]
+                    date4 = int(date4)
+                    date5 = int(date5)
+                    date6 = int(date6)
+                    date7 = int(date7)
+                    if date4 > date6:
+                        pass
+                    elif date4 == date6 and date5 >= date7:
+                        pass
+                    else:
+                        date3 = date3 - 1
+                    answer.append(date3)
+                else:
+                    answer.append("None")
+                if user_profile.profile_img:
+                    answer.append(user_profile.profile_img)
+                    print(user_profile.profile_img)
+                else:
+                    answer.append("None")
+
             temp_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=resume_title)
 
             # field_list = request.POST.getlist('work2')
             # print(field_list)
 
-            answer = []
             answer.append(resume_title)
             answer.append(resume_title.resume_title_detail)
-            answer.append(resume_title.resume_date)
 
-            school1 = Resume_ElementarySchool.objects.filter(resume_elementary=resume_title)
-            school2 = Resume_MiddleSchool.objects.filter(resume_middle=resume_title)
-            school3 = Resume_HighSchool.objects.filter(resume_high=resume_title)
-            school4 = Resume_UniversitySchool.objects.filter(resume_university=resume_title)
-
-            major = Resume_UniversitySchool_Major.objects.filter(resume_university_major=resume_title)
-
-            if school1.count() >= 1:
-                for temp in school1:
-                    answer.append(temp.elementary_school_name)
-            if school2.count() >= 1:
-                for temp in school2:
-                    answer.append(temp_resume.middle_school_name)
-            if school3.count() >= 1:
-                for temp in school3:
-                    a = temp.high_school_name
-                    b = temp.high_major
-                c = a + '(' + b + ')'
-                answer.append(c)
-            if school4.count() >= 1:
-                for temp in school4:
-                    a = temp.university_school_name
-                if major.count() >= 1:
-                    for temp in major:
-                        b = temp.resume_university_major_detail
-                        break
-                print('이거샐행중국??????')
-                c = a + '(' + b + ')'
-                answer.append(c)
-
-            hope_money = Resume_Hope_Work.objects.filter(resume_hope_work=resume_title)
-            for hope in hope_money:
-                answer.append(hope.resume_hope_work_money)
-
-            hope_field = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=resume_title)
-            for hope in hope_field:
-                answer.append(hope.resume_hope_work_field1)
             hope_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=resume_title)
             for hope in hope_work:
                 answer.append(hope.resume_hope_work_work1)

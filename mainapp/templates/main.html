@@ -11,7 +11,7 @@
                     {% if request.user.is_authenticated %}
                         <li>
                             {% if request.user.profile.profile_img %}
-                                <img src="{{ profile.profile_img.url }}" alt="" style="width:10rem; height:12rem;">
+                                <img src="../media/{{ request.user.profile.profile_img }}" alt="" style="width:10rem; height:12rem;">
                             {% else %}
                                 <img src="{% static 'profile/noimg.jpg' %}" alt="" style="width:10rem; height:12rem;">
                             {% endif %}
@@ -52,42 +52,95 @@
         </div>
     </div>
 
-    <div style="font-size:1.5rem; font-weight:bold;">
-        오늘의 추천 이력서
-    </div>
+    <span style="font-size:1.5rem; font-weight:bold;">
+        &nbsp;오늘의 추천 이력서
+    </span>
+    <p></p>
     <div class="middle">
         <div class="middle_content">
             {% for list in answer_list %}
-                <a href="{% url 'resumeapp:detail_resume' title=list.0.pk pk=request.user.pk %}">
-                    <div>
-                        조OO (남 | 1999년, 24세)
+                <a href="{% url 'resumeapp:detail_resume' title=list.4.pk %}">
+                    <div style="display:flex;">
+                        <div>
+                            {% if list.3 == "None" %}
+                                &nbsp;<img src="{% static 'profile/noimg.jpg' %}" alt="" style="width:5rem; height:5rem;">
+                            {% else %}
+                                &nbsp;<img src="../media/{{ list.3 }}" alt="" style="width:5rem; height:5rem;">
+                            {% endif %}
+                        </div>
+                        <div>
+                            <div>
+                                &nbsp;{{ list.0 }}
+                                {% if list.2 == "None" %}
+                                {% else %}
+                                    ({{ list.1 }}, {{ list.2 }}세)
+                                {% endif %}
+                            </div>
+                            <div>
+                                &nbsp;♥ 5
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        {{ list.1 }}
+                    <div style="font-size:1rem; font-weight:bold;">
+                        {{ list.5 }}
                     </div>
-                    <div>
-                        희망직종 : {{ list.8 }} | {{ list.9 }} | {{ list.10 }}
+                    <div style="font-size:0.8rem;">
+                        {% if list.6 %}
+                            {{ list.6 }}
+                        {% endif %}
+                        {% if list.7 %}
+                            {{ list.7 }}
+                        {% endif %}
+                        {% if list.8 %}
+                            {{ list.8 }}
+                        {% endif %}
                     </div>
                 </a>
             {% endfor %}
         </div>
         <div class="middle_content">
             {% for list in answer_list %}
-                <a href="{% url 'resumeapp:detail_resume' title=list.0.pk pk=request.user.pk %}">
-                    <div>
-                        조OO (남 | 1999년, 24세)
+                <a href="{% url 'resumeapp:detail_resume' title=list.4.pk %}">
+                    <div style="display:flex;">
+                        <div>
+                            {% if list.3 == "None" %}
+                                &nbsp;<img src="{% static 'profile/noimg.jpg' %}" alt="" style="width:5rem; height:5rem;">
+                            {% else %}
+                                &nbsp;<img src="../media/{{ list.3 }}" alt="" style="width:5rem; height:5rem;">
+                            {% endif %}
+                        </div>
+                        <div>
+                            <div>
+                                &nbsp;{{ list.0 }}
+                                {% if list.2 == "None" %}
+                                {% else %}
+                                    ({{ list.1 }}, {{ list.2 }}세)
+                                {% endif %}
+                            </div>
+                            <div>
+                                &nbsp;♥ 5
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        {{ list.1 }}
+                    <div style="font-size:1rem; font-weight:bold;">
+                        {{ list.5 }}
                     </div>
-                    <div>
-                        희망직종 : {{ list.8 }} | {{ list.9 }} | {{ list.10 }}
+                    <div style="font-size:0.8rem;">
+                        {% if list.6 %}
+                            {{ list.6 }}
+                        {% endif %}
+                        {% if list.7 %}
+                            {{ list.7 }}
+                        {% endif %}
+                        {% if list.8 %}
+                            {{ list.8 }}
+                        {% endif %}
                     </div>
                 </a>
             {% endfor %}
         </div>
     </div>
-    <div class="middle_content2" style="background:#F6F6F6;">
+    <div class="middle_content2">
         <div style="font-size:1.5rem; border-bottom:5px solid black;">
             공지사항
             <a href="{% url 'mainapp:main' %}">
@@ -102,7 +155,7 @@
         운영방침
         <hr>
     </div>
-    <div class="middle_content3" style="background:#F6F6F6">
+    <div class="middle_content3">
         <div style="font-size:1.5rem; border-bottom:5px solid black;">
             자료실
             <a href="{% url 'mainapp:main' %}">

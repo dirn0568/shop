@@ -6,7 +6,7 @@
     <p></p>
     <div class="content">
         {% for list in resume %}
-            <a href="{% url 'resumeapp:detail_resume' title=list.pk pk=request.user.pk %}">
+            <a href="{% url 'resumeapp:detail_resume' title=list.pk %}">
                 <ul class="mini_content">
                     <li>{{ list.resume_title_detail }}</li>
                     <li>{{ list.resume_title }}</li>
