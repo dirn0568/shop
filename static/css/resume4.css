@@ -4,7 +4,6 @@
 
 .content {
     width: 85rem;
-    margin-left: 6.5rem;
     font-size:30px;
     font-weight:bold;
     background:#F6F6F6;
@@ -90,11 +89,13 @@
 
 .submit_button {
     text-align:center;
+    background:#F6F6F6;
 }
 
 .submit_btn {
     border:none;
     font-weight:bold;
+    font-size:15px;
     background:#A6A6A6;
     padding: 10px 3rem;
 }

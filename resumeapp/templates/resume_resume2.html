@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base-resume.html' %}
 
 {% block content %}
     {% load static %}
@@ -55,7 +55,7 @@
         {% csrf_token %}
         <div class="content">
             {% if school == 1 %}
-                <div class="self_margin"></div>
+                <p></p>
                 <div class="resume_title">
                     이력서 제목
                     <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
@@ -200,7 +200,7 @@
                 </span>
             {% endif %}
             {% if school == 2 %}
-                <div class="self_margin"></div>
+                <p></p>
                 <div class="resume_title">
                     이력서 제목
                     <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
@@ -345,7 +345,7 @@
                 <p></p>
             {% endif %}
             {% if school == 3 %}
-                <div class="self_margin"></div>
+                <p></p>
                 <div class="resume_title">
                     이력서 제목
                     <input type="text" name="resume_title" placeholder="제목을 입력하세요" required style="width:800px;height:50px;font-size:30px;" class="title_css">
@@ -732,7 +732,9 @@
         </div>
         <p></p>
         <div class="submit_button">
-            <input type="submit" value="다음페이지" class="major_button_plus" name="resume_submit1">
+            <input type="submit" value="신입 이력서" class="major_button_plus" name="resume_submit1">
+            &nbsp;/&nbsp;
+            <input type="submit" value="경력 이력서" class="major_button_plus" name="resume_submit2">
         </div>
     </form>
 {% endblock %}

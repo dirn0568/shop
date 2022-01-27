@@ -26,7 +26,6 @@
 
 .wrap {
 	line-height: 66px;
-	margin-left: 6.5rem;
 }
 
 .wrap a {
@@ -131,10 +130,10 @@
 
 .resume_add {
     position: fixed;
-    top: 200px;
-    margin-left: 1345px;
-    width:300px;
-    height:350px;
+    top: 10rem;;
+    margin-left: 75rem;
+    width:20rem;
+    height:25rem;
     font-size:20px;
     font-weight:bold;
     background:#D5D5D5;

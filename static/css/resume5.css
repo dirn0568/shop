@@ -4,7 +4,6 @@
 
 .content {
     width: 85rem;
-    margin-left: 6.5rem;
     font-size:30px;
     font-weight:bold;
     background:#F6F6F6;
@@ -452,6 +451,9 @@ input[id="answer05"]:checked + label + span + div input[id="answer05_13"]:checke
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 /* 제출버튼 */
+.submit_button {
+    background:#F6F6F6;
+}
 
 .submit_btn {
     border:none;

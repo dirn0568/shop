@@ -1,130 +1,133 @@
-<!DOCTYPE html>
-<html lang="ko">
 
-<head>
+{% extends 'base-resume.html' %}
+
+{% block content %}
     {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Pragmatic</title>
     <link rel="stylesheet" href="{% static 'css/resume3.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-    <!-- BOOTSTRAP LINK -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <!-- GOOGLE FONTS LINK -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Monoton&display=swap" rel="stylesheet">
-
-    <!-- GOOGLE MATERIAL ICONS  -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-
-    <!-- GOOGLE NOTO SANS  -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
-    <style>
-        .resume3_junior {
-            background-image:url("{% static 'resume/뛰어노는 아이2번째크기.jpg' %}");
-            background-repeat:no-repeat;
-            background-size:46rem;
-        }
-    </style>
-</head>
-
-<body>
-    <div style="text-align:center">
-        <div>
-            <h1 class="font_data">PICK ME</h1>
-        </div>
-        <div>
-            <a href="{% url 'mainapp:main' %}">
-                <span>메인</span>
-            </a>
-            <a href="{% url 'mainapp:main' %}">
-                <span>인재찾기</span>
-            </a>
-            <a href="{% url 'mainapp:main' %}">
-                <span>TOP100</span>
-            </a>
-            <a href="{% url 'mainapp:main' %}">
-                <span>취업뉴스</span>
-            </a>
-            <a href="{% url 'mainapp:main' %}">
-                <span>커뮤니티</span>
-            </a>
-            {% if not user.is_authenticated %}
-            <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
-                <span>login</span>
-            </a>
-            <a href="{% url 'accountapp:create_user' %}">
-                <span>SignUp</span>
-            </a>
-            {% else %}
-            <a href="{% url 'accountapp:detail_user' pk=user.pk %}">
-                <span>MyPage</span>
-            </a>
-            <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
-                <span>logout</span>
-            </a>
-            {% endif %}
-        </div>
-    </div>
-
-    신입 이력서 작성하기
-    <div class="resume3_junior">
-        <div>
-            자신의 능력을 감추지 마라.
-            <p></p>
-            재능은 쓰라고 주어진 것이니.
-            <p></p>
-            그늘 속의 해시계가 무슨 소용이랴?
-            <p></p>
-            -벤자민 프랭클린-
-        </div>
-        <div>
-            성공은 자연연소의 결과가 아니다.
-            <p></p>
-            먼저 자기 자신에게 불을 지펴야 한다.
-            <p></p>
-            -레지 리치-
-        </div>
-        <div>
-            나는 미래에 대해 생각하는 법이 없다.
-            <p></p>
-            어차피 곧 닥쳐올꺼니까.
-            <p></p>
-            -아인슈타인-
-        </div>
-
-    </div>
-
-<!--    <div class="resume3_adult">-->
-<!--        경력직 이력서 작성하기-->
-<!--        가는말이 고우면 얕본다-->
-<!--        -작자 미상- -->
-<!--        오늘 힘들었다고 슬퍼하지 마세요.-->
-<!--        어차피 내일도 힘드니까-->
-<!--        -작자 미상- -->
-<!--        내일 할 수 있는 일을-->
-<!--        오늘 할 필요는 없다.-->
-<!--        -작자 미상- -->
-<!--    </div>-->
     <div class="wrap">
-        <a href="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" class="button">신입</a>
-        <a href="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=1 company_project=0 pk=pk %}" class="button">경력</a>
+        <a href="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" class="button">신입 이력서 바로가기</a>
+        <a href="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=1 company_project=0 pk=pk %}" class="button">경력 이력서 바로가기</a>
 	</div>
+{% endblock %}
 
-    <div class="pragmatic_footer">
-        <div class="pragmatic_footer_button">
-            <p></p>
-            <span>공지사항</span> ㅣ
-            <span>제휴문의</span> ㅣ
-            <span>서비스 소개</span>
-        </div>
-        <div style="margin-top: 1rem;">
-            <h6 class="pragmatic_logo">Pragmatic</h6>
-        </div>
-    </div>
 
-</body>
-</html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="ko">-->
+
+<!--<head>-->
+<!--    {% load static %}-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+<!--    <title>Pragmatic</title>-->
+<!--    <link rel="stylesheet" href="{% static 'css/resume3.css' %}">-->
+<!--    <link rel="stylesheet" href="{% static 'css/base.css' %}">-->
+
+<!--    &lt;!&ndash; BOOTSTRAP LINK &ndash;&gt;-->
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"-->
+<!--          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">-->
+<!--    &lt;!&ndash; GOOGLE FONTS LINK &ndash;&gt;-->
+<!--    <link rel="preconnect" href="https://fonts.gstatic.com">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Monoton&display=swap" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; GOOGLE MATERIAL ICONS  &ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">-->
+
+<!--    &lt;!&ndash; GOOGLE NOTO SANS  &ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">-->
+
+<!--    <style>-->
+<!--        .resume3_junior {-->
+<!--            background-image:url("{% static 'resume/뛰어노는 아이2번째크기.jpg' %}");-->
+<!--            background-repeat:no-repeat;-->
+<!--            background-size:46rem;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <div style="text-align:center">-->
+<!--        <div>-->
+<!--            <h1 class="font_data">PICK ME</h1>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <a href="{% url 'mainapp:main' %}">-->
+<!--                <span>메인</span>-->
+<!--            </a>-->
+<!--            <a href="{% url 'mainapp:main' %}">-->
+<!--                <span>인재찾기</span>-->
+<!--            </a>-->
+<!--            <a href="{% url 'mainapp:main' %}">-->
+<!--                <span>TOP100</span>-->
+<!--            </a>-->
+<!--            <a href="{% url 'mainapp:main' %}">-->
+<!--                <span>취업뉴스</span>-->
+<!--            </a>-->
+<!--            <a href="{% url 'mainapp:main' %}">-->
+<!--                <span>커뮤니티</span>-->
+<!--            </a>-->
+<!--            {% if not user.is_authenticated %}-->
+<!--            <a href="{% url 'accountapp:login' %}?next={{ request.path }}">-->
+<!--                <span>login</span>-->
+<!--            </a>-->
+<!--            <a href="{% url 'accountapp:create_user' %}">-->
+<!--                <span>SignUp</span>-->
+<!--            </a>-->
+<!--            {% else %}-->
+<!--            <a href="{% url 'accountapp:detail_user' pk=user.pk %}">-->
+<!--                <span>MyPage</span>-->
+<!--            </a>-->
+<!--            <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">-->
+<!--                <span>logout</span>-->
+<!--            </a>-->
+<!--            {% endif %}-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--&lt;!&ndash;    신입 이력서 작성하기&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="resume3_junior">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            자신의 능력을 감추지 마라.&ndash;&gt;-->
+<!--&lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            재능은 쓰라고 주어진 것이니.&ndash;&gt;-->
+<!--&lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            그늘 속의 해시계가 무슨 소용이랴?&ndash;&gt;-->
+<!--&lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            -벤자민 프랭클린- &ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            성공은 자연연소의 결과가 아니다.&ndash;&gt;-->
+<!--&lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            먼저 자기 자신에게 불을 지펴야 한다.&ndash;&gt;-->
+<!--&lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            -레지 리치- &ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div>&ndash;&gt;-->
+<!--&lt;!&ndash;            나는 미래에 대해 생각하는 법이 없다.&ndash;&gt;-->
+<!--&lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            어차피 곧 닥쳐올꺼니까.&ndash;&gt;-->
+<!--&lt;!&ndash;            <p></p>&ndash;&gt;-->
+<!--&lt;!&ndash;            -아인슈타인- &ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div class="resume3_adult">&ndash;&gt;-->
+<!--&lt;!&ndash;        경력직 이력서 작성하기&ndash;&gt;-->
+<!--&lt;!&ndash;        가는말이 고우면 얕본다&ndash;&gt;-->
+<!--&lt;!&ndash;        -작자 미상- &ndash;&gt;-->
+<!--&lt;!&ndash;        오늘 힘들었다고 슬퍼하지 마세요.&ndash;&gt;-->
+<!--&lt;!&ndash;        어차피 내일도 힘드니까&ndash;&gt;-->
+<!--&lt;!&ndash;        -작자 미상- &ndash;&gt;-->
+<!--&lt;!&ndash;        내일 할 수 있는 일을&ndash;&gt;-->
+<!--&lt;!&ndash;        오늘 할 필요는 없다.&ndash;&gt;-->
+<!--&lt;!&ndash;        -작자 미상- &ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--    <div class="wrap">-->
+<!--        <p></p>-->
+<!--        <a href="{% url 'resumeapp:resume_resume5' title=title pk=pk %}" class="button">신입 이력서 바로가기</a>-->
+<!--        <a href="{% url 'resumeapp:resume_resume4' title=title career=2 company_ability=1 company_project=0 pk=pk %}" class="button">경력 이력서 바로가기</a>-->
+<!--	</div>-->
+
+<!--</body>-->
+<!--</html>-->

@@ -539,7 +539,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
     context['temp_port_polio'] = temp_port_polio
     context['temp_self_introduce'] = temp_self_introduce
 
-    if request.method == 'POST' and request.POST.get('resume_submit1'):
+    if request.method == 'POST' and (request.POST.get('resume_submit1') or request.POST.get('resume_submit2')):
         print('*******************************', request.POST, '&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
         temp_user = MyUser.objects.filter(pk=pk)
         form = ResumeTitleForm(request.POST, request.FILES)
@@ -796,7 +796,10 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                     temp_form.save()
 
                 ##################################################################################################################
-        return redirect('resumeapp:resume_resume3', title=title, pk=pk)
+        if request.POST.get('resume_submit1'):
+            return redirect('resumeapp:resume_resume5', title=title, pk=pk)
+        else:
+            return redirect('resumeapp:resume_resume4', title=title, career=2, company_ability=1, company_project=0, pk=pk)
         # return render(request, 'resume_resume3.html', context)
         # study_major_list4
         # study_major_detail4
