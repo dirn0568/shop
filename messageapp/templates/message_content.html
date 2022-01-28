@@ -1,0 +1,29 @@
+{% extends 'base-message.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+
+    <div class="message_content">
+        <div></div>
+        <div style="font-size:1.5rem; line-height:-66px;">
+            메세지함 <span class="message_push">메세지 보내기</span>
+        </div>
+        <p></p>
+        <div>
+            수신 메세지
+            <p></p>
+            발신 메세지
+            <p></p>
+            이력서 열람
+        </div>
+    </div>
+    <div style="font-size:2rem;">
+        이력서열람 &nbsp;<span style="font-size:1rem;">총 0건</span>
+    </div>
+
+    {% for list in message %}
+        <p></p>
+        {{ list.message_detail }} 답장하기
+    {% endfor %}
+{% endblock %}

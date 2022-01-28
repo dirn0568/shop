@@ -15,11 +15,13 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='FriendRequestModel',
+            name='Message_Model',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('A_User', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='A_User', to=settings.AUTH_USER_MODEL)),
-                ('B_User', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='B_User', to=settings.AUTH_USER_MODEL)),
+                ('message_detail', models.CharField(max_length=2000)),
+                ('message_date', models.DateField(auto_now=True)),
+                ('message_Time', models.TimeField(auto_now=True)),
+                ('message_model', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='message_model', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

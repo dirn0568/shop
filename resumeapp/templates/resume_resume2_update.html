@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base-resume.html' %}
 
 {% block content %}
     {% load static %}
@@ -25,8 +25,7 @@
         {% csrf_token %}
         <div class="content">
             {% if school == 1 %}
-                <div class="self_margin"></div>
-
+                <p></p>
                 <div class="resume_line_css">
                     <hr>
                 </div>
@@ -80,7 +79,7 @@
                 </span>
             {% endif %}
             {% if school == 2 %}
-                <div class="self_margin"></div>
+                <p></p>
 
                 <div class="resume_line_css">
                     <hr>
@@ -136,7 +135,7 @@
                 <p></p>
             {% endif %}
             {% if school == 3 %}
-                <div class="self_margin"></div>
+                <p></p>
 
                 <div class="resume_line_css">
                     <hr>

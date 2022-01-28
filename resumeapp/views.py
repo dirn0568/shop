@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accountapp.models import MyUser
+from messageapp.models import Message_Model
 from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
     ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm, ResumeCareerForm, ResumeCareerAbilityForm, \
     ResumeCareerProjectForm, ResumeOutPlay, ResumePrizePlay, ResumePortPolio, ResumeSelfIntroduce, ResumeHopeWorkForm, \
@@ -102,6 +103,18 @@ def list_resume(request, title, pk):
     return render(request, 'list_resume.html', context)
 
 def detail_resume(request, title):
+    print(request.user.pk)
+    resume = Resume_Title.objects.filter(pk=title)
+    for temp_resume in resume:
+        if request.user.pk == None or temp_resume.resume_title == request.user:
+            pass
+        else:
+            user = MyUser.objects.filter(pk=temp_resume.resume_title.pk)
+            for temp_user in user:
+                print("01-28 실행중?????")
+                Message_Model(message_model=temp_user, message_detail='{0}님이 회원님의 이력서 {1}을 열람해보았습니다.'.format(request.user, temp_resume.resume_title_detail)).save()
+                # print(request.POST.get('school1{0}'.format(i)))
+
     if request.method == 'POST' and request.POST.get('resume_school_del'):
         temp_resume = Resume_Title.objects.filter(pk=title)
         for user_resume in temp_resume:
@@ -141,7 +154,6 @@ def detail_resume(request, title):
         return redirect('resumeapp:detail_resume', title=title)
 
     if request.method == 'POST' and request.POST.get('resume_out_play_del'):
-        print('이거실행중??????')
         temp_resume = Resume_Title.objects.filter(pk=title)
         for user_resume in temp_resume:
             find_resume = Resume_Out_Play.objects.filter(resume_out_play=user_resume)
@@ -179,35 +191,20 @@ def detail_resume(request, title):
 
         major = Resume_UniversitySchool_Major.objects.filter(resume_university_major=user_resume)
 
-        print(len(school1), 'school1')
-        print(len(school2), 'school2')
-        print(len(school3), 'school3')
-        print(len(school4), 'school4')
         out_play = Resume_Out_Play.objects.filter(resume_out_play=user_resume)
         prize_play = Resume_Prize_Play.objects.filter(resume_prize_play=user_resume)
         port_polio = Resume_Port_Polio.objects.filter(resume_port_polio=user_resume)
         self_introduce = Resume_Self_Introduce.objects.filter(resume_self_introduce=user_resume)
 
-        print(len(out_play), 'out_play')
-        print(len(prize_play), 'prize_play')
-        print(len(port_polio), 'port_polio')
-        print(len(self_introduce), 'self_introduce')
         resume_career = Resume_Career.objects.filter(resume_career=user_resume)
         resume_career_ability = Resume_Career_Ability.objects.filter(resume_career_ability=user_resume)
         resume_career_project = Resume_Career_Project.objects.filter(resume_career_project=user_resume)
-        print(len(resume_career), 'resume_career')
-        print(len(resume_career_ability), 'resume_career_ability')
-        print(len(resume_career_project), 'resume_career_project')
 
         resume_hope_work = Resume_Hope_Work.objects.filter(resume_hope_work=user_resume)
         resume_hope_work_field = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=user_resume)
         resume_hope_work_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=user_resume)
-        print(len(resume_hope_work), 'resume_hope_work')
-        print(len(resume_hope_work_field), 'resume_hope_work_field')
-        print(len(resume_hope_work_work), 'resume_hope_work_work')
         context = {}
         context['pk'] = user_resume.resume_title.pk
-        print(user_resume.resume_title.pk, '이것이 pk다')
         context['title'] = title
 
         if len(school1) == 0 and len(school2) == 0 and len(school3) == 0 and len(school4) == 0:

@@ -1,0 +1,16 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.message_content {
+    width:15rem;
+    height:100vh;
+    border-right:1px solid black;
+}
+
+.message_push {
+    font-size:0.8rem;
+    padding:0.2rem 0.3rem;
+    background:#D4D4D4;
+    color:#FFFFFF;
+}

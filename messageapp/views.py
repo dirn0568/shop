@@ -6,7 +6,18 @@ from django.views.generic import DetailView
 
 from accountapp.models import MyUser
 from friendapp.models import FriendRequestModel
+from messageapp.models import Message_Model
 
+
+def message_content(request, pk):
+    context={}
+
+    user = MyUser.objects.filter(pk=pk)
+    for temp_user in user:
+        message = Message_Model.objects.filter(message_model=temp_user)
+        context['message'] = message
+
+    return render(request, 'message_content.html', context)
 
 def friend_request_message(request, pk):
     if request.user.pk == pk:
