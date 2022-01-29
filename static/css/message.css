@@ -1,11 +1,21 @@
 * {
     font-family: 'Noto Sans KR', sans-serif;
 }
-
 .message_content {
+    width:85rem;
+    height:100vh;
+    display:flex;
+}
+
+.message_menu {
     width:15rem;
     height:100vh;
     border-right:1px solid black;
+}
+
+.message_list {
+    width:70rem;
+    height:100vh;
 }
 
 .message_push {
@@ -13,4 +23,15 @@
     padding:0.2rem 0.3rem;
     background:#D4D4D4;
     color:#FFFFFF;
+}
+
+.message_main {
+    display:flex;
+}
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+.self_margin {
+    width:5rem;
+    height:1rem;
 }

@@ -9,4 +9,6 @@ urlpatterns = [
     path('delete_message/<int:pk>', views.delete_message, name='delete_message'),
 
     path('message_content/<int:pk>', views.message_content, name='message_content'),
+
+    path('message_test', views.test, name='test'),
 ]

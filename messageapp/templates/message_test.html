@@ -25,33 +25,19 @@
             <div style="font-size:1.2rem;">
                 이력서열람 <span style="font-size:0.7rem;">총 0회</span>
             </div>
-            <hr>
-            {% for list in message %}
+            {% for list in question_list %}
                 <p></p>
-                <div class="message_main">
-                    <div style="width:10rem; overflow:hidden">
-                        <i style="vertical-align:middle;" class="material-icons">person_search</i>
-                        {{ list.message_resume_send }}
-                    </div>
-                    <div style="width:50rem; overflow:hidden">
-                        {{ list.message_detail }}
-                    </div>
-                    <div style="width:10rem; display:flex;">
-                        <div style="margin-left:auto;">
-                            {{ list.message_date|date:"Y-m-d" }}
-                        </div>
-                    </div>
-                </div>
-                <hr>
+                {{ list.test }}
             {% endfor %}
+            <hr>
         </div>
     </div>
     <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
         <!-- 이전페이지 -->
-        {% if message.has_previous %}
+        {% if question_list.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ message.previous_page_number }}">이전</a>
+                <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
             </li>
         {% else %}
             <li class="page-item disabled">
@@ -59,9 +45,9 @@
             </li>
         {% endif %}
         <!-- 페이지리스트 -->
-        {% for page_number in message.paginator.page_range %}
-            {% if page_number >= message.number|add:-5 and page_number <= message.number|add:5 %}
-                {% if page_number == message.number %}
+        {% for page_number in question_list.paginator.page_range %}
+            {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
+                {% if page_number == question_list.number %}
                     <li class="page-item active" aria-current="page">
                         <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
                     </li>
@@ -73,9 +59,9 @@
             {% endif %}
         {% endfor %}
         <!-- 다음페이지 -->
-        {% if message.has_next %}
+        {% if question_list.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ message.next_page_number }}">다음</a>
+                <a class="page-link" href="?page={{ question_list.next_page_number }}">다음</a>
             </li>
         {% else %}
             <li class="page-item disabled">

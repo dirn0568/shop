@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accountapp.models import MyUser
-from messageapp.models import Message_Model
+from messageapp.models import Message_Resume_Model
 from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
     ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm, ResumeCareerForm, ResumeCareerAbilityForm, \
     ResumeCareerProjectForm, ResumeOutPlay, ResumePrizePlay, ResumePortPolio, ResumeSelfIntroduce, ResumeHopeWorkForm, \
@@ -112,7 +112,7 @@ def detail_resume(request, title):
             user = MyUser.objects.filter(pk=temp_resume.resume_title.pk)
             for temp_user in user:
                 print("01-28 실행중?????")
-                Message_Model(message_model=temp_user, message_detail='{0}님이 회원님의 이력서 {1}을 열람해보았습니다.'.format(request.user, temp_resume.resume_title_detail)).save()
+                Message_Resume_Model(message_resume_receive=temp_user, message_resume_send=request.user, message_detail='{0}님이 회원님의 이력서 {1}을 열람해보았습니다.'.format(request.user, temp_resume.resume_title_detail)).save()
                 # print(request.POST.get('school1{0}'.format(i)))
 
     if request.method == 'POST' and request.POST.get('resume_school_del'):

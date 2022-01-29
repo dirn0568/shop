@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.http import Http404
 from django.shortcuts import render, redirect
 
@@ -6,18 +7,46 @@ from django.views.generic import DetailView
 
 from accountapp.models import MyUser
 from friendapp.models import FriendRequestModel
-from messageapp.models import Message_Model
+from messageapp.models import Message_Resume_Model, Test_Data
 
 
 def message_content(request, pk):
     context={}
 
+    page = request.GET.get('page', '1')
+
     user = MyUser.objects.filter(pk=pk)
     for temp_user in user:
-        message = Message_Model.objects.filter(message_model=temp_user)
-        context['message'] = message
+        message = Message_Resume_Model.objects.filter(message_resume_receive=temp_user).order_by('-message_date')
+
+    paginator = Paginator(message, 10)
+
+    page_obj = paginator.get_page(page)
+
+    context['message'] = page_obj
 
     return render(request, 'message_content.html', context)
+
+def test(request):
+    context = {}
+    # print(request)
+
+    # for i in range(500):
+    #     q = Message_Resume_Model(message_resume_receive=MyUser.objects.first(), message_resume_send=MyUser.objects.last(), message_detail='테스트 데이터입니다:[%03d]' % i)
+    #     q.save()
+
+    page = request.GET.get('page', '1')  # 페이지 ??
+    # print(page)
+    question_list = Test_Data.objects.all()
+
+    paginator = Paginator(question_list, 10)  # 페이지당 10개씩 보여주기
+    # print(paginator, '###############')
+    page_obj = paginator.get_page(page)
+    # print(page_obj)
+
+    context = {'question_list': page_obj}
+
+    return render(request, 'message_test.html', context)
 
 def friend_request_message(request, pk):
     if request.user.pk == pk:
