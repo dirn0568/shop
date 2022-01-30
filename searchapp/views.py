@@ -5,12 +5,22 @@ from django.http import request
 from django.shortcuts import render
 
 from accountapp.models import MyUser
+from messageapp.models import Message_Receive_Model
 from resumeapp.models import Resume_Title, Resume_Hope_Work_Field, Resume_Hope_Work_Work, Resume_ElementarySchool, \
     Resume_MiddleSchool, Resume_HighSchool, Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Hope_Work
 
 
 def search_resume(request):
     context = {}
+
+    title = request.GET.get('title', None)
+
+    if title != None:
+        resume = Resume_Title.objects.filter(pk=title)
+        for temp_resume in resume:
+            model = Message_Receive_Model(message_receive_receive=temp_resume.resume_title, message_receive_send=request.user, message_receive_detail="{0}회원님이 {1}이력서를 보고 회원님께 면접을 제의했습니다.".format(request.user, temp_resume.resume_title_detail))
+            model.save()
+
 
     if request.method == 'POST' and request.POST.get('resume_submit1'):
         print(request.POST)

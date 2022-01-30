@@ -3,19 +3,19 @@
 }
 .message_content {
     width:85rem;
-    height:100vh;
+    height:70vh;
     display:flex;
 }
 
 .message_menu {
     width:15rem;
-    height:100vh;
+    height:70vh;
     border-right:1px solid black;
 }
 
 .message_list {
     width:70rem;
-    height:100vh;
+    height:70vh;
 }
 
 .message_push {

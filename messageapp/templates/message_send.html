@@ -1,10 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base-message.html' %}
 
-</body>
-</html>
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+
+    <div class="message_content">
+        <div class="message_menu">
+            <div class="self_margin"></div>
+            <div style="font-size:1.5rem;">
+                <i style="vertical-align:middle;" class="material-icons">mail</i>
+                메세지함
+                <a href="{% url 'messageapp:message_write' pk=pk %}">
+                    <span class="message_push">메세지 보내기</span>
+                </a>
+            </div>
+            <p></p>
+            <div>
+                <a href="{% url 'messageapp:message_content' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
+                    수신 메세지
+                </a>
+                <p></p>
+                <a href="{% url 'messageapp:message_send' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">details</i>
+                    발신 메세지
+                </a>
+                <p></p>
+                <a href="{% url 'messageapp:message_search' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                    이력서 열람
+                </a>
+                <p></p>
+                <i style="vertical-align:middle;" class="material-icons">contact_phone</i>
+                면접제의
+            </div>
+        </div>
+        <div class="message_list">
+            <div style="font-size:1.2rem;">
+                이력서열람 <span style="font-size:0.7rem;">총 0회</span>
+            </div>
+            <hr>
+            {% for list in message %}
+                <p></p>
+                <div class="message_main">
+                    <div style="width:10rem; overflow:hidden">
+                        <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                        {{ list.message_resume_send }}
+                    </div>
+                    <div style="width:50rem; overflow:hidden">
+                        {{ list.message_detail }}
+                    </div>
+                    <div style="width:10rem; display:flex;">
+                        <div style="margin-left:auto;">
+                            {{ list.message_date_time }} <!--|date:"Y-m-d"-->
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
+        </div>
+    </div>
+    <!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if message.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ message.previous_page_number }}">이전</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+            </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in message.paginator.page_range %}
+            {% if page_number >= message.number|add:-5 and page_number <= message.number|add:5 %}
+                {% if page_number == message.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if message.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ message.next_page_number }}">다음</a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            </li>
+        {% endif %}
+    </ul>
+
+{% endblock %}

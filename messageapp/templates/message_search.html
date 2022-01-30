@@ -37,7 +37,7 @@
         </div>
         <div class="message_list">
             <div style="font-size:1.2rem;">
-                메세지
+                이력서열람
                 <span style="font-size:0.7rem;">총 0회</span>
             </div>
             <hr>
@@ -45,15 +45,15 @@
                 <p></p>
                 <div class="message_main">
                     <div style="width:10rem; overflow:hidden">
-                        <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
-                        {{ list.message_receive_send }}
+                        <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                        {{ list.message_resume_send }}
                     </div>
                     <div style="width:50rem; overflow:hidden">
-                        {{ list.message_receive_detail }}
+                        {{ list.message_detail }}
                     </div>
                     <div style="width:10rem; display:flex;">
                         <div style="margin-left:auto;">
-                            {{ list.message_receive_date_time }} <!--|date:"Y-m-d"-->
+                            {{ list.message_date_time }} <!--|date:"Y-m-d"-->
                         </div>
                     </div>
                 </div>

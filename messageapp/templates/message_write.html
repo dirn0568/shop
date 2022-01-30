@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base-message.html' %}
 
-</body>
-</html>
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+
+    <div class="message_content">
+        <div class="message_menu">
+            <div class="self_margin"></div>
+            <div style="font-size:1.5rem;">
+                <i style="vertical-align:middle;" class="material-icons">mail</i>
+                메세지함
+                <a href="{% url 'messageapp:message_write' pk=pk %}">
+                    <span class="message_push">메세지 보내기</span>
+                </a>
+            </div>
+            <p></p>
+            <div>
+                <a href="{% url 'messageapp:message_content' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
+                    수신 메세지
+                </a>
+                <p></p>
+                <a href="{% url 'messageapp:message_send' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">details</i>
+                    발신 메세지
+                </a>
+                <p></p>
+                <a href="{% url 'messageapp:message_search' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                    이력서 열람
+                </a>
+                <p></p>
+                <i style="vertical-align:middle;" class="material-icons">contact_phone</i>
+                면접제의
+            </div>
+        </div>
+        <div class="message_list">
+            받는사람 : <input type="text" style="width:60rem; border-color:#D4D4D4; background:#F6F6F6;">
+            <p></p>
+            제목 : <input type="text" style="width:60rem; border-color:#D4D4D4; background:#F6F6F6;">
+            <p></p>
+            파일첨부 : <input type="file">
+            <p></p>
+            <textarea cols="50" rows="10" style="width:70rem; height:20rem; border-color:#D4D4D4;"></textarea>
+        </div>
+    </div>
+
+{% endblock %}

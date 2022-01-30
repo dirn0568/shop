@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 
 from accountapp.models import MyUser
 from friendapp.models import FriendRequestModel
-from messageapp.models import Message_Resume_Model, Test_Data
+from messageapp.models import Message_Resume_Model, Test_Data, Message_Receive_Model
 
 
 def message_content(request, pk):
@@ -17,15 +17,46 @@ def message_content(request, pk):
 
     user = MyUser.objects.filter(pk=pk)
     for temp_user in user:
-        message = Message_Resume_Model.objects.filter(message_resume_receive=temp_user).order_by('-message_date')
+        message = Message_Receive_Model.objects.filter(message_receive_receive=temp_user).order_by('-message_receive_date_time')
 
-    paginator = Paginator(message, 10)
+    paginator = Paginator(message, 8)
 
     page_obj = paginator.get_page(page)
 
     context['message'] = page_obj
+    context['pk'] = pk
 
     return render(request, 'message_content.html', context)
+
+def message_send(request, pk):
+    context={}
+
+    context['pk'] = pk
+    return render(request, 'message_send.html', context)
+
+def message_write(request, pk):
+    context={}
+
+    context['pk'] = pk
+    return render(request, 'message_write.html', context)
+
+def message_search(request, pk):
+    context = {}
+
+    page = request.GET.get('page', '1')
+
+    user = MyUser.objects.filter(pk=pk)
+    for temp_user in user:
+        message = Message_Resume_Model.objects.filter(message_resume_receive=temp_user).order_by('-message_date_time')
+
+    paginator = Paginator(message, 8)
+
+    page_obj = paginator.get_page(page)
+
+    context['message'] = page_obj
+    context['pk'] = pk
+
+    return render(request, 'message_search.html', context)
 
 def test(request):
     context = {}
