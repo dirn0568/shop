@@ -4,46 +4,95 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/message.css' %}">
 
-    <div class="message_content">
-        <div class="message_menu">
-            <div class="self_margin"></div>
-            <div style="font-size:1.5rem;">
-                <i style="vertical-align:middle;" class="material-icons">mail</i>
-                메세지함
-                <a href="{% url 'messageapp:message_write' pk=pk %}">
-                    <span class="message_push">메세지 보내기</span>
-                </a>
+    <form action="{% url 'messageapp:message_write' pk=pk %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="message_content">
+            <div class="message_menu">
+                <div class="self_margin"></div>
+                <div style="font-size:1.5rem;">
+                    <i style="vertical-align:middle;" class="material-icons">mail</i>
+                    메세지함
+                    <a href="{% url 'messageapp:message_write' pk=pk %}">
+                        <span class="message_push">메세지 보내기</span>
+                    </a>
+                </div>
+                <p></p>
+                <div>
+                    <a href="{% url 'messageapp:message_content' pk=pk %}">
+                        <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
+                        수신 메세지
+                    </a>
+                    <p></p>
+                    <a href="{% url 'messageapp:message_send' pk=pk %}">
+                        <i style="vertical-align:middle;" class="material-icons">details</i>
+                        발신 메세지
+                    </a>
+                    <p></p>
+                    <a href="{% url 'messageapp:message_search' pk=pk %}">
+                        <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                        이력서 열람
+                    </a>
+                    <p></p>
+                    <i style="vertical-align:middle;" class="material-icons">contact_phone</i>
+                    면접제의
+                </div>
             </div>
-            <p></p>
-            <div>
-                <a href="{% url 'messageapp:message_content' pk=pk %}">
-                    <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
-                    수신 메세지
-                </a>
+            <div class="message_list2">
+                <div class="self_margin"></div>
+                <div>
+                    &nbsp;
+                    <i style="vertical-align:middle;" class="material-icons">people</i>
+                    &nbsp;
+                    <div style="width:5rem;">
+                        &nbsp;받는사람 :
+                    </div>
+                    &nbsp;
+                    <input type="text" name="receiver" style="width:60rem; border-color:#D4D4D4; outline: none;">
+                </div>
                 <p></p>
-                <a href="{% url 'messageapp:message_send' pk=pk %}">
-                    <i style="vertical-align:middle;" class="material-icons">details</i>
-                    발신 메세지
-                </a>
+                <div>
+                    &nbsp;
+                    <i style="vertical-align:middle;" class="material-icons">title</i>
+                    &nbsp;
+                    <div style="width:5rem;">
+                        &nbsp;제목 :
+                    </div>
+                    &nbsp;
+                    <input type="text" name="title" style="width:60rem; border-color:#D4D4D4; outline: none;">
+                </div>
                 <p></p>
-                <a href="{% url 'messageapp:message_search' pk=pk %}">
-                    <i style="vertical-align:middle;" class="material-icons">person_search</i>
-                    이력서 열람
-                </a>
+                <div>
+                    &nbsp;
+                    <i style="vertical-align:middle;" class="material-icons">attach_file</i>
+                    &nbsp;
+                    <div style="width:5rem;">
+                        &nbsp;첨부파일 :
+                    </div>
+                    &nbsp;
+                    <div style="display:flex">
+                        <input type="file" name="file" accept="image/*" id="bizFile" style="display:none;">
+                        <label for="bizFile" style="color:#BDBDBD; border: 1px solid #747474; background:#FFFFFF; width:4rem; height:1.5rem; text-align:center;">
+                            내 PC
+                        </label>
+                        <span id="fileName"></span>
+                    </div>
+                </div>
                 <p></p>
-                <i style="vertical-align:middle;" class="material-icons">contact_phone</i>
-                면접제의
+                <div>
+                    &nbsp;
+                    <i style="vertical-align:middle;" class="material-icons">create</i>
+                    &nbsp;
+                    <div style="width:5rem;">
+                        &nbsp;내용 :
+                    </div>
+                    &nbsp;
+                    <textarea cols="50" rows="10" name="context" style="width:60rem; height:20rem; border-color:#D4D4D4; outline: none;"></textarea>
+                </div>
             </div>
         </div>
-        <div class="message_list">
-            받는사람 : <input type="text" style="width:60rem; border-color:#D4D4D4; background:#F6F6F6;">
-            <p></p>
-            제목 : <input type="text" style="width:60rem; border-color:#D4D4D4; background:#F6F6F6;">
-            <p></p>
-            파일첨부 : <input type="file">
-            <p></p>
-            <textarea cols="50" rows="10" style="width:70rem; height:20rem; border-color:#D4D4D4;"></textarea>
-        </div>
-    </div>
+        <input type="submit" value="제출" class="major_button_plus" name="message_submit1">
+    </form>
+
+    <script type="text/javascript" src="{% static 'js/message_write.js' %}"></script>
 
 {% endblock %}

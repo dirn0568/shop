@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 
 from accountapp.models import MyUser
 from friendapp.models import FriendRequestModel
-from messageapp.models import Message_Resume_Model, Test_Data, Message_Receive_Model
+from messageapp.models import Message_Resume_Model, Test_Data, Message_Receive_Model, Message_Send_Model
 
 
 def message_content(request, pk):
@@ -29,13 +29,36 @@ def message_content(request, pk):
     return render(request, 'message_content.html', context)
 
 def message_send(request, pk):
-    context={}
+    context = {}
 
+    page = request.GET.get('page', '1')
+
+    user = MyUser.objects.filter(pk=pk)
+    for temp_user in user:
+        message = Message_Send_Model.objects.filter(message_send_send=temp_user).order_by(
+            '-message_send_date_time')
+
+    paginator = Paginator(message, 8)
+
+    page_obj = paginator.get_page(page)
+
+    context['message'] = page_obj
     context['pk'] = pk
     return render(request, 'message_send.html', context)
 
 def message_write(request, pk):
     context={}
+
+    if request.method == 'POST' and request.POST.get('message_submit1'):
+        print(request.POST)
+        print('33333333333333333')
+        print(request.FILES)
+
+        user = MyUser.objects.filter(username=request.POST.get('receiver'))
+
+        for temp_user in user:
+            message = Message_Send_Model(message_send_receive=temp_user, message_send_send=request.user, message_send_title=request.POST.get('title'), message_send_detail=request.POST.get('context'), message_send_file=request.FILES.get('file'))
+            message.save()
 
     context['pk'] = pk
     return render(request, 'message_write.html', context)
@@ -57,6 +80,19 @@ def message_search(request, pk):
     context['pk'] = pk
 
     return render(request, 'message_search.html', context)
+
+def message_detail(request, title, pk):
+    context = {}
+
+    message = Message_Send_Model.objects.filter(pk=title)
+
+    for temp in message:
+        context['receive'] = temp.message_send_receive
+        context['title'] = temp.message_send_title
+        context['detail'] = temp.message_send_detail
+        context['file'] = temp.message_send_file
+    context['pk'] = pk
+    return render(request, 'message_detail.html', context)
 
 def test(request):
     context = {}

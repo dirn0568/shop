@@ -13,5 +13,7 @@ urlpatterns = [
     path('message_write/<int:pk>', views.message_write, name='message_write'),
     path('message_search/<int:pk>', views.message_search, name='message_search'),
 
+    path('message_detail/<int:title>/<int:pk>', views.message_detail, name='message_detail'),
+
     path('message_test', views.test, name='test'),
 ]
