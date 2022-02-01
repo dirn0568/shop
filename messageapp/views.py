@@ -85,11 +85,19 @@ def message_detail(request, title, pk):
     context = {}
 
     message = Message_Send_Model.objects.filter(pk=title)
-
+    data = ''
     for temp in message:
         context['receive'] = temp.message_send_receive
         context['title'] = temp.message_send_title
-        context['detail'] = temp.message_send_detail
+        for temp_data in temp.message_send_detail:
+            if temp_data == ' ':
+                data += '&'
+            elif temp_data == '\r':
+                data += '$'
+            else:
+                data += temp_data
+        context['detail'] = data
+        print(data)
         context['file'] = temp.message_send_file
     context['pk'] = pk
     return render(request, 'message_detail.html', context)

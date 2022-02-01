@@ -71,8 +71,10 @@
                     &nbsp;첨부파일 :
                 </div>
                 &nbsp;
-                <div style="display:flex">
-                    {{ file }}
+                <div style="display:flex width:60rem; overflow:hidden;">
+                    <a href="/media/{{ file }}" download>
+                        {{ file }}
+                    </a>
                 </div>
             </div>
             <p></p>
@@ -86,7 +88,17 @@
                 &nbsp;
                 <!--<textarea cols="50" rows="10" name="context" style="width:60rem; height:20rem; border-color:#D4D4D4; outline: none;"></textarea>-->
                 <div style="width:60rem; height:20rem; overflow:scroll;">
-                    {{ detail }}
+                    {% for list in detail %}
+                        {% if list == '&' %}
+                            &nbsp;
+                        {% else %}
+                            {% if list == '$' %}
+                                <br>
+                            {% else %}
+                                {{ list }}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
