@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 
 from accountapp.models import MyUser
 from friendapp.models import FriendRequestModel
-from messageapp.models import Message_Resume_Model, Test_Data, Message_Receive_Model, Message_Send_Model
+from messageapp.models import Message_Resume_Model, Test_Data, Message_Send_Model
 
 
 def message_content(request, pk):
@@ -17,13 +17,14 @@ def message_content(request, pk):
 
     user = MyUser.objects.filter(pk=pk)
     for temp_user in user:
-        message = Message_Receive_Model.objects.filter(message_receive_receive=temp_user).order_by('-message_receive_date_time')
-
+        message = Message_Send_Model.objects.filter(message_send_receive=temp_user).order_by('-message_send_date_time')
+        count = len(message)
     paginator = Paginator(message, 8)
 
     page_obj = paginator.get_page(page)
 
     context['message'] = page_obj
+    context['count'] = count
     context['pk'] = pk
 
     return render(request, 'message_content.html', context)
@@ -37,12 +38,14 @@ def message_send(request, pk):
     for temp_user in user:
         message = Message_Send_Model.objects.filter(message_send_send=temp_user).order_by(
             '-message_send_date_time')
+        count = len(message)
 
     paginator = Paginator(message, 8)
 
     page_obj = paginator.get_page(page)
 
     context['message'] = page_obj
+    context['count'] = count
     context['pk'] = pk
     return render(request, 'message_send.html', context)
 
@@ -71,17 +74,19 @@ def message_search(request, pk):
     user = MyUser.objects.filter(pk=pk)
     for temp_user in user:
         message = Message_Resume_Model.objects.filter(message_resume_receive=temp_user).order_by('-message_date_time')
+        count = len(message)
 
     paginator = Paginator(message, 8)
 
     page_obj = paginator.get_page(page)
 
     context['message'] = page_obj
+    context['count'] = count
     context['pk'] = pk
 
     return render(request, 'message_search.html', context)
 
-def message_detail(request, title, pk):
+def message_send_detail(request, title, pk):
     context = {}
 
     message = Message_Send_Model.objects.filter(pk=title)
@@ -91,16 +96,37 @@ def message_detail(request, title, pk):
         context['title'] = temp.message_send_title
         for temp_data in temp.message_send_detail:
             if temp_data == ' ':
-                data += '&'
+                data += '∠'
             elif temp_data == '\r':
-                data += '$'
+                data += '∏'
             else:
                 data += temp_data
         context['detail'] = data
         print(data)
         context['file'] = temp.message_send_file
     context['pk'] = pk
-    return render(request, 'message_detail.html', context)
+    return render(request, 'message_send_detail.html', context)
+
+def message_content_detail(request, title, pk):
+    context = {}
+
+    message = Message_Send_Model.objects.filter(pk=title)
+    data = ''
+    for temp in message:
+        context['send'] = temp.message_send_send
+        context['title'] = temp.message_send_title
+        for temp_data in temp.message_send_detail:
+            if temp_data == ' ':
+                data += '∠'
+            elif temp_data == '\r':
+                data += '∏'
+            else:
+                data += temp_data
+        context['detail'] = data
+        print(data)
+        context['file'] = temp.message_send_file
+    context['pk'] = pk
+    return render(request, 'message_content_detail.html', context)
 
 def test(request):
     context = {}

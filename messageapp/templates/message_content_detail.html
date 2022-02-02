@@ -31,8 +31,6 @@
                     이력서 열람
                 </a>
                 <p></p>
-                <i style="vertical-align:middle;" class="material-icons">contact_phone</i>
-                면접제의
             </div>
         </div>
         <div class="message_list2">
@@ -42,11 +40,11 @@
                 <i style="vertical-align:middle;" class="material-icons">people</i>
                 &nbsp;
                 <div style="width:5rem;">
-                    &nbsp;받는사람 :
+                    &nbsp;보낸사람 :
                 </div>
                 &nbsp;
                 <div style="width:60rem; overflow:hidden;">
-                    {{ receive }}
+                    {{ send }}
                 </div>
             </div>
             <p></p>
@@ -88,17 +86,7 @@
                 &nbsp;
                 <!--<textarea cols="50" rows="10" name="context" style="width:60rem; height:20rem; border-color:#D4D4D4; outline: none;"></textarea>-->
                 <div style="width:60rem; height:20rem; overflow:scroll;">
-                    {% for list in detail %}
-                        {% if list == '&' %}
-                            &nbsp;
-                        {% else %}
-                            {% if list == '$' %}
-                                <br>
-                            {% else %}
-                                {{ list }}
-                            {% endif %}
-                        {% endif %}
-                    {% endfor %}
+                    {% for list in detail %}{% if list == '∠' %}&nbsp;{% else %}{% if list == '∏' %}<br>{% else %}{{ list }}{% endif %}{% endif %}{% endfor %}
                 </div>
             </div>
         </div>

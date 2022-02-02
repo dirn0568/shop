@@ -1,0 +1,88 @@
+{% extends 'base-board.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+
+    <div class="message_content">
+        <div class="message_menu">
+            <div class="self_margin"></div>
+            <div style="font-size:1.5rem;">
+                <i style="vertical-align:middle;" class="material-icons">category</i>
+                커뮤니티
+                <a href="{% url 'mainapp:main' %}">
+                    <span class="message_push">메세지 보내기</span>
+                </a>
+            </div>
+            <p></p>
+            <div>
+                <a href="{% url 'mainapp:main' %}">
+                    <i style="vertical-align:middle;" class="material-icons">connect_without_contact</i>
+                    자유게시판
+                </a>
+                <p></p>
+                <a href="{% url 'mainapp:main' %}">
+                    <i style="vertical-align:middle;" class="material-icons">help</i>
+                    공지사항
+                </a>
+                <p></p>
+                <a href="{% url 'mainapp:main' %}">
+                    <i style="vertical-align:middle;" class="material-icons">notifications_active</i>
+                    자료실
+                </a>
+                <p></p>
+                <a href="{% url 'mainapp:main' %}">
+                    <i style="vertical-align:middle;" class="material-icons">question_answer</i>
+                    Q&A
+                </a>
+                <p></p>
+            </div>
+        </div>
+        <div class="message_list">
+            <div style="font-size:1.2rem;">
+                &nbsp;메세지
+                <span style="font-size:0.7rem;">총 0회</span>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+{% endblock %}
+
+<!--    &lt;!&ndash; 페이징처리 시작 &ndash;&gt;-->
+<!--    <ul class="pagination justify-content-center">-->
+<!--        &lt;!&ndash; 이전페이지 &ndash;&gt;-->
+<!--        {% if message.has_previous %}-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" href="?page={{ message.previous_page_number }}">이전</a>-->
+<!--            </li>-->
+<!--        {% else %}-->
+<!--            <li class="page-item disabled">-->
+<!--                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>-->
+<!--            </li>-->
+<!--        {% endif %}-->
+<!--        &lt;!&ndash; 페이지리스트 &ndash;&gt;-->
+<!--        {% for page_number in message.paginator.page_range %}-->
+<!--            {% if page_number >= message.number|add:-5 and page_number <= message.number|add:5 %}-->
+<!--                {% if page_number == message.number %}-->
+<!--                    <li class="page-item active" aria-current="page">-->
+<!--                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>-->
+<!--                    </li>-->
+<!--                {% else %}-->
+<!--                    <li class="page-item">-->
+<!--                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>-->
+<!--                    </li>-->
+<!--                {% endif %}-->
+<!--            {% endif %}-->
+<!--        {% endfor %}-->
+<!--        &lt;!&ndash; 음페이지 &ndash;&gt;-->
+<!--        {% if message.has_next %}-->
+<!--            <li class="page-item">-->
+<!--                <a class="page-link" href="?page={{ message.next_page_number }}">다음</a>-->
+<!--            </li>-->
+<!--        {% else %}-->
+<!--            <li class="page-item disabled">-->
+<!--                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>-->
+<!--            </li>-->
+<!--        {% endif %}다-->
+<!--    </ul>-->

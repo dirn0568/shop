@@ -31,32 +31,36 @@
                     이력서 열람
                 </a>
                 <p></p>
-                <i style="vertical-align:middle;" class="material-icons">contact_phone</i>
-                면접제의
             </div>
         </div>
         <div class="message_list">
             <div style="font-size:1.2rem;">
-                메세지
-                <span style="font-size:0.7rem;">총 0회</span>
+                &nbsp;메세지
+                <span style="font-size:0.7rem;">총 {{ count }}회</span>
             </div>
             <hr>
             {% for list in message %}
                 <p></p>
-                <div class="message_main">
-                    <div style="width:10rem; overflow:hidden">
-                        <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
-                        {{ list.message_receive_send }}
-                    </div>
-                    <div style="width:50rem; overflow:hidden">
-                        {{ list.message_receive_detail }}
-                    </div>
-                    <div style="width:10rem; display:flex;">
-                        <div style="margin-left:auto;">
-                            {{ list.message_receive_date_time }} <!--|date:"Y-m-d"-->
+                <a href="{% url 'messageapp:message_content_detail' title=list.pk pk=pk %}">
+                    <div class="message_main">
+                        <div style="width:10rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
+                            &nbsp;
+                            <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
+                            {{ list.message_send_send }}
+                        </div>
+                        <div style="width:25rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
+                            {{ list.message_send_title }}
+                        </div>
+                        <div style="width:25rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
+                            {{ list.message_send_detail }}
+                        </div>
+                        <div style="width:10rem; display:flex;">
+                            <div style="margin-left:auto;">
+                                {{ list.message_send_date_time|date:"Y-m-d" }} <!--|date:"Y-m-d"-->
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
                 <hr>
             {% endfor %}
         </div>
