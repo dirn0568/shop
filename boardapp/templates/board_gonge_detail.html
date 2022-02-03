@@ -1,0 +1,97 @@
+{% extends 'base-board.html' %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/board.css' %}">
+
+    <div class="board_content">
+        <div class="board_menu">
+            <div class="self_margin"></div>
+            <div style="font-size:1.5rem;">
+                <i style="vertical-align:middle;" class="material-icons">category</i>
+                커뮤니티
+            </div>
+            <p></p>
+            <div>
+                <a href="{% url 'boardapp:board_list' %}">
+                    <i style="vertical-align:middle;" class="material-icons">connect_without_contact</i>
+                    자유게시판
+                </a>
+                <p></p>
+                <a href="{% url 'boardapp:board_gonge_list' %}">
+                    <i style="vertical-align:middle;" class="material-icons">help</i>
+                    공지사항
+                </a>
+                <p></p>
+                <a href="{% url 'boardapp:board_jaro_list' %}">
+                    <i style="vertical-align:middle;" class="material-icons">notifications_active</i>
+                    자료실
+                </a>
+                <p></p>
+                <a href="{% url 'mainapp:main' %}">
+                    <i style="vertical-align:middle;" class="material-icons">question_answer</i>
+                    Q&A / 서비스소개
+                </a>
+                <p></p>
+            </div>
+        </div>
+        <div class="board_list2">
+            <div class="self_margin"></div>
+            <div>
+                &nbsp;
+                <i style="vertical-align:middle;" class="material-icons">people</i>
+                &nbsp;
+                <div style="width:5rem;">
+                    &nbsp;작성자 :
+                </div>
+                &nbsp;
+                <div style="width:60rem; overflow:hidden;">
+                    {{ user }}
+                </div>
+            </div>
+            <p></p>
+            <div>
+                &nbsp;
+                <i style="vertical-align:middle;" class="material-icons">title</i>
+                &nbsp;
+                <div style="width:5rem;">
+                    &nbsp;제목 :
+                </div>
+                &nbsp;
+                <div style="width:60rem; overflow:hidden;">
+                    {{ title }}
+                </div>
+            </div>
+            <p></p>
+            <div>
+                &nbsp;
+                <i style="vertical-align:middle;" class="material-icons">attach_file</i>
+                &nbsp;
+                <div style="width:5rem;">
+                    &nbsp;첨부파일 :
+                </div>
+                &nbsp;
+                <div style="display:flex width:60rem; overflow:hidden;">
+                    <a href="/media/{{ file }}" download>
+                        {{ file }}
+                    </a>
+                </div>
+            </div>
+            <p></p>
+            <div>
+                &nbsp;
+                <i style="vertical-align:middle;" class="material-icons">create</i>
+                &nbsp;
+                <div style="width:5rem;">
+                    &nbsp;내용 :
+                </div>
+                &nbsp;
+                <!--<textarea cols="50" rows="10" name="context" style="width:60rem; height:20rem; border-color:#D4D4D4; outline: none;"></textarea>-->
+                <div style="width:60rem; height:20rem; overflow:scroll;">
+                    {% for list in detail %}{% if list == '∠' %}&nbsp;{% else %}{% if list == '∏' %}<br>{% else %}{{ list }}{% endif %}{% endif %}{% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

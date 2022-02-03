@@ -37,7 +37,7 @@
         </div>
         <div class="board_list">
             <div style="font-size:1.5rem; font-weight:bold;">
-                &nbsp;자유게시판
+                &nbsp;공지사항
             </div>
             <p></p>
             <div class="board_main">
@@ -61,26 +61,26 @@
                 </div>
             </div>
             <hr>
-            {% for list in board %}
+            {% for list in gonge %}
                 <p></p>
-                <a href="{% url 'boardapp:board_detail' title=list.pk %}">
+                <a href="{% url 'boardapp:board_gonge_detail' title=list.pk %}">
                     <div class="board_main">
                         <div style="width:5rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
                             &nbsp;
                             {{ list.pk }}
                         </div>
                         <div style="width:5rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
-                            {{ list.board_user }}
+                            {{ list.board_gonge_user }}
                         </div>
                         <div style="width:25rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
-                            {{ list.board_title }}
+                            {{ list.board_gonge_title }}
                         </div>
                         <div style="width:25rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
-                            {{ list.board_detail }}
+                            {{ list.board_gonge_detail }}
                         </div>
                         <div style="width:10rem; display:flex;">
                             <div style="margin-left:auto;">
-                                {{ list.board_date_time|date:"Y-m-d" }} <!--|date:"Y-m-d"-->
+                                {{ list.board_gonge_date_time|date:"Y-m-d" }} <!--|date:"Y-m-d"-->
                             </div>
                         </div>
                     </div>
@@ -90,18 +90,12 @@
         </div>
     </div>
 
-    <div style="width:8rem; height:3rem; margin-left:auto;">
-        <a href="{% url 'boardapp:board_write' pk=request.user.pk %}" style="margin-left:auto;">
-            <span class="board_push">게시물 작성</span>
-        </a>
-    </div>
-
         <!-- 페이징처리 시작 -->
     <ul class="pagination justify-content-center">
         <!-- 이전페이지 -->
-        {% if board.has_previous %}
+        {% if gonge.has_previous %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ board.previous_page_number }}">이전</a>
+                <a class="page-link" href="?page={{ gonge.previous_page_number }}">이전</a>
             </li>
         {% else %}
             <li class="page-item disabled">
@@ -109,9 +103,9 @@
             </li>
         {% endif %}
         <!-- 페이지리스트 -->
-        {% for page_number in board.paginator.page_range %}
-            {% if page_number >= board.number|add:-5 and page_number <= board.number|add:5 %}
-                {% if page_number == board.number %}
+        {% for page_number in gonge.paginator.page_range %}
+            {% if page_number >= gonge.number|add:-5 and page_number <= gonge.number|add:5 %}
+                {% if page_number == gonge.number %}
                     <li class="page-item active" aria-current="page">
                         <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
                     </li>
@@ -123,9 +117,9 @@
             {% endif %}
         {% endfor %}
         <!-- 음페이지 -->
-        {% if board.has_next %}
+        {% if gonge.has_next %}
             <li class="page-item">
-                <a class="page-link" href="?page={{ board.next_page_number }}">다음</a>
+                <a class="page-link" href="?page={{ gonge.next_page_number }}">다음</a>
             </li>
         {% else %}
             <li class="page-item disabled">
