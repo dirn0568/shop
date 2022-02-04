@@ -11,7 +11,7 @@ from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm,
 from resumeapp.models import User_Resume, User_Resume_Certificate, Resume_Title, Resume_ElementarySchool, \
     Resume_MiddleSchool, Resume_HighSchool, Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Out_Play, \
     Resume_Prize_Play, Resume_Port_Polio, Resume_Self_Introduce, Resume_Career, Resume_Career_Ability, \
-    Resume_Career_Project, Resume_Hope_Work, Resume_Hope_Work_Field, Resume_Hope_Work_Work
+    Resume_Career_Project, Resume_Hope_Work, Resume_Hope_Work_Field, Resume_Hope_Work_Work, Resume_Like
 
 
 def create_resume(request, pk):
@@ -103,8 +103,39 @@ def list_resume(request, title, pk):
     return render(request, 'list_resume.html', context)
 
 def detail_resume(request, title):
-    print(request.user.pk)
+    context = {}
+
     resume = Resume_Title.objects.filter(pk=title)
+
+    ##########################################################################################################
+    # resume_like
+    page = request.GET.get('like_user', None)
+
+    if page != None:
+        user = MyUser.objects.filter(pk=page)
+        for temp_user in user:
+            for temp_resume in resume:
+                like_filter = Resume_Like.objects.filter(resume_like_resume=temp_resume, resume_like_user=temp_user)
+                if like_filter:
+                    like_filter.delete()
+                else:
+                    like = Resume_Like(resume_like_resume=temp_resume, resume_like_user=temp_user)
+                    like.save()
+
+    for temp_resume in resume:
+        resume_like = Resume_Like.objects.filter(resume_like_resume=temp_resume)
+        resume_like_list = []
+        for temp_like in resume_like:
+            resume_like_list.append(temp_like.resume_like_user.pk)
+        if resume_like_list.count(request.user.pk) >= 1:
+            context['like'] = 1
+        else:
+            context['like'] = 0
+        context['like_count'] = len(resume_like_list)
+    
+
+    #############################################################################################################
+
     for temp_resume in resume:
         if request.user.pk == None or temp_resume.resume_title == request.user:
             pass
@@ -203,7 +234,6 @@ def detail_resume(request, title):
         resume_hope_work = Resume_Hope_Work.objects.filter(resume_hope_work=user_resume)
         resume_hope_work_field = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=user_resume)
         resume_hope_work_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=user_resume)
-        context = {}
         context['pk'] = user_resume.resume_title.pk
         context['title'] = title
 

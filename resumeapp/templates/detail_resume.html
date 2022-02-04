@@ -5,7 +5,15 @@
     <link rel="stylesheet" href="{% static 'css/resume_detail.css' %}">
     <div class="content_title">
         이력서
-        {{ request.user.pk }}
+        {% if like == 1 %}
+            <a href="?like_user={{ request.user.pk }}">
+                좋아요클릭됨 {{ like_count }}
+            </a>
+        {% else %}
+            <a href="?like_user={{ request.user.pk }}">
+                안좋아요클릭됨 {{ like_count }}
+            </a>
+        {% endif %}
     </div>
     <p></p>
     <div class="basic_list">

@@ -156,3 +156,10 @@ class Resume_Hope_Work_Work(models.Model):
     resume_hope_work_work = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_hope_work_work')
 
     resume_hope_work_work1 = models.CharField(max_length=200)
+
+###########################################################################################################################################
+# like model
+
+class Resume_Like(models.Model):
+    resume_like_resume = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_like_resume')
+    resume_like_user = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='resume_like_user')
