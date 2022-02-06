@@ -26,10 +26,12 @@
                     자기소개서
                     <p></p>
                     제목
-                    <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:800px;height:50px;" class="self_introduce_css1">
+                    <input type="text" name="self_introduce1{{list4.0}}" placeholder="자기소개서 제목" style="width:60rem;height:3rem;" class="self_introduce_css1">
                     <p></p>
-                    내용
-                    <input type="text" name="self_introduce2{{list4.0}}" placeholder="자기소개서 내용" style="width:800px;height:500px;" class="self_introduce_css2">
+                    <div style="display:flex;">
+                        내용
+                        <textarea cols="50" rows="10" name="self_introduce2{{list4.0}}" style="width:60rem; height:20rem; border-color:#D4D4D4; outline:none;" class="self_introduce_css2"></textarea>
+                    </div>
                 </div>
             {% endfor %}
         </div>

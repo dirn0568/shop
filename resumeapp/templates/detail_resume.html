@@ -5,19 +5,21 @@
     <link rel="stylesheet" href="{% static 'css/resume_detail.css' %}">
     <div class="content_title">
         이력서
-        {% if like == 1 %}
-            <a href="?like_user={{ request.user.pk }}">
-                좋아요클릭됨 {{ like_count }}
-            </a>
-        {% else %}
-            <a href="?like_user={{ request.user.pk }}">
-                안좋아요클릭됨 {{ like_count }}
-            </a>
-        {% endif %}
     </div>
     <p></p>
     <div class="basic_list">
-        &nbsp;&nbsp;{{ resume.resume_title_detail }}
+        &nbsp;&nbsp;{{ resume.resume_title_detail }}&nbsp;
+            {% if like == 1 %}
+            <a href="?like_user={{ request.user.pk }}">
+                <i style="vertical-align:middle; color:#FFB2D9;" class="material-icons">thumb_up</i>
+                <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
+            </a>
+            {% else %}
+                <a href="?like_user={{ request.user.pk }}">
+                    <i style="vertical-align:middle; color:#000000;" class="material-icons">thumb_up</i>
+                    <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
+                </a>
+            {% endif %}
         <p></p>
         <div class="mini_div">
             &nbsp;&nbsp;홍길동 남 1999년 25세

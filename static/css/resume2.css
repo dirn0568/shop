@@ -4,7 +4,7 @@
 
 .content {
     width: 85rem;
-    margin-left: 6.5rem;
+    margin-left: 1rem;
     font-size:30px;
     font-weight:bold;
     background:#F6F6F6;
@@ -13,13 +13,11 @@
 .content input {
     border-color:#F6F6F6;
     background:#FFFFFF;
-    border-radius:5px;
 }
 
 .content select {
     border-color:#A2A2A2;
     background:#FFFFFF;
-    border-radius:5px;
 }
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
@@ -233,7 +231,7 @@
 }
 
 .self_introduce_css2 {
-    margin-left: 8rem;
+    margin-left: 8.5rem;
 }
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/

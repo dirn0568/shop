@@ -37,4 +37,15 @@
     background:#E1E1E1;
 }
 
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
+.resume_header_content {
+    width: 85rem;
+    margin:auto;
+    text-align:center;
+    background:#EAEAEA;
+}
+
+.resume_header_content_box a {
+    color:#FF0000;
+}
