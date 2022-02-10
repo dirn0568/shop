@@ -36,6 +36,8 @@ class Resume_Title(models.Model):
 
     resume_open = models.IntegerField(default=1)
 
+    like_vote = models.IntegerField(default=0)
+
 class Resume_ElementarySchool(models.Model):
     resume_elementary = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_elementary')
 

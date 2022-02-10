@@ -22,9 +22,36 @@
             {% endif %}
         <p></p>
         <div class="mini_div">
-            &nbsp;&nbsp;홍길동 남 1999년 25세
+            &nbsp;&nbsp;
+            {% if user_name == "None" %}
+                비공개
+            {% else %}
+                {{ user_name }}
+            {% endif %}
+            {% if user_gender == "None" %}
+                비공개
+            {% else %}
+                ({{ user_gender }},
+            {% endif %}
+            {% if user_birthday == "None" %}
+                비공개)
+            {% else %}
+                {{ user_birthday }}세)
+            {% endif %}
             <p></p>
-            &nbsp;&nbsp;전화번호 | 010-9654-2345 &emsp; Email | mgsie@naver.com
+            &nbsp;&nbsp;휴대폰 |
+            {% if phone_number == "None" %}
+                비공개
+            {% else %}
+                {{ phone_number }}
+            {% endif %}
+            &emsp;
+            Email |
+            {% if user_email == "None" %}
+                비공개
+            {% else %}
+                {{ user_email }}
+            {% endif %}
             <p></p>
             &nbsp;&nbsp;휴대폰 | 010-4561-7980
         </div>

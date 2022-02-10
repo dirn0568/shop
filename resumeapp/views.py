@@ -1,9 +1,12 @@
 from django.http import Http404
 from django.shortcuts import render, redirect
 
+from datetime import datetime
+
 # Create your views here.
 from accountapp.models import MyUser
 from messageapp.models import Message_Resume_Model
+from profileapp.models import User_Profile
 from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
     ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm, ResumeCareerForm, ResumeCareerAbilityForm, \
     ResumeCareerProjectForm, ResumeOutPlay, ResumePrizePlay, ResumePortPolio, ResumeSelfIntroduce, ResumeHopeWorkForm, \
@@ -106,6 +109,58 @@ def detail_resume(request, title):
     context = {}
 
     resume = Resume_Title.objects.filter(pk=title)
+    ##########################################################################################################
+    # profile
+
+    for temp_resume in resume:
+        user = temp_resume.resume_title
+        profile = User_Profile.objects.filter(profile=user)
+
+    for temp_profile in profile:
+        if temp_profile.user_name:
+            context['user_name'] = temp_profile.user_name
+        else:
+            context['user_name'] = "None"
+        if temp_profile.user_birthday:
+            now = datetime.now()
+            date = now.strftime("%Y")
+            date2 = temp_profile.user_birthday[:4]
+            date3 = int(date) - int(date2)
+
+            date4 = now.strftime("%m")
+            date5 = now.strftime("%d")
+            date6 = temp_profile.user_birthday[4:6]
+            date7 = temp_profile.user_birthday[6:9]
+            date4 = int(date4)
+            date5 = int(date5)
+            date6 = int(date6)
+            date7 = int(date7)
+            if date4 > date6:
+                pass
+            elif date4 == date6 and date5 >= date7:
+                pass
+            else:
+                date3 = date3 - 1
+            context['user_birthday'] = date3
+        else:
+            context['user_birthday'] = "None"
+        if temp_profile.user_gender:
+            context['user_gender'] = temp_profile.user_gender
+        else:
+            context['user_gender'] = "None"
+        if temp_profile.phone_number:
+            context['phone_number'] = temp_profile.phone_number
+        else:
+            context['phone_number'] = "None"
+        if temp_profile.user_email:
+            context['user_email'] = temp_profile.user_email
+        else:
+            context['user_email'] = "None"
+        if temp_profile.user_page:
+            context['user_page'] = temp_profile.user_page
+        else:
+            context['user_page'] = "None"
+
 
     ##########################################################################################################
     # resume_like
@@ -118,9 +173,13 @@ def detail_resume(request, title):
                 like_filter = Resume_Like.objects.filter(resume_like_resume=temp_resume, resume_like_user=temp_user)
                 if like_filter:
                     like_filter.delete()
+                    temp_resume.like_vote -= 1
+                    temp_resume.save()
                 else:
                     like = Resume_Like(resume_like_resume=temp_resume, resume_like_user=temp_user)
                     like.save()
+                    temp_resume.like_vote += 1
+                    temp_resume.save()
 
     for temp_resume in resume:
         resume_like = Resume_Like.objects.filter(resume_like_resume=temp_resume)

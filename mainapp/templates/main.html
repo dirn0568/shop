@@ -77,7 +77,7 @@
                                 {% endif %}
                             </div>
                             <div>
-                                &nbsp;♥ 5
+                                &nbsp;♥ {{ list.6 }}
                             </div>
                         </div>
                     </div>
@@ -85,21 +85,21 @@
                         {{ list.5 }}
                     </div>
                     <div style="font-size:0.8rem;">
-                        {% if list.6 %}
-                            {{ list.6 }}
-                        {% endif %}
                         {% if list.7 %}
                             {{ list.7 }}
                         {% endif %}
                         {% if list.8 %}
                             {{ list.8 }}
                         {% endif %}
+                        {% if list.9 %}
+                            {{ list.9 }}
+                        {% endif %}
                     </div>
                 </a>
             {% endfor %}
         </div>
         <div class="middle_content">
-            {% for list in answer_list %}
+            {% for list in answer_list2 %}
                 <a href="{% url 'resumeapp:detail_resume' title=list.4.pk %}">
                     <div style="display:flex;">
                         <div>
@@ -118,7 +118,7 @@
                                 {% endif %}
                             </div>
                             <div>
-                                &nbsp;♥ 5
+                                &nbsp;♥ {{ list.6 }}
                             </div>
                         </div>
                     </div>
@@ -126,14 +126,14 @@
                         {{ list.5 }}
                     </div>
                     <div style="font-size:0.8rem;">
-                        {% if list.6 %}
-                            {{ list.6 }}
-                        {% endif %}
                         {% if list.7 %}
                             {{ list.7 }}
                         {% endif %}
                         {% if list.8 %}
                             {{ list.8 }}
+                        {% endif %}
+                        {% if list.9 %}
+                            {{ list.9 }}
                         {% endif %}
                     </div>
                 </a>
