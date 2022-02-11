@@ -115,51 +115,58 @@ def detail_resume(request, title):
     for temp_resume in resume:
         user = temp_resume.resume_title
         profile = User_Profile.objects.filter(profile=user)
-
-    for temp_profile in profile:
-        if temp_profile.user_name:
-            context['user_name'] = temp_profile.user_name
-        else:
-            context['user_name'] = "None"
-        if temp_profile.user_birthday:
-            now = datetime.now()
-            date = now.strftime("%Y")
-            date2 = temp_profile.user_birthday[:4]
-            date3 = int(date) - int(date2)
-
-            date4 = now.strftime("%m")
-            date5 = now.strftime("%d")
-            date6 = temp_profile.user_birthday[4:6]
-            date7 = temp_profile.user_birthday[6:9]
-            date4 = int(date4)
-            date5 = int(date5)
-            date6 = int(date6)
-            date7 = int(date7)
-            if date4 > date6:
-                pass
-            elif date4 == date6 and date5 >= date7:
-                pass
+    if profile:
+        for temp_profile in profile:
+            if temp_profile.user_name:
+                context['user_name'] = temp_profile.user_name
             else:
-                date3 = date3 - 1
-            context['user_birthday'] = date3
-        else:
-            context['user_birthday'] = "None"
-        if temp_profile.user_gender:
-            context['user_gender'] = temp_profile.user_gender
-        else:
-            context['user_gender'] = "None"
-        if temp_profile.phone_number:
-            context['phone_number'] = temp_profile.phone_number
-        else:
-            context['phone_number'] = "None"
-        if temp_profile.user_email:
-            context['user_email'] = temp_profile.user_email
-        else:
-            context['user_email'] = "None"
-        if temp_profile.user_page:
-            context['user_page'] = temp_profile.user_page
-        else:
-            context['user_page'] = "None"
+                context['user_name'] = "None"
+            if temp_profile.user_birthday:
+                now = datetime.now()
+                date = now.strftime("%Y")
+                date2 = temp_profile.user_birthday[:4]
+                date3 = int(date) - int(date2)
+
+                date4 = now.strftime("%m")
+                date5 = now.strftime("%d")
+                date6 = temp_profile.user_birthday[4:6]
+                date7 = temp_profile.user_birthday[6:9]
+                date4 = int(date4)
+                date5 = int(date5)
+                date6 = int(date6)
+                date7 = int(date7)
+                if date4 > date6:
+                    pass
+                elif date4 == date6 and date5 >= date7:
+                    pass
+                else:
+                    date3 = date3 - 1
+                context['user_birthday'] = date3
+            else:
+                context['user_birthday'] = "None"
+            if temp_profile.user_gender:
+                context['user_gender'] = temp_profile.user_gender
+            else:
+                context['user_gender'] = "None"
+            if temp_profile.phone_number:
+                context['phone_number'] = temp_profile.phone_number
+            else:
+                context['phone_number'] = "None"
+            if temp_profile.user_email:
+                context['user_email'] = temp_profile.user_email
+            else:
+                context['user_email'] = "None"
+            if temp_profile.user_page:
+                context['user_page'] = temp_profile.user_page
+            else:
+                context['user_page'] = "None"
+    else:
+        context['user_name'] = "None"
+        context['user_birthday'] = "None"
+        context['user_gender'] = "None"
+        context['phone_number'] = "None"
+        context['user_email'] = "None"
+        context['user_page'] = "None"
 
 
     ##########################################################################################################

@@ -3,8 +3,40 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/resume_detail.css' %}">
-    <div class="content_title">
-        이력서
+    <!--    <div class="content_title">-->
+    <!--        이력서-->
+    <!--    </div>-->
+    <p></p>
+    <div class="basic_title">
+        <div style="background:#4C4C4C; color:#EAEAEA; text-align:center;">
+            &nbsp;&nbsp;{{ resume.resume_title_detail }}&nbsp;
+        </div>
+        <div style="display:flex; font-size:1.2rem;">
+            <div style="flex:1; margin:auto; text-align:center; border-right:1px solid #BDBDBD;">
+                <div style="color:#BDBDBD;">
+                    학력
+                </div>
+                <div>
+                    테스트1
+                </div>
+            </div>
+            <div style="flex:1; margin:auto; text-align:center; border-right:1px solid #BDBDBD;">
+                <div style="color:#BDBDBD;">
+                    경력
+                </div>
+                <div>
+                    테스트2
+                </div>
+            </div>
+            <div style="flex:1; margin:auto; text-align:center; border-right:1px solid #BDBDBD;">
+                <div style="color:#BDBDBD;">
+                    희망사항
+                </div>
+                <div>
+                    테스트3
+                </div>
+            </div>
+        </div>
     </div>
     <p></p>
     <div class="basic_list">
@@ -29,7 +61,7 @@
                 {{ user_name }}
             {% endif %}
             {% if user_gender == "None" %}
-                비공개
+                (비공개,
             {% else %}
                 ({{ user_gender }},
             {% endif %}

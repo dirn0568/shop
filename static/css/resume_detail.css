@@ -11,6 +11,13 @@
     font-size:25px;
 }
 
+.basic_title {
+    width:85rem;
+    margin:auto;
+    background:#FFFFFF;
+    font-size:30px;
+}
+
 .basic_list {
     width: 85rem;
     margin:auto;
