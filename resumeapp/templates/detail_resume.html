@@ -6,7 +6,17 @@
     <!--    <div class="content_title">-->
     <!--        이력서-->
     <!--    </div>-->
-    <p></p>
+    {% if like == 1 %}
+        <a href="?like_user={{ request.user.pk }}">
+            <i style="vertical-align:middle; color:#FFB2D9;" class="material-icons">thumb_up</i>
+            <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
+        </a>
+    {% else %}
+        <a href="?like_user={{ request.user.pk }}">
+            <i style="vertical-align:middle; color:#000000;" class="material-icons">thumb_up</i>
+            <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
+        </a>
+    {% endif %}
     <div class="basic_title">
         <div style="background:#4C4C4C; color:#EAEAEA; text-align:center;">
             &nbsp;&nbsp;{{ resume.resume_title_detail }}&nbsp;
@@ -17,216 +27,154 @@
                     학력
                 </div>
                 <div>
-                    테스트1
+                    {% if school %}
+                        -
+                    {% endif %}
+                    {% if school1 %}
+                        초등학교 졸업
+                    {% endif %}
+                    {% if school2 %}
+                        중학교 졸업
+                    {% endif %}
+                    {% if school3 %}
+                        고등학교 졸업
+                    {% endif %}
+                    {% if school4 %}
+                        {% for list in school4 %}
+                            {{ list.university_study_year }}
+                        {% endfor %}
+                    {% endif %}
                 </div>
             </div>
             <div style="flex:1; margin:auto; text-align:center; border-right:1px solid #BDBDBD;">
                 <div style="color:#BDBDBD;">
-                    경력
+                    경력사항
                 </div>
                 <div>
-                    테스트2
+                    {% if none_resume_career == 1 %}
+                        <span style="color:#FF5E00; border-radius:10px; padding: 0.15rem 0.8rem; box-shadow: rgba(255, 0, 0, 0.4) 0 0px 5px 1px inset;">
+                            신입
+                        </span>
+                    {% else %}
+                        <span style="color:#5D5D5D; border-radius:10px; padding: 0.15rem 0.8rem; box-shadow: rgba(0, 0, 0, 0.4) 0 0px 5px 1px inset;">
+                            경력
+                        </span>
+                    {% endif %}
                 </div>
             </div>
             <div style="flex:1; margin:auto; text-align:center; border-right:1px solid #BDBDBD;">
                 <div style="color:#BDBDBD;">
-                    희망사항
+                    희망연봉
                 </div>
                 <div>
-                    테스트3
+                    {% for list in resume_hope_work %}
+                        {% if list.resume_hope_work_money %}
+                            {{ list.resume_hope_work_money }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
     <p></p>
     <div class="basic_list">
-        &nbsp;&nbsp;{{ resume.resume_title_detail }}&nbsp;
-            {% if like == 1 %}
-            <a href="?like_user={{ request.user.pk }}">
-                <i style="vertical-align:middle; color:#FFB2D9;" class="material-icons">thumb_up</i>
-                <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
-            </a>
-            {% else %}
-                <a href="?like_user={{ request.user.pk }}">
-                    <i style="vertical-align:middle; color:#000000;" class="material-icons">thumb_up</i>
-                    <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
-                </a>
-            {% endif %}
         <p></p>
-        <div class="mini_div">
-            &nbsp;&nbsp;
-            {% if user_name == "None" %}
-                비공개
-            {% else %}
-                {{ user_name }}
-            {% endif %}
-            {% if user_gender == "None" %}
-                (비공개,
-            {% else %}
-                ({{ user_gender }},
-            {% endif %}
-            {% if user_birthday == "None" %}
-                비공개)
-            {% else %}
-                {{ user_birthday }}세)
-            {% endif %}
-            <p></p>
-            &nbsp;&nbsp;휴대폰 |
-            {% if phone_number == "None" %}
-                비공개
-            {% else %}
-                {{ phone_number }}
-            {% endif %}
-            &emsp;
-            Email |
-            {% if user_email == "None" %}
-                비공개
-            {% else %}
-                {{ user_email }}
-            {% endif %}
-            <p></p>
-            &nbsp;&nbsp;휴대폰 | 010-4561-7980
+        <div class="img_div">
+            <div>
+                {% if profile_img == "None" %}
+                    <img src="{% static 'profile/noimg.jpg' %}" alt="" width="200" height="250">
+                {% else %}
+                    <img src="{{ profile_img.url }}" alt="" width="200" height="250">
+                {% endif %}
+            </div>
+            &nbsp;
+            &nbsp;
+            <div>
+                <p></p>
+                <div style="display:flex;">
+                    <div style="width:10rem; color:#A6A6A6;">
+                        이름
+                    </div>
+                    <div style="width:20rem;">
+                        {% if user_name == "None" %}
+                            -
+                        {% else %}
+                            {{ user_name }}
+                        {% endif %}
+                    </div>
+                </div>
+                <p></p>
+                <div style="display:flex;">
+                    <div style="width:10rem; color:#A6A6A6;">
+                        성별/나이
+                    </div>
+                    <div style="width:20rem;">
+                        {% if user_gender == "None" %}
+                            - /
+                        {% else %}
+                            {{ user_gender }} /
+                        {% endif %}
+                        {% if user_birthday == "None" %}
+                            -
+                        {% else %}
+                            {{ user_birthday }}세
+                        {% endif %}
+                    </div>
+                </div>
+                <p></p>
+                <div style="display:flex;">
+                    <div style="width:10rem; color:#A6A6A6;">
+                        Email
+                    </div>
+                    <div style="width:20rem;">
+                        {% if user_email == "None" %}
+                            -
+                        {% else %}
+                            {{ user_email }}
+                        {% endif %}
+                    </div>
+                </div>
+                <p></p>
+                <div style="display:flex;">
+                    <div style="width:10rem; color:#A6A6A6;">
+                        연락처
+                    </div>
+                    <div style="width:20rem;">
+                        {% if phone_number == "None" %}
+                            -
+                        {% else %}
+                            {{ phone_number }}
+                        {% endif %}
+                    </div>
+                </div>
+                <p></p>
+                <div style="display:flex;">
+                    <div style="width:10rem; color:#A6A6A6;">
+                        홈페이지
+                    </div>
+                    <div style="width:20rem;">
+                        {% if user_page == "None" %}
+                            -
+                        {% else %}
+                            {{ user_page }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
         <p></p>
     </div>
     <div class="base_line_css">
         <hr>
     </div>
-    <ul class="amount">
-        <li>
-            <div>
-                <div class="amount_title_css">
-                    학력
-                </div>
-                <div>
-                    {% if school1 %}
-                        {% for school in school1 %}
-                            {{ school.elementary_school_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school2 %}
-                        {% for school in school2 %}
-                            {{ school.middle_school_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school3 %}
-                        {% for school in school3 %}
-                            {{ school.high_school_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school4 %}
-                        {% for school in school4 %}
-                            {{ school.university_school_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school %}
-                        -
-                    {% endif %}
-                </div>
-                <div>
-                    {% if school1 %}
-                        {% for school in school1 %}
-                            {{ school.elementary_field_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school2 %}
-                        {% for school in school2 %}
-                            {{ school.middle_field_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school3 %}
-                        {% for school in school3 %}
-                            {{ school.high_field_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school4 %}
-                        {% for school in school4 %}
-                            {{ school.university_field_name }}
-                        {% endfor %}
-                    {% endif %}
-                    {% if school %}
-                        -
-                    {% endif %}
-                </div>
-                <div>
-                    {% if school1 %}
-                        -
-                    {% endif %}
-                    {% if school2 %}
-                        -
-                    {% endif %}
-                    {% if school3 %}
-                        -
-                    {% endif %}
-                    {% if school4 %}
-                        {% for school in school4 %}
-                            {{ school.university_study_level }} / 4.5
-                        {% endfor %}
-                    {% endif %}
-                    {% if school %}
-                        -
-                    {% endif %}
-                </div>
-            </div>
-        </li>
-        <li>
-            <div>
-                <div class="amount_title_css">경력</div>
-                <div>
-                    {% if none_resume_career %}
-                        -
-                    {% else %}
-                        {% for resume_career_list in resume_career %}
-                            {{ resume_career_list.resume_company_name }}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div>
-                    {% if none_resume_career %}
-                        -
-                    {% else %}
-                        {% for resume_career_list in resume_career %}
-                            {{ resume_career_list.resume_career_position_detail }}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div>
-                    -
-                </div>
-            </div>
-        </li>
-        <li>
-            <div>
-                <div class="amount_title_css">희망 근무 조건</div>
-                <div>
-                    {% if none_resume_hope_work %}
-                        -
-                    {% else %}
-                        {% for resume_hope_work_list in resume_hope_work %}
-                            {{ resume_hope_work_list.resume_hope_work_start_time }}
-                            {{ resume_hope_work_list.resume_hope_end_time }}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div>
-                    {% if none_resume_hope_work %}
-                        -
-                    {% else %}
-                        {% for resume_hope_work_list in resume_hope_work %}
-                            {{ resume_hope_work_list.resume_hope_work_money }}
-                        {% endfor %}
-                    {% endif %}
-                </div>
-                <div>
-                    -
-                </div>
-            </div>
-        </li>
-    </ul>
     <p></p>
     {% if school1 %}
         <div class="content_title">
-            학력
+            <span style="font-weight:bold;">
+                학력
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
@@ -236,7 +184,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                        <input type="submit" value="삭제하기" id="delete_btn1" style="display:none;" name="resume_school_del">
+                        <label for="delete_btn1" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -251,7 +202,9 @@
     {% endif %}
     {% if school2 %}
         <div class="content_title">
-            학력
+            <span style="font-weight:bold;">
+                학력
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
@@ -261,7 +214,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                        <input type="submit" value="삭제하기" id="delete_btn2" style="display:none;" name="resume_school_del">
+                        <label for="delete_btn2" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -275,7 +231,9 @@
     {% endif %}
     {% if school3 %}
         <div class="content_title">
-            학력
+            <span style="font-weight:bold;">
+                학력
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
@@ -285,7 +243,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                        <input type="submit" value="삭제하기" id="delete_btn3" style="display:none;" name="resume_school_del">
+                        <label for="delete_btn3" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -303,7 +264,9 @@
     {% endif %}
     {% if school4 %}
         <div class="content_title">
-            학력
+            <span style="font-weight:bold;">
+                학력
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}" class="btn_color">
@@ -313,7 +276,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_school_del">
+                        <input type="submit" value="삭제하기" id="delete_btn4" style="display:none;" name="resume_school_del">
+                        <label for="delete_btn4" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -342,7 +308,9 @@
     {% if resume_career %}
         <p></p>
         <div class="content_title">
-            경력
+            <span style="font-weight:bold;">
+                경력
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_resume4_update' company_ability=1 company_project=0 title=title pk=pk %}" class="btn_color">
@@ -352,7 +320,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_career_del">
+                        <input type="submit" value="삭제하기" id="delete_btn5" style="display:none;" name="resume_career_del">
+                        <label for="delete_btn5" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -390,7 +361,9 @@
     {% if out_play %}
         <p></p>
         <div class="content_title">
-            대외활동
+            <span style="font-weight:bold;">
+                대외활동
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_out_play_update' out_play=1 title=title pk=pk %}" class="btn_color">
@@ -400,7 +373,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_out_play_del">
+                        <input type="submit" value="삭제하기" id="delete_btn6" style="display:none;" name="resume_out_play_del">
+                        <label for="delete_btn6" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -417,7 +393,9 @@
     {% if prize_play %}
         <p></p>
         <div class="content_title">
-            자격증
+            <span style="font-weight:bold;">
+                자격증
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_prize_play_update' prize_play=1 title=title pk=pk %}" class="btn_color">
@@ -427,7 +405,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_prize_play_del">
+                        <input type="submit" value="삭제하기" id="delete_btn7" style="display:none;" name="resume_prize_play_del">
+                        <label for="delete_btn7" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -442,7 +423,9 @@
     {% if port_polio %}
         <p></p>
         <div class="content_title">
-            포트폴리오
+            <span style="font-weight:bold;">
+                포트폴리오
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_port_polio_update' port_polio=1 title=title pk=pk %}" class="btn_color">
@@ -452,7 +435,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_port_polio_del">
+                        <input type="submit" value="삭제하기" id="delete_btn8" style="display:none;" name="resume_port_polio_del">
+                        <label for="delete_btn8" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -467,7 +453,9 @@
     {% if self_introduce %}
         <p></p>
         <div class="content_title">
-            자기소개서
+            <span style="font-weight:bold;">
+                자기소개서
+            </span>
             {% if request.user.pk == pk %}
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_self_introduce_update' self_introduce=1 title=title pk=pk %}" class="btn_color">
@@ -477,7 +465,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_self_introduce_del">
+                        <input type="submit" value="삭제하기" id="delete_btn9" style="display:none;" name="resume_self_introduce_del">
+                        <label for="delete_btn9" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             {% endif %}
@@ -499,7 +490,9 @@
         </div>
         {% if request.user.pk == pk %}
             <div class="content_title">
-                희망 조건
+                <span style="font-weight:bold;">
+                    희망 조건
+                </span>
                 <span class="update_btn">
                     <a href="{% url 'resumeapp:resume_resume5_update' title=title pk=pk %}" class="btn_color">
                         &nbsp;수정하기&nbsp;
@@ -508,7 +501,10 @@
                 <form action="{% url 'resumeapp:detail_resume' title=title %}" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <span class="update_btn">
-                        <input type="submit" value="삭제하기" class="resume_detail_button_css" name="resume_hope_work_del">
+                        <input type="submit" value="삭제하기" id="delete_btn10" style="display:none;" name="resume_hope_work_del">
+                        <label for="delete_btn10" class="btn_color2">
+                            삭제하기
+                        </label>
                     </span>
                 </form>
             </div>
@@ -534,3 +530,135 @@
         </div>
     {% endif %}
 {% endblock %}
+
+<!--    <ul class="amount">-->
+<!--        <li>-->
+<!--            <div>-->
+<!--                <div class="amount_title_css">-->
+<!--                    학력-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    {% if school1 %}-->
+<!--                        {% for school in school1 %}-->
+<!--                            {{ school.elementary_school_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school2 %}-->
+<!--                        {% for school in school2 %}-->
+<!--                            {{ school.middle_school_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school3 %}-->
+<!--                        {% for school in school3 %}-->
+<!--                            {{ school.high_school_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school4 %}-->
+<!--                        {% for school in school4 %}-->
+<!--                            {{ school.university_school_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school %}-->
+<!--                        - -->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    {% if school1 %}-->
+<!--                        {% for school in school1 %}-->
+<!--                            {{ school.elementary_field_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school2 %}-->
+<!--                        {% for school in school2 %}-->
+<!--                            {{ school.middle_field_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school3 %}-->
+<!--                        {% for school in school3 %}-->
+<!--                            {{ school.high_field_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school4 %}-->
+<!--                        {% for school in school4 %}-->
+<!--                            {{ school.university_field_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school %}-->
+<!--                        - -->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    {% if school1 %}-->
+<!--                        - -->
+<!--                    {% endif %}-->
+<!--                    {% if school2 %}-->
+<!--                        - -->
+<!--                    {% endif %}-->
+<!--                    {% if school3 %}-->
+<!--                        - -->
+<!--                    {% endif %}-->
+<!--                    {% if school4 %}-->
+<!--                        {% for school in school4 %}-->
+<!--                            {{ school.university_study_level }} / 4.5-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                    {% if school %}-->
+<!--                        - -->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div>-->
+<!--                <div class="amount_title_css">경력</div>-->
+<!--                <div>-->
+<!--                    {% if none_resume_career %}-->
+<!--                        - -->
+<!--                    {% else %}-->
+<!--                        {% for resume_career_list in resume_career %}-->
+<!--                            {{ resume_career_list.resume_company_name }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    {% if none_resume_career %}-->
+<!--                        - -->
+<!--                    {% else %}-->
+<!--                        {% for resume_career_list in resume_career %}-->
+<!--                            {{ resume_career_list.resume_career_position_detail }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    - -->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <div>-->
+<!--                <div class="amount_title_css">희망 근무 조건</div>-->
+<!--                <div>-->
+<!--                    {% if none_resume_hope_work %}-->
+<!--                        - -->
+<!--                    {% else %}-->
+<!--                        {% for resume_hope_work_list in resume_hope_work %}-->
+<!--                            {{ resume_hope_work_list.resume_hope_work_start_time }}-->
+<!--                            {{ resume_hope_work_list.resume_hope_end_time }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    {% if none_resume_hope_work %}-->
+<!--                        - -->
+<!--                    {% else %}-->
+<!--                        {% for resume_hope_work_list in resume_hope_work %}-->
+<!--                            {{ resume_hope_work_list.resume_hope_work_money }}-->
+<!--                        {% endfor %}-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    - -->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--    </ul>-->

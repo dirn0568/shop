@@ -117,6 +117,11 @@ def detail_resume(request, title):
         profile = User_Profile.objects.filter(profile=user)
     if profile:
         for temp_profile in profile:
+            print(temp_profile.profile_img, '이미지 어떻게 나옴')
+            if temp_profile.profile_img:
+                context['profile_img'] = temp_profile.profile_img
+            else:
+                context['profile_img'] = "None"
             if temp_profile.user_name:
                 context['user_name'] = temp_profile.user_name
             else:
@@ -338,12 +343,14 @@ def detail_resume(request, title):
             context['resume_career_project'] = resume_career_project
 
         if len(resume_hope_work) == 0:
+            print("02-12 이거없냐?")
             context['none_resume_hope_work'] = 1
         else:
+            for test in resume_hope_work:
+                print(test.resume_hope_work_money, "02-12 이거있냐?")
             context['resume_hope_work'] = resume_hope_work
             context['resume_hope_work_field'] = resume_hope_work_field
             context['resume_hope_work_work'] = resume_hope_work_work
-
         context['resume'] = user_resume
 
     return render(request, 'detail_resume.html', context)

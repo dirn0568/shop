@@ -19,7 +19,7 @@
 }
 
 .basic_list {
-    width: 85rem;
+    width:85rem;
     margin:auto;
     background:#FFFFFF;
     border-radius:3px;
@@ -57,8 +57,12 @@
 
 .btn_color {
     color: rgba(30, 22, 54, 0.6);
-    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 5px 1px inset;
-    border-radius: 10px;
+    box-shadow: rgba(30, 22, 54, 0.4) 0 0px 1px 1px inset;
+}
+.btn_color2 {
+    color: rgba(255, 0, 0, 0.6);
+    box-shadow: rgba(255, 0, 0, 0.4) 0 0px 1px 1px inset;
+    padding:0.0005rem 0.5rem;
 }
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 .amount_title_css {
@@ -94,6 +98,11 @@
     font-size:16px;
 }
 
+.img_div {
+    display:flex;
+    font-size:16px;
+}
+
 .career_active_position_css {
     position:relative;
     top:-1.5rem;
@@ -104,8 +113,7 @@
     display:flex;
     width: 85rem;
     margin:auto;
-    font-weight:bold;
-    font-size:30px
+    font-size:25px
 }
 
 .main_name {
@@ -115,7 +123,6 @@
 .resume_detail_button_css {
     border:none;
     color: rgba(255, 0, 0, 0.6);
-    box-shadow: rgba(255, 0, 0, 0.4) 0 0px 5px 1px inset;
-    padding:0.005rem 0.5rem;
-    border-radius: 10px;
+    box-shadow: rgba(255, 0, 0, 0.4) 0 0px 1px 1px inset;
+    padding:0.0005rem 0.5rem;
 }
