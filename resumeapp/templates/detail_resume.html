@@ -6,17 +6,6 @@
     <!--    <div class="content_title">-->
     <!--        이력서-->
     <!--    </div>-->
-    {% if like == 1 %}
-        <a href="?like_user={{ request.user.pk }}">
-            <i style="vertical-align:middle; color:#FFB2D9;" class="material-icons">thumb_up</i>
-            <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
-        </a>
-    {% else %}
-        <a href="?like_user={{ request.user.pk }}">
-            <i style="vertical-align:middle; color:#000000;" class="material-icons">thumb_up</i>
-            <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
-        </a>
-    {% endif %}
     <div class="basic_title">
         <div style="background:#4C4C4C; color:#EAEAEA; text-align:center;">
             &nbsp;&nbsp;{{ resume.resume_title_detail }}&nbsp;
@@ -196,7 +185,17 @@
             <p></p>
             {% for school in school1 %}
                 <p></p>
-                &nbsp;&nbsp;{{ school.elementary_school_name }}<span class="field_css">({{ school.elementary_field_name }})</span> <span class="date_css">{{ school.elementary_start_time }} ~ {{ school.elementary_end_time }}</span>
+                &nbsp;&nbsp;{{ school.elementary_school_name }}
+                <span class="field_css">
+                    {% if school.elementary_field_name %}
+                        ({{ school.elementary_field_name }})
+                    {% endif %}
+                </span>
+                <span class="date_css">
+                    {% if school.elementary_start_time %}
+                        {{ school.elementary_start_time }} ~ {{ school.elementary_end_time }}
+                    {% endif %}
+                </span>
             {% endfor %}
         </div>
     {% endif %}
@@ -225,7 +224,17 @@
         <div class="content">
             {% for school in school2 %}
                 <p></p>
-                &nbsp;&nbsp;{{ school.middle_school_name }}<span class="field_css">({{ school.middle_field_name }})</span> <span class="date_css">{{ school.middle_start_time }} ~ {{ school.middle_end_time }}</span>
+                &nbsp;&nbsp;{{ school.middle_school_name }}
+                <span class="field_css">
+                    {% if school.middle_field_name %}
+                        ({{ school.middle_field_name }})
+                    {% endif %}
+                </span>
+                <span class="date_css">
+                    {% if school.middle_start_time %}
+                        {{ school.middle_start_time }} ~ {{ school.middle_end_time }}
+                    {% endif %}
+                </span>
             {% endfor %}
         </div>
     {% endif %}
@@ -254,10 +263,22 @@
         <div class="content">
             {% for school in school3 %}
                 <p></p>
-                &nbsp;&nbsp;{{ school.high_school_name }}<span class="field_css">({{ school.high_field_name }})</span> <span class="date_css">{{ school.high_start_time }} ~ {{ school.high_end_time }}</span>
+                &nbsp;&nbsp;{{ school.high_school_name }}
+                <span class="field_css">
+                    {% if school.high_field_name %}
+                        ({{ school.high_field_name }})
+                    {% endif %}
+                </span>
+                <span class="date_css">
+                    {% if school.high_start_time %}
+                        {{ school.high_start_time }} ~ {{ school.high_end_time }}
+                    {% endif %}
+                </span>
                 <p></p>
                 <div class="mini_div">
-                &nbsp;&nbsp;전공 계열 : {{ school.high_major }}
+                    {% if school.high_major %}
+                        &nbsp;&nbsp;전공 계열 : {{ school.high_major }}
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
@@ -287,19 +308,53 @@
         <div class="content">
             {% for school in school4 %}
             <p></p>
-            &nbsp;&nbsp;{{ school.university_school_name }}<span class="field_css">({{ school.university_field_name }})</span> <span class="date_css">{{ school.university_start_time }} ~ {{ school.university_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_year }}</span> <span class="bar">|</span> <span class="field_css">{{ school.university_study_time }}</span>
+            &nbsp;&nbsp;{{ school.university_school_name }}
+            <span class="field_css">
+                {% if school.university_field_name %}
+                    ({{ school.university_field_name }})
+                {% endif %}
+            </span>
+            {% if school.university_start_time %}
+                <span class="date_css">
+                    {{ school.university_start_time }} ~ {{ school.university_end_time }}
+                </span>
+                <span class="bar">
+                    |
+                </span>
+            {% endif %}
+            {% if school.university_study_year %}
+                <span class="field_css">
+                    {{ school.university_study_year }}
+                </span>
+                <span class="bar">
+                    |
+                </span>
+            {% endif %}
+            {% if school.university_study_time %}
+                <span class="field_css">
+                    {{ school.university_study_time }}
+                </span>
+            {% endif %}
             <p></p>
             <div class="mini_div">
                 {% for major_list in major %}
                     <p></p>
-                    &nbsp;&nbsp;전공 계열 : {{ major_list.resume_university_major_list }}
-                    <p></p>
-                    &nbsp;&nbsp;학과 : {{ major_list.resume_university_major_detail }}
+                    {% if major_list.resume_university_major_list %}
+                        &nbsp;&nbsp;전공 계열 : {{ major_list.resume_university_major_list }}
+                        <p></p>
+                    {% endif %}
+                    {% if major_list.resume_university_major_detail %}
+                        &nbsp;&nbsp;학과 : {{ major_list.resume_university_major_detail }}
+                    {% endif %}
                 {% endfor %}
                 <p></p>
-                &nbsp;&nbsp;학점 : {{ school.university_study_level }} / 4.5
-                <p></p>
-                &nbsp;&nbsp;논문/졸업작품 : {{ school.university_finaltest }}
+                {% if school.university_study_level %}
+                    &nbsp;&nbsp;학점 : {{ school.university_study_level }} / 4.5
+                    <p></p>
+                {% endif %}
+                {% if school.university_finaltest %}
+                    &nbsp;&nbsp;논문/졸업작품 : {{ school.university_finaltest }}
+                {% endif %}
             </div>
         {% endfor %}
         <p></p>
@@ -332,26 +387,58 @@
             <p></p>
             {% for resume_career_list in resume_career %}
                 <p></p>
-                &nbsp;&nbsp;{{ resume_career_list.resume_company_name }} <span class="date_css">{{ resume_career_list.resume_career_start_time }} ~ {{ resume_career_list.resume_career_end_time }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position_detail }}</span> <span class="bar">|</span> <span class="field_css">{{ resume_career_list.resume_career_position }}</span>
+                &nbsp;&nbsp;{{ resume_career_list.resume_company_name }}
+                {% if resume_career_list.resume_career_start_time %}
+                    <span class="date_css">
+                        {{ resume_career_list.resume_career_start_time }} ~ {{ resume_career_list.resume_career_end_time }}
+                    </span>
+                    <span class="bar">
+                        |
+                    </span>
+                {% endif %}
+                {% if resume_career_list.resume_career_position_detail %}
+                    <span class="field_css">
+                        {{ resume_career_list.resume_career_position_detail }}
+                    </span>
+                    <span class="bar">
+                        |
+                    </span>
+                {% endif %}
+                {% if resume_career_list.resume_career_position %}
+                    <span class="field_css">
+                        {{ resume_career_list.resume_career_position }}
+                    </span>
+                {% endif %}
                 <p></p>
                 <div class="mini_div">
-                    &nbsp;&nbsp;담당업무 : {{ resume_career_list.resume_career_position_detail2 }}
+                    {% if resume_career_list.resume_career_position_detail2 %}
+                        &nbsp;&nbsp;담당업무 : {{ resume_career_list.resume_career_position_detail2 }}
+                    {% endif %}
                     <p></p>
-                    &nbsp;&nbsp;연봉 : {{ resume_career_list.resume_career_money }}{{ resume_career_list.resume_career_money_detail }}
+                    {% if resume_career_list.resume_career_money %}
+                        &nbsp;&nbsp;연봉 : {{ resume_career_list.resume_career_money }}{{ resume_career_list.resume_career_money_detail }}
+                    {% endif %}
                     <p></p>
                     &nbsp;&nbsp;핵심역량
                     <div class="career_active_position_css">
                         <ul>
                         {% for resume_career_ability_list in resume_career_ability %}
-                            <li> {{ resume_career_ability_list.resume_career_ability_text }}</li>
+                            {% if resume_career_ability_list.resume_career_ability_text %}
+                                <li> {{ resume_career_ability_list.resume_career_ability_text }}</li>
+                            {% endif %}
                         {% endfor %}
                         </ul>
                     </div>
                     {% for resume_career_project_list in resume_career_project %}
                         <p></p>
-                        &nbsp;&nbsp;프로젝트 : {{ resume_career_project_list.resume_career_project_text }} <span class="date_css">{{ resume_career_project_list.resume_career_project_start_time }} ~ {{ resume_career_project_list.resume_career_project_end_time }}</span>
+                        {% if resume_career_project_list.resume_career_project_text %}
+                            &nbsp;&nbsp;프로젝트 : {{ resume_career_project_list.resume_career_project_text }}
+                            <span class="date_css">{{ resume_career_project_list.resume_career_project_start_time }} ~ {{ resume_career_project_list.resume_career_project_end_time }}</span>
+                        {% endif %}
                         <p></p>
-                        &nbsp;&nbsp;세부사항 : {{ resume_career_project_list.resume_career_project_text_detail }}
+                        {% if resume_career_project_list.resume_career_project_text_detail %}
+                            &nbsp;&nbsp;세부사항 : {{ resume_career_project_list.resume_career_project_text_detail }}
+                        {% endif %}
                     {% endfor %}
                 </div>
             {% endfor %}
@@ -384,7 +471,13 @@
         <div class="content">
             {% for out_play_list in out_play %}
                 <p></p>
-                &nbsp;&nbsp;{{ out_play_list.resume_out_place }} <span class="date_css">{{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}</span> <span class="information_css">&nbsp;{{ out_play_list.resume_out_activity }}&nbsp;</span>
+                &nbsp;&nbsp;{{ out_play_list.resume_out_place }}
+                <span class="date_css">
+                    {{ out_play_list.resume_out_start_play }} ~ {{ out_play_list.resume_out_end_play }}
+                </span>
+                <span class="information_css">
+                    &nbsp;{{ out_play_list.resume_out_activity }}&nbsp;
+                </span>
                 <p></p>
                 <div class="mini_div"><ul><li>{{ out_play_list.resume_out_play_text }}</li></ul></div>
             {% endfor %}
@@ -416,7 +509,16 @@
         <div class="content">
             {% for prize_play_list in prize_play %}
                 <p></p>
-                &nbsp;&nbsp;{{ prize_play_list.resume_prize_certificate }}<span class="field_css">({{ prize_play_list.resume_prize_title }})</span> <span class="date_css">{{ prize_play_list.resume_prize_date }}</span> <span class="information_css">&nbsp;{{ prize_play_list.resume_prize_place }}&nbsp;</span>
+                &nbsp;&nbsp;{{ prize_play_list.resume_prize_certificate }}
+                <span class="field_css">
+                    ({{ prize_play_list.resume_prize_title }})
+                </span>
+                <span class="date_css">
+                    {{ prize_play_list.resume_prize_date }}
+                </span>
+                <span class="information_css">
+                    &nbsp;{{ prize_play_list.resume_prize_place }}&nbsp;
+                </span>
             {% endfor %}
         </div>
     {% endif %}
@@ -446,7 +548,15 @@
         <div class="content">
             {% for port_polio_list in port_polio %}
                 <p></p>
-                <span class="mini_div">&nbsp;활동구분 <span class="bar">|</span> <a href="/media/{{ port_polio_list.resume_port_polio_detail }}" download>{{ port_polio_list.resume_port_polio_detail }}</a></span>
+                <span class="mini_div">
+                    &nbsp;활동구분
+                    <span class="bar">
+                        |
+                    </span>
+                    <a href="/media/{{ port_polio_list.resume_port_polio_detail }}" download>
+                        {{ port_polio_list.resume_port_polio_detail }}
+                    </a>
+                </span>
             {% endfor %}
         </div>
     {% endif %}
@@ -476,7 +586,9 @@
         <div class="content">
             {% for self_introduce_list in self_introduce %}
                 <p></p>
-                &nbsp;&nbsp;<span class="main_name">{{ self_introduce_list.resume_self_introduce_title }}</span>
+                &nbsp;&nbsp;<span class="main_name">
+                    {{ self_introduce_list.resume_self_introduce_title }}
+                </span>
                 <p></p>
                 <div class="mini_div">
                     <ul><li>{{ self_introduce_list.resume_self_introduce_text }}</li></ul>
@@ -514,21 +626,86 @@
             <div class="mini_div">
                 &nbsp;&nbsp;즉시 근무 가능
                 <p></p>
-                &nbsp;&nbsp;희망 연봉 : 100만원 ~ 200만원
+                &nbsp;&nbsp;희망 연봉 :
+                {% for list in resume_hope_work %}
+                    {% if list.resume_hope_work_money %}
+                        {{ list.resume_hope_work_money }}
+                    {% else %}
+                        &nbsp;&nbsp;-
+                    {% endif %}
+                {% endfor %}
                 <p></p>
                 &nbsp;&nbsp;희망 지역 :
                 {% for resume_hope_work_field_list in resume_hope_work_field %}
-                    &nbsp;&nbsp;# {{ resume_hope_work_field_list.resume_hope_work_field1 }}
+                    {% if resume_hope_work_field_list.resume_hope_work_field1 %}
+                        &nbsp;&nbsp;# {{ resume_hope_work_field_list.resume_hope_work_field1 }}
+                    {% else %}
+                        &nbsp;&nbsp;-
+                    {% endif %}
                 {% endfor %}
                 <p></p>
                 &nbsp;&nbsp;희망 직업 :
                 {% for resume_hope_work_work_list in resume_hope_work_work %}
-                    &nbsp;&nbsp;# {{ resume_hope_work_work_list.resume_hope_work_work1 }}
+                    {% if resume_hope_work_work_list.resume_hope_work_work1 %}
+                        &nbsp;&nbsp;# {{ resume_hope_work_work_list.resume_hope_work_work1 }}
+                    {% else %}
+                        &nbsp;&nbsp;-
+                    {% endif %}
                 {% endfor %}
             </div>
             <p></p>
         </div>
     {% endif %}
+    <div class="side_bar">
+        {% if like == 1 %}
+            <a href="?like_user={{ request.user.pk }}">
+                <i style="vertical-align:middle; color:#1312FF; font-size:5rem;" class="material-icons">thumb_up</i>
+                <p></p>
+                <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
+            </a>
+        {% else %}
+            <a href="?like_user={{ request.user.pk }}">
+                <i style="vertical-align:middle; color:#000000; font-size:5rem;" class="material-icons">thumb_up</i>
+                <p></p>
+                <span style="color:#000000; font-size:1rem;">{{ like_count }}</span>
+            </a>
+        {% endif %}
+        <p></p>
+        <div style="background:#747474;">
+            {% if like == 1 %}
+                <a href="?like_user={{ request.user.pk }}">
+                    <i style="vertical-align:middle; color:#000000;" class="material-icons">thumb_up</i>
+                    <span style="color:#000000;">추천하기</span>
+                </a>
+            {% else %}
+                <a href="?like_user={{ request.user.pk }}">
+                    <i style="vertical-align:middle; color:#000000;" class="material-icons">thumb_up</i>
+                    <span style="color:#000000;">추천하기</span>
+                </a>
+            {% endif %}
+        </div>
+        <div style="background:#747474;">
+            학력
+        </div>
+        <div style="background:#747474;">
+            경력
+        </div>
+        <div style="background:#747474;">
+            대외활동
+        </div>
+        <div style="background:#747474;">
+            수상경력
+        </div>
+        <div style="background:#747474;">
+            포트폴리오
+        </div>
+        <div style="background:#747474;">
+            자기소개서
+        </div>
+        <div style="background:#747474;">
+            희망조건
+        </div>
+    </div>
 {% endblock %}
 
 <!--    <ul class="amount">-->

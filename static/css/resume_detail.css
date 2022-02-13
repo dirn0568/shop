@@ -126,3 +126,16 @@
     box-shadow: rgba(255, 0, 0, 0.4) 0 0px 1px 1px inset;
     padding:0.0005rem 0.5rem;
 }
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+/* side_bar */
+
+.side_bar {
+    position:fixed;
+    top:6.7rem;
+    margin-left:95.5rem;
+    width:10rem;
+    height:10rem;
+    background:#A6A6A6;
+    text-align:center;
+}
