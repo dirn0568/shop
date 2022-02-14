@@ -166,6 +166,7 @@ def detail_resume(request, title):
             else:
                 context['user_page'] = "None"
     else:
+        context['profile_img'] = "None"
         context['user_name'] = "None"
         context['user_birthday'] = "None"
         context['user_gender'] = "None"

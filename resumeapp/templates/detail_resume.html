@@ -174,7 +174,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn1" style="display:none;" name="resume_school_del">
-                        <label for="delete_btn1" class="btn_color2">
+                        <label for="delete_btn1" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -214,7 +214,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn2" style="display:none;" name="resume_school_del">
-                        <label for="delete_btn2" class="btn_color2">
+                        <label for="delete_btn2" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -253,7 +253,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn3" style="display:none;" name="resume_school_del">
-                        <label for="delete_btn3" class="btn_color2">
+                        <label for="delete_btn3" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -298,7 +298,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn4" style="display:none;" name="resume_school_del">
-                        <label for="delete_btn4" class="btn_color2">
+                        <label for="delete_btn4" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -376,7 +376,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn5" style="display:none;" name="resume_career_del">
-                        <label for="delete_btn5" class="btn_color2">
+                        <label for="delete_btn5" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -461,7 +461,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn6" style="display:none;" name="resume_out_play_del">
-                        <label for="delete_btn6" class="btn_color2">
+                        <label for="delete_btn6" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -499,7 +499,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn7" style="display:none;" name="resume_prize_play_del">
-                        <label for="delete_btn7" class="btn_color2">
+                        <label for="delete_btn7" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -538,7 +538,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn8" style="display:none;" name="resume_port_polio_del">
-                        <label for="delete_btn8" class="btn_color2">
+                        <label for="delete_btn8" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -576,7 +576,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn9" style="display:none;" name="resume_self_introduce_del">
-                        <label for="delete_btn9" class="btn_color2">
+                        <label for="delete_btn9" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -614,7 +614,7 @@
                     {% csrf_token %}
                     <span class="update_btn">
                         <input type="submit" value="삭제하기" id="delete_btn10" style="display:none;" name="resume_hope_work_del">
-                        <label for="delete_btn10" class="btn_color2">
+                        <label for="delete_btn10" class="btn_color2" style="cursor:pointer;">
                             삭제하기
                         </label>
                     </span>
@@ -657,6 +657,7 @@
         </div>
     {% endif %}
     <div class="side_bar">
+        <p></p>
         {% if like == 1 %}
             <a href="?like_user={{ request.user.pk }}">
                 <i style="vertical-align:middle; color:#1312FF; font-size:5rem;" class="material-icons">thumb_up</i>
@@ -671,7 +672,7 @@
             </a>
         {% endif %}
         <p></p>
-        <div style="background:#747474;">
+        <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
             {% if like == 1 %}
                 <a href="?like_user={{ request.user.pk }}">
                     <i style="vertical-align:middle; color:#000000;" class="material-icons">thumb_up</i>
@@ -684,27 +685,71 @@
                 </a>
             {% endif %}
         </div>
-        <div style="background:#747474;">
-            학력
-        </div>
-        <div style="background:#747474;">
-            경력
-        </div>
-        <div style="background:#747474;">
-            대외활동
-        </div>
-        <div style="background:#747474;">
-            수상경력
-        </div>
-        <div style="background:#747474;">
-            포트폴리오
-        </div>
-        <div style="background:#747474;">
-            자기소개서
-        </div>
-        <div style="background:#747474;">
-            희망조건
-        </div>
+        {% if request.user.pk == pk %}
+            <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
+                {% if school == 1 %}
+                    <a href="{% url 'resumeapp:resume_resume2_update' school=1 school_major4=1 title=title pk=pk %}">
+                        <span style="color:#BDBDBD;">학력</span>
+                    </a>
+                {% else %}
+                    <span style="color:#000000;">학력</span>
+                {% endif %}
+            </div>
+            <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
+                {% if none_resume_career == 1 %}
+                    <a href="{% url 'resumeapp:resume_resume4_update' company_ability=1 company_project=0 title=title pk=pk %}">
+                        <span style="color:#BDBDBD;">경력</span>
+                    </a>
+                {% else %}
+                    <span style="color:#000000;">경력</span>
+                {% endif %}
+            </div>
+            <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
+                {% if none_out_play == 1 %}
+                    <a href="{% url 'resumeapp:resume_out_play_update' out_play=1 title=title pk=pk %}">
+                        <span style="color:#BDBDBD;">대외활동</span>
+                    </a>
+                {% else %}
+                    <span style="color:#000000;">대외활동</span>
+                {% endif %}
+            </div>
+            <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
+                {% if none_prize_play == 1 %}
+                    <a href="{% url 'resumeapp:resume_prize_play_update' prize_play=1 title=title pk=pk %}">
+                        <span style="color:#BDBDBD;">수상경력</span>
+                    </a>
+                {% else %}
+                    <span style="color:#000000;">수상경력</span>
+                {% endif %}
+            </div>
+            <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
+                {% if none_port_polio == 1 %}
+                    <a href="{% url 'resumeapp:resume_port_polio_update' port_polio=1 title=title pk=pk %}">
+                        <span style="color:#BDBDBD;">포트폴리오</span>
+                    </a>
+                {% else %}
+                    <span style="color:#000000;">포트폴리오</span>
+                {% endif %}
+            </div>
+            <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
+                {% if none_self_introduce == 1 %}
+                    <a href="{% url 'resumeapp:resume_self_introduce_update' self_introduce=1 title=title pk=pk %}">
+                        <span style="color:#BDBDBD;">자기소개서</span>
+                    </a>
+                {% else %}
+                    <span style="color:#000000;">자기소개서</span>
+                {% endif %}
+            </div>
+            <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
+                {% if none_resume_hope_work == 1 %}
+                    <a href="{% url 'resumeapp:resume_resume5_update' title=title pk=pk %}">
+                        <span style="color:#BDBDBD;">희망조건</span>
+                    </a>
+                {% else %}
+                    <span style="color:#000000;">희망조건</span>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}
 

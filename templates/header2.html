@@ -3,50 +3,50 @@
         <div>
             <h1 class="font_data">PICK ME</h1>
         </div>
-        <div style="display:flex;">
-            <div style="flex:1; background:#FFCC00;">
+        <div style="display:flex;" class="resume_header_content_box">
+            <div style="flex:1;">
                 <a href="{% url 'mainapp:main' %}">
                     <span>Main</span>
                 </a>
             </div>
-            <div style="flex:1; background:#FFCCCC;">
+            <div style="flex:1;">
                 <a href="{% url 'mainapp:main' %}">
                     <span>인재찾기</span>
                 </a>
             </div>
-            <div style="flex:1; background:#CCCCCC;">
+            <div style="flex:1;">
                 <a href="{% url 'mainapp:main' %}">
                     <span>TOP100</span>
                 </a>
             </div>
-            <div style="flex:1; background:#CCCCFF;">
+            <div style="flex:1;">
                 <a href="{% url 'boardapp:board_list' %}">
                     <span>자유게시판</span>
                 </a>
             </div>
-            <div style="flex:1; background:#CC0000;">
+            <div style="flex:1;">
                 <a href="{% url 'mainapp:main' %}">
                     <span>커뮤니티</span>
                 </a>
             </div>
             {% if not user.is_authenticated %}
-                <div style="flex:1; background:#CC00CC;">
+                <div style="flex:1;">
                     <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
                         <span>login</span>
                     </a>
                 </div>
-                <div style="flex:1; background:#00CCCC;">
+                <div style="flex:1;">
                     <a href="{% url 'accountapp:create_user' %}">
                         <span>SignUp</span>
                     </a>
                 </div>
             {% else %}
-                <div style="flex:1; background:#DDCCBB;">
+                <div style="flex:1;">
                     <a href="{% url 'accountapp:detail_user' pk=user.pk %}">
                         <span>MyPage</span>
                     </a>
                 </div>
-                <div style="flex:1; background:#CADBAC;">
+                <div style="flex:1;">
                     <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
                         <span>logout</span>
                     </a>
