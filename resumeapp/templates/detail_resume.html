@@ -20,17 +20,29 @@
                         -
                     {% endif %}
                     {% if school1 %}
-                        초등학교 졸업
+                        초등학교
+                        {% for school in school1 %}
+                            {{ school.elementary_state }}
+                        {% endfor %}
                     {% endif %}
                     {% if school2 %}
-                        중학교 졸업
+                        중학교
+                        {% for school in school2 %}
+                            {{ school.middle_state }}
+                        {% endfor %}
                     {% endif %}
                     {% if school3 %}
-                        고등학교 졸업
+                        고등학교
+                        {% for school in school3 %}
+                            {{ school.high_state }}
+                        {% endfor %}
                     {% endif %}
                     {% if school4 %}
                         {% for list in school4 %}
                             {{ list.university_study_year }}
+                        {% endfor %}
+                        {% for school in school4 %}
+                            {{ school.university_state }}
                         {% endfor %}
                     {% endif %}
                 </div>
@@ -194,6 +206,14 @@
                 <span class="date_css">
                     {% if school.elementary_start_time %}
                         {{ school.elementary_start_time }} ~ {{ school.elementary_end_time }}
+                        {% if school.elementary_state %}
+                            <span style="color:#A6A6A6;">({{ school.elementary_state }})</span>
+                        {% endif %}
+                    {% endif %}
+                </span>
+                <span class="date_css">
+                    {% if school.elementary_gamjang_time %}
+                        {{ school.elementary_gamjang_time }} <span style="color:#A6A6A6;">(졸업)</span>
                     {% endif %}
                 </span>
             {% endfor %}
@@ -233,6 +253,14 @@
                 <span class="date_css">
                     {% if school.middle_start_time %}
                         {{ school.middle_start_time }} ~ {{ school.middle_end_time }}
+                        {% if school.middle_state %}
+                            <span style="color:#A6A6A6;">({{ school.middle_state }})</span>
+                        {% endif %}
+                    {% endif %}
+                </span>
+                <span class="date_css">
+                    {% if school.middle_gamjang_time %}
+                        {{ school.middle_gamjang_time }}
                     {% endif %}
                 </span>
             {% endfor %}
@@ -272,6 +300,14 @@
                 <span class="date_css">
                     {% if school.high_start_time %}
                         {{ school.high_start_time }} ~ {{ school.high_end_time }}
+                        {% if school.high_state %}
+                            <span style="color:#A6A6A6;">({{ school.high_state }})</span>
+                        {% endif %}
+                    {% endif %}
+                </span>
+                <span class="date_css">
+                    {% if school.high_gamjang_time %}
+                        {{ school.high_gamjang_time }} <span style="color:#A6A6A6;">(졸업)</span>
                     {% endif %}
                 </span>
                 <p></p>
@@ -317,6 +353,9 @@
             {% if school.university_start_time %}
                 <span class="date_css">
                     {{ school.university_start_time }} ~ {{ school.university_end_time }}
+                    {% if school.university_state %}
+                        <span style="color:#A6A6A6;">({{ school.university_state }})</span>
+                    {% endif %}
                 </span>
                 <span class="bar">
                     |

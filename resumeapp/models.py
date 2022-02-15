@@ -46,6 +46,10 @@ class Resume_ElementarySchool(models.Model):
     elementary_start_time = models.CharField(max_length=200)
     elementary_end_time = models.CharField(max_length=200)
 
+    elementary_state = models.CharField(max_length=200)
+
+    elementary_gamjang_time = models.CharField(max_length=200)
+
 class Resume_MiddleSchool(models.Model):
     resume_middle = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_middle')
 
@@ -53,6 +57,10 @@ class Resume_MiddleSchool(models.Model):
     middle_field_name = models.CharField(max_length=50)
     middle_start_time = models.CharField(max_length=200)
     middle_end_time = models.CharField(max_length=200)
+
+    middle_state = models.CharField(max_length=200)
+
+    middle_gamjang_time = models.CharField(max_length=200)
 
 class Resume_HighSchool(models.Model):
     resume_high = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_high')
@@ -62,6 +70,10 @@ class Resume_HighSchool(models.Model):
     high_start_time = models.CharField(max_length=200)
     high_end_time = models.CharField(max_length=200)
     high_major = models.CharField(max_length=200) # 전공계열
+
+    high_state = models.CharField(max_length=200)
+
+    high_gamjang_time = models.CharField(max_length=200)
 
 class Resume_UniversitySchool(models.Model):
     resume_university = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_university')
@@ -74,6 +86,8 @@ class Resume_UniversitySchool(models.Model):
     university_study_time = models.CharField(max_length=200)
     university_study_level = models.CharField(max_length=200)
     university_finaltest = models.CharField(max_length=2000)
+
+    university_state = models.CharField(max_length=200)
 
 class Resume_UniversitySchool_Major(models.Model):
     resume_university_major = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_university_major')

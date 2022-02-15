@@ -236,7 +236,17 @@
 
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
+.gamjang_css {
+    margin-left: 4.8rem;
+}
+
+.gamjang_time1_css {
+    margin-left: 6.4rem;
+}
+
 input[id="gamjang1"]:checked + label + div {max-height:10rem;}
+
+input[id="gamjang1"]:checked + label div {color:#FF0000;}
 
 input[id="gamjang1"]:checked + label + div + div {max-height:0px; overflow:hidden;}
 
@@ -245,6 +255,38 @@ input[id="gamjang1"]:checked + label + div + div + p + div {max-height:0px; over
 input[id="gamjang1"]:checked + label + div + div + p + div + p + div {max-height:0px; overflow:hidden;}
 
 .gamjang_1 {
+    max-height:0;
+    overflow:hidden;
+}
+
+input[id="gamjang2"]:checked + label + div {max-height:10rem;}
+
+input[id="gamjang2"]:checked + label div {color:#FF0000;}
+
+input[id="gamjang2"]:checked + label + div + div {max-height:0px; overflow:hidden;}
+
+input[id="gamjang2"]:checked + label + div + div + p + div {max-height:0px; overflow:hidden;}
+
+input[id="gamjang2"]:checked + label + div + div + p + div + p + div {max-height:0px; overflow:hidden;}
+
+.gamjang_2 {
+    max-height:0;
+    overflow:hidden;
+}
+
+input[id="gamjang3"]:checked + label + div {max-height:10rem;}
+
+input[id="gamjang3"]:checked + label div {color:#FF0000;}
+
+input[id="gamjang3"]:checked + label + div + div {max-height:0px; overflow:hidden;}
+
+input[id="gamjang3"]:checked + label + div + div + p + div {max-height:0px; overflow:hidden;}
+
+input[id="gamjang3"]:checked + label + div + div + p + div + p + div {max-height:0px; overflow:hidden;}
+
+input[id="gamjang3"]:checked + label + div + div + p + div + p + div + p + div {max-height:0px; overflow:hidden;}
+
+.gamjang_3 {
     max-height:0;
     overflow:hidden;
 }
