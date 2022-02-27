@@ -13,25 +13,20 @@
     margin-left:-3rem;
 }
 
-.search_result_title {
-    font-size:1.5rem;
+.content > ul > li {
+    flex:1;
 }
 
 .search_content {
     width:85rem;
     height:100%;
     margin:auto;
-    border-radius:5px;
-    background:#F6F6F6;
+    background:#B1B1B1;
 }
 
 .mini_content {
     display:flex;
     list-style:none;
-}
-
-.mini_content > li:not(:first-child) {
-    margin-left:2rem;
 }
 
 .mini_content > li(:end-child) {
@@ -124,8 +119,16 @@
     position:absolute;
     max-height:0;
     overflow:hidden;
-    margin-top:-2.6rem;
-    margin-left:19rem;
+    margin-top:-2.5rem;
+    margin-left:61.5rem;
+}
+
+.exit_css2 {
+    position:absolute;
+    max-height:0;
+    overflow:hidden;
+    margin-top:-2.5rem;
+    margin-left:33rem;
 }
 
 .position_btn3 {
@@ -139,19 +142,20 @@
 .self_border_img {
     border-style:solid;
     border-width:0.1px;
-    padding:0rem 10rem 0rem 0rem;
-    color:Gray;
-    border-color:#D4D4D4;
+    padding:0rem 19rem 0rem 0rem;
+    color:black;
+    border-color:#000000;
     font-size:1.6rem;
 }
 
 .work_field1 {
     max-height:0;
-    margin-top:0.7rem;
+    margin-top:-0.01rem;
+    margin-left:1rem;
     width:200px;
     overflow:hidden;
     color:#FF0000;
-    background:#FFFFFF;
+    background:#F6F6F6;
     font-size:20px;
 }
 
@@ -168,7 +172,7 @@ input[id="answer04"]:checked + label + div {
     max-height:0;
     overflow:hidden;
     color:#FF0000;
-    background:#FFFFFF;
+    background:#F6F6F6;
 }
 
 .test_field3 {
@@ -178,7 +182,7 @@ input[id="answer04"]:checked + label + div {
 
 input[id="answer04"]:checked + label + div + div input[id="answer04_01"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -188,7 +192,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_01"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_02"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -199,7 +203,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_02"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_03"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -209,7 +213,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_03"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_04"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -219,7 +223,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_04"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_05"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -229,7 +233,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_05"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_06"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -239,7 +243,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_06"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_07"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -249,7 +253,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_07"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_08"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -259,7 +263,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_08"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_09"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -269,7 +273,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_09"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_10"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -279,7 +283,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_10"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_11"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -289,7 +293,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_11"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_12"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -299,7 +303,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_12"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_13"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -309,7 +313,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_13"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_14"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -319,7 +323,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_14"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_15"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -329,7 +333,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_15"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_16"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -339,7 +343,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_16"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_17"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -350,7 +354,7 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_17"]:checked
 }
 input[id="answer04"]:checked + label + div + div input[id="answer04_18"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:12.5rem;
     max-height:300px;
     height:300px;
@@ -373,12 +377,12 @@ input[id="answer04"]:checked + label + div + div input[id="answer04_18"]:checked
 
 .work_field3 {
     max-height:0;
-    margin-top:0.7rem;
-    margin-left:-28.65rem;
+    margin-top:0.01rem;
+    margin-left:-27rem;
     width:400px;
     overflow:hidden;
     color:#FF0000;
-    background:#FFFFFF;
+    background:#F6F6F6;
     font-size:20px;
 }
 
@@ -397,12 +401,12 @@ input[id="answer05"]:checked + label + div {
     max-height:0;
     overflow:hidden;
     color:#FF0000;
-    background:#FFFFFF;
+    background:#F6F6F6;
 }
 
 input[id="answer05"]:checked + label + div + div input[id="answer05_01"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -412,7 +416,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_01"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_02"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -422,7 +426,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_02"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_03"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -432,7 +436,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_03"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_04"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -442,7 +446,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_04"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_05"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -452,7 +456,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_05"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_06"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -462,7 +466,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_06"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_07"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -472,7 +476,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_07"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_08"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -482,7 +486,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_08"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_09"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -492,7 +496,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_09"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_10"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -502,7 +506,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_10"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_11"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -512,7 +516,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_11"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_12"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;
@@ -522,7 +526,7 @@ input[id="answer05"]:checked + label + div + div input[id="answer05_12"]:checked
 }
 input[id="answer05"]:checked + label + div + div input[id="answer05_13"]:checked + label + div {
     position:absolute;
-    top:11.5rem;
+    top:8.75rem;
     margin-left:25rem;
     max-height:300px;
     height:300px;

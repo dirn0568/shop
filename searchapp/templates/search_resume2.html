@@ -2187,14 +2187,14 @@
                 </li>
             </ul>
             <div class="search_content">
-                    {% for list in resume %}
+                    {% for list in resume_search %}
                         <a href="{% url 'resumeapp:detail_resume' title=list.0.pk %}">
                             <ul class="mini_content" style="color:#000000;">
                                 <li>
                                     <div>
-                                        {{ list.0.resume_title.profile.user_name }}
+                                        조OO
                                         <p></p>
-                                        {{ list.0.resume_title.profile.user_gender.0 }}, {{ list.1 }}세
+                                        (남 | 1999년, 24세)
                                         <p></p>
                                         <a href="?title={{ list.0.pk }}">
                                             면접제의
@@ -2204,22 +2204,22 @@
                                 <li>
                                     <div style="margin-left:3rem;">
                                         <span style="font-size:2rem; font-weight:bold;">
-                                            {{ list.2 }}
+                                            {{ list.1 }}
                                         </span>
                                         <p></p>
                                         직무기술 :
                                         <p></p>
-                                        학교명 : {{ list.4 }} <span class="information_css">졸업</span>
+                                        학교명 : {{ list.3 }} <span class="information_css">졸업</span>
                                         <p></p>
                                         <span style="font-size:15px;">
-                                            희망지역 : {{ list.6 }},{{ list.7 }},{{ list8 }} | 즉시근무가능 | 희망연봉 : {{ list.5 }}
+                                            희망지역 : {{ list.5 }},{{ list.6 }},{{ list.7 }} | 즉시근무가능 | 희망연봉 : {{ list.4 }}
                                             <p></p>
-                                            희망직종 : {{ list.9 }} | {{ list.10 }} | {{ list.11 }}
+                                            희망직종 : {{ list.8 }} | {{ list.9 }} | {{ list.10 }}
                                         </span>
                                     </div>
                                 </li>
                                 <li style="margin-left:auto;">
-                                    {{ list.3|date:"Y-m-d" }}
+                                    {{ list.2|date:"Y-m-d" }}
                                 </li>
                             </ul>
                             <hr>
@@ -2229,9 +2229,9 @@
                     <!-- 페이징처리 시작 -->
                     <ul class="pagination justify-content-center">
                         <!-- 이전페이지 -->
-                        {% if resume.has_previous %}
+                        {% if resume_search.has_previous %}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ resume.previous_page_number }}">이전</a>
+                                <a class="page-link" href="?page_search={{ resume_search.previous_page_number }}">이전</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
@@ -2239,23 +2239,23 @@
                             </li>
                         {% endif %}
                         <!-- 페이지리스트 -->
-                        {% for page_number in resume.paginator.page_range %}
-                            {% if page_number >= resume.number|add:-5 and page_number <= resume.number|add:5 %}
-                                {% if page_number == resume.number %}
+                        {% for page_number in resume_search.paginator.page_range %}
+                            {% if page_number >= resume_search.number|add:-5 and page_number <= resume_search.number|add:5 %}
+                                {% if page_number == resume_search.number %}
                                     <li class="page-item active" aria-current="page">
-                                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                                        <a class="page-link" href="?page_search={{ page_number }}">{{ page_number }}</a>
                                     </li>
                                 {% else %}
                                     <li class="page-item">
-                                        <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                                        <a class="page-link" href="?page_search={{ page_number }}">{{ page_number }}</a>
                                     </li>
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                         <!-- 음페이지 -->
-                        {% if resume.has_next %}
+                        {% if resume_search.has_next %}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{ resume.next_page_number }}">다음</a>
+                                <a class="page-link" href="?page_search={{ resume_search.next_page_number }}">다음</a>
                             </li>
                         {% else %}
                             <li class="page-item disabled">
