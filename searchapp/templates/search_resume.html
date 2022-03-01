@@ -2190,11 +2190,28 @@
                     {% for list in resume %}
                         <a href="{% url 'resumeapp:detail_resume' title=list.0.pk %}">
                             <ul class="mini_content" style="color:#000000;">
-                                <li>
+                                <li style="width:10rem; overflow:hidden;">
                                     <div>
-                                        {{ list.0.resume_title.profile.user_name }}
+                                        {% if list.1 == "None" %}
+                                            비공개
+                                        {% else %}
+                                            {{ list.1 }}
+                                        {% endif %}
                                         <p></p>
-                                        {{ list.0.resume_title.profile.user_gender.0 }}, {{ list.1 }}세
+                                        {% if list.2 == "None" %}
+                                            ( 비공개 /
+                                        {% else %}
+                                            ( {{ list.2.0 }} /
+                                        {% endif %}
+                                        {% if list.4 == "None" %}
+                                        {% else %}
+                                             {{ list.4 }},
+                                        {% endif %}
+                                        {% if list.3 == "None" %}
+                                            &nbsp;- )
+                                        {% else %}
+                                             {{ list.3 }}세)
+                                        {% endif %}
                                         <p></p>
                                         <a href="?title={{ list.0.pk }}">
                                             면접제의
@@ -2204,22 +2221,31 @@
                                 <li>
                                     <div style="margin-left:3rem;">
                                         <span style="font-size:2rem; font-weight:bold;">
-                                            {{ list.2 }}
+                                            {{ list.5 }}
                                         </span>
                                         <p></p>
                                         직무기술 :
                                         <p></p>
-                                        학교명 : {{ list.4 }} <span class="information_css">졸업</span>
+                                        학교명 : {{ list.7 }} <span class="information_css">졸업</span>
                                         <p></p>
                                         <span style="font-size:15px;">
-                                            희망지역 : {{ list.6 }},{{ list.7 }},{{ list8 }} | 즉시근무가능 | 희망연봉 : {{ list.5 }}
+                                            희망지역 :
+                                            {% for temp in list.9 %}
+                                                # {{ temp }}
+                                            {% endfor %}
+                                            | 즉시근무가능 | 희망연봉 : {{ list.8 }}
                                             <p></p>
-                                            희망직종 : {{ list.9 }} | {{ list.10 }} | {{ list.11 }}
+                                            희망직종 :
+                                            {% for temp in list.10 %}
+                                                # {{ temp }}
+                                            {% endfor %}
                                         </span>
                                     </div>
                                 </li>
                                 <li style="margin-left:auto;">
-                                    {{ list.3|date:"Y-m-d" }}
+                                    <div style="position:relative; top:95%;">
+                                        {{ list.6|date:"Y-m-d" }}
+                                    </div>
                                 </li>
                             </ul>
                             <hr>
