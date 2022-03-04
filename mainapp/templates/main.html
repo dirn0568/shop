@@ -26,8 +26,7 @@
                             <a href="{% url 'accountapp:update_user' pk=request.user.pk %}">정보 변경</a> /
                             <a href="{% url 'accountapp:delete_user' pk=request.user.pk %}">아이디 삭제</a>
                             <p></p>
-                            <a href="{% url 'profileapp:update_profile' pk=request.user.pk %}">프로필변경</a>
-                            <a href="{% url 'profileapp:delete_profile' pk=request.user.pk %}">프로필삭제</a>
+                            <a href="{% url 'accountapp:detail_user' pk=request.user.pk %}">프로필 변경</a>
                             <p></p>
                             <a href="{% url 'messageapp:message_content' pk=request.user.pk %}">메세지함</a>
                             <p></p>
@@ -71,28 +70,32 @@
                         <div>
                             <div>
                                 &nbsp;{{ list.0 }}
+                            </div>
+                            <div>
                                 {% if list.2 == "None" %}
                                 {% else %}
-                                    ({{ list.1 }}, {{ list.2 }}세)
+                                    &nbsp;({{ list.1 }}, {{ list.2 }}세)
                                 {% endif %}
                             </div>
                             <div>
-                                &nbsp;♥ {{ list.6 }}
+                                &nbsp;
+                                <span style="color:#FF007F;">♥</span>
+                                {{ list.6 }}
                             </div>
                         </div>
                     </div>
-                    <div style="font-size:1rem; font-weight:bold;">
+                    <div style="font-size:1rem; font-weight:bold; width:13rem; height:1.5rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                         {{ list.5 }}
                     </div>
-                    <div style="font-size:0.8rem;">
+                    <div style="font-size:0.8rem; width:13rem; height:1.3rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                         {% if list.7 %}
-                            {{ list.7 }}
+                            # {{ list.7 }}
                         {% endif %}
                         {% if list.8 %}
-                            {{ list.8 }}
+                            # {{ list.8 }}
                         {% endif %}
                         {% if list.9 %}
-                            {{ list.9 }}
+                            # {{ list.9 }}
                         {% endif %}
                     </div>
                 </a>
@@ -112,28 +115,32 @@
                         <div>
                             <div>
                                 &nbsp;{{ list.0 }}
+                            </div>
+                            <div>
                                 {% if list.2 == "None" %}
                                 {% else %}
-                                    ({{ list.1 }}, {{ list.2 }}세)
+                                    &nbsp;({{ list.1 }}, {{ list.2 }}세)
                                 {% endif %}
                             </div>
                             <div>
-                                &nbsp;♥ {{ list.6 }}
+                                &nbsp;
+                                <span style="color:#FF007F;">♥</span>
+                                {{ list.6 }}
                             </div>
                         </div>
                     </div>
-                    <div style="font-size:1rem; font-weight:bold;">
+                    <div style="font-size:1rem; font-weight:bold; width:13rem; height:1.5rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                         {{ list.5 }}
                     </div>
-                    <div style="font-size:0.8rem;">
+                    <div style="font-size:0.8rem; width:13rem; height:1.3rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                         {% if list.7 %}
-                            {{ list.7 }}
+                            # {{ list.7 }}
                         {% endif %}
                         {% if list.8 %}
-                            {{ list.8 }}
+                            # {{ list.8 }}
                         {% endif %}
                         {% if list.9 %}
-                            {{ list.9 }}
+                            # {{ list.9 }}
                         {% endif %}
                     </div>
                 </a>

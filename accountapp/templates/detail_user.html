@@ -119,7 +119,9 @@
             {{ resume_num }}
         </a>
         <p></p>
-        메세지함
+        <a href="{% url 'messageapp:message_content' pk=request.user.pk %}">
+            <span>메세지함</span>
+        </a>
         <p></p>
         <span class="self_apeal_create" style="border-radius: 10px">
             <a href="{% url 'resumeapp:resume_resume2' school=1 school_major4=1 career=0 out_play=0 prize_play=0 port_polio=0 self_introduce=0 pk=target_user.pk %}">이력서 만들기</a>
