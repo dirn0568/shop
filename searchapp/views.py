@@ -102,15 +102,27 @@ def search_resume(request):
                 if school1.count() >= 1:
                     for temp in school1:
                         answer.append(temp.elementary_school_name)
+                    if temp.elementary_state:
+                        answer.append(temp.elementary_state)
+                    else:
+                        answer.append("None")
                 if school2.count() >= 1:
                     for temp in school2:
                         answer.append(temp.middle_school_name)
+                    if temp.middle_state:
+                        answer.append(temp.middle_state)
+                    else:
+                        answer.append("None")
                 if school3.count() >= 1:
                     for temp in school3:
                         a = temp.high_school_name
                         b = temp.high_major
                     c = a + '(' + b + ')'
                     answer.append(c)
+                    if temp.high_state:
+                        answer.append(temp.high_state)
+                    else:
+                        answer.append("None")
                 if school4.count() >= 1:
                     for temp in school4:
                         a = temp.university_school_name
@@ -120,6 +132,11 @@ def search_resume(request):
                             break
                     c = a + '(' + b + ')'
                     answer.append(c)
+                    for temp in school4:
+                        if temp.university_state:
+                            answer.append(temp.university_state)
+                        else:
+                            answer.append("None")
 
                 hope_money = Resume_Hope_Work.objects.filter(resume_hope_work=resume_title)
                 for hope in hope_money:
@@ -155,12 +172,14 @@ def search_resume(request):
 
 def search_resume2(request, field, work):
     context = {}
-    field = field.strip("[""]")
-    field = field.replace("'", "")
-    work = work.strip("[""]")
-    work = work.replace("'", "")
-    list_field = field.split(',')
-    list_work = work.split(',')
+    # print(field, '원래field?')
+    # field = field.strip("[""]")
+    # field = field.replace("'", "")
+    # print(field)
+    # work = work.strip("[""]")
+    # work = work.replace("'", "")
+    # list_field = field.split(',')
+    # list_work = work.split(',')
 
     title = request.GET.get('title', None)
 
@@ -181,12 +200,16 @@ def search_resume2(request, field, work):
                 temp_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=resume_title)
                 field_list = request.POST.getlist('accordion2')
                 work_list = request.POST.getlist('work2')
+                # print(field_list, 'field_list')
+                # print(work_list, 'work_list')
                 field_list.append(request.GET.get('field'))
                 work_list.append(request.GET.get('work'))
+                # print(field_list, 'field_list2')
+                # print(work_list, 'work_list2')
                 answer_field = 0
                 answer_work = 0
                 for resume_field in temp_field:
-                    print(resume_field.resume_hope_work_field1, '22222222222')
+                    # print(resume_field.resume_hope_work_field1, '22222222222')
                     if field_list.count(resume_field.resume_hope_work_field1) >= 1:
                         answer_field += 1
                 for resume_work in temp_work:
@@ -260,12 +283,106 @@ def search_resume2(request, field, work):
             answer_field = 0
             answer_work = 0
             for resume_field in temp_field:
-                print(list_field, '11111111111111111111111111')
-                print(resume_field.resume_hope_work_field1, '22222222222')
-                if list_field.count(resume_field.resume_hope_work_field1) >= 1:
+                # print(list_field, '11111111111111111111111111')
+                # print(resume_field.resume_hope_work_field1, '22222222222')
+                # print(resume_field.resume_hope_work_field1, resume_field.resume_hope_work_field)
+                # print(list_field, 'list_field')
+                print(field, 'field')
+                if resume_field.resume_hope_work_field1 == '서울전체 서울':
+                    if '서울' in field:
+                        answer_field += 1
+                if '서울전체 서울' in field:
+                    if '서울' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '경기전체 경기':
+                    if '경기' in field:
+                        answer_field += 1
+                if '경기전체 경기' in field:
+                    if '경기' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '광주전체 광주':
+                    if '광주' in field:
+                        answer_field += 1
+                if '광주전체 광주' in field:
+                    if '광주' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '대구전체 대구':
+                    if '대구' in field:
+                        answer_field += 1
+                if '대구전체 대구' in field:
+                    if '대구' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '대전전체 대전':
+                    if '대전' in field:
+                        answer_field += 1
+                if '대전전체 대전' in field:
+                    if '대전' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '울산전체 울산':
+                    if '울산' in field:
+                        answer_field += 1
+                if '울산전체 울산' in field:
+                    if '울산' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '인천전체 인천':
+                    if '인천' in field:
+                        answer_field += 1
+                if '인천전체 인천' in field:
+                    if '인천' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '강원전체 강원':
+                    if '강원' in field:
+                        answer_field += 1
+                if '강원전체 강원' in field:
+                    if '강원' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '경남전체 경남':
+                    if '경남' in field:
+                        answer_field += 1
+                if '경남전체 경남' in field:
+                    if '경남' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '경북전체 경북':
+                    if '경북' in field:
+                        answer_field += 1
+                if '경북전체 경북' in field:
+                    if '경북' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '전남전체 전남':
+                    if '전남' in field:
+                        answer_field += 1
+                if '전남전체 전남' in field:
+                    if '전남' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '전북전체 전북':
+                    if '전북' in field:
+                        answer_field += 1
+                if '전북전체 전북' in field:
+                    if '전북' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '충북전체 충북':
+                    if '충북' in field:
+                        answer_field += 1
+                if '충북전체 충북' in field:
+                    if '충북' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '충남전체 충남':
+                    if '충남' in field:
+                        answer_field += 1
+                if '충남전체 충남' in field:
+                    if '충남' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if resume_field.resume_hope_work_field1 == '제주전체 제주':
+                    if '제주' in field:
+                        answer_field += 1
+                if '제주전체 제주' in field:
+                    if '제주' in resume_field.resume_hope_work_field1:
+                        answer_field += 1
+                if field.count(resume_field.resume_hope_work_field1) >= 1:
+                    # print('실행중?')
                     answer_field += 1
             for resume_work in temp_work:
-                if list_work.count(resume_work.resume_hope_work_work1) >= 1:
+                if work.count(resume_work.resume_hope_work_work1) >= 1:
                     answer_work += 1
             if answer_field >= 1 and answer_work >= 1:
                 #################################################################################
@@ -333,15 +450,27 @@ def search_resume2(request, field, work):
                 if school1.count() >= 1:
                     for temp in school1:
                         answer.append(temp.elementary_school_name)
+                    if temp.elementary_state:
+                        answer.append(temp.elementary_state)
+                    else:
+                        answer.append("None")
                 if school2.count() >= 1:
                     for temp in school2:
                         answer.append(temp.middle_school_name)
+                    if temp.middle_state:
+                        answer.append(temp.middle_state)
+                    else:
+                        answer.append("None")
                 if school3.count() >= 1:
                     for temp in school3:
                         a = temp.high_school_name
                         b = temp.high_major
                     c = a + '(' + b + ')'
                     answer.append(c)
+                    if temp.high_state:
+                        answer.append(temp.high_state)
+                    else:
+                        answer.append("None")
                 if school4.count() >= 1:
                     for temp in school4:
                         a = temp.university_school_name
@@ -351,6 +480,11 @@ def search_resume2(request, field, work):
                             break
                     c = a + '(' + b + ')'
                     answer.append(c)
+                    for temp in school4:
+                        if temp.university_state:
+                            answer.append(temp.university_state)
+                        else:
+                            answer.append("None")
 
                 hope_money = Resume_Hope_Work.objects.filter(resume_hope_work=resume_title)
                 for hope in hope_money:
@@ -371,14 +505,14 @@ def search_resume2(request, field, work):
                 answer_list.append(answer)
 
     context['answer_list'] = answer_list
-    print(answer_list)
+    # print(answer_list)
     context['school_list'] = school_list
 
     page = request.GET.get('page_search', '1')
 
     count = len(answer_list)
 
-    paginator = Paginator(answer_list, 2)
+    paginator = Paginator(answer_list, 8)
 
     page_obj = paginator.get_page(page)
 

@@ -260,7 +260,7 @@
                 </span>
                 <span class="date_css">
                     {% if school.middle_gamjang_time %}
-                        {{ school.middle_gamjang_time }}
+                        {{ school.middle_gamjang_time }} <span style="color:#A6A6A6;">(졸업)</span>
                     {% endif %}
                 </span>
             {% endfor %}
@@ -630,7 +630,7 @@
                 </span>
                 <p></p>
                 <div class="mini_div">
-                    <ul><li>{{ self_introduce_list.resume_self_introduce_text }}</li></ul>
+                    <ul><li>{% for list in self_introduce_list.resume_self_introduce_text %}{% if list == '∠' %}&nbsp;{% else %}{% if list == '∏' %}<br>{% else %}{{ list }}{% endif %}{% endif %}{% endfor %}</li></ul>
                 </div>
             {% endfor %}
         </div>

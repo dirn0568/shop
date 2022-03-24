@@ -2224,19 +2224,18 @@
                                             {{ list.5 }}
                                         </span>
                                         <p></p>
-                                        직무기술 :
-                                        <p></p>
-                                        학교명 : {{ list.7 }} <span class="information_css">졸업</span>
+                                        학교명 : {{ list.7 }} <span class="information_css">{{ list.8 }}</span>
                                         <p></p>
                                         <span style="font-size:15px;">
                                             희망지역 :
-                                            {% for temp in list.9 %}
+                                            {% for temp in list.10 %}
                                                 # {{ temp }}
                                             {% endfor %}
-                                            | 즉시근무가능 바꿔야함 | 희망연봉 : {{ list.8 }}
+                                            <p></p>
+                                            희망연봉 : {{ list.9 }}
                                             <p></p>
                                             희망직종 :
-                                            {% for temp in list.10 %}
+                                            {% for temp in list.11 %}
                                                 # {{ temp }}
                                             {% endfor %}
                                         </span>

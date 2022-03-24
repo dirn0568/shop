@@ -711,7 +711,16 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                 for temp in temp_title:
                     temp_form.resume_self_introduce = temp
                 temp_form.resume_self_introduce_title = request.POST.get('self_introduce1{0}'.format(i))
-                temp_form.resume_self_introduce_text = request.POST.get('self_introduce2{0}'.format(i))
+                temp_introduce_text = request.POST.get('self_introduce2{0}'.format(i))
+                data=''
+                for temp_data in temp_introduce_text:
+                    if temp_data == ' ':
+                        data += '∠'
+                    elif temp_data == '\r':
+                        data += '∏'
+                    else:
+                        data += temp_data
+                temp_form.resume_self_introduce_text = data
                 temp_form.save()
         elif request.method == 'POST' and school == 2:
             form = ResumeMiddleForm(request.POST, request.FILES)
@@ -964,32 +973,50 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                 if form.is_valid():
                     temp_form = form.save(commit=False)
                     temp_form.resume_elementary = resume
-                    temp_form.elementary_school_name = request.POST['elementary_school_name']
-                    temp_form.elementary_field_name = request.POST['study_field1']
-                    temp_form.elementary_start_time = request.POST['study_start1']
-                    temp_form.elementary_end_time = request.POST['study_end1']
-                    temp_form.save()
+                    if request.POST.get('초졸검정고시') == 'on':
+                        temp_form.elementary_school_name = '초졸검정고시'
+                        temp_form.elementary_gamjang_time = request.POST['elementary_gamjang_day']
+                        temp_form.save()
+                    else:
+                        temp_form.elementary_school_name = request.POST['elementary_school_name']
+                        temp_form.elementary_field_name = request.POST['study_field1']
+                        temp_form.elementary_start_time = request.POST['study_start1']
+                        temp_form.elementary_end_time = request.POST['study_end1']
+                        temp_form.elementary_state = request.POST['elementary_state']
+                        temp_form.save()
             if school == 2:
                 form = ResumeMiddleForm(request.POST, request.FILES)
                 if form.is_valid():
                     temp_form = form.save(commit=False)
                     temp_form.resume_middle = resume
-                    temp_form.middle_school_name = request.POST['middle_school_name']
-                    temp_form.middle_field_name = request.POST['study_field2']
-                    temp_form.middle_start_time = request.POST['study_start2']
-                    temp_form.middle_end_time = request.POST['study_end2']
-                    temp_form.save()
+                    if request.POST.get('중졸검정고시') == 'on':
+                        temp_form.middle_school_name = '중졸검정고시'
+                        temp_form.middle_gamjang_time = request.POST['middle_gamjang_day']
+                        temp_form.save()
+                    else:
+                        temp_form.middle_school_name = request.POST['middle_school_name']
+                        temp_form.middle_field_name = request.POST['study_field2']
+                        temp_form.middle_start_time = request.POST['study_start2']
+                        temp_form.middle_end_time = request.POST['study_end2']
+                        temp_form.middle_state = request.POST['middle_state']
+                        temp_form.save()
             if school == 3:
                 form = ResumeHighForm(request.POST, request.FILES)
                 if form.is_valid():
                     temp_form = form.save(commit=False)
                     temp_form.resume_high = resume
-                    temp_form.high_school_name = request.POST['high_school_name']
-                    temp_form.high_field_name = request.POST['study_field3']
-                    temp_form.high_start_time = request.POST['study_start3']
-                    temp_form.high_end_time = request.POST['study_end3']
-                    temp_form.high_major = request.POST['study_major3']
-                    temp_form.save()
+                    if request.POST.get('고졸검정고시') == 'on':
+                        temp_form.high_school_name = '고졸검정고시'
+                        temp_form.high_gamjang_time = request.POST['high_gamjang_day']
+                        temp_form.save()
+                    else:
+                        temp_form.high_school_name = request.POST['high_school_name']
+                        temp_form.high_field_name = request.POST['study_field3']
+                        temp_form.high_start_time = request.POST['study_start3']
+                        temp_form.high_end_time = request.POST['study_end3']
+                        temp_form.high_major = request.POST['study_major3']
+                        temp_form.high_state = request.POST['high_state']
+                        temp_form.save()
             if school == 4:
                 form = ResumeUniversityForm(request.POST, request.FILES)
                 if form.is_valid():
@@ -1405,8 +1432,20 @@ def resume_self_introduce_update(request, self_introduce, title, pk):
                     temp_form = form.save(commit=False)
                     temp_form.resume_self_introduce = resume
                     temp_form.resume_self_introduce_title = request.POST.get('self_introduce1{0}'.format(i))
-                    temp_form.resume_self_introduce_text = request.POST.get('self_introduce2{0}'.format(i))
+
+                    temp_introduce_text = request.POST.get('self_introduce2{0}'.format(i))
+                    data = ''
+                    for temp_data in temp_introduce_text:
+                        if temp_data == ' ':
+                            data += '∠'
+                        elif temp_data == '\r':
+                            data += '∏'
+                        else:
+                            data += temp_data
+                    temp_form.resume_self_introduce_text = data
                     temp_form.save()
+
+
         return redirect('resumeapp:detail_resume', title=title)
     return render(request, 'resume_self_introduce_update.html', context)
 
