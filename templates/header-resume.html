@@ -49,7 +49,7 @@
                     <span>MyPage</span>
                 </a>
                 &nbsp;
-                <a href="{% url 'accountapp:logout' %}?next={{ request.path }}">
+                <a href="{% url 'accountapp:logout' %}?next={% url 'mainapp:main' %}">
                     <span>logout</span>
                 </a>
             {% endif %}

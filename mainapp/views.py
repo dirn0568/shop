@@ -74,6 +74,11 @@ def main(request):
                     print(user_profile.profile_img)
                 else:
                     answer.append("None")
+            if len(answer) == 0:
+                answer.append("None")
+                answer.append("None")
+                answer.append("None")
+                answer.append("None")
 
             temp_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=resume_title)
 
@@ -131,6 +136,12 @@ def main(request):
                 else:
                     answer.append("None")
 
+            if len(answer) == 0:
+                answer.append("None")
+                answer.append("None")
+                answer.append("None")
+                answer.append("None")
+
             temp_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=resume_title)
 
             # field_list = request.POST.getlist('work2')
@@ -154,8 +165,17 @@ def main(request):
     context['answer_list2'] = answer_list2
     context['school_list2'] = school_list2
 
-
-
+    ##########################################################################################
+    # 메인 마지막 조각, 기업로고들
+    main_company = []
+    temp_company = MyUser.objects.all()
+    for temp in temp_company:
+        if len(main_company) >= 9:
+            break
+        if temp.company_number:
+            main_company.append(temp)
+    context['company'] = main_company
+    ##########################################################################################
     return render(request, 'main.html', context)
     # html = []
     # html2 = []

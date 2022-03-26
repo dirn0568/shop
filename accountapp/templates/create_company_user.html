@@ -20,7 +20,7 @@
         <h3 style="font-weight:bold;">
             SIGN UP (Company)
         </h3>
-        <form action="{% url 'accountapp:create_company_user' %}" method="post">
+        <form action="{% url 'accountapp:create_company_user' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <h5 style="font-weight:bold;">
                 기업정보
@@ -47,6 +47,11 @@
                 </li>
             </ul>
             <p></p>
+            <div style="width:500px;height:25px;text-align:left;color:#8C8C8C;">
+                기업로고 : <input type="file" name="company_logo" placeholder="회사로고" class="company_num_css" required>
+            </div>
+            <p></p>
+            <input type="number" name="company_phone_number" placeholder="회사 전화번호" style="width:500px;height:50px;" class="company_num_css" maxlength="13" required>
             <hr>
             {% bootstrap_form form %}
             <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">
