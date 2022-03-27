@@ -661,6 +661,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                 if request.POST.get('초졸검정고시') == 'on':
                     temp_form.elementary_school_name = '초졸검정고시'
                     temp_form.elementary_gamjang_time = request.POST['elementary_gamjang_day']
+                    temp_form.elementary_state = '졸업'
                     temp_form.save()
                 else:
                     temp_form.elementary_school_name = request.POST['elementary_school_name']
@@ -733,6 +734,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                 if request.POST.get('중졸검정고시') == 'on':
                     temp_form.middle_school_name = '중졸검정고시'
                     temp_form.middle_gamjang_time = request.POST['middle_gamjang_day']
+                    temp_form.middle_state = '졸업'
                     temp_form.save()
                 else:
                     temp_form.middle_school_name = request.POST['middle_school_name']
@@ -796,6 +798,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                 if request.POST.get('고졸검정고시') == 'on':
                     temp_form.high_school_name = '고졸검정고시'
                     temp_form.high_gamjang_time = request.POST['high_gamjang_day']
+                    temp_form.high_state = '졸업'
                     temp_form.save()
                 else:
                     temp_form.high_school_name = request.POST['high_school_name']
@@ -976,6 +979,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                     if request.POST.get('초졸검정고시') == 'on':
                         temp_form.elementary_school_name = '초졸검정고시'
                         temp_form.elementary_gamjang_time = request.POST['elementary_gamjang_day']
+                        temp_form.elementary_state = '졸업'
                         temp_form.save()
                     else:
                         temp_form.elementary_school_name = request.POST['elementary_school_name']
@@ -992,6 +996,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                     if request.POST.get('중졸검정고시') == 'on':
                         temp_form.middle_school_name = '중졸검정고시'
                         temp_form.middle_gamjang_time = request.POST['middle_gamjang_day']
+                        temp_form.middle_state = '졸업'
                         temp_form.save()
                     else:
                         temp_form.middle_school_name = request.POST['middle_school_name']
@@ -1008,6 +1013,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                     if request.POST.get('고졸검정고시') == 'on':
                         temp_form.high_school_name = '고졸검정고시'
                         temp_form.high_gamjang_time = request.POST['high_gamjang_day']
+                        temp_form.high_state = '졸업'
                         temp_form.save()
                     else:
                         temp_form.high_school_name = request.POST['high_school_name']

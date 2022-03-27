@@ -26,9 +26,11 @@ def search_resume(request):
 
 
     if request.method == 'POST' and request.POST.get('resume_submit1'):
+        print(request.POST, '^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
         field_list = request.POST.getlist('accordion2')
         work_list = request.POST.getlist('work2')
-        return redirect('searchapp:search_resume2', field=field_list, work=work_list)
+        study_list = request.POST.getlist('study1')
+        return redirect('searchapp:search_resume2', field=field_list, work=work_list, study=study_list)
         # return render(request, 'search_resume2.html', context)
 
     else:
@@ -170,7 +172,7 @@ def search_resume(request):
         context['answer'] = "None"
     return render(request, 'search_resume.html', context)
 
-def search_resume2(request, field, work):
+def search_resume2(request, field, work, study):
     context = {}
     # print(field, '원래field?')
     # field = field.strip("[""]")
@@ -276,12 +278,55 @@ def search_resume2(request, field, work):
     temp_resume = Resume_Title.objects.all()
     answer_list = []
     school_list = []
+    study_list = []
+    print(field, 'field')
+    print(work, 'work')
+    print(study, 'study')
+    temp_study = '없음'
     for resume_title in temp_resume:
         if resume_title.resume_open == 1:
             temp_field = Resume_Hope_Work_Field.objects.filter(resume_hope_work_field=resume_title)
             temp_work = Resume_Hope_Work_Work.objects.filter(resume_hope_work_work=resume_title)
+
+            school11 = Resume_ElementarySchool.objects.filter(resume_elementary=resume_title)
+            school22 = Resume_MiddleSchool.objects.filter(resume_middle=resume_title)
+            school33 = Resume_HighSchool.objects.filter(resume_high=resume_title)
+            school44 = Resume_UniversitySchool.objects.filter(resume_university=resume_title)
+
+            if school11.count() >= 1:
+                for school111 in school11:
+                    if school111.elementary_state == '중퇴':
+                        temp_study = '고교졸업이하'
+                    else:
+                        temp_study = '고교졸업이하'
+            if school22.count() >= 1:
+                for school222 in school22:
+                    if school222.middle_state == '중퇴':
+                        temp_study = '고교졸업이하'
+                    else:
+                        temp_study = '고교졸업이하'
+            if school33.count() >= 1:
+                for school333 in school33:
+                    if school333.high_state == '졸업':
+                        temp_study = '고등학교졸업'
+                    else:
+                        temp_study = '고교졸업이하'
+            if school44.count() >= 1:
+                for school444 in school44:
+                    if school444.university_state == '졸업' and school44.university_study_year == '대학(2,3년)':
+                        temp_study = '대학 졸업(2,3년제)'
+                    elif school444.university_state == '졸업' and school44.university_study_year == '대학교(4년)':
+                        temp_study = '대학교 졸업(4년제)'
+                    elif school444.university_state == '졸업' and school44.university_study_year == '대학원(석사)':
+                        temp_study = '대학원 석사 졸업'
+                    elif school444.university_state == '졸업' and school44.university_study_year == '대학원(박사)':
+                        temp_study = '대학원 박사 졸업'
+                    else:
+                        temp_study = '고등학교졸업'
+
             answer_field = 0
             answer_work = 0
+            answer_study = 0
             for resume_field in temp_field:
                 # print(list_field, '11111111111111111111111111')
                 # print(resume_field.resume_hope_work_field1, '22222222222')
@@ -384,7 +429,23 @@ def search_resume2(request, field, work):
             for resume_work in temp_work:
                 if work.count(resume_work.resume_hope_work_work1) >= 1:
                     answer_work += 1
-            if answer_field >= 1 and answer_work >= 1:
+            print(temp_study, 'temp_study')
+            for resume_study in temp_study:
+                if study.count('학력무관') >= 1:
+                    answer_study += 1
+                if study.count(resume_study) >= 1:
+                    print('이거 실행중>>>>>')
+                    answer_study += 1
+            if len(field) == 2:
+                print('이거 실행안됌????')
+                answer_field += 1
+            if len(work) == 2:
+                print('이거 실행안됌????')
+                answer_work += 1
+            if len(study) == 2:
+                print('이거 실행안됌????')
+                answer_study += 1
+            if answer_field >= 1 and answer_work >= 1 and answer_study >= 1:
                 #################################################################################
                 answer = []
                 answer.append(resume_title)
