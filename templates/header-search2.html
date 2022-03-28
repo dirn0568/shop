@@ -1,0 +1,57 @@
+
+    <div class="resume_header_content2">
+        <div>
+            <h1 class="font_data">PICK ME</h1>
+        </div>
+        <div class="resume_header_content_box2">
+            {% if not user.is_authenticated %}
+                <a href="{% url 'mainapp:main' %}">
+                    <span>메인</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'searchapp:search_resume' %}">
+                    <span>인재찾기</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'boardapp:board_list' %}">
+                    <span>자유게시판</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
+                    <span>login</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'accountapp:create_user' %}">
+                    <span>SignUp</span>
+                </a>
+            {% else %}
+                <a href="{% url 'mainapp:main' %}">
+                    <span>메인</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'searchapp:search_resume' %}">
+                    <span>인재찾기</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'boardapp:board_list' %}">
+                    <span>자유게시판</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'messageapp:message_content' pk=request.user.pk %}">
+                    <span>메세지함</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'resumeapp:list_resume' title=0 pk=request.user.pk %}">
+                    <span>이력서 관리</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'accountapp:detail_user' pk=user.pk %}">
+                    <span>MyPage</span>
+                </a>
+                &nbsp;
+                <a href="{% url 'accountapp:logout' %}?next={% url 'mainapp:main' %}">
+                    <span>logout</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>

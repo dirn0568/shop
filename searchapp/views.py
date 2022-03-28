@@ -10,7 +10,8 @@ from accountapp.models import MyUser
 from messageapp.models import Message_Send_Model
 from profileapp.models import User_Profile
 from resumeapp.models import Resume_Title, Resume_Hope_Work_Field, Resume_Hope_Work_Work, Resume_ElementarySchool, \
-    Resume_MiddleSchool, Resume_HighSchool, Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Hope_Work
+    Resume_MiddleSchool, Resume_HighSchool, Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Hope_Work, \
+    Resume_Career
 
 
 def search_resume(request):
@@ -140,6 +141,27 @@ def search_resume(request):
                         else:
                             answer.append("None")
 
+                temp_career = Resume_Career.objects.filter(resume_career=resume_title)
+                if len(temp_career) >= 1:
+                    for temp_career1 in temp_career:
+                        # print(temp_career1.resume_career_start_time, '경력시작날짜')
+                        # print(temp_career1.resume_career_end_time, '경력마지막날짜')
+                        career_year = abs(int(temp_career1.resume_career_start_time[0:4]) - int(temp_career1.resume_career_end_time[0:4]))
+                        if int(temp_career1.resume_career_start_time[5:]) > int(temp_career1.resume_career_end_time[5:]):
+                            career_year -= 1
+                            career_month = int(temp_career1.resume_career_start_time[5:]) + 12 - int(temp_career1.resume_career_end_time[5:])
+                        else:
+                            career_month = int(temp_career1.resume_career_end_time[5:]) - int(temp_career1.resume_career_start_time[5:])
+                    if career_year == 0:
+                        career_month = str(career_month) + '개월'
+                        answer.append(career_month)
+                    else:
+                        career_month = str(career_year) + '년' + str(career_month) + '개월'
+                        answer.append(career_month)
+                else:
+                    answer.append("None")
+                print(answer, 'answer')
+
                 hope_money = Resume_Hope_Work.objects.filter(resume_hope_work=resume_title)
                 for hope in hope_money:
                     answer.append(hope.resume_hope_work_money)
@@ -157,7 +179,6 @@ def search_resume(request):
                 answer.append(hope_list2)
 
                 answer_list.append(answer)
-
         page = request.GET.get('page', '1')
 
         count = len(answer_list)
@@ -294,32 +315,36 @@ def search_resume2(request, field, work, study):
             school44 = Resume_UniversitySchool.objects.filter(resume_university=resume_title)
 
             if school11.count() >= 1:
+                print('school11 실행중###################')
                 for school111 in school11:
                     if school111.elementary_state == '중퇴':
                         temp_study = '고교졸업이하'
                     else:
                         temp_study = '고교졸업이하'
             if school22.count() >= 1:
+                print('school22 실행중###################')
                 for school222 in school22:
                     if school222.middle_state == '중퇴':
                         temp_study = '고교졸업이하'
                     else:
                         temp_study = '고교졸업이하'
             if school33.count() >= 1:
+                print('school33 실행중###################')
                 for school333 in school33:
                     if school333.high_state == '졸업':
                         temp_study = '고등학교졸업'
                     else:
                         temp_study = '고교졸업이하'
             if school44.count() >= 1:
+                print('school44 실행중###################')
                 for school444 in school44:
-                    if school444.university_state == '졸업' and school44.university_study_year == '대학(2,3년)':
+                    if school444.university_state == '졸업' and school444.university_study_year == '대학(2,3년)':
                         temp_study = '대학 졸업(2,3년제)'
-                    elif school444.university_state == '졸업' and school44.university_study_year == '대학교(4년)':
+                    elif school444.university_state == '졸업' and school444.university_study_year == '대학교(4년)':
                         temp_study = '대학교 졸업(4년제)'
-                    elif school444.university_state == '졸업' and school44.university_study_year == '대학원(석사)':
+                    elif school444.university_state == '졸업' and school444.university_study_year == '대학원(석사)':
                         temp_study = '대학원 석사 졸업'
-                    elif school444.university_state == '졸업' and school44.university_study_year == '대학원(박사)':
+                    elif school444.university_state == '졸업' and school444.university_study_year == '대학원(박사)':
                         temp_study = '대학원 박사 졸업'
                     else:
                         temp_study = '고등학교졸업'
@@ -429,21 +454,17 @@ def search_resume2(request, field, work, study):
             for resume_work in temp_work:
                 if work.count(resume_work.resume_hope_work_work1) >= 1:
                     answer_work += 1
-            print(temp_study, 'temp_study')
-            for resume_study in temp_study:
-                if study.count('학력무관') >= 1:
-                    answer_study += 1
-                if study.count(resume_study) >= 1:
-                    print('이거 실행중>>>>>')
-                    answer_study += 1
+            if study.count('학력무관') >= 1:
+                answer_study += 1
+            if study.count(temp_study) >= 1:
+                print(temp_study, 'temp_study')
+                print(study.count(temp_study), 'study.count(temp_study)')
+                answer_study += 1
             if len(field) == 2:
-                print('이거 실행안됌????')
                 answer_field += 1
             if len(work) == 2:
-                print('이거 실행안됌????')
                 answer_work += 1
             if len(study) == 2:
-                print('이거 실행안됌????')
                 answer_study += 1
             if answer_field >= 1 and answer_work >= 1 and answer_study >= 1:
                 #################################################################################

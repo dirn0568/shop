@@ -49,3 +49,14 @@
 .resume_header_content_box a {
     color:#FF0000;
 }
+
+.resume_header_content2 {
+    width: 85rem;
+    margin:auto;
+    text-align:center;
+    background:#F6F6F6;
+}
+
+.resume_header_content_box2 a {
+    color:#FF0000;
+}
