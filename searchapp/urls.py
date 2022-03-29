@@ -8,5 +8,5 @@ app_name = 'searchapp'
 urlpatterns = [
     path('search_resume', views.search_resume, name='search_resume'),
 
-    path('search_resume2/<field>/<work>/<study>', views.search_resume2, name='search_resume2'),
+    path('search_resume2/<field>/<work>/<study>/<career>/<position>', views.search_resume2, name='search_resume2'),
 ]

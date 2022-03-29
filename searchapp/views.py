@@ -31,7 +31,9 @@ def search_resume(request):
         field_list = request.POST.getlist('accordion2')
         work_list = request.POST.getlist('work2')
         study_list = request.POST.getlist('study1')
-        return redirect('searchapp:search_resume2', field=field_list, work=work_list, study=study_list)
+        career_list = request.POST.getlist('career1')
+        position_list = request.POST.getlist('position1')
+        return redirect('searchapp:search_resume2', field=field_list, work=work_list, study=study_list, career=career_list, position=position_list)
         # return render(request, 'search_resume2.html', context)
 
     else:
@@ -193,7 +195,7 @@ def search_resume(request):
         context['answer'] = "None"
     return render(request, 'search_resume.html', context)
 
-def search_resume2(request, field, work, study):
+def search_resume2(request, field, work, study, career, position):
     context = {}
     # print(field, '원래field?')
     # field = field.strip("[""]")
@@ -352,12 +354,13 @@ def search_resume2(request, field, work, study):
             answer_field = 0
             answer_work = 0
             answer_study = 0
+            answer_career = 0
+            answer_position = 0
             for resume_field in temp_field:
                 # print(list_field, '11111111111111111111111111')
                 # print(resume_field.resume_hope_work_field1, '22222222222')
                 # print(resume_field.resume_hope_work_field1, resume_field.resume_hope_work_field)
                 # print(list_field, 'list_field')
-                print(field, 'field')
                 if resume_field.resume_hope_work_field1 == '서울전체 서울':
                     if '서울' in field:
                         answer_field += 1
@@ -457,16 +460,46 @@ def search_resume2(request, field, work, study):
             if study.count('학력무관') >= 1:
                 answer_study += 1
             if study.count(temp_study) >= 1:
-                print(temp_study, 'temp_study')
-                print(study.count(temp_study), 'study.count(temp_study)')
                 answer_study += 1
+
+            temp_career_year_test = Resume_Career.objects.filter(resume_career=resume_title)
+            if len(temp_career_year_test) >= 1:
+                for temp_career1 in temp_career_year_test:
+                    temp_career_test = abs(int(temp_career1.resume_career_start_time[0:4]) - int(temp_career1.resume_career_end_time[0:4]))
+                    if int(temp_career1.resume_career_start_time[5:]) > int(temp_career1.resume_career_end_time[5:]):
+                        temp_career_test -= 1
+                if career.count('신입') >= 1 and temp_career_test < 1:
+                    answer_career += 1
+                if career.count('1년~3년') >= 1 and 1 <= temp_career_test <= 3:
+                    answer_career += 1
+                if career.count('3년~5년') >= 1 and 3 <= temp_career_test <= 5:
+                    answer_career += 1
+                if career.count('5년~10년') >= 1 and 5 <= temp_career_test <= 10:
+                    answer_career += 1
+                if career.count('10년~15년') >= 1 and 10 <= temp_career_test <= 15:
+                    answer_career += 1
+                if career.count('15년~') >= 1 and 15 <= temp_career_test:
+                    answer_career += 1
+            else:
+                if career.count('신입') >= 1:
+                    answer_career += 1
+
+            if len(temp_career_year_test) >= 1:
+                for temp_career1 in temp_career_year_test:
+                    if position.count(temp_career1.resume_career_position):
+                        answer_position += 1
+
             if len(field) == 2:
                 answer_field += 1
             if len(work) == 2:
                 answer_work += 1
             if len(study) == 2:
                 answer_study += 1
-            if answer_field >= 1 and answer_work >= 1 and answer_study >= 1:
+            if len(career) == 2:
+                answer_career += 1
+            if len(position) == 2:
+                answer_position += 1
+            if answer_field >= 1 and answer_work >= 1 and answer_study >= 1 and answer_career >= 1 and answer_position >= 1:
                 #################################################################################
                 answer = []
                 answer.append(resume_title)
@@ -567,6 +600,30 @@ def search_resume2(request, field, work, study):
                             answer.append(temp.university_state)
                         else:
                             answer.append("None")
+
+                temp_career = Resume_Career.objects.filter(resume_career=resume_title)
+                if len(temp_career) >= 1:
+                    for temp_career1 in temp_career:
+                        # print(temp_career1.resume_career_start_time, '경력시작날짜')
+                        # print(temp_career1.resume_career_end_time, '경력마지막날짜')
+                        career_year = abs(int(temp_career1.resume_career_start_time[0:4]) - int(
+                            temp_career1.resume_career_end_time[0:4]))
+                        if int(temp_career1.resume_career_start_time[5:]) > int(
+                                temp_career1.resume_career_end_time[5:]):
+                            career_year -= 1
+                            career_month = int(temp_career1.resume_career_start_time[5:]) + 12 - int(
+                                temp_career1.resume_career_end_time[5:])
+                        else:
+                            career_month = int(temp_career1.resume_career_end_time[5:]) - int(
+                                temp_career1.resume_career_start_time[5:])
+                    if career_year == 0:
+                        career_month = str(career_month) + '개월'
+                        answer.append(career_month)
+                    else:
+                        career_month = str(career_year) + '년' + str(career_month) + '개월'
+                        answer.append(career_month)
+                else:
+                    answer.append("None")
 
                 hope_money = Resume_Hope_Work.objects.filter(resume_hope_work=resume_title)
                 for hope in hope_money:
