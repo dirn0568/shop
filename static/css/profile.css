@@ -52,12 +52,34 @@
 
 .profile_basic_submit {
     position:absolute;
-    top:30.5rem;
-    margin-left:25rem;
+    top:30.75rem;
+    margin-left:15rem;
     font-weight:bold;
     color:#EAEAEA;
     background:#353535;
-    padding: 0.5rem 3rem;
+    padding: 0.5rem 2rem;
+    text-align:center;
+}
+
+.profile_basic_submit2 {
+    position:absolute;
+    top:30.75rem;
+    margin-left:25rem;
+    font-weight:bold;
+    color:#0000FF;
+    background:#353535;
+    padding: 0.5rem 2rem;
+    text-align:center;
+}
+
+.profile_basic_submit3 {
+    position:absolute;
+    top:30.75rem;
+    margin-left:35rem;
+    font-weight:bold;
+    color:#FF0000;
+    background:#353535;
+    padding: 0.5rem 2rem;
     text-align:center;
 }
 

@@ -51,39 +51,45 @@ def search_resume(request):
                 temp_profile = User_Profile.objects.filter(profile=resume_title.resume_title)
                 if temp_profile:
                     for profile in temp_profile:
-                        if profile.user_name:
-                            answer.append(profile.user_name)
-                        else:
-                            answer.append("None")
-
-                        if profile.user_gender:
-                            answer.append(profile.user_gender)
-                        else:
-                            answer.append("None")
-
-                        if profile.user_birthday:
-                            now = datetime.now()
-                            date = now.strftime("%Y")
-                            date2 = profile.user_birthday[:4]
-                            date3 = int(date) - int(date2)
-
-                            date4 = now.strftime("%m")
-                            date5 = now.strftime("%d")
-                            date6 = profile.user_birthday[4:6]
-                            date7 = profile.user_birthday[6:9]
-                            date4 = int(date4)
-                            date5 = int(date5)
-                            date6 = int(date6)
-                            date7 = int(date7)
-                            if date4 > date6:
-                                pass
-                            elif date4 == date6 and date5 >= date7:
-                                pass
+                        if profile.user_open == 1:
+                            if profile.user_name:
+                                answer.append(profile.user_name)
                             else:
-                                date3 = date3 - 1
-                            answer.append(date3)
-                            answer.append(profile.user_birthday[:4])
+                                answer.append("None")
+
+                            if profile.user_gender:
+                                answer.append(profile.user_gender)
+                            else:
+                                answer.append("None")
+
+                            if profile.user_birthday:
+                                now = datetime.now()
+                                date = now.strftime("%Y")
+                                date2 = profile.user_birthday[:4]
+                                date3 = int(date) - int(date2)
+
+                                date4 = now.strftime("%m")
+                                date5 = now.strftime("%d")
+                                date6 = profile.user_birthday[4:6]
+                                date7 = profile.user_birthday[6:9]
+                                date4 = int(date4)
+                                date5 = int(date5)
+                                date6 = int(date6)
+                                date7 = int(date7)
+                                if date4 > date6:
+                                    pass
+                                elif date4 == date6 and date5 >= date7:
+                                    pass
+                                else:
+                                    date3 = date3 - 1
+                                answer.append(date3)
+                                answer.append(profile.user_birthday[:4])
+                            else:
+                                answer.append("None")
+                                answer.append("None")
                         else:
+                            answer.append("None")
+                            answer.append("None")
                             answer.append("None")
                             answer.append("None")
                 else:
@@ -317,28 +323,24 @@ def search_resume2(request, field, work, study, career, position):
             school44 = Resume_UniversitySchool.objects.filter(resume_university=resume_title)
 
             if school11.count() >= 1:
-                print('school11 실행중###################')
                 for school111 in school11:
                     if school111.elementary_state == '중퇴':
                         temp_study = '고교졸업이하'
                     else:
                         temp_study = '고교졸업이하'
             if school22.count() >= 1:
-                print('school22 실행중###################')
                 for school222 in school22:
                     if school222.middle_state == '중퇴':
                         temp_study = '고교졸업이하'
                     else:
                         temp_study = '고교졸업이하'
             if school33.count() >= 1:
-                print('school33 실행중###################')
                 for school333 in school33:
                     if school333.high_state == '졸업':
                         temp_study = '고등학교졸업'
                     else:
                         temp_study = '고교졸업이하'
             if school44.count() >= 1:
-                print('school44 실행중###################')
                 for school444 in school44:
                     if school444.university_state == '졸업' and school444.university_study_year == '대학(2,3년)':
                         temp_study = '대학 졸업(2,3년제)'
@@ -509,39 +511,45 @@ def search_resume2(request, field, work, study, career, position):
                 temp_profile = User_Profile.objects.filter(profile=resume_title.resume_title)
                 if temp_profile:
                     for profile in temp_profile:
-                        if profile.user_name:
-                            answer.append(profile.user_name)
-                        else:
-                            answer.append("None")
-
-                        if profile.user_gender:
-                            answer.append(profile.user_gender)
-                        else:
-                            answer.append("None")
-
-                        if profile.user_birthday:
-                            now = datetime.now()
-                            date = now.strftime("%Y")
-                            date2 = profile.user_birthday[:4]
-                            date3 = int(date) - int(date2)
-
-                            date4 = now.strftime("%m")
-                            date5 = now.strftime("%d")
-                            date6 = profile.user_birthday[4:6]
-                            date7 = profile.user_birthday[6:9]
-                            date4 = int(date4)
-                            date5 = int(date5)
-                            date6 = int(date6)
-                            date7 = int(date7)
-                            if date4 > date6:
-                                pass
-                            elif date4 == date6 and date5 >= date7:
-                                pass
+                        if profile.user_open == 1:
+                            if profile.user_name:
+                                answer.append(profile.user_name)
                             else:
-                                date3 = date3 - 1
-                            answer.append(date3)
-                            answer.append(profile.user_birthday[:4])
+                                answer.append("None")
+
+                            if profile.user_gender:
+                                answer.append(profile.user_gender)
+                            else:
+                                answer.append("None")
+
+                            if profile.user_birthday:
+                                now = datetime.now()
+                                date = now.strftime("%Y")
+                                date2 = profile.user_birthday[:4]
+                                date3 = int(date) - int(date2)
+
+                                date4 = now.strftime("%m")
+                                date5 = now.strftime("%d")
+                                date6 = profile.user_birthday[4:6]
+                                date7 = profile.user_birthday[6:9]
+                                date4 = int(date4)
+                                date5 = int(date5)
+                                date6 = int(date6)
+                                date7 = int(date7)
+                                if date4 > date6:
+                                    pass
+                                elif date4 == date6 and date5 >= date7:
+                                    pass
+                                else:
+                                    date3 = date3 - 1
+                                answer.append(date3)
+                                answer.append(profile.user_birthday[:4])
+                            else:
+                                answer.append("None")
+                                answer.append("None")
                         else:
+                            answer.append("None")
+                            answer.append("None")
                             answer.append("None")
                             answer.append("None")
                 else:

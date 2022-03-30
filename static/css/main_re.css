@@ -74,6 +74,7 @@
 */
 .middle_content2 {
     position:absolute;
+    /*top:25rem;*/
     top:17.4rem;
     margin-left:43.3rem;
     width:20rem;
@@ -98,11 +99,17 @@
 .last_content {
     display:flex;
     width:85rem;
-    height:6.5rem;
+    height:100%;
+    background:#FFFFFF;
+    margin:auto;
+    overflow:hidden;
 }
 
 .last_content div {
-    flex:1;
     border: 0.5px solid gray;
+}
+
+.bg_test {
+    background:#FFFFFF;
 }
 /*03-26 회사 로고들 메인페이지 마지막에 추가했다가 보류중*/

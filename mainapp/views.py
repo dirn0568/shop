@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -170,12 +171,18 @@ def main(request):
     main_company = []
     temp_company = MyUser.objects.all()
     for temp in temp_company:
-        if len(main_company) >= 9:
-            break
         if temp.company_number:
             main_company.append(temp)
-    context['company'] = main_company
+    # context['company'] = main_company
+
+    page = request.GET.get('page', '1')
+    count = len(main_company)
+    paginator = Paginator(main_company, 9)
+    page_obj = paginator.get_page(page)
+    context['company_list'] = page_obj
+    context['count'] = count
     ##########################################################################################
+
     return render(request, 'main.html', context)
     # html = []
     # html2 = []
@@ -219,6 +226,19 @@ def main(request):
     # context["html3"] = html3
     # context["html4"] = html4
 
+def company_popup(request, company_number):
+    context={}
+    temp_user = MyUser.objects.filter(company_number=company_number)
+    user_id = []
+    for temp in temp_user:
+        user_id.append(temp.username)
+        context['company_group'] = temp.company_group
+        context['company_name'] = temp.company_name
+        context['company_ceo'] = temp.company_ceo
+        context['company_logo'] = temp.company_logo
+        context['company_phone_number'] = temp.company_phone_number
+    context['id'] = user_id
+    return render(request, 'company_popup.html', context)
 
 def main2(request):
     context={}

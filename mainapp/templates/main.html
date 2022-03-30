@@ -50,7 +50,6 @@
             {% endif %}
         </div>
     </div>
-
     <span style="font-size:1.5rem; font-weight:bold;">
         &nbsp;오늘의 추천 이력서
     </span>
@@ -147,60 +146,93 @@
             {% endfor %}
         </div>
     </div>
-    <div class="middle_content2">
-        <div style="font-size:1.5rem; border-bottom:5px solid black;">
-            공지사항
-            <a href="{% url 'boardapp:board_gonge_list' %}">
-                <i style="vertical-align:middle; font-size:1.8rem; margin-left:12rem;" class="material-icons">
-                    add_circle_outline
-                </i>
-            </a>
-        </div>
-        <p></p>
-        안내사항
-        <hr>
-        운영방침
-        <hr>
-    </div>
-    <div class="middle_content3">
-        <div style="font-size:1.5rem; border-bottom:5px solid black;">
-            자료실
-            <a href="{% url 'boardapp:board_jaro_list' %}">
-                <i style="vertical-align:middle; font-size:1.9rem; margin-left:14rem;" class="material-icons">
-                    add_circle_outline
-                </i>
-            </a>
-        </div>
-        <p></p>
-        <a href="{% static 'main/2022 최신 이력서 기본형.hwp' %}" download>
-            2022 최신 이력서 기본형
-        </a>
-        <hr>
-        <a href="{% static 'main/2022 최신 이력서 라인형.hwp' %}" download>
-            2022 최신 이력서 라인형
-        </a>
-        <hr>
-        <a href="{% static 'main/2022 최신 이력서 배경형.hwp' %}" download>
-            2022 최신 이력서 배경형
-        </a>
-        <hr>
-        <a href="{% static 'main/2022 최신 경력기술서 기본형.hwp' %}" download>
-            2022 최신 경력기술서 기본형
-        </a>
-    </div>
-
-    <div class="last_content">
-        {% for list in company %}
-            <div>
-                {% if list.company_logo %}
-                    <img src="{{ list.company_logo.url }}" alt="" width="147" height="100">
-                {% else %}
-                    <img src="{% static 'profile/no_img2.PNG' %}" alt="" width="147" height="100">
-                {% endif %}
+        <div class="middle_content2">
+            <div style="font-size:1.5rem; border-bottom:5px solid black;">
+                공지사항
+                <a href="{% url 'boardapp:board_gonge_list' %}">
+                    <i style="vertical-align:middle; font-size:1.8rem; margin-left:12rem;" class="material-icons">
+                        add_circle_outline
+                    </i>
+                </a>
             </div>
-        {% endfor %}
+            <p></p>
+            안내사항
+            <hr>
+            운영방침
+            <hr>
+        </div>
+        <div class="middle_content3">
+            <div style="font-size:1.5rem; border-bottom:5px solid black;">
+                자료실
+                <a href="{% url 'boardapp:board_jaro_list' %}">
+                    <i style="vertical-align:middle; font-size:1.9rem; margin-left:14rem;" class="material-icons">
+                        add_circle_outline
+                    </i>
+                </a>
+            </div>
+            <p></p>
+            <a href="{% static 'main/2022 최신 이력서 기본형.hwp' %}" download>
+                2022 최신 이력서 기본형
+            </a>
+            <hr>
+            <a href="{% static 'main/2022 최신 이력서 라인형.hwp' %}" download>
+                2022 최신 이력서 라인형
+            </a>
+            <hr>
+            <a href="{% static 'main/2022 최신 이력서 배경형.hwp' %}" download>
+                2022 최신 이력서 배경형
+            </a>
+            <hr>
+            <a href="{% static 'main/2022 최신 경력기술서 기본형.hwp' %}" download>
+                2022 최신 경력기술서 기본형
+            </a>
+        </div>
+    <p class="bg_test"></p>
+    <div class="last_content">
+        <ul class="pagination justify-content-center">
+            {% if company_list.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ company_list.previous_page_number }}">
+                        <i style="font-size:3rem; vertical-align:middle;" class="material-icons">arrow_circle_left</i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                        <i style="font-size:3rem; vertical-align:middle;" class="material-icons">arrow_circle_left</i>
+                    </a>
+                </li>
+            {% endif %}
+            {% for list in company_list %}
+                <div>
+                    <span>
+                        <a href="{% url 'mainapp:company_popup' company_number=list.company_number %}" onclick="window.open(this.href, '_blank', 'width=500px,height=500px,toolbars=no,scrollbars=no'); return false;">
+                            {% if list.company_logo %}
+                                <img src="{{ list.company_logo.url }}" alt="" width="128" height="50">
+                            {% else %}
+                                <img src="{% static 'profile/noimg.PNG' %}" alt="" width="128" height="50">
+                            {% endif %}
+                        </a>
+                    </span>
+                </div>
+                &nbsp;
+            {% endfor %}
+            {% if company_list.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ company_list.next_page_number }}">
+                        <i style="font-size:3rem; vertical-align:middle;" class="material-icons">arrow_circle_right</i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">
+                        <i style="font-size:3rem; vertical-align:middle;" class="material-icons">arrow_circle_right</i>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
-
+    <p class="bg_test"></p>
 {% endblock %}
 
 <!--<div class="last_content">-->

@@ -48,10 +48,16 @@
             </ul>
             <p></p>
             <div style="width:500px;height:25px;text-align:left;color:#8C8C8C;">
-                기업로고 : <input type="file" name="company_logo" placeholder="회사로고" class="company_num_css" required>
+                기업로고 : <input type="file" name="company_logo" placeholder="회사로고" class="company_num_css">
             </div>
             <p></p>
-            <input type="number" name="company_phone_number" placeholder="회사 전화번호" style="width:500px;height:50px;" class="company_num_css" maxlength="13" required>
+            <input type="number" name="company_phone_number" placeholder="회사 전화번호" style="width:380px;height:50px;" class="company_num_css" maxlength="13" required>
+            &nbsp;&nbsp;
+            <a href="{% url 'accountapp:popup' %}" onclick="window.open(this.href, '_blank', 'width=500px,height=500px,toolbars=no,scrollbars=no'); return false;">
+                <span class="btn btn-dark col-2.5">
+                    인증하기
+                </span>
+            </a>
             <hr>
             {% bootstrap_form form %}
             <input type="submit" class="btn btn-dark rounded-pill col-6 mt-3">

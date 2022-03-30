@@ -8,4 +8,6 @@ app_name = 'mainapp'
 urlpatterns = [
     path('', views.main, name='main'),
     path('main2', views.main2, name='main2'),
+
+    path('company_popup/<int:company_number>', views.company_popup, name='company_popup'),
 ]

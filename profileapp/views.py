@@ -132,5 +132,36 @@ def detail_user_update(request, pk):
                     temp_form.user_email = request.POST.get('user_email')
                     temp_form.user_page = request.POST.get('user_page')
                     temp_form.save()
-
+    if request.method == "POST" and request.POST.get('resume_submit4'):
+        user = MyUser.objects.filter(pk=pk)
+        for temp_user in user:
+            profile = User_Profile.objects.filter(profile=temp_user)
+        if profile:
+            for temp_profile in profile:
+                temp_profile.user_open = 1
+                temp_profile.save()
+        else:
+            form = ProfileForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+            for temp_user in user:
+                temp_form.profile = temp_user
+                temp_form.user_open = 1
+                temp_form.save()
+    if request.method == "POST" and request.POST.get('resume_submit5'):
+        user = MyUser.objects.filter(pk=pk)
+        for temp_user in user:
+            profile = User_Profile.objects.filter(profile=temp_user)
+        if profile:
+            for temp_profile in profile:
+                temp_profile.user_open = 0
+                temp_profile.save()
+        else:
+            form = ProfileForm(request.POST, request.FILES)
+            if form.is_valid():
+                temp_form = form.save(commit=False)
+            for temp_user in user:
+                temp_form.profile = temp_user
+                temp_form.user_open = 0
+                temp_form.save()
     return redirect('accountapp:detail_user', pk=pk)
