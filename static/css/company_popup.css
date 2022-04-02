@@ -1,0 +1,6 @@
+.company_group {
+    color:rgba(255, 0, 0, 0.6);
+    border:1px solid red;
+    border-radius:5px;
+    padding:0.1rem 0.5rem;
+}

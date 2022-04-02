@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pragmatic</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <!-- BOOTSTRAP LINK -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- GOOGLE FONTS LINK -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Monoton&display=swap" rel="stylesheet">
+
+    <!-- GOOGLE MATERIAL ICONS  -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+    <!-- GOOGLE NOTO SANS  -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <!-- Google Font - Fast One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+
+    <!-- Google Font - Anton -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        a { text-decoration:none }
+    </style>
 </head>
 <body>
-    {{ id }}
+    <link rel="stylesheet" href="{% static 'css/company_popup.css' %}">
+    {% if company_logo %}
+        <img src="{{ company_logo.url }}" alt="" width="100%" height="20%">
+    {% else %}
+        <img src="{% static 'profile/noimg.jpg' %}" alt=""width="100%" height="20%">
+    {% endif %}
     <p></p>
-    {{ company_group }}
+    회사명: {{ company_name }} <span class="company_group">{{ company_group }}</span>
     <p></p>
-    {{ company_name }}
-    <p></p>
-    {{ company_ceo }}
-    <p></p>
-    {{ company_logo }}
-    <p></p>
-    {{ company_phone_number }}
+    대표: {{ company_ceo }}
+    <hr>
+    {% for list in id %}
+        채용담당자: {{ list }}
+        <p></p>
+    {% endfor %}
+    <hr>
+    회사 전화번호: {{ company_phone_number }}
 </body>
 </html>
