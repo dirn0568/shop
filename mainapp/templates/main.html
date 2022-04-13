@@ -30,7 +30,7 @@
                             <p></p>
                             <a href="{% url 'messageapp:message_content' pk=request.user.pk %}">메세지함</a>
                             <p></p>
-                            <a href="{% url 'accountapp:update_user' pk=request.user.pk %}">이력서관리</a>
+                            <a href="{% url 'resumeapp:list_resume' title=0 pk=request.user.pk %}">이력서 관리</a>
                         </li>
                     {% endif %}
                 </ul>

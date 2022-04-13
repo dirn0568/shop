@@ -35,6 +35,15 @@ a {
     display:flex;
 }
 
+.major_button_plus {
+    font-size:1.2rem;
+    padding:0.2rem 3rem;
+    background:#8C8C8C;
+    color:#EAEAEA;
+    border:none;
+    margin-left:76.8rem;
+}
+
 /**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
 
 .self_margin {

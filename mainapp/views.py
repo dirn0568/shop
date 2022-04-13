@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from accountapp.models import MyUser
+from boardapp.models import Board_Gonge_Model, Board_Jaro_Model
 from profileapp.models import User_Profile
 from resumeapp.models import Resume_Title, Resume_Hope_Work, Resume_Hope_Work_Field, Resume_Hope_Work_Work, \
     Resume_UniversitySchool, Resume_HighSchool, Resume_UniversitySchool_Major, Resume_MiddleSchool, \
@@ -39,41 +40,47 @@ def main(request):
             temp_profile = User_Profile.objects.filter(profile=resume_title.resume_title)
             answer = []
             for user_profile in temp_profile:
-                if user_profile.user_name:
-                    answer.append(user_profile.user_name)
-                else:
-                    answer.append("None")
-                if user_profile.user_gender:
-                    answer.append(user_profile.user_gender[:1])
-                else:
-                    answer.append("None")
-                if user_profile.user_birthday:
-                    now = datetime.now()
-                    date = now.strftime("%Y")
-                    date2 = user_profile.user_birthday[:4]
-                    date3 = int(date) - int(date2)
-
-                    date4 = now.strftime("%m")
-                    date5 = now.strftime("%d")
-                    date6 = user_profile.user_birthday[4:6]
-                    date7 = user_profile.user_birthday[6:9]
-                    date4 = int(date4)
-                    date5 = int(date5)
-                    date6 = int(date6)
-                    date7 = int(date7)
-                    if date4 > date6:
-                        pass
-                    elif date4 == date6 and date5 >= date7:
-                        pass
+                if user_profile.user_open == 1:
+                    if user_profile.user_name:
+                        answer.append(user_profile.user_name)
                     else:
-                        date3 = date3 - 1
-                    answer.append(date3)
+                        answer.append("None")
+                    if user_profile.user_gender:
+                        answer.append(user_profile.user_gender[:1])
+                    else:
+                        answer.append("None")
+                    if user_profile.user_birthday:
+                        now = datetime.now()
+                        date = now.strftime("%Y")
+                        date2 = user_profile.user_birthday[:4]
+                        date3 = int(date) - int(date2)
+
+                        date4 = now.strftime("%m")
+                        date5 = now.strftime("%d")
+                        date6 = user_profile.user_birthday[4:6]
+                        date7 = user_profile.user_birthday[6:9]
+                        date4 = int(date4)
+                        date5 = int(date5)
+                        date6 = int(date6)
+                        date7 = int(date7)
+                        if date4 > date6:
+                            pass
+                        elif date4 == date6 and date5 >= date7:
+                            pass
+                        else:
+                            date3 = date3 - 1
+                        answer.append(date3)
+                    else:
+                        answer.append("None")
+                    if user_profile.profile_img:
+                        answer.append(user_profile.profile_img)
+                        print(user_profile.profile_img)
+                    else:
+                        answer.append("None")
                 else:
                     answer.append("None")
-                if user_profile.profile_img:
-                    answer.append(user_profile.profile_img)
-                    print(user_profile.profile_img)
-                else:
+                    answer.append("None")
+                    answer.append("None")
                     answer.append("None")
             if len(answer) == 0:
                 answer.append("None")
@@ -100,43 +107,48 @@ def main(request):
             temp_profile = User_Profile.objects.filter(profile=resume_title.resume_title)
             answer = []
             for user_profile in temp_profile:
-                if user_profile.user_name:
-                    answer.append(user_profile.user_name)
-                else:
-                    answer.append("None")
-                if user_profile.user_gender:
-                    answer.append(user_profile.user_gender[:1])
-                else:
-                    answer.append("None")
-                if user_profile.user_birthday:
-                    now = datetime.now()
-                    date = now.strftime("%Y")
-                    date2 = user_profile.user_birthday[:4]
-                    date3 = int(date) - int(date2)
-
-                    date4 = now.strftime("%m")
-                    date5 = now.strftime("%d")
-                    date6 = user_profile.user_birthday[4:6]
-                    date7 = user_profile.user_birthday[6:9]
-                    date4 = int(date4)
-                    date5 = int(date5)
-                    date6 = int(date6)
-                    date7 = int(date7)
-                    if date4 > date6:
-                        pass
-                    elif date4 == date6 and date5 >= date7:
-                        pass
+                if user_profile.user_open == 1:
+                    if user_profile.user_name:
+                        answer.append(user_profile.user_name)
                     else:
-                        date3 = date3 - 1
-                    answer.append(date3)
-                else:
-                    answer.append("None")
-                if user_profile.profile_img:
-                    answer.append(user_profile.profile_img)
-                    print(user_profile.profile_img)
-                else:
-                    answer.append("None")
+                        answer.append("None")
+                    if user_profile.user_gender:
+                        answer.append(user_profile.user_gender[:1])
+                    else:
+                        answer.append("None")
+                    if user_profile.user_birthday:
+                        now = datetime.now()
+                        date = now.strftime("%Y")
+                        date2 = user_profile.user_birthday[:4]
+                        date3 = int(date) - int(date2)
 
+                        date4 = now.strftime("%m")
+                        date5 = now.strftime("%d")
+                        date6 = user_profile.user_birthday[4:6]
+                        date7 = user_profile.user_birthday[6:9]
+                        date4 = int(date4)
+                        date5 = int(date5)
+                        date6 = int(date6)
+                        date7 = int(date7)
+                        if date4 > date6:
+                            pass
+                        elif date4 == date6 and date5 >= date7:
+                            pass
+                        else:
+                            date3 = date3 - 1
+                        answer.append(date3)
+                    else:
+                        answer.append("None")
+                    if user_profile.profile_img:
+                        answer.append(user_profile.profile_img)
+                        print(user_profile.profile_img)
+                    else:
+                        answer.append("None")
+                else:
+                    answer.append("None")
+                    answer.append("None")
+                    answer.append("None")
+                    answer.append("None")
             if len(answer) == 0:
                 answer.append("None")
                 answer.append("None")

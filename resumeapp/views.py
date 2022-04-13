@@ -212,7 +212,8 @@ def detail_resume(request, title):
             context['like'] = 1
         else:
             context['like'] = 0
-        context['like_count'] = len(resume_like_list)
+    for temp_resume in resume:
+        context['like_count'] = temp_resume.like_vote
     
 
     #############################################################################################################

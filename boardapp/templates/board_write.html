@@ -29,12 +29,6 @@
                         <i style="vertical-align:middle;" class="material-icons">notifications_active</i>
                         자료실
                     </a>
-                    <p></p>
-                    <a href="{% url 'mainapp:main' %}">
-                        <i style="vertical-align:middle;" class="material-icons">question_answer</i>
-                        Q&A / 서비스소개
-                    </a>
-                    <p></p>
                 </div>
             </div>
             <div class="board_list2">
@@ -79,7 +73,9 @@
                 </div>
             </div>
         </div>
-        <input type="submit" value="제출" class="major_button_plus" name="board_submit1">
+        <div>
+            <input type="submit" value="제출" class="major_button_plus" name="board_submit1">
+        </div>
     </form>
     <script type="text/javascript" src="{% static 'js/message_write.js' %}"></script>
 
