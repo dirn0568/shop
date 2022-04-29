@@ -59,3 +59,16 @@
 .open_red {
     color:#CC3D3D;
 }
+
+.open_blue_box{
+    border:none;
+    font-weight:bold;
+    background:#B2CCFF;
+    width:3.5rem;
+    height:1.5rem;
+    border-radius:10px;
+}
+
+.open_blue {
+    color:#6799FF;
+}

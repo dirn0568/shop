@@ -88,6 +88,8 @@ def list_resume(request, title, pk):
         print('실행중??????????????????????????12414124124?')
         for resume in temp_resume:
             if resume.resume_open == 1:
+                resume.resume_open = 2
+            elif resume.resume_open == 2:
                 resume.resume_open = 0
             else:
                 resume.resume_open = 1

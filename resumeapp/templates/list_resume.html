@@ -8,7 +8,7 @@
         {% for list in resume %}
             <a href="{% url 'resumeapp:detail_resume' title=list.pk %}">
                 <ul class="mini_content">
-                    <li>{{ list.resume_title_detail }}</li>
+                    <li style="height:1.5rem; overflow:hidden; text-overflow:ellipsis;">{{ list.resume_title_detail }}</li>
                     <li>{{ list.resume_title }}</li>
                     <li>♥ {{ list.like_vote }}</li>
                     <li>
@@ -17,7 +17,7 @@
                                 {% csrf_token %}
                                 <ul class="mini_ul">
                                     <li>
-                                        <input type="submit" value="이력서 공개중" id="answer04{{list.pk}}" name="resume_submit1" style="background-color:transparent; border:0px transparent solid;">
+                                        <input type="submit" value="공개중" id="answer04{{list.pk}}" name="resume_submit1" style="background-color:transparent; border:0px transparent solid;">
                                     </li>
                                     <li>
                                         <label for="answer04{{list.pk}}" class="open_green_box">
@@ -32,11 +32,26 @@
                                 {% csrf_token %}
                                 <ul class="mini_ul">
                                     <li>
-                                        <input type="submit" value="이력서 비공개중" id="answer05{{list.pk}}" name="resume_submit1" style="background-color:transparent; border:0px transparent solid;">
+                                        <input type="submit" value="비공개중" id="answer05{{list.pk}}" name="resume_submit1" style="background-color:transparent; border:0px transparent solid;">
                                     </li>
                                     <li>
                                         <label for="answer05{{list.pk}}" class="open_red_box">
                                             <div class="open_red">●</div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </form>
+                        {% endif %}
+                        {% if list.resume_open == 2 %}
+                            <form action="{% url 'resumeapp:list_resume' title=list.pk pk=pk %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <ul class="mini_ul">
+                                    <li>
+                                        <input type="submit" value="기업만 공개" id="answer06{{list.pk}}" name="resume_submit1" style="background-color:transparent; border:0px transparent solid;">
+                                    </li>
+                                    <li>
+                                        <label for="answer06{{list.pk}}" class="open_blue_box">
+                                            <div class="open_blue">●</div>
                                         </label>
                                     </li>
                                 </ul>
