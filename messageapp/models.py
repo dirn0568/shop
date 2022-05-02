@@ -45,5 +45,22 @@ class Message_Resume_Model(models.Model):
 
     message_file = models.FileField(upload_to='message/', null=True, blank=True)
 
+class Message_Propose_Model(models.Model):
+    message_propose_receive = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='message_propose_receive')
+
+    message_propose_send = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='message_propose_send')
+
+    message_propose_detail = models.TextField()
+
+    message_propose_company_group = models.CharField(max_length=200)
+    message_propose_company_name = models.CharField(max_length=200)
+    message_propose_company_ceo = models.CharField(max_length=100)
+    message_propose_company_logo = models.FileField(upload_to='message/', null=True, blank=True)
+    message_propose_company_phone_number = models.CharField(max_length=2000)
+
+    message_propose_date = models.DateField(auto_now=True)
+    message_propose_Time = models.TimeField(auto_now=True)
+    message_propose_date_time = models.DateTimeField(auto_now=True)
+
 class Test_Data(models.Model):
     test = models.CharField(max_length=2000)

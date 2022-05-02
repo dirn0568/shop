@@ -7,7 +7,7 @@ from django.views.generic import DetailView
 
 from accountapp.models import MyUser
 from friendapp.models import FriendRequestModel
-from messageapp.models import Message_Resume_Model, Test_Data, Message_Send_Model
+from messageapp.models import Message_Resume_Model, Test_Data, Message_Send_Model, Message_Propose_Model
 
 
 def message_content(request, pk):
@@ -86,6 +86,26 @@ def message_search(request, pk):
 
     return render(request, 'message_search.html', context)
 
+def message_propose(request, pk):
+    context = {}
+
+    page = request.GET.get('page', '1')
+
+    user = MyUser.objects.filter(pk=pk)
+    for temp_user in user:
+        message = Message_Propose_Model.objects.filter(message_propose_receive=temp_user).order_by('-message_propose_date_time')
+        count = len(message)
+
+    paginator = Paginator(message, 8)
+
+    page_obj = paginator.get_page(page)
+
+    context['message'] = page_obj
+    context['count'] = count
+    context['pk'] = pk
+
+    return render(request, 'message_propose.html', context)
+
 def message_send_detail(request, title, pk):
     context = {}
 
@@ -127,6 +147,33 @@ def message_content_detail(request, title, pk):
         context['file'] = temp.message_send_file
     context['pk'] = pk
     return render(request, 'message_content_detail.html', context)
+
+def message_propose_detail(request, title, pk):
+    context = {}
+
+    message = Message_Propose_Model.objects.filter(pk=title)
+    data = ''
+    for temp in message:
+        context['receive'] = temp.message_propose_receive
+        context['send'] = temp.message_propose_send
+        # context['title'] = temp.message_send_title
+        for temp_data in temp.message_propose_detail:
+            if temp_data == ' ':
+                data += '∠'
+            elif temp_data == '\r':
+                data += '∏'
+            else:
+                data += temp_data
+        context['detail'] = data
+        print(data)
+        # context['file'] = temp.message_send_file
+        context['company_group'] = temp.message_propose_company_group
+        context['company_name'] = temp.message_propose_company_name
+        context['company_ceo'] = temp.message_propose_company_ceo
+        context['company_logo'] = temp.message_propose_company_logo
+        context['company_phone_number'] = temp.message_propose_company_phone_number
+    context['pk'] = pk
+    return render(request, 'message_propose_detail.html', context)
 
 def test(request):
     context = {}

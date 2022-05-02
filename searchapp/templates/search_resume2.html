@@ -2435,7 +2435,7 @@
                                                 {% endif %}
                                                 <p></p>
                                                 {% if request.user.company_number %}
-                                                    <a onclick="search_propose(this)" href="?title={{ list.0.pk }}">
+                                                    <a href="" onclick="search_propose(this, {{ list.0.pk }})">
                                                         면접제의
                                                     </a>
                                                 {% endif %}

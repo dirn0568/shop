@@ -31,36 +31,29 @@
                     이력서 열람
                 </a>
                 <p></p>
-                <a href="{% url 'messageapp:message_propose' pk=pk %}">
-                    <i style="vertical-align:middle;" class="material-icons">person_search</i>
-                    면접 제의
-                </a>
             </div>
         </div>
         <div class="message_list">
             <div style="font-size:1.2rem;">
-                &nbsp;메세지
+                &nbsp;면접 제의
                 <span style="font-size:0.7rem;">총 {{ count }}회</span>
             </div>
             <hr>
             {% for list in message %}
                 <p></p>
-                <a href="{% url 'messageapp:message_content_detail' title=list.pk pk=pk %}">
+                <a href="{% url 'messageapp:message_propose_detail' title=list.pk pk=pk %}">
                     <div class="message_main">
                         <div style="width:10rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
                             &nbsp;
-                            <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
-                            {{ list.message_send_send }}
+                            <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                            {{ list.message_propose_send }}
                         </div>
-                        <div style="width:25rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
-                            {{ list.message_send_title }}
+                        <div style="width:50rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
+                            {{ list.message_propose_detail }}
                         </div>
-                        <div style="width:25rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
-                            {{ list.message_send_detail }}
-                        </div>
-                        <div style="width:10rem; display:flex;">
+                        <div style="width:10rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis; display:flex;">
                             <div style="margin-left:auto;">
-                                {{ list.message_send_date_time|date:"Y-m-d" }} <!--|date:"Y-m-d"-->
+                                {{ list.message_propose_date_time|date:"Y-m-d" }} <!--|date:"Y-m-d"-->
                             </div>
                         </div>
                     </div>

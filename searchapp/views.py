@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from datetime import datetime
 
 from accountapp.models import MyUser
-from messageapp.models import Message_Send_Model
+from messageapp.models import Message_Send_Model, Message_Propose_Model
 from profileapp.models import User_Profile
 from resumeapp.models import Resume_Title, Resume_Hope_Work_Field, Resume_Hope_Work_Work, Resume_ElementarySchool, \
     Resume_MiddleSchool, Resume_HighSchool, Resume_UniversitySchool, Resume_UniversitySchool_Major, Resume_Hope_Work, \
@@ -22,7 +22,8 @@ def search_resume(request):
     if title != None:
         resume = Resume_Title.objects.filter(pk=title)
         for temp_resume in resume:
-            model = Message_Send_Model(message_send_receive=temp_resume.resume_title, message_send_send=request.user, message_send_detail="{0}회원님이 {1}이력서를 보고 회원님께 면접을 제의했습니다.".format(request.user, temp_resume.resume_title_detail))
+            model = Message_Propose_Model(message_propose_receive=temp_resume.resume_title, message_propose_send=request.user, message_propose_detail="{0}회원({1})님이 {2}이력서를 보고 회원님께 면접을 제의했습니다. ∏∏회사명 : {1} ∏채용담당자 : {0}".format(request.user, request.user.company_name ,temp_resume.resume_title_detail),
+                                          message_propose_company_group=request.user.company_group, message_propose_company_name=request.user.company_name, message_propose_company_ceo=request.user.company_ceo, message_propose_company_logo=request.user.company_logo, message_propose_company_phone_number=request.user.company_phone_number)
             model.save()
 
 
@@ -372,7 +373,15 @@ def search_resume2(request, field, work, study, career, position):
     if title != None:
         resume = Resume_Title.objects.filter(pk=title)
         for temp_resume in resume:
-            model = Message_Send_Model(message_send_receive=temp_resume.resume_title, message_send_send=request.user, message_send_detail="{0}회원님이 {1}이력서를 보고 회원님께 면접을 제의했습니다.".format(request.user, temp_resume.resume_title_detail))
+            model = Message_Propose_Model(message_propose_receive=temp_resume.resume_title,
+                                          message_propose_send=request.user,
+                                          message_propose_detail="{0}회원({1})님이 {2}이력서를 보고 회원님께 면접을 제의했습니다. ∏∏회사명 : {1} ∏채용담당자 : {0}".format(
+                                              request.user, request.user.company_name, temp_resume.resume_title_detail),
+                                          message_propose_company_group=request.user.company_group,
+                                          message_propose_company_name=request.user.company_name,
+                                          message_propose_company_ceo=request.user.company_ceo,
+                                          message_propose_company_logo=request.user.company_logo,
+                                          message_propose_company_phone_number=request.user.company_phone_number)
             model.save()
 
 
