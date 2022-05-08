@@ -8,6 +8,7 @@ from django.views.generic import DetailView
 from accountapp.models import MyUser
 from friendapp.models import FriendRequestModel
 from messageapp.models import Message_Resume_Model, Test_Data, Message_Send_Model, Message_Propose_Model
+from profileapp.models import User_Profile
 
 
 def message_content(request, pk):
@@ -151,7 +152,37 @@ def message_content_detail(request, title, pk):
 def message_propose_detail(request, title, pk):
     context = {}
 
+    detail = request.GET.get('detail', None)
+    detail2 = request.GET.get('detail2', None)
+
     message = Message_Propose_Model.objects.filter(pk=title)
+
+    if detail != None:
+        print('실행하고 있나요1 05-08')
+        temp_user = MyUser.objects.filter(pk=request.user.pk)
+        for temp in temp_user:
+            temp_profile = User_Profile.objects.filter(profile=temp)
+        for temp in temp_profile:
+            message_phone_number = temp.phone_number
+            message_user_email = temp.user_email
+
+        for temp in message:
+            model = Message_Send_Model(message_send_receive=temp.message_propose_send,
+                                       message_send_send=request.user,
+                                       message_send_title='면접에 동의하셨습니다',
+                                       message_send_detail='{0}님 께서 면접에 동의하셨습니다. ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
+                                           request.user, message_phone_number, message_user_email))
+            model.save()
+
+    if detail2 != None:
+        print('실행하고 있나요2 05-08')
+        for temp in message:
+            model = Message_Send_Model(message_send_receive=temp.message_propose_send,
+                                       message_send_send=request.user,
+                                       message_send_title='면접에 거절하셨습니다',
+                                       message_send_detail='{0}님 께서 면접을 거절하셨습니다.'.format(request.user))
+            model.save()
+
     data = ''
     for temp in message:
         context['receive'] = temp.message_propose_receive
@@ -172,6 +203,7 @@ def message_propose_detail(request, title, pk):
         context['company_ceo'] = temp.message_propose_company_ceo
         context['company_logo'] = temp.message_propose_company_logo
         context['company_phone_number'] = temp.message_propose_company_phone_number
+    context['title'] = title
     context['pk'] = pk
     return render(request, 'message_propose_detail.html', context)
 

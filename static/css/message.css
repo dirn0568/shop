@@ -62,3 +62,36 @@ a {
 .message_list2 > div {
     display:flex;
 }
+
+/**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**//**/
+
+.flex_zone {
+    display:flex;
+}
+.flex_zone div {
+    flex:1;
+}
+
+.company_group {
+    color:rgba(255, 0, 0, 0.6);
+    border:1px solid red;
+    border-radius:5px;
+    padding:0.1rem 0.5rem;
+}
+
+.flex_zone2 {
+    display:flex;
+    margin:auto;
+}
+
+.propose_accept {
+    border:1px solid blue;
+    border-radius:5px;
+    padding:0.1rem 0.5rem;
+}
+
+.propose_del {
+    border:1px solid red;
+    border-radius:5px;
+    padding:0.1rem 0.5rem;
+}

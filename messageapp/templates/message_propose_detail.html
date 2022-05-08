@@ -1,29 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+{% extends 'base-message.html' %}
+
+{% block content %}
     {% load static %}
-</head>
-<body>
-    <link rel="stylesheet" href="{% static 'css/propose_detail.css' %}">
-    <div class="flex_zone">
-        <div>
-            {% if company_logo %}
-                <img src="{{ company_logo.url }}" alt="" width="100%" height="100%">
-            {% else %}
-                <img src="{% static 'profile/noimg.jpg' %}" alt=""width="100%" height="100%">
-            {% endif %}
+    <link rel="stylesheet" href="{% static 'css/message.css' %}">
+
+    <script type="text/javascript" src="{% static 'js/propose_detail.js' %}"></script>
+
+    <div class="message_content">
+        <div class="message_menu">
+            <div class="self_margin"></div>
+            <div style="font-size:1.5rem;">
+                <i style="vertical-align:middle;" class="material-icons">mail</i>
+                메세지함
+                <a href="{% url 'messageapp:message_write' pk=pk %}">
+                    <span class="message_push">메세지 보내기</span>
+                </a>
+            </div>
+            <p></p>
+            <div>
+                <a href="{% url 'messageapp:message_content' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">contact_mail</i>
+                    수신 메세지
+                </a>
+                <p></p>
+                <a href="{% url 'messageapp:message_send' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">details</i>
+                    발신 메세지
+                </a>
+                <p></p>
+                <a href="{% url 'messageapp:message_search' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                    이력서 열람
+                </a>
+                <p></p>
+            </div>
         </div>
-        <div>
-            회사명: {{ company_name }} <span class="company_group">{{ company_group }}</span>
+        <div class="message_list">
+            회사 관계자가 귀하의 OO 이력서를 보고 면접을 제안하였습니다.
             <p></p>
-            대표: {{ company_ceo }}
+            면접에 동의하시려면 개인정보(이름, 전화번호, 이메일)을 회사 관계자에게 전해주려고 하는데 동의 하십니까.
+
             <p></p>
-            채용담당자: {{ send }}
+
+            <div class="flex_zone">
+                <div style="height:10rem;">
+                    {% if company_logo %}
+                        <img src="{{ company_logo.url }}" alt="" width="100%" height="100%">
+                    {% else %}
+                        <img src="{% static 'profile/noimg.jpg' %}" alt=""width="100%" height="100%">
+                    {% endif %}
+                </div>
+                <div>
+                    회사명: {{ company_name }} <span class="company_group">{{ company_group }}</span>
+                    <p></p>
+                    대표: {{ company_ceo }}
+                    <p></p>
+                    채용담당자: {{ send }}
+                    <p></p>
+                    회사 전화번호: {{ company_phone_number }}
+                </div>
+            </div>
+
             <p></p>
-            회사 전화번호: {{ company_phone_number }}
+            <div style="text-align:center;">
+                <a href="" class="propose_accept" onclick="propose_okay(this, {{ title }}, {{ pk }})">
+                    <span style="color:#0100FF;">수락하기</span>
+                </a>
+                &nbsp;
+                <a href="" class="propose_del" onclick="propose_okay2(this, {{ title }}, {{ pk }})">
+                    <span style="color:#FF0000;">거절하기</span>
+                </a>
+            </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}
