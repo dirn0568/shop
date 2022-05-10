@@ -42,7 +42,10 @@ def main(request):
             for user_profile in temp_profile:
                 if user_profile.user_open == 1:
                     if user_profile.user_name:
-                        answer.append(user_profile.user_name)
+                        temp_name = user_profile.user_name[0:1]
+                        for i in range(len(user_profile.user_name) - 1):
+                            temp_name += 'O'
+                        answer.append(temp_name)
                     else:
                         answer.append("None")
                     if user_profile.user_gender:
@@ -109,7 +112,10 @@ def main(request):
             for user_profile in temp_profile:
                 if user_profile.user_open == 1:
                     if user_profile.user_name:
-                        answer.append(user_profile.user_name)
+                        temp_name = user_profile.user_name[0:1]
+                        for i in range(len(user_profile.user_name)-1):
+                            temp_name += 'O'
+                        answer.append(temp_name)
                     else:
                         answer.append("None")
                     if user_profile.user_gender:

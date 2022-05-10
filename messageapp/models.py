@@ -58,6 +58,8 @@ class Message_Propose_Model(models.Model):
     message_propose_company_logo = models.FileField(upload_to='message/', null=True, blank=True)
     message_propose_company_phone_number = models.CharField(max_length=2000)
 
+    message_propose_resume_title = models.CharField(max_length=2000, null=True, blank=True)
+
     message_propose_date = models.DateField(auto_now=True)
     message_propose_Time = models.TimeField(auto_now=True)
     message_propose_date_time = models.DateTimeField(auto_now=True)

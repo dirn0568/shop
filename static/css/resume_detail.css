@@ -11,6 +11,15 @@
     font-size:25px;
 }
 
+.content2 {
+    width: 85rem;
+    margin:auto;
+    background:#FFFFFF;
+    border-radius:3px;
+    box-shadow:0px 10px 10px rgba(0, 0, 0, 0.1);
+    font-size:20px;
+}
+
 .basic_title {
     width:85rem;
     margin:auto;
@@ -113,7 +122,7 @@
     display:flex;
     width: 85rem;
     margin:auto;
-    font-size:25px
+    font-size:20px;
 }
 
 .main_name {

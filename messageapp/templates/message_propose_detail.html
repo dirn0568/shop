@@ -33,13 +33,25 @@
                     이력서 열람
                 </a>
                 <p></p>
+                <a href="{% url 'messageapp:message_propose' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">handshake</i>
+                    면접 제의
+                </a>
+                <p></p>
             </div>
         </div>
         <div class="message_list">
-            회사 관계자가 귀하의 OO 이력서를 보고 면접을 제안하였습니다.
+            <p></p>
+            회사 관계자가 귀하의 "{{ message_propose_resume_title }}" 이력서를 보고 면접을 제안하였습니다.
             <p></p>
             면접에 동의하시려면 개인정보(이름, 전화번호, 이메일)을 회사 관계자에게 전해주려고 하는데 동의 하십니까.
-
+            <a href="" class="propose_accept" onclick="propose_okay(this, {{ title }}, {{ pk }})">
+                <span style="color:#0100FF;">수락하기</span>
+            </a>
+            &nbsp;
+            <a href="" class="propose_del" onclick="propose_okay2(this, {{ title }}, {{ pk }})">
+                <span style="color:#FF0000;">거절하기</span>
+            </a>
             <p></p>
 
             <div class="flex_zone">
@@ -51,9 +63,9 @@
                     {% endif %}
                 </div>
                 <div>
-                    회사명: {{ company_name }} <span class="company_group">{{ company_group }}</span>
-                    <p></p>
                     대표: {{ company_ceo }}
+                    <p></p>
+                    회사명: {{ company_name }} <span class="company_group">{{ company_group }}</span>
                     <p></p>
                     채용담당자: {{ send }}
                     <p></p>
@@ -62,15 +74,6 @@
             </div>
 
             <p></p>
-            <div style="text-align:center;">
-                <a href="" class="propose_accept" onclick="propose_okay(this, {{ title }}, {{ pk }})">
-                    <span style="color:#0100FF;">수락하기</span>
-                </a>
-                &nbsp;
-                <a href="" class="propose_del" onclick="propose_okay2(this, {{ title }}, {{ pk }})">
-                    <span style="color:#FF0000;">거절하기</span>
-                </a>
-            </div>
         </div>
     </div>
 {% endblock %}

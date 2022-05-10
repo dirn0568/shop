@@ -126,7 +126,10 @@ def detail_resume(request, title):
                 else:
                     context['profile_img'] = "None"
                 if temp_profile.user_name:
-                    context['user_name'] = temp_profile.user_name
+                    temp_name = temp_profile.user_name[0:1]
+                    for i in range(len(temp_profile.user_name) - 1):
+                        temp_name += 'O'
+                    context['user_name'] = temp_name
                 else:
                     context['user_name'] = "None"
                 if temp_profile.user_birthday:
@@ -157,15 +160,15 @@ def detail_resume(request, title):
                 else:
                     context['user_gender'] = "None"
                 if temp_profile.phone_number:
-                    context['phone_number'] = temp_profile.phone_number
+                    context['phone_number'] = '010-****-****'
                 else:
                     context['phone_number'] = "None"
                 if temp_profile.user_email:
-                    context['user_email'] = temp_profile.user_email
+                    context['user_email'] = '***@************'
                 else:
                     context['user_email'] = "None"
                 if temp_profile.user_page:
-                    context['user_page'] = temp_profile.user_page
+                    context['user_page'] = 'http://****************************'
                 else:
                     context['user_page'] = "None"
             else:

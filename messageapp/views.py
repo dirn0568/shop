@@ -170,8 +170,8 @@ def message_propose_detail(request, title, pk):
             model = Message_Send_Model(message_send_receive=temp.message_propose_send,
                                        message_send_send=request.user,
                                        message_send_title='면접에 동의하셨습니다',
-                                       message_send_detail='{0}님 께서 면접에 동의하셨습니다. ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
-                                           request.user, message_phone_number, message_user_email))
+                                       message_send_detail='"{3}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
+                                           request.user, message_phone_number, message_user_email, temp.message_propose_resume_title))
             model.save()
 
     if detail2 != None:
@@ -180,7 +180,7 @@ def message_propose_detail(request, title, pk):
             model = Message_Send_Model(message_send_receive=temp.message_propose_send,
                                        message_send_send=request.user,
                                        message_send_title='면접에 거절하셨습니다',
-                                       message_send_detail='{0}님 께서 면접을 거절하셨습니다.'.format(request.user))
+                                       message_send_detail='"{1}"를 작성하신 {0}님 께서 면접을 거절하셨습니다.'.format(request.user, temp.message_propose_resume_title))
             model.save()
 
     data = ''
@@ -203,6 +203,8 @@ def message_propose_detail(request, title, pk):
         context['company_ceo'] = temp.message_propose_company_ceo
         context['company_logo'] = temp.message_propose_company_logo
         context['company_phone_number'] = temp.message_propose_company_phone_number
+
+        context['message_propose_resume_title'] = temp.message_propose_resume_title
     context['title'] = title
     context['pk'] = pk
     return render(request, 'message_propose_detail.html', context)

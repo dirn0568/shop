@@ -31,6 +31,11 @@
                     이력서 열람
                 </a>
                 <p></p>
+                <a href="{% url 'messageapp:message_propose' pk=pk %}">
+                    <i style="vertical-align:middle;" class="material-icons">handshake</i>
+                    면접 제의
+                </a>
+                <p></p>
             </div>
         </div>
         <div class="message_list">
@@ -45,7 +50,7 @@
                     <div class="message_main">
                         <div style="width:10rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
                             &nbsp;
-                            <i style="vertical-align:middle;" class="material-icons">person_search</i>
+                            <i style="vertical-align:middle;" class="material-icons">handshake</i>
                             {{ list.message_propose_send }}
                         </div>
                         <div style="width:50rem; height:1.5rem; overflow:hidden; text-overflow:ellipsis;">
