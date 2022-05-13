@@ -10,6 +10,8 @@ from friendapp.models import FriendRequestModel
 from messageapp.models import Message_Resume_Model, Test_Data, Message_Send_Model, Message_Propose_Model
 from profileapp.models import User_Profile
 
+from datetime import datetime
+
 
 def message_content(request, pk):
     context={}
@@ -158,20 +160,66 @@ def message_propose_detail(request, title, pk):
     message = Message_Propose_Model.objects.filter(pk=title)
 
     if detail != None:
-        print('실행하고 있나요1 05-08')
+        print('워크래프트31515135134124')
         temp_user = MyUser.objects.filter(pk=request.user.pk)
         for temp in temp_user:
             temp_profile = User_Profile.objects.filter(profile=temp)
-        for temp in temp_profile:
-            message_phone_number = temp.phone_number
-            message_user_email = temp.user_email
+        if temp_profile:
+            for temp in temp_profile:
+                if temp.user_name:
+                    message_name = temp.user_name
+                else:
+                    message_name = "None"
+                if temp.user_gender:
+                    message_gender = temp.user_gender
+                else:
+                    message_gender = "None"
+                if temp.phone_number:
+                    message_phone_number = temp.phone_number
+                else:
+                    message_phone_number = "None"
+                if temp.user_email:
+                    message_user_email = temp.user_email
+                else:
+                    message_user_email = "None"
+                if temp.user_birthday:
+                    now = datetime.now()
+                    date = now.strftime("%Y")
+                    date2 = temp.user_birthday[:4]
+                    date3 = int(date) - int(date2)
+
+                    date4 = now.strftime("%m")
+                    date5 = now.strftime("%d")
+                    date6 = temp.user_birthday[4:6]
+                    date7 = temp.user_birthday[6:9]
+                    date4 = int(date4)
+                    date5 = int(date5)
+                    date6 = int(date6)
+                    date7 = int(date7)
+                    if date4 > date6:
+                        pass
+                    elif date4 == date6 and date5 >= date7:
+                        pass
+                    else:
+                        date3 = date3 - 1
+                    print(date3, '마인크래프트#$@%@$@@$')
+                    print(temp.user_birthday[:4], '스타크래프트#$@%@@$@%@$')
+                    message_age = date3
+                else:
+                    message_age = "None"
+        else:
+            message_name = "None"
+            message_gender = "None"
+            message_phone_number = "None"
+            message_user_email = "None"
+            message_age = "None"
 
         for temp in message:
             model = Message_Send_Model(message_send_receive=temp.message_propose_send,
                                        message_send_send=request.user,
                                        message_send_title='면접에 동의하셨습니다',
-                                       message_send_detail='"{3}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
-                                           request.user, message_phone_number, message_user_email, temp.message_propose_resume_title))
+                                       message_send_detail='"{3}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: {4} ∏나이: {5} ∏성별: {6} ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
+                                           request.user, message_phone_number, message_user_email, temp.message_propose_resume_title, message_name, message_age, message_gender))
             model.save()
 
     if detail2 != None:

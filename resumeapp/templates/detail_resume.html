@@ -3,6 +3,8 @@
 {% block content %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/resume_detail.css' %}">
+
+    <script type="text/javascript" src="{% static 'js/resume_detail.js' %}"></script>
     <!--    <div class="content_title">-->
     <!--        이력서-->
     <!--    </div>-->
@@ -726,7 +728,7 @@
         </div>
         {% if request.user.company_number %}
             <div style="background:#747474; border-bottom:0.5px solid #A6A6A6;">
-                <a href="{% url 'mainapp:main' %}">
+                <a href="" onclick="resume_propose(this, {{ title }})">
                     <span style="color:#FFD8D8;">면접제의</span>
                 </a>
             </div>

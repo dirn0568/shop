@@ -5,7 +5,7 @@ from datetime import datetime
 
 # Create your views here.
 from accountapp.models import MyUser
-from messageapp.models import Message_Resume_Model
+from messageapp.models import Message_Resume_Model, Message_Propose_Model
 from profileapp.models import User_Profile
 from resumeapp.forms import ResumeForm, Update_ResumeForm, ResumeElementaryForm, ResumeMiddleForm, ResumeHighForm, \
     ResumeUniversityForm, ResumeUniversitySchoolMajor_Form, ResumeTitleForm, ResumeCareerForm, ResumeCareerAbilityForm, \
@@ -219,7 +219,18 @@ def detail_resume(request, title):
             context['like'] = 0
     for temp_resume in resume:
         context['like_count'] = temp_resume.like_vote
-    
+    ################################################################################################################################
+    # resume_propose
+    resume_propose = request.GET.get('resume_propose', None)
+
+    if resume_propose != None:
+        for temp_resume in resume:
+            resume = Resume_Title.objects.filter(pk=title)
+            model = Message_Propose_Model(message_propose_receive=temp_resume.resume_title, message_propose_send=request.user, message_propose_detail="{0}회원({1})님이 {2}이력서를 보고 회원님께 면접을 제의했습니다. ∏∏회사명 : {1} ∏채용담당자 : {0}".format(request.user, request.user.company_name ,temp_resume.resume_title_detail),
+                                          message_propose_company_group=request.user.company_group, message_propose_company_name=request.user.company_name, message_propose_company_ceo=request.user.company_ceo, message_propose_company_logo=request.user.company_logo, message_propose_company_phone_number=request.user.company_phone_number, message_propose_resume_title=temp_resume.resume_title_detail)
+            model.save()
+
+
 
     #############################################################################################################
 
