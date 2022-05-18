@@ -2415,23 +2415,23 @@
                                     <a href="{% url 'resumeapp:detail_resume' title=list.0.pk %}">
                                         <li style="width:10rem; overflow:hidden;">
                                             <div>
-                                                {% if list.1 == "None" %}
+                                                {% if list.2 == "None" %}
                                                     비공개
                                                 {% else %}
-                                                    {{ list.1 }}
+                                                    {{ list.2 }}
                                                 {% endif %}
                                                 <p></p>
-                                                {% if list.2 == "None" %}
+                                                {% if list.3 == "None" %}
                                                 {% else %}
-                                                    ( {{ list.2.0 }} /
+                                                    ( {{ list.3.0 }} /
+                                                {% endif %}
+                                                {% if list.5 == "None" %}
+                                                {% else %}
+                                                     {{ list.5 }},
                                                 {% endif %}
                                                 {% if list.4 == "None" %}
                                                 {% else %}
-                                                     {{ list.4 }},
-                                                {% endif %}
-                                                {% if list.3 == "None" %}
-                                                {% else %}
-                                                     {{ list.3 }}세)
+                                                     {{ list.4 }}세)
                                                 {% endif %}
                                                 <p></p>
                                                 {% if request.user.company_number %}
@@ -2439,6 +2439,7 @@
                                                         면접제의
                                                     </a>
                                                 {% endif %}
+                                                <span style="color:#FF007F;">♥</span> {{ list.1 }}
                                             </div>
                                         </li>
                                     </a>
@@ -2446,42 +2447,42 @@
                                         <a href="{% url 'resumeapp:detail_resume' title=list.0.pk %}">
                                             <div style="margin-left:3rem;">
                                                 <span class="career_css">
-                                                    {% if list.9 == "None" %}
+                                                    {% if list.10 == "None" %}
                                                         신입
                                                     {% else %}
-                                                        {{ list.9 }}
+                                                        {{ list.10 }}
                                                     {% endif %}
                                                 </span>
                                                 &nbsp;
                                                 <span style="font-size:1.5rem; font-weight:bold;">
-                                                    {{ list.5 }}
+                                                    {{ list.6 }}
                                                 </span>
                                                 <p></p>
-                                                학교명 : {{ list.7 }} <span class="information_css">{{ list.8 }}</span>
+                                                학교명 : {{ list.8 }} <span class="information_css">{{ list.9 }}</span>
                                                 <p></p>
-                                                <span style="font-size:15px;">
+                                                <span style="font-size:0.8rem;">
                                                     희망지역 :
-                                                    {% for temp in list.11 %}
-                                                        # {{ temp }}
-                                                    {% endfor %}
-                                                    <span class="bar">
-                                                        |
-                                                    </span>
-                                                    희망직종 :
                                                     {% for temp in list.12 %}
                                                         # {{ temp }}
                                                     {% endfor %}
                                                     <span class="bar">
                                                         |
                                                     </span>
-                                                    희망연봉 : {{ list.10 }}
+                                                    희망직종 :
+                                                    {% for temp in list.13 %}
+                                                        # {{ temp }}
+                                                    {% endfor %}
+                                                    <span class="bar">
+                                                        |
+                                                    </span>
+                                                    희망연봉 : {{ list.11 }}
                                                 </span>
                                             </div>
                                         </a>
                                     </li>
                                     <li style="margin-left:auto;">
                                         <div style="position:relative; top:95%;">
-                                            {{ list.6|date:"Y-m-d" }}
+                                            {{ list.7|date:"Y-m-d" }}
                                         </div>
                                     </li>
                                 </ul>

@@ -14,6 +14,8 @@ class MyUser(AbstractUser):
     company_logo = models.FileField(upload_to='company_logo/', null=True, blank=True)
     company_phone_number = models.CharField(max_length=100)
 
+    company_paper = models.FileField(upload_to='company_paper/', null=True, blank=True)
+
 class Friend_List(models.Model):
     friend = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='friend')
     friend_relation = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='friend_relation')

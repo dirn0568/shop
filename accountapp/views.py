@@ -81,8 +81,10 @@ class Create_Company_User(CreateView):
         temp_form.company_name = self.request.POST['company_name']
         temp_form.company_ceo = self.request.POST['company_ceo']
         print(self.request.FILES,'!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-        if len(self.request.FILES) >= 1:
+        if self.request.FILES.get('company_logo'):
             temp_form.company_logo = self.request.FILES['company_logo']
+        if self.request.FILES.get('company_paper'):
+            temp_form.company_paper = self.request.FILES['company_paper']
         temp_form.company_phone_number = self.request.POST['company_phone_number']
         temp_form.save()
         return super().form_valid(form)

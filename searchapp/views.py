@@ -47,6 +47,7 @@ def search_resume(request):
                     if resume_title.resume_open == 1 or resume_title.resume_open == 2:
                         answer = []
                         answer.append(resume_title)
+                        answer.append(resume_title.like_vote)
 
                         ###############################################################
 
@@ -197,6 +198,7 @@ def search_resume(request):
                     if resume_title.resume_open == 1:
                         answer = []
                         answer.append(resume_title)
+                        answer.append(resume_title.like_vote)
 
                         ###############################################################
 
@@ -677,6 +679,7 @@ def search_resume2(request, field, work, study, career, position):
                     #################################################################################
                     answer = []
                     answer.append(resume_title)
+                    answer.append(resume_title.like_vote)
 
                     ###############################################################
                     # print(resume_title.resume_title.profile)
@@ -1020,6 +1023,7 @@ def search_resume2(request, field, work, study, career, position):
                     #################################################################################
                     answer = []
                     answer.append(resume_title)
+                    answer.append(resume_title.like_vote)
 
                     ###############################################################
                     # print(resume_title.resume_title.profile)
