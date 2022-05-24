@@ -96,6 +96,13 @@ class Create_Company_User(CreateView):
 #     model = MyUser
 #     form_class =
 
+def promise_key(request):
+    context = {}
+    return render(request, 'promise_key.html', context)
+def promise_company_key(request):
+    context = {}
+    return render(request, 'promise_company_key.html', context)
+
 def popup(request):
     context = {}
     return render(request, 'popup.html', context)

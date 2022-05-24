@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load bootstrap4 %}
+    {% load static %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <title>Title</title>
+</head>
+<body>
+    <p></p>
+    <div>
+        <h1 style="text-align:center;">이용약관</h1>
+    </div>
+
+    <div style="text-align:center; width:500px; height:500px; overflow-y:scroll; margin:auto;">
+        <p></p>
+        “PICK ME"는 정보통신망 이용촉진 및 정보보호 등에 관한 법률, 개인정보보호법, 통신비밀보호법, 전기통신사업법 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보 처리방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.
+        <p></p>
+        본 개인정보 처리방침은 회사가 제공하는 서비스 이용에 적용되며 다음과 같은 내용을 담고 있습니다.
+        <p></p>
+        Ⅰ. 개인정보 수집 및 이용 현황
+        <p></p>
+        1.개인회원
+        <p></p>
+        1-1 회원가입
+        <p></p>
+        필수 요소 : 이메일(아이디) 비밀번호 이름 생년월일 성별 휴대전화번호
+        <p></p>
+        수집목적 : 본인확인 및 가입의사 확인
+        <p></p>
+        1-2 이력서 작성
+        <p></p>
+        필수 요소 : 이름 생년월일 이메일(아이디) 연락처
+        <p></p>
+        선택 요소 : 사진 취업우대 및 특이 사항 (병역 보훈 장애 여부 등) 어학능력 학력사항 자격증 교육수료사항 수상경력 및 기타 포트폴리오
+        <p></p>
+        수집목적 : 이력서 등록을 통한 취업활동 서비스 및 맞춤채용정보 제공
+        <p></p>
+        2.기업회원
+        <p></p>
+        2-1 회원가입
+        <p></p>
+        필수요소 : 아이디 비밀번호 회사명 대표자명 기업구분 담당자명 담당자이메일 담당자 전화번호 사업자등록번호
+        <p></p>
+        수집목적 : 본인확인 및 가입의사 확인 채용서비스 제공
+        <p></p>
+        Ⅱ. 개인정보의 보유기간 및 이용기간
+        <p></p>
+        1. 부정이용기록 : 보유기간 1년
+        <p></p>
+        2. 계약 또는 청약철회 등에 관한 기록 : 보유기간 5년
+        <p></p>
+        3. 웹사이트 방문기록 : 보유기간 3개월
+        <p></p>
+
+        Ⅲ. 개인정보 공유 및 제공
+        <p></p>
+        회사는 이용자들의 개인정보를 "개인정보의 수집목적 및 이용목적"에서 고지한 범위 내에서 사용하며, 이용자의 사전 동의 없이는 동 범위를 초과하여 이용하거나 원칙적으로 이용자의 개인정보를 외부에 공개하지 않습니다.
+        <p></p>
+        다만, 아래의 경우에는 예외로 합니다.
+        <p></p>
+        1.이용자가 사전에 동의한 경우
+        <p></p>
+        1-1 채용 목적의 인재검색
+        <p></p>
+        1-2 채용 목적의 일자리 매칭을 위한 정보 제공
+        <p></p>
+        Ⅳ. 개인정보 파기
+        <p></p>
+        만일 이용자가 본 사이트를 탈퇴하게 된다면 그 즉시 정보를 파기합니다.
+        <p></p>
+        또한 장기 미사용 계정의 경우 회사의 방침에 따라 5년 이후에 그 정보를 파기합니다.
+        <p></p>
+    </div>
+    <div style="text-align:center;">
+        <a href="{% url 'accountapp:create_company_user' %}">
+            <div class="btn btn-dark rounded-pill col-3 mt-3">
+                <span style="color:#1DDB16; font-size:1.2rem;">
+                    동의합니다
+                </span>
+            </div>
+        </a>
+    </div>
+    <p></p>
+    <div style="text-align:center;">
+        <div class="footer_label">
+            공지사항 ㅣ 제휴문의 ㅣ 서비스 소개
+        </div>
+        <div class="footer_logo" style="margin-top: 1rem;">
+            <img src="{% static 'main/PICKME.jpg' %}" width="300" height="100">
+        </div>
+    </div>
+</body>
+</html>

@@ -14,6 +14,9 @@ urlpatterns = [
     path('update_user/<int:pk>/', Update_User.as_view(), name='update_user'),
     path('delete_user/<int:pk>/', Delete_User.as_view(), name='delete_user'),
 
+    path('promise_key/', views.promise_key, name='promise_key'),
+    path('promise_company_key/', views.promise_company_key, name='promise_company_key'),
+
     path('popup/', views.popup, name='popup'),
 
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
