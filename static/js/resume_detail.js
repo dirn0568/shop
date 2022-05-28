@@ -6,7 +6,7 @@ function resume_propose(propose, pk){
         alert("취소 되었습니다.");
     } else {
         alert("면접제의 메일을 성공적으로 보냈습니다.");
-        window.open('http://3.39.239.247/resume/detail_resume/' + pk + '?resume_propose=' + pk + pk, "네이버" ,"top=100px, left=100px, height=800px, width=1200px");
+        window.open('http://3.39.239.247/resume/detail_resume/' + pk + '?resume_propose=' + pk, "네이버" ,"top=100px, left=100px, height=800px, width=1200px");
         window.location.href='http://3.39.239.247/resume/detail_resume/' + pk + '?resume_propose=' + pk;
     }
 }
