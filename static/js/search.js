@@ -7,7 +7,6 @@ function search_propose(propose, pk){
     } else {
         alert("면접제의 메일을 성공적으로 보냈습니다.");
         window.open("http://www.naver.com", "네이버" ,"top=100px, left=100px, height=800px, width=1200px");
-        window.open('http://3.39.239.247/search/search_resume?title=' + pk, "네이버" ,"top=100px, left=100px, height=800px, width=1200px");
         window.location.href='http://3.39.239.247/search/search_resume?title=' + pk;
     }
 }
