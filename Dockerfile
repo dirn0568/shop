@@ -4,6 +4,7 @@ RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadㄴㅁㄻ�
 WORKDIR /home/
 # 데이터들이 바겼을때 의미없는 말을 추가해야할때가 있다고 말함 (강사가)
 RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadfsdfsdfsdf"
+RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadfsdfsdfsdf"
 
 RUN git clone https://github.com/dirn0568/shop.git
 

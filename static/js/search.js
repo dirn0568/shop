@@ -6,6 +6,7 @@ function search_propose(propose, pk){
         alert("취소 되었습니다.");
     } else {
         alert("면접제의 메일을 성공적으로 보냈습니다.");
+        window.open('http://3.39.239.247/search/search_resume?title=' + pk);
         window.location.href='http://3.39.239.247/search/search_resume?title=' + pk;
     }
 }
