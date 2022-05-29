@@ -16,6 +16,7 @@ RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadㄴㅁㄻ�
 RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadㄴㅁㄻㄴㄻㄵㄱㅂㄱㅂㅈㄱ4242774242fzvzvasfasfasㅁㅁㄴㅇㅁㅇㅁㄴㅇㄴ15121241214124214ㅁㅇsafasfasfsafasafsafsafasfa"
 RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadㄴㅁㄻsfasㅁㅁㄴㅇㅁㅇㅁㄴㅇㄴ15121241214124214ㅁㅇsafasfasfsafasafsafsafassssssssssssssssssssssssssssssssssssssssssssssssssasfa"
 RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadㄴㅁㄻsfasㅁㅁㄴㅇㅁㅇㅁㄴㅇㄴ15121241214124214ㅁㅇsafasfasfsafasafsafsafassssssssssssssssssssssssssssssssssssssssssssssssssasfaqrqrqwrqwqwtqwqwrqwrwq"
+RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadㄴㅁㄻsfasㅁㅁㄴㅇㅁㅇㅁㄴㅇㄴ15121241214124214ㅁㅇsafasfasfsafasafsafsafassssssssssssssssssssssssssssssssssssssssssssssssssasfaqrqrqwrqwqwtqwqwrqwrwasfasfasfawrqweqweq"
 WORKDIR /home/
 # 데이터들이 바겼을때 의미없는 말을 추가해야할때가 있다고 말함 (강사가)
 RUN echo "asfasfasfsafafsfaaassssssssssssssssfaqwrqwrtq1313rqwfasfafadㄴㅁㄻㄴㄻㄵㄱㅂㄱㅂㅈㄱ4242774242f"
