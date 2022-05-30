@@ -4,7 +4,16 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/search_resume.css' %}">
 
-    <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
+    <script type="text/javascript">
+        function search_propose(propose, pk){
+            if (!confirm("확인(예) 또는 취소(아니오)를 선택해주세요.")) {
+                alert("취소 되었습니다.");
+            } else {
+                alert("면접제의 메일을 성공적으로 보냈습니다.");
+                window.location.assign("http://3.39.239.247/search/search_resume?title=" + pk);
+            }
+        }
+    </script>
 
     {% if user.is_authenticated %}
         <form action="{% url 'searchapp:search_resume' %}" name='my_form' method="post" enctype="multipart/form-data">
