@@ -688,6 +688,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                     temp_form.elementary_school_name = '초졸검정고시'
                     temp_form.elementary_gamjang_time = request.POST['elementary_gamjang_day']
                     temp_form.elementary_state = '졸업'
+                    temp_form.elementary_school_file = request.FILES.get('school_file1')
                     temp_form.save()
                 else:
                     temp_form.elementary_school_name = request.POST['elementary_school_name']
@@ -695,6 +696,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                     temp_form.elementary_start_time = request.POST['study_start1']
                     temp_form.elementary_end_time = request.POST['study_end1']
                     temp_form.elementary_state = request.POST['elementary_state']
+                    temp_form.elementary_school_file = request.FILES.get('school_file1')
                     temp_form.save()
 
             for i in range(0, out_play):
@@ -761,6 +763,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                     temp_form.middle_school_name = '중졸검정고시'
                     temp_form.middle_gamjang_time = request.POST['middle_gamjang_day']
                     temp_form.middle_state = '졸업'
+                    temp_form.middle_school_file = request.FILES.get('school_file2')
                     temp_form.save()
                 else:
                     temp_form.middle_school_name = request.POST['middle_school_name']
@@ -768,6 +771,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                     temp_form.middle_start_time = request.POST['study_start2']
                     temp_form.middle_end_time = request.POST['study_end2']
                     temp_form.middle_state = request.POST['middle_state']
+                    temp_form.middle_school_file = request.FILES.get('school_file2')
                     temp_form.save()
 
             for i in range(0, out_play):
@@ -825,6 +829,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                     temp_form.high_school_name = '고졸검정고시'
                     temp_form.high_gamjang_time = request.POST['high_gamjang_day']
                     temp_form.high_state = '졸업'
+                    temp_form.high_school_file = request.FILES.get('school_file3')
                     temp_form.save()
                 else:
                     temp_form.high_school_name = request.POST['high_school_name']
@@ -833,6 +838,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                     temp_form.high_end_time = request.POST['study_end3']
                     temp_form.high_major = request.POST['study_major3']
                     temp_form.high_state = request.POST['high_state']
+                    temp_form.high_school_file = request.FILES.get('school_file3')
                     temp_form.save()
 
             for i in range(0, out_play):
@@ -895,6 +901,7 @@ def resume_resume2(request, school, school_major4, career, out_play, prize_play,
                 temp_form.university_study_level = request.POST['study_level4']
                 temp_form.university_finaltest = request.POST['study_finaltest4']
                 temp_form.university_state = request.POST['university_state']
+                temp_form.university_school_file = request.FILES.get('school_file4')
                 temp_form.save()
             if form.is_valid():
                 for i in range(0, school_major4):
@@ -1013,6 +1020,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                         temp_form.elementary_start_time = request.POST['study_start1']
                         temp_form.elementary_end_time = request.POST['study_end1']
                         temp_form.elementary_state = request.POST['elementary_state']
+                        temp_form.elementary_file = request.FILES.get('school_file1')
                         temp_form.save()
             if school == 2:
                 form = ResumeMiddleForm(request.POST, request.FILES)
@@ -1030,6 +1038,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                         temp_form.middle_start_time = request.POST['study_start2']
                         temp_form.middle_end_time = request.POST['study_end2']
                         temp_form.middle_state = request.POST['middle_state']
+                        temp_form.middle_school_file = request.FILES.get('school_file2')
                         temp_form.save()
             if school == 3:
                 form = ResumeHighForm(request.POST, request.FILES)
@@ -1048,6 +1057,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                         temp_form.high_end_time = request.POST['study_end3']
                         temp_form.high_major = request.POST['study_major3']
                         temp_form.high_state = request.POST['high_state']
+                        temp_form.high_school_file = request.FILES.get('school_file3')
                         temp_form.save()
             if school == 4:
                 form = ResumeUniversityForm(request.POST, request.FILES)
@@ -1062,6 +1072,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                     temp_form.university_study_time = request.POST['study_time4']
                     temp_form.university_study_level = request.POST['study_level4']
                     temp_form.university_finaltest = request.POST['study_finaltest4']
+                    temp_form.university_school_file = request.FILES.get('school_file4')
                     temp_form.save()
                 if form.is_valid():
                     for i in range(0, school_major4):
