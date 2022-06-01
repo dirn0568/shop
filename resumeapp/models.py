@@ -147,6 +147,8 @@ class Resume_Career(models.Model):
     resume_career_money_detail = models.CharField(max_length=200)
     resume_career_position_detail2 = models.CharField(max_length=200)
 
+    resume_company_file = models.FileField(upload_to='resume_file/', null=True, blank=True)
+
 class Resume_Career_Ability(models.Model):
     resume_career_ability = models.ForeignKey(Resume_Title, on_delete=models.CASCADE, related_name='resume_career_ability')
 

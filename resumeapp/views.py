@@ -1141,6 +1141,8 @@ def resume_resume4(request, title, career, company_ability, company_project, pk)
             temp_form.resume_career_money_detail = request.POST.get('company_money2')
             temp_form.resume_career_position_detail2 = request.POST.get('company_work_detail')
             # print('22222222222222222', request.POST.get('accordion1'), '33333333333333333333333333')
+
+            temp_form.resume_company_file = request.FILES.get('company_file')
             temp_form.save()
         if form.is_valid():
             form = ResumeCareerAbilityForm(request.POST, request.FILES)
@@ -1225,6 +1227,8 @@ def resume_resume4_update(request, company_ability, company_project, title, pk):
                 temp_form.resume_career_money_detail = request.POST.get('company_money2')
                 temp_form.resume_career_position_detail2 = request.POST.get('company_work_detail')
                 # print('22222222222222222', request.POST.get('accordion1'), '33333333333333333333333333')
+
+                temp_form.resume_company_file = request.FILES.get('company_file')
                 temp_form.save()
             if form.is_valid():
                 form = ResumeCareerAbilityForm(request.POST, request.FILES)
