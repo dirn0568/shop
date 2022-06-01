@@ -1013,7 +1013,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                         temp_form.elementary_school_name = '초졸검정고시'
                         temp_form.elementary_gamjang_time = request.POST['elementary_gamjang_day']
                         temp_form.elementary_state = '졸업'
-                        temp_form.elementary_file = request.FILES.get('school_file1')
+                        temp_form.elementary_school_file = request.FILES.get('school_file1')
                         temp_form.save()
                     else:
                         temp_form.elementary_school_name = request.POST['elementary_school_name']
@@ -1021,7 +1021,7 @@ def resume_resume2_update(request, school, school_major4, title, pk):
                         temp_form.elementary_start_time = request.POST['study_start1']
                         temp_form.elementary_end_time = request.POST['study_end1']
                         temp_form.elementary_state = request.POST['elementary_state']
-                        temp_form.elementary_file = request.FILES.get('school_file1')
+                        temp_form.elementary_school_file = request.FILES.get('school_file1')
                         temp_form.save()
             if school == 2:
                 form = ResumeMiddleForm(request.POST, request.FILES)
