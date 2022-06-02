@@ -24,3 +24,12 @@ function propose_okay2(propose, title, pk){
         alert("거절하셨습니다");
     }
 }
+
+function search_report(report, title, pk){
+     if (!confirm("확인(예) 또는 취소(아니오)를 선택해주세요.")) {
+         alert("취소 되었습니다.");
+     } else {
+         window.location.href='http://3.39.239.247/message/message_propose_detail/' + title + '/' + pk + '?report=1';
+         alert("성공적으로 신고를 마쳤습니다.");
+     }
+}

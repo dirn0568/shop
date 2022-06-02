@@ -16,6 +16,8 @@ class MyUser(AbstractUser):
 
     company_paper = models.FileField(upload_to='company_paper/', null=True, blank=True)
 
+    sos_report = models.IntegerField(default=0)
+
 class Friend_List(models.Model):
     friend = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='friend')
     friend_relation = models.ForeignKey(MyUser, on_delete=models.CASCADE, related_name='friend_relation')
