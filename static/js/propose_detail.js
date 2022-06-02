@@ -25,7 +25,7 @@ function propose_okay2(propose, title, pk){
     }
 }
 
-function search_report(report, title, pk){
+function propose_report(report, title, pk){
      if (!confirm("확인(예) 또는 취소(아니오)를 선택해주세요.")) {
          alert("취소 되었습니다.");
      } else {
