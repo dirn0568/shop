@@ -26,7 +26,7 @@ function propose_okay2(propose, title, pk){
 }
 
 function propose_report(report, title, pk){
-     if (!confirm("확인(예) 또는 취소(아니오)를 선택해주세요.")) {
+     if (!confirm("정말로 신고하시겠습니까?")) {
          alert("취소 되었습니다.");
      } else {
          window.location.href='http://3.39.239.247/message/message_propose_detail/' + title + '/' + pk + '?report=1';
