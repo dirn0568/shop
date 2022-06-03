@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'resumeapp',
     'searchapp',
     'boardapp',
+    'reportapp',
 ]
 
 MIDDLEWARE = [

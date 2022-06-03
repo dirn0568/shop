@@ -20,7 +20,7 @@
                 <a href="{% url 'accountapp:promise_key' %}">
                     <span>SignUp</span>
                 </a>
-                <a href="{% url 'mainapp:main' %}">
+                <a href="{% url 'mainapp:search_report' %}">
                     <span>신고하기</span>
                 </a>
             {% else %}
@@ -45,7 +45,7 @@
                 <a href="{% url 'accountapp:logout' %}?next={% url 'mainapp:main' %}">
                     <span>logout</span>
                 </a>
-                <a href="{% url 'mainapp:main' %}">
+                <a href="{% url 'mainapp:search_report' %}">
                     <span>신고하기</span>
                 </a>
             {% endif %}

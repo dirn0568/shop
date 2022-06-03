@@ -3,12 +3,16 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 from django.core.paginator import Paginator
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.views.generic import FormView
+
 from accountapp.models import MyUser
 from boardapp.models import Board_Gonge_Model, Board_Jaro_Model
+from mainapp.forms import SearchReportForm
 from profileapp.models import User_Profile
 from resumeapp.models import Resume_Title, Resume_Hope_Work, Resume_Hope_Work_Field, Resume_Hope_Work_Work, \
     Resume_UniversitySchool, Resume_HighSchool, Resume_UniversitySchool_Major, Resume_MiddleSchool, \
@@ -257,6 +261,23 @@ def company_popup(request, company_number):
         context['company_phone_number'] = temp.company_phone_number
     context['id'] = user_id
     return render(request, 'company_popup.html', context)
+
+
+class SearchReportView(FormView):
+    form_class = SearchReportForm
+    template_name = 'search_report.html'
+
+    def form_valid(self, form):
+        searchWord = form.cleaned_data['search_word']
+        post_list = MyUser.objects.filter(Q(username__icontains=searchWord)).distinct()
+
+        context = {}
+        context['form'] = form
+        context['search_term'] = searchWord
+        context['object_list'] = post_list
+
+        return render(self.request, self.template_name, context)
+
 
 def main2(request):
     context={}

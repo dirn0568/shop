@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pragmatic</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <!-- BOOTSTRAP LINK -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- GOOGLE FONTS LINK -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Monoton&display=swap" rel="stylesheet">
+
+    <!-- GOOGLE MATERIAL ICONS  -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+    <!-- GOOGLE NOTO SANS  -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <!-- Google Font - Fast One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+
+    <!-- Google Font - Anton -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        a { text-decoration:none }
+    </style>
+
+</head>
+<body>
+
+    <span style="font-size:2rem; font-weight:bold;">신고하기</span>
+    <br><br>
+
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ form.as_table }} <!-- form을 테이블 형식으로 표시, 여기서 form은 views에서 넘겨준 PostSearchForm 객체임-->
+        <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+    </form>
+    <hr>
+    {% if object_list %}
+        {% for post in object_list %}
+            {{ post.username }}
+            <a href="{% url 'reportapp:report_user' user1=request.user.pk user2=post.pk %}" style="margin-left:auto;">
+                <span class="message_report">
+                    <i class="material-icons">report</i>
+                    신고하기
+                </span>
+            </a>
+            <p></p>
+        {% endfor %}
+    {% elif search_term %}<!-- 검색란이 공란인지 확인-->
+        <b><i>Search Word({{ search_term }}) Not Found</i></b>
+    {% endif %}
+</body>
+</html>

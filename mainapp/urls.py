@@ -10,4 +10,6 @@ urlpatterns = [
     path('main2', views.main2, name='main2'),
 
     path('company_popup/<int:company_number>', views.company_popup, name='company_popup'),
+
+    path('search_report/', views.SearchReportView.as_view(), name='search_report'),
 ]

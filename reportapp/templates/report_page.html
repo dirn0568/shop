@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Pragmatic</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <!-- BOOTSTRAP LINK -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- GOOGLE FONTS LINK -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Monoton&display=swap" rel="stylesheet">
+
+    <!-- GOOGLE MATERIAL ICONS  -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+    <!-- GOOGLE NOTO SANS  -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+
+    <!-- Google Font - Fast One -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+
+    <!-- Google Font - Anton -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        * {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        a { text-decoration:none }
+    </style>
+
+    <script type="text/javascript">
+        function report_submit2() {
+            var sub;
+            sub = confirm("정말로 신고하시겠습니까")
+
+            if (sub) {
+                alert('신고되었습니다');
+            } else {
+                alert('취소되었습니다');
+                return false;
+                alert('취소되었습니다');
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <div style="text-align:center;">
+        <form action="{% url 'reportapp:report_user' user1=user1 user2=user2 %}" method="post" onsubmit="return report_submit2();">
+            {% csrf_token %}
+            <span style="font-size:2rem; font-weight:bold;">신고하기</span>
+            <p></p>
+            <select name='report_subject' style="width:20rem; height:3rem;">
+                <option value='' selected>-- 선택 --</option>
+                <option value='불법'>불법</option>
+                <option value='유령회사'>유령회사</option>
+                <option value='다단계'>다단계</option>
+                <option value='마약회사'>마약회사</option>
+                <option value='폭언및폭행'>폭언 및 폭행</option>
+            </select>
+            <p></p>
+            <textarea cols="50" rows="10" name="report_data" placeholder="허위신고시 책임이 따를 수 있습니다." style="width:20rem; height:20rem; outline:none;"></textarea>
+            <p></p>
+            <input type="submit" name="report_submit" value="제출" style="border:none; font-weight:bold; background:#A6A6A6; padding: 10px 3rem;">
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

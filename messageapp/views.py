@@ -157,7 +157,7 @@ def message_propose_detail(request, title, pk):
     detail = request.GET.get('detail', None)
     detail2 = request.GET.get('detail2', None)
 
-    report = request.GET.get('report', None)
+    # report = request.GET.get('report', None)
 
     message = Message_Propose_Model.objects.filter(pk=title)
 
@@ -233,13 +233,14 @@ def message_propose_detail(request, title, pk):
                                        message_send_detail='"{1}"를 작성하신 {0}님 께서 면접을 거절하셨습니다.'.format(request.user, temp.message_propose_resume_title))
             model.save()
 
-    if report != None:
-        print('0603 테스트중')
-        print(temp.message_propose_send, temp.message_propose_send.pk)
-        for temp in message:
-            temp_user = MyUser.objects.filter(pk=temp.message_propose_send.pk)
-            for temp2 in temp_user:
-                temp2.sos_report += 1
+    # if report != None:
+    #     print('0603 테스트중')
+    #     for temp in message:
+    #         print(temp.message_propose_send, temp.message_propose_send.pk)
+    #         temp_user = MyUser.objects.filter(username=temp.message_propose_send)
+    #         for temp2 in temp_user:
+    #             temp2.sos_report += 1
+    #             temp2.save()
 
 
     data = ''
@@ -266,6 +267,12 @@ def message_propose_detail(request, title, pk):
         context['message_propose_resume_title'] = temp.message_propose_resume_title
     context['title'] = title
     context['pk'] = pk
+    for temp in message:
+        temp_user = MyUser.objects.filter(username=temp.message_propose_send)
+        for temp2 in temp_user:
+            temp_user_pk = temp2.pk
+
+    context['temp_user_pk'] = temp_user_pk
     return render(request, 'message_propose_detail.html', context)
 
 def test(request):
