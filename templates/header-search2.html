@@ -49,9 +49,14 @@
                     <span>MyPage</span>
                 </a>
                 &nbsp;
+                <a href="{% url 'mainapp:search_report' %}">
+                    <span>신고하기</span>
+                </a>
+                &nbsp;
                 <a href="{% url 'accountapp:logout' %}?next={% url 'mainapp:main' %}">
                     <span>logout</span>
                 </a>
+
             {% endif %}
         </div>
     </div>
