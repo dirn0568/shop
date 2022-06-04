@@ -217,12 +217,21 @@ def message_propose_detail(request, title, pk):
             message_age = "None"
 
         for temp in message:
-            model = Message_Send_Model(message_send_receive=temp.message_propose_send,
-                                       message_send_send=request.user,
-                                       message_send_title='면접에 동의하셨습니다',
-                                       message_send_detail='"{3}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: {4} ∏나이: {5} ∏성별: {6} ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
-                                           request.user, message_phone_number, message_user_email, temp.message_propose_resume_title, message_name, message_age, message_gender))
-            model.save()
+            for temp_profile_data in temp_profile:
+                if temp_profile_data.user_open == 1:
+                    model = Message_Send_Model(message_send_receive=temp.message_propose_send,
+                                               message_send_send=request.user,
+                                               message_send_title='면접에 동의하셨습니다',
+                                               message_send_detail='"{3}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: {4} ∏나이: {5} ∏성별: {6} ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
+                                                   request.user, message_phone_number, message_user_email, temp.message_propose_resume_title, message_name, message_age, message_gender))
+                    model.save()
+                else:
+                    model = Message_Send_Model(message_send_receive=temp.message_propose_send,
+                                               message_send_send=request.user,
+                                               message_send_title='면접에 동의하셨습니다',
+                                               message_send_detail='"{1}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: 비공개 ∏나이: 비공개 ∏성별: 비공개 ∏핸드폰 번호: 비공개 ∏이메일: 비공개'.format(
+                                                   request.user, temp.message_propose_resume_title))
+                    model.save()
 
     if detail2 != None:
         print('실행하고 있나요2 05-08')
@@ -271,7 +280,15 @@ def message_propose_detail(request, title, pk):
         temp_user = MyUser.objects.filter(username=temp.message_propose_send)
         for temp2 in temp_user:
             temp_user_pk = temp2.pk
+            temp_user_report = temp2.sos_report
 
+    if temp_user_report <= 0:
+        context['temp_user_report'] = 0
+    elif temp_user_report <= 5:
+        context['temp_user_report'] = 1
+    else:
+        context['temp_user_report'] = 2
+    context['temp_user_report_detail'] = temp_user_report
     context['temp_user_pk'] = temp_user_pk
     return render(request, 'message_propose_detail.html', context)
 

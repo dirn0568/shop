@@ -66,10 +66,21 @@
                     대표: {{ company_ceo }}
                     <p></p>
                     회사명: {{ company_name }} <span class="company_group">{{ company_group }}</span>
+                    &nbsp;
+                    {% if temp_user_report == 0 %}
+                        <span style="color:#1DDB16;"><i class="material-icons">notification_important</i> 신고횟수: {{ temp_user_report_detail }}</span>
+                    {% endif %}
+                    {% if temp_user_report == 1 %}
+                        <span style="color:#F29661"><i class="material-icons">notification_important</i> 신고횟수: {{ temp_user_report_detail }}</span>
+                    {% endif %}
+                    {% if temp_user_report == 2 %}
+                        <span style="color:#FF0000;"><i class="material-icons">notification_important</i> 신고횟수: {{ temp_user_report_detail }}</span>
+                    {% endif %}
                     <p></p>
                     채용담당자: {{ send }}
                     <p></p>
                     회사 전화번호: {{ company_phone_number }}
+                    <p></p>
                 </div>
             </div>
 
