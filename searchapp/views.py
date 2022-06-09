@@ -555,6 +555,12 @@ def search_resume2(request, field, work, study, career, position):
                     if '광주전체 광주' in field:
                         if '광주' in resume_field.resume_hope_work_field1:
                             answer_field += 1
+                    if resume_field.resume_hope_work_field1 == '부산전체 부산':
+                        if '부산' in field:
+                            answer_field += 1
+                    if '부산전체 부산' in field:
+                        if '부산' in resume_field.resume_hope_work_field1:
+                            answer_field += 1
                     if resume_field.resume_hope_work_field1 == '대구전체 대구':
                         if '대구' in field:
                             answer_field += 1
@@ -896,6 +902,12 @@ def search_resume2(request, field, work, study, career, position):
                             answer_field += 1
                     if '광주전체 광주' in field:
                         if '광주' in resume_field.resume_hope_work_field1:
+                            answer_field += 1
+                    if resume_field.resume_hope_work_field1 == '부산전체 부산':
+                        if '부산' in field:
+                            answer_field += 1
+                    if '부산전체 부산' in field:
+                        if '부산' in resume_field.resume_hope_work_field1:
                             answer_field += 1
                     if resume_field.resume_hope_work_field1 == '대구전체 대구':
                         if '대구' in field:
