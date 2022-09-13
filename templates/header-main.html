@@ -4,23 +4,6 @@
             <h1 class="font_data">PICK ME</h1>
         </div>
         <div class="header_content_box">
-            {% if not user.is_authenticated %}
-                <a href="{% url 'mainapp:main' %}">
-                    <span>메인</span>
-                </a>
-                <a href="{% url 'searchapp:search_resume' %}">
-                    <span>인재찾기</span>
-                </a>
-                <a href="{% url 'boardapp:board_list' %}">
-                    <span>자유게시판</span>
-                </a>
-                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
-                    <span>login</span>
-                </a>
-                <a href="{% url 'accountapp:promise_key' %}">
-                    <span>SignUp</span>
-                </a>
-            {% else %}
                 <a href="{% url 'mainapp:main' %}">
                     <span>메인</span>
                 </a>
@@ -42,6 +25,8 @@
                 <a href="{% url 'mainapp:search_report' %}">
                     <span>신고하기</span>
                 </a>
-            {% endif %}
+                <a href="{% url 'accountapp:promise_key' %}">
+                    <span>SignUp</span>
+                </a>
         </div>
     </div>
