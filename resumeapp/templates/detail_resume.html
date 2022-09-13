@@ -16,7 +16,6 @@
     <!--    <div class="content_title">-->
     <!--        이력서-->
     <!--    </div>-->
-    {% if user.is_authenticated %}
         <div class="basic_title">
             <div style="background:#4C4C4C; color:#EAEAEA; text-align:center;">
                 &nbsp;&nbsp;{{ resume.resume_title_detail }}&nbsp;
@@ -807,18 +806,6 @@
                 </div>
             {% endif %}
         </div>
-    {% else %}
-        <div style="background:#FFFFFF; text-align:center;">
-            <img src="{% static 'search/sorry.PNG' %}" alt="" style="width:15rem; height:15rem;">
-            <h2>
-                죄송합니다.
-                <p></p>
-                로그인없이 사용하실수 없습니다.
-                <p></p>
-                로그인후 이용 부탁드립니다.
-            </h2>
-        </div>
-    {% endif %}
 {% endblock %}
 
 <!--    <ul class="amount">-->
