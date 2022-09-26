@@ -4,33 +4,6 @@
             <h1 class="font_data">PICK ME</h1>
         </div>
         <div style="display:flex;" class="resume_header_content_box">
-            {% if not user.is_authenticated %}
-                <div style="flex:1;">
-                    <a href="{% url 'mainapp:main' %}">
-                        <span>Main</span>
-                    </a>
-                </div>
-                <div style="flex:1;">
-                    <a href="{% url 'searchapp:search_resume' %}">
-                        <span>인재찾기</span>
-                    </a>
-                </div>
-                <div style="flex:1;">
-                    <a href="{% url 'boardapp:board_list' %}">
-                        <span>자유게시판</span>
-                    </a>
-                </div>
-                <div style="flex:1;">
-                    <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
-                        <span>login</span>
-                    </a>
-                </div>
-                <div style="flex:1;">
-                    <a href="{% url 'accountapp:promise_key' %}">
-                        <span>SignUp</span>
-                    </a>
-                </div>
-            {% else %}
                 <div style="flex:1;">
                     <a href="{% url 'mainapp:main' %}">
                         <span>메인</span>
@@ -47,18 +20,23 @@
                     </a>
                 </div>
                 <div style="flex:1;">
-                    <a href="{% url 'messageapp:message_content' pk=request.user.pk %}">
+                    <a href="{% url 'messageapp:message_content' pk=1 %}">
                         <span>메세지함</span>
                     </a>
                 </div>
                 <div style="flex:1;">
-                    <a href="{% url 'resumeapp:list_resume' title=0 pk=request.user.pk %}">
+                    <a href="{% url 'resumeapp:list_resume' title=0 pk=1 %}">
                         <span>이력서 관리</span>
                     </a>
                 </div>
                 <div style="flex:1;">
-                    <a href="{% url 'accountapp:detail_user' pk=user.pk %}">
+                    <a href="{% url 'accountapp:detail_user' pk=1 %}">
                         <span>MyPage</span>
+                    </a>
+                </div>
+                <div style="flex:1;">
+                    <a href="{% url 'accountapp:promise_key' %}">
+                        <span>SignUp</span>
                     </a>
                 </div>
                 <div style="flex:1;">
@@ -66,6 +44,5 @@
                         <span>신고하기</span>
                     </a>
                 </div>
-            {% endif %}
         </div>
     </div>

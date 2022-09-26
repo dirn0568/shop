@@ -82,7 +82,6 @@ def delete_resume(request, pk):
 
 def list_resume(request, title, pk):
     temp_user = MyUser.objects.filter(pk=pk)
-    print(request.POST)
     if request.method == "POST" and request.POST.get('resume_submit1'):
         temp_resume = Resume_Title.objects.filter(pk=title)
         print('실행중??????????????????????????12414124124?')
@@ -96,10 +95,6 @@ def list_resume(request, title, pk):
             resume.save()
 
     for user_test in temp_user:
-        if request.user == user_test:
-            pass
-        else:
-            raise Http404("잘못된 접근입니다")
         for temp in temp_user:
             temp_resume = Resume_Title.objects.filter(resume_title=temp)
         context = {}

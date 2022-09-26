@@ -31,7 +31,7 @@ def board_write(request, pk):
         print('33333333333333333')
         print(request.FILES)
 
-        user = MyUser.objects.filter(pk=pk)
+        user = MyUser.objects.filter(pk=1)
 
         for temp_user in user:
             board = Board_Model(board_user=temp_user, board_title=request.POST.get('title'), board_detail=request.POST.get('context'), board_file=request.FILES.get('file'))
@@ -56,7 +56,7 @@ def board_detail(request, title):
             else:
                 data += temp_data
         context['detail'] = data
-        print(data)
+        print(data, '데이터잘나오나요')
         context['file'] = temp.board_file
 
     return render(request, 'board_detail.html', context)

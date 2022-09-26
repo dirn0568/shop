@@ -57,7 +57,7 @@
     {% if object_list %}
         {% for post in object_list %}
             <span style="font-size:1.2rem;">{{ post.username }}</span>
-            <a href="{% url 'reportapp:report_user' user1=request.user.pk user2=post.pk %}" style="margin-left:auto;">
+            <a href="{% url 'reportapp:report_user' user1=1 user2=post.pk %}" style="margin-left:auto;">
                 <span class="message_report">
                     <i style="vertical-align: middle;" class="material-icons">report</i>
                     신고하기

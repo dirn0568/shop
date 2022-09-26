@@ -17,7 +17,6 @@ def message_content(request, pk):
     context={}
 
     page = request.GET.get('page', '1')
-
     user = MyUser.objects.filter(pk=pk)
     for temp_user in user:
         message = Message_Send_Model.objects.filter(message_send_receive=temp_user).order_by('-message_send_date_time')
@@ -55,6 +54,7 @@ def message_send(request, pk):
 def message_write(request, pk):
     context={}
 
+    user2 = MyUser.objects.filter(pk=pk)
     if request.method == 'POST' and request.POST.get('message_submit1'):
         print(request.POST)
         print('33333333333333333')
@@ -63,8 +63,9 @@ def message_write(request, pk):
         user = MyUser.objects.filter(username=request.POST.get('receiver'))
 
         for temp_user in user:
-            message = Message_Send_Model(message_send_receive=temp_user, message_send_send=request.user, message_send_title=request.POST.get('title'), message_send_detail=request.POST.get('context'), message_send_file=request.FILES.get('file'))
-            message.save()
+            for temp_user2 in user2:
+                message = Message_Send_Model(message_send_receive=temp_user, message_send_send=temp_user2, message_send_title=request.POST.get('title'), message_send_detail=request.POST.get('context'), message_send_file=request.FILES.get('file'))
+                message.save()
 
     context['pk'] = pk
     return render(request, 'message_write.html', context)
@@ -163,7 +164,7 @@ def message_propose_detail(request, title, pk):
 
     if detail != None:
         print('워크래프트31515135134124')
-        temp_user = MyUser.objects.filter(pk=request.user.pk)
+        temp_user = MyUser.objects.filter(pk=pk)
         for temp in temp_user:
             temp_profile = User_Profile.objects.filter(profile=temp)
         if temp_profile:
@@ -218,29 +219,31 @@ def message_propose_detail(request, title, pk):
 
         for temp in message:
             for temp_profile_data in temp_profile:
-                if temp_profile_data.user_open == 1:
-                    model = Message_Send_Model(message_send_receive=temp.message_propose_send,
-                                               message_send_send=request.user,
-                                               message_send_title='면접에 동의하셨습니다',
-                                               message_send_detail='"{3}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: {4} ∏나이: {5} ∏성별: {6} ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
-                                                   request.user, message_phone_number, message_user_email, temp.message_propose_resume_title, message_name, message_age, message_gender))
-                    model.save()
-                else:
-                    model = Message_Send_Model(message_send_receive=temp.message_propose_send,
-                                               message_send_send=request.user,
-                                               message_send_title='면접에 동의하셨습니다',
-                                               message_send_detail='"{1}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: 비공개 ∏나이: 비공개 ∏성별: 비공개 ∏핸드폰 번호: 비공개 ∏이메일: 비공개'.format(
-                                                   request.user, temp.message_propose_resume_title))
-                    model.save()
+                for temp_user_data in temp_user:
+                    if temp_profile_data.user_open == 1:
+                        model = Message_Send_Model(message_send_receive=temp.message_propose_send,
+                                                   message_send_send=temp_user_data,
+                                                   message_send_title='면접에 동의하셨습니다',
+                                                   message_send_detail='"{3}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: {4} ∏나이: {5} ∏성별: {6} ∏핸드폰 번호: {1} ∏이메일: {2}'.format(
+                                                       temp_user_data, message_phone_number, message_user_email, temp.message_propose_resume_title, message_name, message_age, message_gender))
+                        model.save()
+                    else:
+                        model = Message_Send_Model(message_send_receive=temp.message_propose_send,
+                                                   message_send_send=temp_user_data,
+                                                   message_send_title='면접에 동의하셨습니다',
+                                                   message_send_detail='"{1}"를 작성하신 {0}님께서 면접에 동의하셨습니다. ∏이름: 비공개 ∏나이: 비공개 ∏성별: 비공개 ∏핸드폰 번호: 비공개 ∏이메일: 비공개'.format(
+                                                       temp_user_data, temp.message_propose_resume_title))
+                        model.save()
 
     if detail2 != None:
         print('실행하고 있나요2 05-08')
         for temp in message:
-            model = Message_Send_Model(message_send_receive=temp.message_propose_send,
-                                       message_send_send=request.user,
-                                       message_send_title='면접에 거절하셨습니다',
-                                       message_send_detail='"{1}"를 작성하신 {0}님 께서 면접을 거절하셨습니다.'.format(request.user, temp.message_propose_resume_title))
-            model.save()
+            for temp_user_data in temp_user:
+                model = Message_Send_Model(message_send_receive=temp.message_propose_send,
+                                           message_send_send=temp_user_data,
+                                           message_send_title='면접에 거절하셨습니다',
+                                           message_send_detail='"{1}"를 작성하신 {0}님 께서 면접을 거절하셨습니다.'.format(temp_user_data, temp.message_propose_resume_title))
+                model.save()
 
     # if report != None:
     #     print('0603 테스트중')

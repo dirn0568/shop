@@ -6,7 +6,6 @@
 
     <script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 
-    {% if user.is_authenticated %}
         <form action="{% url 'searchapp:search_resume' %}" name='my_form' method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="content">
@@ -2529,18 +2528,6 @@
                 </div>
             </div>
         </form>
-    {% else %}
-        <div style="background:#FFFFFF; text-align:center;">
-            <img src="{% static 'search/sorry.PNG' %}" alt="" style="width:15rem; height:15rem;">
-            <h2>
-                죄송합니다.
-                <p></p>
-                로그인없이 사용하실수 없습니다.
-                <p></p>
-                로그인후 이용 부탁드립니다.
-            </h2>
-        </div>
-    {% endif %}
 {% endblock %}
 
 <!--<li class="login_box">-->

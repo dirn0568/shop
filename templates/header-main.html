@@ -4,7 +4,6 @@
             <h1 class="font_data">PICK ME</h1>
         </div>
         <div class="header_content_box">
-            {% if not user.is_authenticated %}
                 <a href="{% url 'mainapp:main' %}">
                     <span>메인</span>
                 </a>
@@ -14,34 +13,20 @@
                 <a href="{% url 'boardapp:board_list' %}">
                     <span>자유게시판</span>
                 </a>
-                <a href="{% url 'accountapp:login' %}?next={{ request.path }}">
-                    <span>login</span>
+                <a href="{% url 'messageapp:message_content' pk=1 %}">
+                    <span>메세지함</span>
+                </a>
+                <a href="{% url 'resumeapp:list_resume' title=0 pk=1 %}">
+                    <span>이력서 관리</span>
+                </a>
+                <a href="{% url 'accountapp:detail_user' pk=1 %}">
+                    <span>MyPage</span>
                 </a>
                 <a href="{% url 'accountapp:promise_key' %}">
                     <span>SignUp</span>
                 </a>
-            {% else %}
-                <a href="{% url 'mainapp:main' %}">
-                    <span>메인</span>
-                </a>
-                <a href="{% url 'searchapp:search_resume' %}">
-                    <span>인재찾기</span>
-                </a>
-                <a href="{% url 'boardapp:board_list' %}">
-                    <span>자유게시판</span>
-                </a>
-                <a href="{% url 'messageapp:message_content' pk=request.user.pk %}">
-                    <span>메세지함</span>
-                </a>
-                <a href="{% url 'resumeapp:list_resume' title=0 pk=request.user.pk %}">
-                    <span>이력서 관리</span>
-                </a>
-                <a href="{% url 'accountapp:detail_user' pk=user.pk %}">
-                    <span>MyPage</span>
-                </a>
                 <a href="{% url 'mainapp:search_report' %}">
                     <span>신고하기</span>
                 </a>
-            {% endif %}
         </div>
     </div>
